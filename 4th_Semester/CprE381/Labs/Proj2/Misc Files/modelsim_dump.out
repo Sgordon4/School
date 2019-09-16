@@ -1,0 +1,231 @@
+
+Instruction: 20010001
+RA1: 00
+RA2: 01
+WA: 01
+RD1: 00000000
+RD2: 00000000
+RegWr: 1
+In clock cycle: 1
+Register Write to Reg: 0x01 Val: 0x00000001
+
+Instruction: 20020002
+RA1: 00
+RA2: 02
+WA: 02
+RD1: 00000000
+RD2: 00000001
+RegWr: 1
+In clock cycle: 2
+Register Write to Reg: 0x02 Val: 0x00000002
+
+Instruction: 20030003
+RA1: 00
+RA2: 03
+WA: 03
+RD1: 00000000
+RD2: 00000002
+RegWr: 1
+In clock cycle: 3
+Register Write to Reg: 0x03 Val: 0x00000003
+
+Instruction: 20040004
+RA1: 00
+RA2: 04
+WA: 04
+RD1: 00000000
+RD2: 00000003
+RegWr: 1
+In clock cycle: 4
+Register Write to Reg: 0x04 Val: 0x00000004
+
+Instruction: 20050005
+RA1: 00
+RA2: 05
+WA: 05
+RD1: 00000000
+RD2: 00000004
+RegWr: 1
+In clock cycle: 5
+Register Write to Reg: 0x05 Val: 0x00000005
+
+Instruction: 20060006
+RA1: 00
+RA2: 06
+WA: 06
+RD1: 00000000
+RD2: 00000005
+RegWr: 1
+In clock cycle: 6
+Register Write to Reg: 0x06 Val: 0x00000006
+
+Instruction: 20070007
+RA1: 00
+RA2: 07
+WA: 07
+RD1: 00000000
+RD2: 00000006
+RegWr: 1
+In clock cycle: 7
+Register Write to Reg: 0x07 Val: 0x00000007
+
+Instruction: 20080008
+RA1: 00
+RA2: 08
+WA: 08
+RD1: 00000000
+RD2: 00000007
+RegWr: 1
+In clock cycle: 8
+Register Write to Reg: 0x08 Val: 0x00000008
+
+Instruction: 20090009
+RA1: 00
+RA2: 09
+WA: 09
+RD1: 00000000
+RD2: 00000008
+RegWr: 1
+In clock cycle: 9
+Register Write to Reg: 0x09 Val: 0x00000009
+
+Instruction: 200A000A
+RA1: 00
+RA2: 0A
+WA: 0A
+RD1: 00000000
+RD2: 00000009
+RegWr: 1
+In clock cycle: 10
+Register Write to Reg: 0x0A Val: 0x0000000A
+
+Instruction: 00225820
+RA1: 01
+RA2: 02
+WA: 0B
+RD1: 00000001
+RD2: 0000000A
+RegWr: 1
+In clock cycle: 11
+Register Write to Reg: 0x0B Val: 0x0000000B
+
+Instruction: 01636022
+RA1: 0B
+RA2: 03
+WA: 0C
+RD1: 0000000B
+RD2: 00000003
+RegWr: 1
+In clock cycle: 12
+Register Write to Reg: 0x0C Val: 0x0000000E
+
+Instruction: 01846820
+RA1: 0C
+RA2: 04
+WA: 0D
+RD1: 0000000E
+RD2: 00000004
+RegWr: 1
+In clock cycle: 13
+Register Write to Reg: 0x0D Val: 0x00000012
+
+Instruction: 01A57022
+RA1: 0D
+RA2: 05
+WA: 0E
+RD1: 00000012
+RD2: 00000005
+RegWr: 1
+In clock cycle: 14
+Register Write to Reg: 0x0E Val: 0x00000017
+
+Instruction: 01C67820
+RA1: 0E
+RA2: 06
+WA: 0F
+RD1: 00000017
+RD2: 00000006
+RegWr: 1
+In clock cycle: 15
+Register Write to Reg: 0x0F Val: 0x0000001D
+
+Instruction: 01E78022
+RA1: 0F
+RA2: 07
+WA: 10
+RD1: 0000001D
+RD2: 00000007
+RegWr: 1
+In clock cycle: 16
+Register Write to Reg: 0x10 Val: 0x00000024
+
+Instruction: 02088820
+RA1: 10
+RA2: 08
+WA: 11
+RD1: 00000024
+RD2: 00000008
+RegWr: 1
+In clock cycle: 17
+Register Write to Reg: 0x11 Val: 0x0000002C
+
+Instruction: 02299022
+RA1: 11
+RA2: 09
+WA: 12
+RD1: 0000002C
+RD2: 00000009
+RegWr: 1
+In clock cycle: 18
+Register Write to Reg: 0x12 Val: 0x00000035
+
+Instruction: 024A9820
+RA1: 12
+RA2: 0A
+WA: 13
+RD1: 00000035
+RD2: 0000000A
+RegWr: 1
+In clock cycle: 19
+Register Write to Reg: 0x13 Val: 0x0000003F
+
+Instruction: 20140023
+RA1: 00
+RA2: 14
+WA: 14
+RD1: 00000000
+RD2: 0000003F
+RegWr: 1
+In clock cycle: 20
+Register Write to Reg: 0x14 Val: 0x00000023
+
+Instruction: 0274A820
+RA1: 13
+RA2: 14
+WA: 15
+RD1: 0000003F
+RD2: 00000023
+RegWr: 1
+In clock cycle: 21
+Register Write to Reg: 0x15 Val: 0x00000062
+
+Instruction: 2002000A
+RA1: 00
+RA2: 02
+WA: 02
+RD1: 00000000
+RD2: 00000062
+RegWr: 1
+In clock cycle: 22
+Register Write to Reg: 0x02 Val: 0x0000000A
+
+Instruction: 0000000C
+RA1: 00
+RA2: 00
+WA: 00
+RD1: 00000000
+RD2: 00000000
+RegWr: 1
+In clock cycle: 23
+Register Write to Reg: 0x00 Val: 0x00000000
+Execution is stopping!

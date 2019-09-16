@@ -1,0 +1,33 @@
+Want to end at:
+ComS 472 - Principles of Artificial Intelligence
+ComS 474 - Introduction to Machine Learning
+
+Both require:
+    ComS 311 - Design and Analysis of Algorithms	<- Already part of schedule
+    ComS 342 - Principles of Programming Languages
+    Sp Cm 212 - Fundamentals of Public Speaking
+
+If want to do ComS 477 - Problem Solving Techniques for Applied Computer Science, 
+			would need consent from instructor as missing Math 207 or 317
+
+---------------
+
+CprE 533 - Cryptography    can be exchanged for any other cyber security-esque class or whatnot
+CprE 329 - Software Project Management    will probably be pretty nifty
+
+---------------
+
+EE 314 - Electromagnetics for non Electrical Engineers    pls no btw theres just nothing else
+
+---------------
+
+Psych 313 or Psych 310 or something else related to learning and AI
+
+
+
+
+
+---------------
+http://www.ece.iastate.edu/files/2011/08/CprE-17-18-Technical-Elective-List.pdf
+http://www.ece.iastate.edu/files/2011/08/GenEdList-16-17.pdf
+http://catalog.iastate.edu/azcourses/cpr_e/

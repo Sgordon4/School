@@ -1,0 +1,546 @@
+#     PCB material properties file.
+#     You may set these standard properties:
+#
+# E_CONDUCTIVITY  - electrical conductivity
+# DIELECTRIC      - relative dielectric permittivity
+# LOSS_TANGENT    - loss tangent of dielectric
+#
+#     PCB material parameters for Allegro PCB Cross Section Form
+#
+# THICKNESS       - standard sheet thickness
+# THICKNESS_PTOL  - standard sheet thickness plus tolerance
+# THICKNESS_MTOL  - standard sheet thickness minus tolerance
+#
+#     Any of the above parameters my be omitted.
+#     Use any units found in the units.dat file.
+#     Values without unit specifiers are presumed to be in SI units.
+#
+#     The default materials for Allegro PCB layers are COPPER, FR-4, and AIR.
+#
+# ======================================================================
+#
+# NOTES:
+#
+#   1) DIELECTRIC or CONDUCTOR ??
+#
+#          The Cross section editor (xsection command) splits and
+#        presents the materials in two groupings - "conductive" and
+#        "non-conductive" materials.
+#
+#          This determination is based upon the material's electrical-
+#        conductivity (E_CONDUCTIVITY) according to the following rule:
+#
+#           E_CONDUCTIVITY <  10,000 mhos/m  =  "non-conductive"
+#           E_CONDUCTIVITY >= 10,000 mhos/m  =  "conductive"
+#
+#        There is currently NO support for semiconductor materials.
+#
+# ======================================================================
+
+
+# surface materials
+
+MATERIAL_NAME AIR
+E_CONDUCTIVITY=0
+DIELECTRIC=1
+THICKNESS=0
+THICKNESS_PTOL=0
+THICKNESS_MTOL=0
+
+MATERIAL_NAME CONFORMAL_COAT
+E_CONDUCTIVITY=0
+DIELECTRIC=3
+THICKNESS=20um
+THICKNESS_PTOL=0um
+THICKNESS_MTOL=0um
+
+
+# PCB dielectric materials
+
+# standard difunctional epoxy resin with E-glass reinforcement
+MATERIAL_NAME FR-4
+E_CONDUCTIVITY=0
+DIELECTRIC=4.5
+LOSS_TANGENT=0.035
+THICKNESS=8.0mil
+THICKNESS_PTOL=0.0mil
+THICKNESS_MTOL=0.0mil
+
+# blend of difunctional and tetrafunctional epoxy resins with E-glass
+# reinforcement
+MATERIAL_NAME TETRAFUNCTIONAL
+E_CONDUCTIVITY=0
+DIELECTRIC=4.4
+LOSS_TANGENT=0.035
+THICKNESS=8.0mil
+THICKNESS_PTOL=0.0mil
+THICKNESS_MTOL=0.0mil
+
+# Rigid polyimide resin with E-glass reinforcement
+MATERIAL_NAME POLYIMIDE
+E_CONDUCTIVITY=0
+DIELECTRIC=4.3
+LOSS_TANGENT=0.035
+THICKNESS=8.0mil
+THICKNESS_PTOL=0.0mil
+THICKNESS_MTOL=0.0mil
+
+# Rigid polyimde typically used for things like stiffeners on rigid-flex boards
+MATERIAL_NAME POLYIMIDE_RIGID_5MIL
+E_CONDUCTIVITY=0
+DIELECTRIC=3.5
+THICKNESS=5.0mil
+
+# bismaleimide-triazine resin with E-glass reinforcement
+MATERIAL_NAME BT_EPOXY
+E_CONDUCTIVITY=0
+DIELECTRIC=4.1
+LOSS_TANGENT=0.02
+THICKNESS=8.0mil
+THICKNESS_PTOL=0.0mil
+THICKNESS_MTOL=0.0mil
+
+# cyanate ester resin with E-glass reinforcement
+MATERIAL_NAME CYANATE_ESTER_E
+E_CONDUCTIVITY=0
+DIELECTRIC=3.8
+LOSS_TANGENT=0.009
+THICKNESS=8.0mil
+THICKNESS_PTOL=0.0mil
+THICKNESS_MTOL=0.0mil
+
+# cyanate ester resin with S-glass reinforcement
+MATERIAL_NAME CYANATE_ESTER_S
+E_CONDUCTIVITY=0
+DIELECTRIC=3.5
+LOSS_TANGENT=0.009
+THICKNESS=8.0mil
+THICKNESS_PTOL=0.0mil
+THICKNESS_MTOL=0.0mil
+
+# polytetrafluoroethylene composite
+MATERIAL_NAME PTFE
+E_CONDUCTIVITY=0
+DIELECTRIC=2.7
+LOSS_TANGENT=0.003
+THICKNESS=5.0mil
+THICKNESS_PTOL=0.0mil
+THICKNESS_MTOL=0.0mil
+
+
+# flex circuit dielectric materials
+
+# unreinforced flexible polyimide film
+MATERIAL_NAME POLYIMIDE_FILM
+E_CONDUCTIVITY=0
+DIELECTRIC=3.5
+THICKNESS=3.0mil
+THICKNESS_PTOL=0.0mil
+THICKNESS_MTOL=0.0mil
+
+# unreinforced flexible polyimide film (e.g. use for coverlay)
+MATERIAL_NAME POLYIMIDE_FILM_1MIL
+E_CONDUCTIVITY=0mho/cm
+DIELECTRIC=3.6
+THICKNESS=1mil
+
+# polyimide core with acrylic adhesive on both sides
+MATERIAL_NAME POLYIMIDE_BOND_PLY
+E_CONDUCTIVITY=0
+DIELECTRIC=3.6
+THICKNESS=4.0mil
+
+MATERIAL_NAME FR-4_NO_FLOW_PREPREG
+E_CONDUCTIVITY=0mho/cm
+DIELECTRIC=4.0
+LOSS_TANGENT=0.014
+THICKNESS=2.0mil
+
+
+# conductor materials
+
+# Aluminum wire for wirebonding
+# Not intended for cross-section layers, hence default layer thickness of 0
+MATERIAL_NAME ALUMINUM
+E_CONDUCTIVITY=35000000mho/m
+DIELECTRIC=4.5
+THICKNESS=0
+THICKNESS_PTOL=0
+THICKNESS_MTOL=0
+
+# Chromium adhesiveless metal deposition
+MATERIAL_NAME CHROMIUM
+E_CONDUCTIVITY=7700000mho/m
+DIELECTRIC=4.5
+THICKNESS=0.02um
+THICKNESS_PTOL=0
+THICKNESS_MTOL=0
+
+MATERIAL_NAME COPPER
+E_CONDUCTIVITY=595900mho/cm
+DIELECTRIC=4.5
+THICKNESS=1.2mil
+THICKNESS_PTOL=0.0mil
+THICKNESS_MTOL=0.0mil
+
+MATERIAL_NAME HALF_OZ_COPPER
+E_CONDUCTIVITY=58000000mho/m
+DIELECTRIC=4.5
+THICKNESS=0.7mil
+THICKNESS_PTOL=0.05mil
+THICKNESS_MTOL=0.05mil
+
+MATERIAL_NAME 1OZ_COPPER
+E_CONDUCTIVITY=58000000mho/m
+DIELECTRIC=4.5
+THICKNESS=1.4mil
+THICKNESS_PTOL=0.1mil
+THICKNESS_MTOL=0.1mil
+
+MATERIAL_NAME 2OZ_COPPER
+E_CONDUCTIVITY=58000000mho/m
+DIELECTRIC=4.5
+THICKNESS=2.8mil
+THICKNESS_PTOL=0.2mil
+THICKNESS_MTOL=0.2mil
+
+MATERIAL_NAME 4OZ_COPPER
+E_CONDUCTIVITY=58000000mho/m
+DIELECTRIC=4.5
+THICKNESS=5.6mil
+THICKNESS_PTOL=0.5mil
+THICKNESS_MTOL=0.5mil
+
+MATERIAL_NAME 1MM_COPPER
+E_CONDUCTIVITY=58000000mho/m
+DIELECTRIC=4.5
+THICKNESS=1mm
+THICKNESS_PTOL=0.1mm
+THICKNESS_MTOL=0.1mm
+
+# copper alloy with nickel (30%)
+MATERIAL_NAME CUPRONICKEL
+E_CONDUCTIVITY=2668000mho/m
+DIELECTRIC=4.5
+THICKNESS=1.3mil
+
+# 99.9 % pure gold
+# Gold wire for wirebonding
+# Not intended for cross-section layers, hence default layer thickness of 0
+MATERIAL_NAME GOLD
+E_CONDUCTIVITY=43000000mho/m
+DIELECTRIC=4.5
+THICKNESS=0
+THICKNESS_PTOL=0
+THICKNESS_MTOL=0
+
+MATERIAL_NAME INCONEL
+E_CONDUCTIVITY=820000mho/m
+DIELECTRIC=4.5
+THICKNESS=0.5mm
+THICKNESS_PTOL=0
+THICKNESS_MTOL=0
+
+# Indium material for soldering
+# Not intended for cross-section layers, hence default layer thickness of 0
+MATERIAL_NAME INDIUM
+E_CONDUCTIVITY=12000000mho/m
+DIELECTRIC=4.5
+THICKNESS=0
+THICKNESS_PTOL=0
+THICKNESS_MTOL=0
+
+MATERIAL_NAME INVAR
+E_CONDUCTIVITY=1200000mho/m
+DIELECTRIC=4.5
+THICKNESS=0.11mm
+THICKNESS_PTOL=0
+THICKNESS_MTOL=0
+
+MATERIAL_NAME KOVAR
+E_CONDUCTIVITY=2300000mho/m
+DIELECTRIC=4.5
+THICKNESS=5mm
+THICKNESS_PTOL=0.0mm
+THICKNESS_MTOL=0.0mm
+
+# Lead material for soldering
+# Not intended for cross-section layers, hence default layer thickness of 0
+MATERIAL_NAME LEAD
+E_CONDUCTIVITY=4600000mho/m
+DIELECTRIC=4.5
+THICKNESS=0
+THICKNESS_PTOL=0
+THICKNESS_MTOL=0
+
+MATERIAL_NAME MOLYBDENUM
+E_CONDUCTIVITY=18000000mho/m
+DIELECTRIC=4.5
+THICKNESS=25mil
+THICKNESS_PTOL=0
+THICKNESS_MTOL=0
+
+MATERIAL_NAME MONEL
+E_CONDUCTIVITY=1700000mho/m
+DIELECTRIC=4.5
+THICKNESS=30um
+THICKNESS_PTOL=0
+THICKNESS_MTOL=0
+
+# Immersion nickel plating
+MATERIAL_NAME NICKEL
+E_CONDUCTIVITY=15000000mho/m
+DIELECTRIC=4.5
+THICKNESS=5um
+THICKNESS_PTOL=0
+THICKNESS_MTOL=0
+
+MATERIAL_NAME NICHROME
+E_CONDUCTIVITY=15000000mho/m
+DIELECTRIC=4.5
+THICKNESS=1mil
+THICKNESS_PTOL=0.0mil
+THICKNESS_MTOL=0.0mil
+
+# Platinum wire for wirebonding
+# Not intended for cross-section layers, hence default layer thickness of 0
+MATERIAL_NAME PLATINUM
+E_CONDUCTIVITY=10000000mho/m
+DIELECTRIC=4.5
+THICKNESS=0
+THICKNESS_PTOL=0
+THICKNESS_MTOL=0
+
+# Silver wire for wirebonding
+# Not intended for cross-section layers, hence default layer thickness of 0
+MATERIAL_NAME SILVER
+E_CONDUCTIVITY=63000000mho/m
+DIELECTRIC=4.5
+THICKNESS=0
+THICKNESS_PTOL=0
+THICKNESS_MTOL=0
+
+MATERIAL_NAME STAINLESS_STEEL
+E_CONDUCTIVITY=1400000mho/m
+DIELECTRIC=4.5
+THICKNESS=200um
+THICKNESS_PTOL=0
+THICKNESS_MTOL=0
+
+# Tantalum coating for copper pads
+MATERIAL_NAME TANTALUM
+E_CONDUCTIVITY=7200000mho/m
+DIELECTRIC=4.5
+THICKNESS=0.07um
+THICKNESS_PTOL=0
+THICKNESS_MTOL=0
+
+# Immersion tin plating (pure "white" tin)
+MATERIAL_NAME TIN
+E_CONDUCTIVITY=8800000mho/m
+DIELECTRIC=4.5
+THICKNESS=0.6um
+THICKNESS_PTOL=0
+THICKNESS_MTOL=0
+
+MATERIAL_NAME TUNGSTEN
+E_CONDUCTIVITY=86000000mho/m
+DIELECTRIC=4.5
+THICKNESS=.0015cm
+THICKNESS_PTOL=0.0cm
+THICKNESS_MTOL=0.0cm
+
+# equal thickness of copper and tin
+MATERIAL_NAME PLATED_COPPER_FOIL
+E_CONDUCTIVITY=343000mho/cm
+DIELECTRIC=4.5
+THICKNESS=2.1mil
+THICKNESS_PTOL=0.0mil
+THICKNESS_MTOL=0.0mil
+
+
+# flex circuit conductive materials
+
+# High temperature elongation copper foil
+MATERIAL_NAME COPPER_FOIL_HTE			
+E_CONDUCTIVITY=58000000mho/m
+THICKNESS=18um
+
+# High flex treated copper foil
+MATERIAL_NAME COPPER_FOIL_HA
+E_CONDUCTIVITY=58000000mho/m
+THICKNESS=18um
+
+MATERIAL_NAME SILVER_FOIL
+E_CONDUCTIVITY=99000mho/cm
+THICKNESS=8um
+
+MATERIAL_NAME SILVER_COPPER_FOIL
+E_CONDUCTIVITY=10000mho/cm
+THICKNESS=8um
+
+MATERIAL_NAME COPPER_PASTE
+E_CONDUCTIVITY=10000mho/cm
+THICKNESS=1mil
+
+MATERIAL_NAME SILVER_PASTE_HALF_MIL
+E_CONDUCTIVITY=99000mho/cm
+THICKNESS=0.5mil
+
+MATERIAL_NAME SILVER_PASTE_1MIL
+E_CONDUCTIVITY=99000mho/cm
+THICKNESS=1mil
+
+MATERIAL_NAME SILVER_THICK_FILM_INK
+E_CONDUCTIVITY=99000mho/cm
+THICKNESS=10um
+
+# Photosensitive silver thick film ink
+MATERIAL_NAME SILVER_INK_PHOTOSENSITIVE
+E_CONDUCTIVITY=99000mho/cm
+THICKNESS=8um
+
+MATERIAL_NAME IMMERSION_SILVER
+E_CONDUCTIVITY=63000000mho/m
+THICKNESS=0.01mil
+
+MATERIAL_NAME IMMERSION_TIN
+E_CONDUCTIVITY=8800000mho/m
+THICKNESS=1.0um
+
+# Electroless Nickel Immersion Gold
+# nickel plated with 0.002-0.004mil gold
+MATERIAL_NAME ENIG
+E_CONDUCTIVITY=15000000mho/m
+THICKNESS=0.18mil
+
+# Electroless Nickel Electroless Palladium Immersion Gold
+# nickel covered with 0.05-0.15um Palladium plated with at least 0.025um gold
+MATERIAL_NAME ENEPIG
+E_CONDUCTIVITY=15000000mho/m
+THICKNESS=4.2um
+
+# Nickel plated with hard gold alloy (99.6% pure), gold alloy thickness 0.03-0.05mil
+MATERIAL_NAME GOLD_HARD
+E_CONDUCTIVITY=15000000mho/m
+THICKNESS 0.14mil
+
+# Nickel plated with soft gold (99.9% pure), gold thickness 0.03-0.05mil
+MATERIAL_NAME GOLD_SOFT_BONDABLE
+E_CONDUCTIVITY=15000000mho/m
+THICKNESS 0.14mil
+
+
+# flex circuit MASK layer materials
+
+# Liquid photoimageable solder mask (LPISM)
+MATERIAL_NAME SOLDERMASK
+E_CONDUCTIVITY=0mho/cm
+DIELECTRIC=3.7
+LOSS_TANGENT=0.022
+THICKNESS=20um
+THICKNESS_PTOL=0um
+THICKNESS_MTOL=0um
+
+# Flexible Liquid PhotoImageable solder Mask
+MATERIAL_NAME SOLDERMASK_FLEXIBLE_LPI
+E_CONDUCTIVITY=0mho/cm
+DIELECTRIC=3.7
+LOSS_TANGENT=0.022
+THICKNESS=15um
+
+MATERIAL_NAME SOLDERMASK_FLEXIBLE_UV_CURE
+E_CONDUCTIVITY=0mho/cm
+DIELECTRIC=8.2
+THICKNESS=12um
+
+MATERIAL_NAME PHOTOIMAGABLE_ACRYLIC
+E_CONDUCTIVITY=0mho/cm
+DIELECTRIC=3.5
+THICKNESS=1.5mil
+
+MATERIAL_NAME ADHESIVE_ACRYLIC
+E_CONDUCTIVITY=0mho/cm
+DIELECTRIC=3.5
+THICKNESS=0.5mil
+
+MATERIAL_NAME ADHESIVE_THERMOSET
+E_CONDUCTIVITY=0mho/cm
+DIELECTRIC=5.7
+THICKNESS=2mil
+
+MATERIAL_NAME ADHESIVE_EPOXY
+E_CONDUCTIVITY=0mho/cm
+DIELECTRIC=4.6
+THICKNESS=25um
+
+MATERIAL_NAME CONDUCTIVE_ADHESIVE_SILVER_EPOXY
+E_CONDUCTIVITY=25000mho/cm
+THICKNESS=1mil
+
+MATERIAL_NAME CONDUCTIVE_ADHESIVE_THERMOSET
+E_CONDUCTIVITY=25000mho/cm
+THICKNESS=2mil
+
+# Benzotriazole Organic Solderability Preservative
+MATERIAL_NAME OSP_BENZOTRIAZOLE
+E_CONDUCTIVITY=0mho/cm
+DIELECTRIC=4
+THICKNESS=0.2um
+
+# Benzimidazolethiol Organic Solderability Preservative
+MATERIAL_NAME OSP_BENZIMIDAZOLETHIOL
+E_CONDUCTIVITY=0mho/cm
+DIELECTRIC=5.45
+THICKNESS=0.4um
+
+# High glass transition temperature epoxy for capacitive dielectric
+MATERIAL_NAME EPOXY_RESIN_HIGH-TG
+E_CONDUCTIVITY=0mho/cm
+DIELECTRIC=4.4
+LOSS_TANGENT=0.015
+THICKNESS=8um
+
+# High dielectric constant epoxy for capacitive dielectric
+MATERIAL_NAME EPOXY_RESIN_HIGH-DK
+E_CONDUCTIVITY=0mho/cm
+DIELECTRIC=10
+LOSS_TANGENT=0.019
+THICKNESS=12um
+
+# UV cure epoxy ink for silkscreened legend
+MATERIAL_NAME EPOXY_INK_UV_CURE
+E_CONDUCTIVITY=0mho/cm
+DIELECTRIC=4.4
+THICKNESS=10um
+
+# Heat cured expoxy ink for silkscreened legend
+MATERIAL_NAME EPOXY_INK_THERMOSET
+E_CONDUCTIVITY=0mho/cm
+DIELECTRIC=4.4
+THICKNESS=17um
+
+# Carbon resistive ink
+MATERIAL_NAME CARBON_INK_1MIL
+E_CONDUCTIVITY=2mho/cm
+DIELECTRIC=2.5
+THICKNESS=1mil
+
+# Carbon resistive ink
+MATERIAL_NAME CARBON_INK_2MIL
+E_CONDUCTIVITY=2mho/cm
+DIELECTRIC=2.5
+THICKNESS=2mil
+
+# Eutetic Solder 60% Sn, 40% Pb
+# Not intended for cross-section layers, hence default layer thickness of 0
+MATERIAL_NAME SOLDER_60_40
+E_CONDUCTIVITY=4600000mho/m
+THICKNESS=0
+THICKNESS_PTOL=0
+THICKNESS_MTOL=0
+
+# Tin-Silver(3.8%)-Copper(0.7%) lead free solder paste
+MATERIAL_NAME SOLDER_PASTE_SAC
+E_CONDUCTIVITY=76900mho/cm
+THICKNESS=3mil

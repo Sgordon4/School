@@ -1,0 +1,61 @@
+Backend things to change before Demo 5:
+
+
+
+Users: 
+
+- When getting User by ID or getting the full list of Users, return only...
+	> screenname
+	> email
+	> type
+	> uid
+	{
+		"screenname":"User1",
+		"email":"email@email.com",
+		"type":"Proffessor",
+		"uid":1
+	}
+	
+	
+	
+Classes: 
+
+- When getting list of Classes for a User or getting the full list of Classes, per class return only...
+	> id (or cid)
+	> name
+	{
+        "classes" : [
+			{
+				"id":"1",
+				"name":"ComS 311"
+			},
+			{
+				"id":"2",
+				"name":"ComS 309"
+			}
+        ]
+    }
+
+
+
+Lectures: 
+
+- Add a slot in the DB for a name for every lecture
+
+
+- When getting list of Lectures for a Class, per lecture return only...
+	> id (or lid)
+	> name
+	{
+        "lectures" : [
+			{
+				"id":"1",
+				"name":"Leture 15"
+			},
+			{
+				"id":"2",
+				"name":"Leture 17"
+			}
+        ]
+    }
+

@@ -1,0 +1,16 @@
+\t (00:00:00) allegro_free_viewer 17.2 S048 Windows SPB 64-bit Edition
+\t (00:00:00)     Journal start - Fri Nov 16 06:26:22 2018
+\t (00:00:00)         Host=GAMINGPC User=Sean Pid=2740 CPUs=4
+\t (00:00:00) CmdLine= C:\Users\Sean\Downloads\School\EE201\PSPICE OrCad\Cadence Design Systems\17.2\tools\bin\allegro_free_viewer.exe -noopengl
+\t (00:00:00) 
+\t (00:00:00) Starting new design...
+\i (00:00:00) trapsize 1556
+\i (00:00:00) trapsize 1487
+\i (00:00:00) trapsize 1556
+\i (00:00:00) trapsize 1139
+\i (00:00:00) trapsize 1556
+\i (00:00:00) trapsize 1139
+\i (00:00:00) trapsize 1139
+\i (00:00:07) plot 
+\i (00:00:10) exit 
+\t (00:00:10)     Journal end - Fri Nov 16 06:26:32 2018

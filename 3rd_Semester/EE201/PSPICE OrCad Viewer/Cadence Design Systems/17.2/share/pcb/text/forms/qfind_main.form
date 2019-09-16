@@ -1,0 +1,428 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM fixed_font
+FIXED
+PORT 72 48
+HEADER "Find Objects by Query"
+
+POPUP <TypePopup>"Interconnect""0".
+POPUP <OptionPopup>"AND""0", "OR""1", "NOR""2".
+POPUP <TablePopup> "Highlight Selected Objects" "0", "DeHighlight Selected Objects" "1"
+POPUP <TableTopPopup> "Sort Ascending""0", "Sort Descending""1", "Remove Column""2".
+
+
+ACTIVEFIELD "done"
+
+TILE
+
+TABSET "TABS"
+FLOC 1 1
+TSSIZE 71 9
+
+TAB "Component/Symbol" tab_comp
+
+GROUP "Objects to Find" f1
+GLOC 1 1
+GSIZE 69 5
+ENDGROUP
+
+FIELD symbols
+FLOC 2 4
+CHECKLIST "Symbols" "radio_dir"
+ENDFIELD
+
+FIELD comps
+FLOC 13 4
+CHECKLIST "Components" "radio_dir"
+ENDFIELD
+
+FIELD viastruct
+FLOC 27 4
+CHECKLIST "Via Structures" "radio_dir"
+ENDFIELD
+
+ENDTAB
+
+TAB "Interconnect" tab_inter
+
+GROUP "Objects to Find" f1
+GLOC 1 1
+GSIZE 69 5
+ENDGROUP
+
+FIELD pins
+FLOC 2 4
+CHECKLIST "Pins" "radio_dir"
+ENDFIELD
+
+FIELD vias
+FLOC 10 4
+CHECKLIST "Vias" "radio_dir"
+ENDFIELD
+
+FIELD shapes
+FLOC 18 4
+CHECKLIST "Shapes" "radio_dir"
+ENDFIELD
+
+FIELD clines
+FLOC 28 4
+CHECKLIST "Clines" "radio_dir"
+ENDFIELD
+
+FIELD clinesegs
+FLOC 38 4
+CHECKLIST "Segs" "radio_dir"
+ENDFIELD
+
+FIELD fingers
+FLOC 46 4
+CHECKLIST "Fingers" "radio_dir"
+ENDFIELD
+
+FIELD wires
+FLOC 57 4
+CHECKLIST "Bond wires" "radio_dir"
+ENDFIELD
+
+ENDTAB
+
+TAB "Groups" tab_grp
+
+GROUP "Objects to Find" f1
+GLOC 1 1
+GSIZE 69 5
+ENDGROUP
+
+FIELD matchgrp
+FLOC 2 4
+CHECKLIST "Matched Grps" "radio_dir"
+ENDFIELD
+
+FIELD ggrp
+FLOC 18 4
+CHECKLIST "Generic Grps" "radio_dir"
+ENDFIELD
+
+FIELD module
+FLOC 34 4
+CHECKLIST "Modules" "radio_dir"
+ENDFIELD
+
+FIELD netgrp
+FLOC 45 4
+CHECKLIST "Net Grps" "radio_dir"
+ENDFIELD
+
+ENDTAB
+
+TAB "SI" tab_si
+
+GROUP "Objects to Find" f1
+GLOC 1 1
+GSIZE 69 5
+ENDGROUP
+
+FIELD nets
+FLOC 2 4
+CHECKLIST "Nets" "radio_dir"
+ENDFIELD
+
+FIELD xnets
+FLOC 10 4
+CHECKLIST "Xnets" "radio_dir"
+ENDFIELD
+
+FIELD diffpairs
+FLOC 19 4
+CHECKLIST "Diffpairs" "radio_dir"
+ENDFIELD
+
+ENDTAB
+
+TAB "RF" tab_rf
+
+GROUP "Objects to Find" f1
+GLOC 1 1
+GSIZE 69 5
+ENDGROUP
+
+FIELD rfcomponents
+FLOC 2 4
+CHECKLIST "RF Components" "radio_dir"
+ENDFIELD
+
+ENDTAB
+
+TAB "RATS" tab_rats
+
+GROUP "Objects to Find" f1
+GLOC 1 1
+GSIZE 69 5
+ENDGROUP
+
+FIELD ratsnests
+FLOC 2 4
+CHECKLIST "Ratsnests" "radio_dir"
+ENDFIELD
+
+FIELD ratts
+FLOC 14 4
+CHECKLIST "RatTs" "radio_dir"
+ENDFIELD
+
+FIELD ratbundle
+FLOC 23 4
+CHECKLIST "Ratbundles" "radio_dir"
+ENDFIELD
+
+ENDTAB
+
+TAB "MISC" tab_misc
+
+GROUP "Objects to Find" f1
+GLOC 1 1
+GSIZE 69 5
+ENDGROUP
+
+FIELD drcs
+FLOC 2 4
+CHECKLIST "DRC Errors" "radio_dir"
+ENDFIELD
+
+FIELD texts
+FLOC 16 4
+CHECKLIST "Text" "radio_dir"
+ENDFIELD
+
+FIELD figures
+FLOC 24 4
+CHECKLIST "Figures" "radio_dir"
+ENDFIELD
+
+FIELD region
+FLOC 35 4
+CHECKLIST "Regions" "radio_dir"
+ENDFIELD
+
+FIELD voids
+FLOC 46 4
+CHECKLIST "Voids/Cavities" "radio_dir"
+ENDFIELD
+
+ENDTAB
+
+ENDTABSET
+
+GROUP "Find Criteria" f2
+GLOC 1 11
+GSIZE 71 12
+ENDGROUP
+
+FIELD filterchk1
+FLOC 2 14
+CHECKLIST ""
+ENDFIELD
+
+TEXT
+FLOC 5 14
+INFO filtername1 1
+FSIZE 13 3
+ENDFIELD
+
+FIELD filter1
+FLOC 18 14
+STRFILLIN 8 20
+ENDFIELD
+
+FIELD filterop1
+FLOC 29 14
+ENUMSET 4
+POP "OptionPopup"
+ENDFIELD
+
+FIELD filterchk2
+FLOC 2 17
+CHECKLIST ""
+ENDFIELD
+
+TEXT
+FLOC 5 17
+INFO filtername2 1
+FSIZE 13 3
+ENDFIELD
+
+FIELD filter2
+FLOC 18 17
+STRFILLIN 8 20
+ENDFIELD
+
+FIELD filterop2
+FLOC 29 17
+ENUMSET 4
+POP "OptionPopup"
+ENDFIELD
+
+FIELD filterchk3
+FLOC 2 20
+CHECKLIST ""
+ENDFIELD
+
+TEXT
+FLOC 5 20
+INFO filtername3 1
+FSIZE 13 3
+ENDTEXT
+
+FIELD filter3
+FLOC 18 20
+STRFILLIN 8 20
+ENDFIELD
+
+FIELD filterop3
+FLOC 29 20
+ENUMSET 4
+POP "OptionPopup"
+ENDFIELD
+
+FIELD filterchk4
+FLOC 38 14
+CHECKLIST ""
+ENDFIELD
+
+TEXT
+FLOC 41 14
+INFO filtername4 1
+FSIZE 13 3
+ENDTEXT
+
+FIELD filter4
+FLOC 53 14
+STRFILLIN 8 20
+ENDFIELD
+
+FIELD filterop4
+FLOC 64 14
+ENUMSET 4
+POP "OptionPopup"
+ENDFIELD
+
+FIELD filterchk5
+FLOC 38 17
+CHECKLIST ""
+ENDFIELD
+
+TEXT
+FLOC 41 17
+INFO filtername5 1
+FSIZE 13 3
+ENDTEXT
+
+FIELD filter5
+FLOC 53 17
+STRFILLIN 8 20
+ENDFIELD
+
+FIELD filterop5
+FLOC 64 17
+ENUMSET 4
+POP "OptionPopup"
+ENDFIELD
+
+TEXT
+FLOC 41 20
+INFO filtername6 1
+FSIZE 13 3
+ENDTEXT
+
+FIELD filter6
+FLOC 53 20
+STRFILLIN 8 20
+ENDFIELD
+
+FIELD filterop6
+FLOC 64 20
+ENUMSET 4
+POP "OptionPopup"
+ENDFIELD
+
+FIELD window_select
+FLOC 1 24
+CHECKLIST "Filter for View Only"
+ENDFIELD
+
+FIELD display_select
+FLOC 30 24
+CHECKLIST "Display Objects"
+ENDFIELD
+
+
+GROUP "Candidate Objects" f3
+GLOC 1 26
+GSIZE 71 23
+ENDGROUP
+
+GRID objalllist
+FLOC 2 29
+FSIZE 69 17
+OPTIONS HLINES VLINES USERSIZE
+POP TablePopup
+
+GHEAD TOP
+HEADSIZE 3
+OPTIONS 3D MULTI
+POP TableTopPopup
+ENDGHEAD
+
+ENDGRID
+
+TEXT t1
+FLOC 2 46
+INFO objnumber 1
+FSIZE 40 3
+ENDTEXT
+
+FIELD config
+FLOC 58 46
+MENUBUTTON "Config..." 2 3
+ENDFIELD
+
+FIELD done
+FLOC 1 51
+MENUBUTTON "Close" 9 3
+ENDFIELD
+
+FIELD cancel
+FLOC 11 51
+MENUBUTTON "Cancel" 9 3
+ENDFIELD
+
+FIELD save_query
+FLOC 21 51
+MENUBUTTON "Save Query" 9 3
+ENDFIELD
+
+FIELD load_query
+FLOC 35 51
+MENUBUTTON "Load Query" 9 3
+ENDFIELD
+
+FIELD reset_query
+FLOC 49 51
+MENUBUTTON "Reset" 9 3
+ENDFIELD
+
+FIELD help_query
+FLOC 63 51
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+FLEXMODE EdgeGravityOne
+
+FLEX f1 0 0 0 0
+FLEX f2 0 0 0 0
+FLEX f3 0 0 1 1
+FLEX objalllist 0 0 1 1
+
+ENDTILE
+
+ENDFORM

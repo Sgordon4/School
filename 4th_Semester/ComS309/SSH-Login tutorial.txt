@@ -1,0 +1,25 @@
+connect to server with filezilla with ur netid and password
+this is what u put in with filezilla as server
+sftp://cs309-sd-7.misc.iastate.edu
+leave port blank
+it may fail once or twice
+its fine just let it do its thing
+put that file in ur user directory in the server
+run the following commands in the server
+in terminal*
+ssh net-id@cs309-sd-7.misc.iastate.edu
+ssh SGordon4@cs309-sd-7.misc.iastate.edu
+enter netid password
+once ur in
+do tmux new
+go into the tmux
+run mysql -u root -p
+hit enter
+type "Abundant space 421 points!" when it asks for pass
+then in mysql type connect coms309_cynote
+then hit ctrl+b followed by d
+to detach from tmux but leave mysql running
+then run the jar u pushed to the server thru filezilla
+now i left the mysql on my server connection running
+so i would suggest just try running the jar without the tmux steps
+but if for some reason it doesnt work and cant connect to db, run the tmux mysql process

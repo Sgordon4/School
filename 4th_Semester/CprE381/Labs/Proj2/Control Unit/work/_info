@@ -1,0 +1,49 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dU:/cpre381/Proj2/Control Unit
+Econtrol
+Z1 w1552062386
+Z2 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z3 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
+R0
+Z4 8Control.vhd
+Z5 FControl.vhd
+l0
+L4
+Vf]j60UETd7g6gfABZ<Hlh3
+!s100 E2oaX`75U9c`=KcTIfYSh3
+Z6 OL;C;10.5b;63
+31
+Z7 !s110 1552062392
+!i10b 1
+Z8 !s108 1552062392.000000
+Z9 !s90 -reportprogress|300|-93|-work|work|Control.vhd|
+Z10 !s107 Control.vhd|
+!i113 0
+Z11 o-93 -work work
+Z12 tExplicit 1 CvgOpt 0
+Abehavior
+R2
+R3
+DEx4 work 7 control 0 22 f]j60UETd7g6gfABZ<Hlh3
+31
+R7
+l23
+L22
+V_gQb=]C:8<;@;CWS_L6n`0
+!s100 2=@mA^`J2DiJ[B@<A<;Yg1
+R6
+!i10b 1
+R8
+R9
+R10
+!i113 0
+R11
+R12

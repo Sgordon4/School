@@ -1,0 +1,87 @@
+
+Compiled information from Piazza "Final exam info" 3-4, 5/8/2019
+
+
+
+
+UNIT: DESIGN
+
+FOUR Topics: Modular Design, TopDown Integration, UML, Design Patterns.
+
+ 
+
+Topic: Modular Design
+
+Sub Topics: Modular Design, Layered Design
+
+ 
+
+Topic: TopDown Integration
+
+Sub Topics: TD and BU integration, drivers and stubs/mocks
+
+ 
+
+Topic: UML
+
+Sub Topics: Class Diagram, Sequence Diagram
+
+ 
+
+Topic: Design Patterns
+
+Sub Topics: Dependency Injection Pattern, Facade Pattern, Observer Pattern, MVC pattern
+
+NO VISITOR PATTERN.
+
+
+TOPIC: Testing
+
+Testing Topics
+
+--------------------------------------------------------------------------------------
+
+1. Basics of testing
+
+2. Testing Processes
+
+3. Testing Tools
+
+4. Test Case Generation
+
+5. Automation
+
+--------------------------------------------------------------------------------------
+
+UNIT: PROCESS MODELS
+
+ 
+
+Topic: Basics
+
+SubTopics: What are process Models, Factors in selection of process models for a project.
+
+ 
+
+Topic: Process Models
+
+SubTopics: code-and-fix, waterfall, incremental/iterative, spiral, agile/scrum
+
+ 
+
+Topic: SE
+
+Subtopics: four goals of SE, building analogy, big risks in SE
+
+--------------------------------------------------------------------------------------
+
+NOTE THAT THERE WILL BE NO QUESTIONS ON 
+
+(A) Project Management
+
+(B) Ethics
+
+
+
+
+

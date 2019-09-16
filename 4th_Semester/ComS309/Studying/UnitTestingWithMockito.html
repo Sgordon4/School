@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.5">
+<title>Unit tests with Mockito - Tutorial</title>
+<script>window.mod_pagespeed_start = Number(new Date());</script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="A.asciidoctor.css.pagespeed.cf.pHeShcvYJ5.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://www.vogella.com/A.tutorials,,_Mockito,,_coderay-asciidoctor.css+,,_css,,_articles.css+,,_css,,_header.css,Mcc.BtcFcXOQl1.css.pagespeed.cf.FpHfINSm2s.css"/>
+
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<!-- Google analytics -->
+
+<script type="text/javascript">var _gaq=_gaq||[];_gaq.push(['_setAccount','UA-3967758-1']);_gaq.push(['_setDomainName','vogella.com']);_gaq.push(['_setAllowLinker',true]);_gaq.push(['_trackPageview']);(function(){var ga=document.createElement('script');ga.type='text/javascript';ga.async=true;ga.src=('https:'==document.location.protocol?'https://ssl':'http://www')+'.google-analytics.com/ga.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(ga,s);})();</script>
+
+<!-- Lake Quincy Ads Responsive -->
+<script type='text/javascript'>var googletag=googletag||{};googletag.cmd=googletag.cmd||[];(function(){var gads=document.createElement('script');gads.async=true;gads.type='text/javascript';var useSSL='https:'==document.location.protocol;gads.src=(useSSL?'https:':'http:')+'//www.googletagservices.com/tag/js/gpt.js';var node=document.getElementsByTagName('script')[0];node.parentNode.insertBefore(gads,node);})();</script>
+
+<script type='text/javascript'>googletag.cmd.push(function(){var mapping=googletag.sizeMapping().addSize([0,0],[300,250]).addSize([750,250],[300,250]).addSize([1170,200],[728,90]).build();googletag.defineSlot('/6839/lqm.javaeclipseandroid.site/right',[160,600],'ad-left').addService(googletag.pubads()).setTargeting('left');googletag.defineSlot('/6839/lqm.javaeclipseandroid.site/beforetoc',[[300,250],[728,90]],'ad-beforeTOC').defineSizeMapping(mapping).addService(googletag.pubads()).setTargeting('beforetoc');googletag.defineSlot('/6839/lqm.javaeclipseandroid.site/inbetween01',[[300,250],[728,90]],'ad-inBetween01').defineSizeMapping(mapping).addService(googletag.pubads()).setTargeting('inbetween01');googletag.defineSlot('/6839/lqm.javaeclipseandroid.site/inbetween02',[[300,250],[728,90]],'ad-inBetween02').defineSizeMapping(mapping).addService(googletag.pubads()).setTargeting('inbetween02');googletag.defineSlot('/6839/lqm.javaeclipseandroid.site/inbetween03',[[300,250],[728,90]],'ad-inBetween03').defineSizeMapping(mapping).addService(googletag.pubads()).setTargeting('inbetween03');googletag.defineSlot('/6839/lqm.javaeclipseandroid.site/afterresources',[[300,250],[728,90]],'ad-afterResources').defineSizeMapping(mapping).addService(googletag.pubads()).setTargeting('afterresources');googletag.pubads().enableSingleRequest();googletag.enableServices();});</script>
+
+<!-- Begin Cookie Consent plugin by Silktide - http://silktide.com/cookieconsent -->
+<script type="text/javascript">window.cookieconsent_options={"message":"We use cookies to personalise ads and to analyse our traffic. We also share information about your use of our site with our advertising and analytics partners. By using this site you agree to our cookie use.","dismiss":"Got it!","learnMore":"See details","link":"https://www.vogella.com//privacy.html","theme":"dark-bottom"};</script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/1.0.9/cookieconsent.min.js"></script>
+<!-- End Cookie Consent plugin -->
+
+<script>function openCloseNav(){if(document.getElementById("mobileTopnav").style.width==="150px"){document.getElementById("mobileTopnav").style.width="0";document.body.style.marginLeft="8px";}else{document.getElementById("mobileTopnav").style.width="150px";document.body.style.marginLeft="160px";}}</script>
+
+<div id="mobileHeaderpart">
+    <span onclick="openCloseNav()"><img src="https://www.vogella.com//img/icons/burger.svg" alt=""/> </span>
+    <div id="mobileLogo">
+        <a title="vogella.com" href="https://www.vogella.com/">
+            <img src="https://www.vogella.com//img/logo/index_logo.svg" alt="vogella.com"/>
+        </a>
+    </div>
+</div>
+
+<div id="mobileTopnav" class="sidenav">
+    <a href="https://www.vogella.com//">Home</a>
+    <a class="currentpage" href="https://www.vogella.com//tutorials/">Tutorials</a>
+    <a href="https://www.vogella.com//training/">Training</a>
+    <a href="https://www.vogella.com//consulting/">Consulting</a>
+    <a href="https://www.vogella.com//products/">Products</a>
+    <a href="https://www.vogella.com//books/">Books</a>
+    <a href="https://www.vogella.com//company/">Company</a>
+    <a href="https://www.vogella.com//support.html">Donate</a>
+    <a style="margin-bottom:60px" href="https://www.vogella.com//contact.html">Contact us</a></div>
+
+<div id="headerpart">
+
+	<div id="logo">
+		<a title="vogella.com" href="https://www.vogella.com/">
+			<img src="https://www.vogella.com//img/logo/xindex_logo.png.pagespeed.ic.MsfY6nLwK9.png" alt="vogella.com"/>
+		</a>
+	</div> <!-- logo -->
+
+	<div id="topnav">
+		<ul id="home" class="topnav">
+			<li id="home-icon"><a href="https://www.vogella.com//"></a></li>
+			<li class="currentpage"> <a href="https://www.vogella.com//tutorials/">Tutorials</a>
+				<ul>
+					<li><a href="https://www.vogella.com//tutorials/eclipseide.html">Eclipse IDE</a></li>
+					<li><a href="https://www.vogella.com//tutorials/eclipse.html">Eclipse RCP</a></li>
+					<li><a href="https://www.vogella.com//tutorials/eclipseplatform.html">Eclipse IDE Extensions</a></li>
+					<li><a href="https://www.vogella.com//tutorials/android.html">Android Programming</a></li>
+					<li><a href="https://www.vogella.com//tutorials/web.html">Web</a></li>
+					<li><a href="https://www.vogella.com//tutorials/java.html">Java</a></li>
+					<li><a href="https://www.vogella.com//tutorials/technology.html">Technology</a></li>
+					<li><a href="https://www.vogella.com//tutorials/algorithms.html">Software design</a></li>
+					<li><a href="https://www.vogella.com//code/index.html">Source Code</a></li>
+				</ul>
+			</li>
+			<li><a href="https://www.vogella.com/training/">Training</a>
+				<ul>
+					<li><a href="https://www.vogella.com/training/eclipse/eclipsercp.html">Eclipse RCP Training</a></li>
+					<li><a href="https://www.vogella.com/training/appdevelopment/flutter.html">Cross Mobile App Dev. Training</a></li>
+					<li><a href="https://www.vogella.com/training/git/index.html">Git and Gerrit Training</a></li>
+					<li><a href="https://learn.vogella.com/">Self-study Portal</a></li>
+					<li><a href="https://www.vogella.com/training/onsite/index.html">Other Onsite Training</a></li>
+				</ul>
+			</li>
+
+			<li><a href="https://www.vogella.com//consulting/">Consulting</a></li>
+
+			<li><a href="https://www.vogella.com//company/">Company</a>
+				<ul>
+					<li><a href="https://www.vogella.com//aboutvogella.html">About us</a></li>
+					<li><a href="https://www.vogella.com//jobs/">Jobs</a></li>
+					<li><a href="https://www.vogella.com//people/index.html">People at vogella</a></li>
+					<li><a href="https://www.vogella.com//customers.html" onclick="_gaq.push(['_trackEvent', 'Customers', 'clicked', 'Header']);">Reference Customers</a></li>
+					<li><a href="https://openreq.eu/" onclick="_gaq.push(['_trackEvent', 'Research Projects', 'clicked', 'Header']);">Research Projects</a>
+						<ul>
+							<li><a href="https://openreq.eu/" onclick="_gaq.push(['_trackEvent', 'OpenReq', 'clicked', 'Header']);">OpenReq</a></li>
+						</ul>
+					</li>
+					<li><a href="http://blog.vogella.com/">Blog</a></li>
+					<li><a href="https://www.vogella.com//books/">Books</a>
+						<ul>
+							<li><a href="https://www.vogella.com//books/eclipsercp.html">Eclipse RCP</a></li>
+							<li><a href="https://www.vogella.com//books/eclipseide.html">Eclipse IDE</a></li>
+							<li><a href="https://www.vogella.com//books/eclipsecontribution.html">Contributing to the Eclipse Project</a></li>
+							<li><a href="https://www.vogella.com//books/git.html">Git</a></li>
+						</ul>
+					</li>
+					<li><a href="https://www.vogella.com//supportslider.html">Donate</a></li>
+					<li><a href="https://www.vogella.com//faq.html">FAQ</a></li>
+					<li><a href="https://www.vogella.com//legal.html">Legal</a></li>
+					<li><a href="https://www.vogella.com//privacy.html">Privacy Policy</a></li>
+				</ul>
+			</li>
+
+			<li><a href="https://www.vogella.com//contact.html">Contact us</a></li>
+		</ul>
+	</div><!-- topnav -->
+
+	<div id="searchfixed">
+		<form action="https://www.vogella.com//search.html" id="cse-search-box">
+			<div id="searchwrapper">
+				<input type="hidden" name="cx" value="partner-pub-3851443674951530:3991491935"/>
+				<input type="hidden" name="cof" value="FORID:10"/>
+				<input type="hidden" name="ie" value="UTF-8"/>
+				<input type="text" placeholder="Search" id="search_field" name="q" size="55"/>
+				<input type="image" src="https://www.vogella.com//img/icons/xsrch.png.pagespeed.ic.BP8TtuQRzJ.png" id="search_button" name="sa" alt="Search"/>
+			</div>
+		</form>
+	</div> <!-- searchfixed -->
+
+</div> <!-- headerpart -->
+
+<div id="leftcol">
+
+	<br/>
+	<br/>
+
+	<script async="async" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<!-- LeftColumn -->
+	<ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-pub-3851443674951530" data-ad-slot="6294971031"></ins>
+	<script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+
+	<br/>
+	<br/>
+	<br/>
+	<br/>
+	<br/>
+
+	<!-- Responsive Lake Quincy Ads -->
+	<div id='ad-left'>
+		<script type='text/javascript'>googletag.cmd.push(function(){googletag.display('ad-left');});</script>
+	</div>
+</div> <!-- leftcolumn -->
+
+<div id="rightcol">
+	<br/>
+	<br/>
+	<!-- vogellas own advertising for training and books -->
+	<div class="vogella_ads">
+		<h1>Online training</h1>
+			<ul><li>
+				<a href="https://learn.vogella.com" onclick="_gaq.push(['_trackEvent', 'vogella Services', 'clicked', 'Learn more...']);">Learn more ...</a>
+			</li></ul>
+		<h1>Events</h1>
+			<ul><li>
+				<a href="https://www.vogella.com//training/eclipse/eclipsercp.html" onclick="_gaq.push(['_trackEvent', 'vogella Services', 'clicked', 'next RCP training']);">06 MAY - RCP Training</a>
+			</li></ul>
+		<h1>Quick links</h1>
+		<ul>
+			<li><a href="https://www.vogella.com/training/onsite/index.html" onclick="_gaq.push(['_trackEvent', 'vogella Services', 'clicked', 'training']);">Onsite Training</a></li>
+			<li><a href="https://www.vogella.com//consulting/" onclick="_gaq.push(['_trackEvent', 'vogella Services', 'clicked', 'consulting']);">Consulting</a></li>
+			<li><a href="https://www.vogella.com//books/index.html" onclick="_gaq.push(['_trackEvent', 'vogella Services', 'clicked', 'books']);">Books</a></li>
+		</ul>
+	</div>
+</div> <!--rightcol-->
+</head>
+<body class="article">
+<div id="header">
+<h1>Unit tests with Mockito - Tutorial</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#prerequisites">1. Prerequisites</a></li>
+<li><a href="#testing-with-mock-objects">2. Testing with mock objects</a></li>
+<li><a href="#mockito_installation">3. Adding Mockito as dependencies to a project</a></li>
+<li><a href="#mockitousage">4. Using the Mockito API</a></li>
+<li><a href="#exercise_mockito_android">5. Exercise: Write an instrumented unit test using Mockito</a></li>
+<li><a href="#exercise-creating-mock-objects-using-mockito">6. Exercise: Creating mock objects using Mockito</a></li>
+<li><a href="#using-powermock-with-mockito">7. Using PowerMock with Mockito</a></li>
+<li><a href="#using-a-wrapper-instead-of-powermock">8. Using a wrapper instead of Powermock</a></li>
+<li><a href="#resources_mockito">9. Mockito resources</a></li>
+<li><a href="#vogella-training-and-consulting-support">10. vogella training and consulting support</a></li>
+<li><a href="#copyright-license-and-source-code">Appendix A: Copyright, License and Source code</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Lars Vogel, Fabian Pfaff (c) 2012, 2016 vogella GmbH
+Version 1.9, 10.04.2017</p>
+</div>
+<div class="quoteblock abstract">
+<blockquote>
+This tutorial explains testing with the Mockito framework for writing software tests.
+</blockquote>
+</div>
+<script async="async" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Responsive - After Table of Content -->
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3851443674951530" data-ad-slot="4470606330" data-ad-format="auto"></ins>
+<script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+</div>
+</div>
+<div class="sect1">
+<h2 id="prerequisites"><a class="link" href="#prerequisites">1. Prerequisites</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following tutorial is based on an understanding of unit testing with the JUnit framework.</p>
+</div>
+<div class="paragraph">
+<p>In case your are not familiar with JUnit please check the following <a href="https://www.vogella.com/tutorials/JUnit/article.html">JUnit Tutorial</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="testing-with-mock-objects"><a class="link" href="#testing-with-mock-objects">2. Testing with mock objects</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="target-and-challenge-of-unit-testing"><a class="link" href="#target-and-challenge-of-unit-testing">2.1. Target and challenge of unit testing</a></h3>
+<div class="paragraph">
+<p>
+
+
+
+
+A unit test should test functionality in isolation.
+Side effects from other classes or the system should be eliminated for a unit test, if possible.</p>
+</div>
+<div class="paragraph">
+<p>This can be done via using test replacements (<em>test doubles</em>) for the real dependencies.
+Test doubles can be classified like the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A <em>dummy object</em> is passed around but never used, i.e., its methods are never called.
+Such an object can for example be used to fill the parameter list of a method.</p>
+</li>
+<li>
+<p><em>Fake</em> objects have working implementations, but are usually simplified.
+For example, they use an in memory database and not a real database.</p>
+</li>
+<li>
+<p>A <em>stub</em> class is an partial implementation for an interface or class with the purpose of using an instance of this stub class during testing.
+Stubs usually don&#8217;t respond to anything outside what&#8217;s programmed in for the test.
+Stubs may also record information about calls.</p>
+</li>
+<li>
+<p>A <em>mock object</em> is a dummy implementation for an interface or a class in which you define the output of certain method calls.
+Mock objects are configured to perform a certain behavior during a test.
+They typically record the interaction with the system and tests can validate that.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Test doubles can be passed to other objects which are tested.
+Your tests can validate that the class reacts correctly during tests.
+For example, you can validate if certain methods on the mock object were called.
+This helps to ensure that you only test the class while running tests and that your tests are not affected by any side effects.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Mock objects typically require less code to configure and should therefore be preferred.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="mock-object-generation"><a class="link" href="#mock-object-generation">2.2. Mock object generation</a></h3>
+<div class="paragraph">
+<p>You can create mock objects manually (via code) or use a mock framework to simulate these classes.
+Mock frameworks allow you to create mock objects at runtime and define their behavior.</p>
+</div>
+<div class="paragraph">
+<p>The classical example for a mock object is a data provider.
+In production an implementation to connect to the real data source is used.
+But for testing a mock object simulates the data source and ensures that the test conditions are always the same.</p>
+</div>
+<div class="paragraph">
+<p>These mock objects can be provided to the class which is tested.
+Therefore, the class to be tested should avoid any hard dependency on external data.</p>
+</div>
+<div class="paragraph">
+<p>Mocking or mock frameworks allows testing the expected interaction with the mock object.
+You can, for example, validate that only certain methods have been called on the  mock object.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="using-mockito-for-mocking-objects"><a class="link" href="#using-mockito-for-mocking-objects">2.3. Using Mockito for mocking objects</a></h3>
+<div class="paragraph">
+<p><em>Mockito</em> is a popular mock framework which can be used in conjunction with JUnit.
+Mockito allows you to create and configure mock objects.
+Using Mockito simplifies the development of tests for classes with external dependencies significantly.</p>
+</div>
+<div class="paragraph">
+<p>If you use Mockito in tests you typically:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Mock away external dependencies and insert the mocks into the code under test</p>
+</li>
+<li>
+<p>Execute the code under test</p>
+</li>
+<li>
+<p>Validate that the code executed correctly</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/xmockitousagevisualization.png.pagespeed.ic.O5G0-DReR4.png" alt="mockitousagevisualization">
+</div>
+</div>
+<!-- Non responsive Lake Quincy Ads
+<div data-type="ad" data-publisher="lqm.javaeclipseandroid.site" data-zone="inBetween01" data-format="728x90">
+</div> -->
+
+<!-- Responsive Lake Quincy Ads -->
+<div id='ad-inBetween01'>
+	<script type='text/javascript'>googletag.cmd.push(function(){googletag.display('ad-inBetween01');});</script>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mockito_installation"><a class="link" href="#mockito_installation">3. Adding Mockito as dependencies to a project</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="mockito_installation_gradle"><a class="link" href="#mockito_installation_gradle">3.1. Using Gradle for a Java project</a></h3>
+<div class="paragraph">
+<p>If you use Gradle in a Java project, add the following dependency to the Gradle build file.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">repositories { jcenter() }
+dependencies { testImplementation <span class="string"><span class="delimiter">'</span><span class="content">org.mockito:mockito-core:2.7.22</span><span class="delimiter">'</span></span> }</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="using-gradle-for-an-android-project"><a class="link" href="#using-gradle-for-an-android-project">3.2. Using Gradle for an Android project</a></h3>
+<div class="paragraph">
+<p>Add the following dependency to the Gradle build file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">dependencies {
+    <span class="comment">// ... more entries</span>
+    testCompile <span class="string"><span class="delimiter">'</span><span class="content">junit:junit:4.12</span><span class="delimiter">'</span></span>
+
+    <span class="comment">// required if you want to use Mockito for unit tests</span>
+    testCompile <span class="string"><span class="delimiter">'</span><span class="content">org.mockito:mockito-core:2.7.22</span><span class="delimiter">'</span></span>
+    <span class="comment">// required if you want to use Mockito for Android tests</span>
+    androidTestCompile <span class="string"><span class="delimiter">'</span><span class="content">org.mockito:mockito-android:2.7.22</span><span class="delimiter">'</span></span>
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="mockito_installation_maven"><a class="link" href="#mockito_installation_maven">3.3. Using Maven</a></h3>
+<div class="paragraph">
+<p>Maven users can declare a dependency.
+Search for g:"org.mockito", a:"mockito-core" via the <a href="http://search.maven.org" class="bare">http://search.maven.org</a> website to	find the correct pom entry.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="mockito_installation_eclipse"><a class="link" href="#mockito_installation_eclipse">3.4. Using the Eclipse IDE</a></h3>
+<div class="paragraph">
+<p>The Eclipse IDE supports the Gradle as well as the Maven build system.
+These build system allow to manage your software dependencies.
+Therefore, you are advised to use either the Gradle or Maven tooling in Eclipse.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="mockito_installation_eclipse"><a class="link" href="#mockito_installation_eclipse">3.5. Using IntelliJ</a></h3>
+<div class="paragraph">
+<p>If you are using IntelliJ, you should use either Gradle or Maven to manage your dependencies to Mockito.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="mockito_installation_p2"><a class="link" href="#mockito_installation_p2">3.6. OSGi or Eclipse plug-in development</a></h3>
+<div class="paragraph">
+<p>In Eclipse RCP applications dependencies are usually obtained from p2 update sites.
+The Orbit repositories are a good source for third party libraries, which can be used in Eclipse based applications or plug-ins.</p>
+</div>
+<div class="paragraph">
+<p>The Orbit repositories can be found here <a href="http://download.eclipse.org/tools/orbit/downloads" class="bare">http://download.eclipse.org/tools/orbit/downloads</a></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/xorbit-p2-mockito.png.pagespeed.ic.FwtLCgtL6n.png" alt="orbit p2 mockito">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mockitousage"><a class="link" href="#mockitousage">4. Using the Mockito API</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="creating-mock-objects-with-mockito"><a class="link" href="#creating-mock-objects-with-mockito">4.1. Creating mock objects with Mockito</a></h3>
+<div class="paragraph">
+<p>Mockito provides several methods to create mock objects:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Using the static <code>mock()</code> method.</p>
+</li>
+<li>
+<p>Using the <code>@Mock</code> annotation.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If you use the <code>@Mock</code> annotation, you must trigger the creation of annotated objects.
+The <code>MockitoRule</code> allows this.
+It invokes the static method <code>MockitoAnnotations.initMocks(this)</code> to populate the annotated fields.
+Alternatively you can use <code>@RunWith(MockitoJUnitRunner.class)</code>.</p>
+</div>
+<div class="paragraph">
+<p>The usage of the <code>@Mock</code> annotation and the <code>MockitoRule</code> rule is demonstrated by the following example.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">import</span> <span class="include">static</span> <span class="include">org.mockito.Mockito</span>.*;
+
+<span class="directive">public</span> <span class="type">class</span> <span class="class">MockitoTest</span>  {
+
+    <span class="annotation">@Mock</span>
+    MyDatabase databaseMock; <i class="conum" data-value="1"></i><b>(1)</b>
+
+    <span class="annotation">@Rule</span> <span class="directive">public</span> MockitoRule mockitoRule = MockitoJUnit.rule(); <i class="conum" data-value="2"></i><b>(2)</b>
+
+    <span class="annotation">@Test</span>
+    <span class="directive">public</span> <span class="type">void</span> testQuery()  {
+        ClassToTest t  = <span class="keyword">new</span> ClassToTest(databaseMock); <i class="conum" data-value="3"></i><b>(3)</b>
+        <span class="type">boolean</span> check = t.query(<span class="string"><span class="delimiter">&quot;</span><span class="content">* from t</span><span class="delimiter">&quot;</span></span>); <i class="conum" data-value="4"></i><b>(4)</b>
+        assertTrue(check); <i class="conum" data-value="5"></i><b>(5)</b>
+        verify(databaseMock).query(<span class="string"><span class="delimiter">&quot;</span><span class="content">* from t</span><span class="delimiter">&quot;</span></span>); <i class="conum" data-value="6"></i><b>(6)</b>
+    }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Tells Mockito to mock the databaseMock instance</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Tells Mockito to create the mocks based on the @Mock annotation</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Instantiates the class under test using the created mock</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Executes some code of the class under test</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Asserts that the method call returned true</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>Verify that the query method was called on the <code>MyDatabase</code> mock</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Static imports</div>
+<div class="paragraph">
+<p>By adding the <code>org.mockito.Mockito.*;</code> static import, you can use methods like <code>mock()</code> directly in your tests.
+Static imports allow you to call static members, i.e., methods and fields of a class directly without specifying the class.</p>
+</div>
+<div class="paragraph">
+<p>Using static imports greatly improves the readability of your test code, you should use it.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="configuring-mocks"><a class="link" href="#configuring-mocks">4.2. Configuring mocks</a></h3>
+<div class="paragraph">
+<p>Mockito allows to configure the return values of its mocks via a fluent API.
+Unspecified method calls return "empty" values:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>null for objects</p>
+</li>
+<li>
+<p>0 for numbers</p>
+</li>
+<li>
+<p>false for boolean</p>
+</li>
+<li>
+<p>empty collections for collections</p>
+</li>
+<li>
+<p>&#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The following assert statements are only for demonstration purposes, a real test would use the mocks to unit test another functionality.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="when-thenreturn-and-when-thenthrow"><a class="link" href="#when-thenreturn-and-when-thenthrow">4.2.1. "when thenReturn" and "when thenThrow</a></h4>
+<div class="paragraph">
+<p>Mocks can return different values depending on arguments passed into a method.
+The <code>when(&#8230;&#8203;.).thenReturn(&#8230;&#8203;.)</code> method chain is used to specify a a return value for a method call with pre-defined parameters.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="img/xwhenThenReturn10.png.pagespeed.ic._WMKaUwdIq.png" alt="whenThenReturn10">
+</div>
+</div>
+<div class="paragraph">
+<p>You also can use methods like <code>anyString</code> or <code>anyInt</code> to define that dependent on the input type a certain value should be returned.</p>
+</div>
+<div class="paragraph">
+<p>If you specify more than one value,	they are returned in the order of specification, until the last one is used.
+Afterwards the last	specified value	is returned.</p>
+</div>
+<div class="paragraph">
+<p>The following demonstrates the usage of <code>when(&#8230;&#8203;.).thenReturn(&#8230;&#8203;.)</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">import</span> <span class="include">static</span> <span class="include">org.mockito.Mockito</span>.*;
+<span class="keyword">import</span> <span class="include">static</span> <span class="include">org.junit.Assert</span>.*;
+
+<span class="annotation">@Test</span>
+<span class="directive">public</span> <span class="type">void</span> test1()  {
+        <span class="comment">//  create mock</span>
+        MyClass test = mock(MyClass.class);
+
+        <span class="comment">// define return value for method getUniqueId()</span>
+        when(test.getUniqueId()).thenReturn(<span class="integer">43</span>);
+
+        <span class="comment">// use mock in test....</span>
+        assertEquals(test.getUniqueId(), <span class="integer">43</span>);
+}
+
+
+<span class="comment">// demonstrates the return of multiple values</span>
+<span class="annotation">@Test</span>
+<span class="directive">public</span> <span class="type">void</span> testMoreThanOneReturnValue()  {
+        <span class="predefined-type">Iterator</span>&lt;<span class="predefined-type">String</span>&gt; i= mock(<span class="predefined-type">Iterator</span>.class);
+        when(i.next()).thenReturn(<span class="string"><span class="delimiter">&quot;</span><span class="content">Mockito</span><span class="delimiter">&quot;</span></span>).thenReturn(<span class="string"><span class="delimiter">&quot;</span><span class="content">rocks</span><span class="delimiter">&quot;</span></span>);
+        <span class="predefined-type">String</span> result= i.next()+<span class="string"><span class="delimiter">&quot;</span><span class="content"> </span><span class="delimiter">&quot;</span></span>+i.next();
+        <span class="comment">//assert</span>
+        assertEquals(<span class="string"><span class="delimiter">&quot;</span><span class="content">Mockito rocks</span><span class="delimiter">&quot;</span></span>, result);
+}
+
+<span class="comment">// this test demonstrates how to return values based on the input</span>
+<span class="annotation">@Test</span>
+<span class="directive">public</span> <span class="type">void</span> testReturnValueDependentOnMethodParameter()  {
+        <span class="predefined-type">Comparable</span>&lt;<span class="predefined-type">String</span>&gt; c= mock(<span class="predefined-type">Comparable</span>.class);
+        when(c.compareTo(<span class="string"><span class="delimiter">&quot;</span><span class="content">Mockito</span><span class="delimiter">&quot;</span></span>)).thenReturn(<span class="integer">1</span>);
+        when(c.compareTo(<span class="string"><span class="delimiter">&quot;</span><span class="content">Eclipse</span><span class="delimiter">&quot;</span></span>)).thenReturn(<span class="integer">2</span>);
+        <span class="comment">//assert</span>
+        assertEquals(<span class="integer">1</span>, c.compareTo(<span class="string"><span class="delimiter">&quot;</span><span class="content">Mockito</span><span class="delimiter">&quot;</span></span>));
+}
+
+<span class="comment">// this test demonstrates how to return values independent of the input value</span>
+
+<span class="annotation">@Test</span>
+<span class="directive">public</span> <span class="type">void</span> testReturnValueInDependentOnMethodParameter()  {
+        <span class="predefined-type">Comparable</span>&lt;<span class="predefined-type">Integer</span>&gt; c= mock(<span class="predefined-type">Comparable</span>.class);
+        when(c.compareTo(anyInt())).thenReturn(-<span class="integer">1</span>);
+        <span class="comment">//assert</span>
+        assertEquals(-<span class="integer">1</span>, c.compareTo(<span class="integer">9</span>));
+}
+
+<span class="comment">// return a value based on the type of the provide parameter</span>
+
+<span class="annotation">@Test</span>
+<span class="directive">public</span> <span class="type">void</span> testReturnValueInDependentOnMethodParameter2()  {
+        <span class="predefined-type">Comparable</span>&lt;Todo&gt; c= mock(<span class="predefined-type">Comparable</span>.class);
+        when(c.compareTo(isA(Todo.class))).thenReturn(<span class="integer">0</span>);
+        <span class="comment">//assert</span>
+        assertEquals(<span class="integer">0</span>, c.compareTo(<span class="keyword">new</span> Todo(<span class="integer">1</span>)));
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>when(&#8230;&#8203;.).thenReturn(&#8230;&#8203;.)</code> method chain can be used to throw an exception.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="predefined-type">Properties</span> properties = mock(<span class="predefined-type">Properties</span>.class);
+
+when(properties.get(<span class="error">”</span>Anddroid<span class="error">”</span>)).thenThrow(<span class="keyword">new</span> <span class="exception">IllegalArgumentException</span>(...));
+
+<span class="keyword">try</span> {
+    properties.get(<span class="error">”</span>Anddroid<span class="error">”</span>);
+    fail(<span class="error">”</span>Anddroid is misspelled<span class="error">”</span>);
+} <span class="keyword">catch</span> (<span class="exception">IllegalArgumentException</span> ex) {
+    <span class="comment">// good!</span>
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="doreturn-when-and-dothrow-when"><a class="link" href="#doreturn-when-and-dothrow-when">4.2.2. "doReturn when" and "doThrow when"</a></h4>
+<div class="paragraph">
+<p>The <code>doReturn(&#8230;&#8203;).when(&#8230;&#8203;).methodCall</code> call chain works similar to <code>when(&#8230;&#8203;.).thenReturn(&#8230;&#8203;.)</code>.
+It is useful for mocking methods which give an exception during a call, e.g., if you use use functionality like <a href="#mockito_spy">Wrapping Java objects with Spy</a>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">doReturnWhen.java</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>doThrow</code> variant can be used for methods which return <code>void</code> to throw an exception.
+This usage is demonstrated by the following code snippet.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="predefined-type">Properties</span> properties = <span class="keyword">new</span> <span class="predefined-type">Properties</span>();
+
+<span class="predefined-type">Properties</span> spyProperties = spy(properties);
+
+doReturn(<span class="error">“</span><span class="integer">42</span><span class="error">”</span>).when(spyProperties).get(<span class="error">”</span>shoeSize<span class="error">”</span>);
+
+<span class="predefined-type">String</span> value = spyProperties.get(<span class="error">”</span>shoeSize<span class="error">”</span>);
+
+assertEquals(<span class="error">”</span><span class="integer">42</span><span class="error">”</span>, value);</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="mockito_spy"><a class="link" href="#mockito_spy">4.3. Wrapping Java objects with Spy</a></h3>
+<div class="paragraph">
+<p>@Spy or the <code>spy()</code> 	method can be used to wrap a real object.
+Every call, unless specified otherwise, is delegated to the object.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">import</span> <span class="include">static</span> <span class="include">org.mockito.Mockito</span>.*;
+
+<span class="annotation">@Test</span>
+<span class="directive">public</span> <span class="type">void</span> testLinkedListSpyWrong() {
+    <span class="comment">// Lets mock a LinkedList</span>
+    <span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; list = <span class="keyword">new</span> <span class="predefined-type">LinkedList</span>&lt;&gt;();
+    <span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; spy = spy(list);
+
+    <span class="comment">// this does not work</span>
+    <span class="comment">// real method is called so spy.get(0)</span>
+    <span class="comment">// throws IndexOutOfBoundsException (list is still empty)</span>
+    when(spy.get(<span class="integer">0</span>)).thenReturn(<span class="string"><span class="delimiter">&quot;</span><span class="content">foo</span><span class="delimiter">&quot;</span></span>);
+
+    assertEquals(<span class="string"><span class="delimiter">&quot;</span><span class="content">foo</span><span class="delimiter">&quot;</span></span>, spy.get(<span class="integer">0</span>));
+}
+
+<span class="annotation">@Test</span>
+<span class="directive">public</span> <span class="type">void</span> testLinkedListSpyCorrect() {
+    <span class="comment">// Lets mock a LinkedList</span>
+    <span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; list = <span class="keyword">new</span> <span class="predefined-type">LinkedList</span>&lt;&gt;();
+    <span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; spy = spy(list);
+
+    <span class="comment">// You have to use doReturn() for stubbing</span>
+    doReturn(<span class="string"><span class="delimiter">&quot;</span><span class="content">foo</span><span class="delimiter">&quot;</span></span>).when(spy).get(<span class="integer">0</span>);
+
+    assertEquals(<span class="string"><span class="delimiter">&quot;</span><span class="content">foo</span><span class="delimiter">&quot;</span></span>, spy.get(<span class="integer">0</span>));
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="mockito_verify"><a class="link" href="#mockito_verify">4.4. Verify the calls on the mock objects</a></h3>
+<div class="paragraph">
+<p>Mockito keeps track of all the method calls and their parameters to the mock object.
+You can use the <code>verify()</code> method on the mock object to verify that the specified conditions are met.
+For example, you can verify that a method has been called with certain parameters.
+This kind of testing is sometimes called <em>behavior testing</em>.
+Behavior testing does not check the result of a method call, but it checks that a method is called with the right parameters.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">import</span> <span class="include">static</span> <span class="include">org.mockito.Mockito</span>.*;
+
+<span class="annotation">@Test</span>
+<span class="directive">public</span> <span class="type">void</span> testVerify()  {
+    <span class="comment">// create and configure mock</span>
+    MyClass test = Mockito.mock(MyClass.class);
+    when(test.getUniqueId()).thenReturn(<span class="integer">43</span>);
+
+
+    <span class="comment">// call method testing on the mock with parameter 12</span>
+    test.testing(<span class="integer">12</span>);
+    test.getUniqueId();
+    test.getUniqueId();
+
+
+    <span class="comment">// now check if method testing was called with the parameter 12</span>
+    verify(test).testing(ArgumentMatchers.eq(<span class="integer">12</span>));
+
+    <span class="comment">// was the method called twice?</span>
+    verify(test, times(<span class="integer">2</span>)).getUniqueId();
+
+    <span class="comment">// other alternatives for verifiying the number of method calls for a method</span>
+    verify(test, never()).someMethod(<span class="string"><span class="delimiter">&quot;</span><span class="content">never called</span><span class="delimiter">&quot;</span></span>);
+    verify(test, atLeastOnce()).someMethod(<span class="string"><span class="delimiter">&quot;</span><span class="content">called at least once</span><span class="delimiter">&quot;</span></span>);
+    verify(test, atLeast(<span class="integer">2</span>)).someMethod(<span class="string"><span class="delimiter">&quot;</span><span class="content">called at least twice</span><span class="delimiter">&quot;</span></span>);
+    verify(test, times(<span class="integer">5</span>)).someMethod(<span class="string"><span class="delimiter">&quot;</span><span class="content">called five times</span><span class="delimiter">&quot;</span></span>);
+    verify(test, atMost(<span class="integer">3</span>)).someMethod(<span class="string"><span class="delimiter">&quot;</span><span class="content">called at most 3 times</span><span class="delimiter">&quot;</span></span>);
+    <span class="comment">// This let's you check that no other methods where called on this object.</span>
+    <span class="comment">// You call it after you have verified the expected method calls.</span>
+    verifyNoMoreInteractions(test);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In case you do not care about the value, use the <code>anyX</code>, e.g., <code>anyInt</code>, <code>anyString()</code>, or <code>any(YourClass.class)</code> methods.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="mockito_dependencyinjection"><a class="link" href="#mockito_dependencyinjection">4.5. Using @InjectMocks for dependency injection via Mockito</a></h3>
+<div class="paragraph">
+<p>You also have the <code>@InjectMocks</code> annotation which tries to do constructor, method or field dependency injection based on the type.
+For example, assume that you have the following class.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">ArticleManager</span> {
+    <span class="directive">private</span> User user;
+    <span class="directive">private</span> ArticleDatabase database;
+
+    <span class="directive">public</span> ArticleManager(User user, ArticleDatabase database) {
+        <span class="local-variable">super</span>();
+        <span class="local-variable">this</span>.user = user;
+        <span class="local-variable">this</span>.database = database;
+    }
+
+    <span class="directive">public</span> <span class="type">void</span> initialize() {
+        database.addListener(<span class="keyword">new</span> ArticleListener());
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This class can be constructed via Mockito and its dependencies can be fulfilled with mock objects as demonstrated by the following code snippet.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@RunWith</span>(MockitoJUnitRunner.class)
+<span class="directive">public</span> <span class="type">class</span> <span class="class">ArticleManagerTest</span>  {
+
+       <span class="annotation">@Mock</span> ArticleCalculator calculator;
+       <span class="annotation">@Mock</span> ArticleDatabase database;
+       <span class="annotation">@Mock</span> User user;
+
+       <span class="annotation">@Spy</span> <span class="directive">private</span> UserProvider userProvider = <span class="keyword">new</span> ConsumerUserProvider();
+
+       <span class="annotation">@InjectMocks</span> <span class="directive">private</span> ArticleManager manager; <i class="conum" data-value="1"></i><b>(1)</b>
+
+       <span class="annotation">@Test</span> <span class="directive">public</span> <span class="type">void</span> shouldDoSomething() {
+           <span class="comment">// calls addListener with an instance of ArticleListener</span>
+           manager.initialize();
+
+           <span class="comment">// validate that addListener was called</span>
+           verify(database).addListener(any(ArticleListener.class));
+       }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>creates an instance of <code>ArticleManager</code> and injects the mocks into it</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Mockito can inject mocks either via constructor injection, setter injection, or property injection and in this order.
+So if <code>ArticleManager</code> would have a constructor that would only take <code>User</code> and setters for both fields, only the mock for <code>User</code> would be injected.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="capturing-the-arguments"><a class="link" href="#capturing-the-arguments">4.6. Capturing the arguments</a></h3>
+<div class="paragraph">
+<p>The <code>ArgumentCaptor</code> class allows to access the arguments of method calls during the verification.
+This allows to capture these arguments of method calls and to use them for tests.</p>
+</div>
+<div class="paragraph">
+<p>To run this example you need to add <a href="https://mvnrepository.com/artifact/org.hamcrest/hamcrest-library">hamcrest-library</a> to your project.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">import</span> <span class="include">static</span> <span class="include">org.hamcrest.Matchers.hasItem</span>;
+<span class="keyword">import</span> <span class="include">static</span> <span class="include">org.junit.Assert.assertThat</span>;
+<span class="keyword">import</span> <span class="include">static</span> <span class="include">org.mockito.Mockito.mock</span>;
+<span class="keyword">import</span> <span class="include">static</span> <span class="include">org.mockito.Mockito.verify</span>;
+
+<span class="keyword">import</span> <span class="include">java.util.Arrays</span>;
+<span class="keyword">import</span> <span class="include">java.util.List</span>;
+
+<span class="keyword">import</span> <span class="include">org.junit.Rule</span>;
+<span class="keyword">import</span> <span class="include">org.junit.Test</span>;
+<span class="keyword">import</span> <span class="include">org.mockito.ArgumentCaptor</span>;
+<span class="keyword">import</span> <span class="include">org.mockito.Captor</span>;
+<span class="keyword">import</span> <span class="include">org.mockito.junit.MockitoJUnit</span>;
+<span class="keyword">import</span> <span class="include">org.mockito.junit.MockitoRule</span>;
+
+
+<span class="directive">public</span> <span class="type">class</span> <span class="class">MockitoTests</span> {
+
+    <span class="annotation">@Rule</span>
+    <span class="directive">public</span> MockitoRule rule = MockitoJUnit.rule();
+
+    <span class="annotation">@Captor</span>
+    <span class="directive">private</span> ArgumentCaptor&lt;<span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt;&gt; captor;
+
+
+    <span class="annotation">@Test</span>
+    <span class="directive">public</span> <span class="directive">final</span> <span class="type">void</span> shouldContainCertainListItem() {
+        <span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; asList = <span class="predefined-type">Arrays</span>.asList(<span class="string"><span class="delimiter">&quot;</span><span class="content">someElement_test</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">someElement</span><span class="delimiter">&quot;</span></span>);
+        <span class="directive">final</span> <span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; mockedList = mock(<span class="predefined-type">List</span>.class);
+        mockedList.addAll(asList);
+
+        verify(mockedList).addAll(captor.capture());
+        <span class="directive">final</span> <span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; capturedArgument = captor.getValue();
+        assertThat(capturedArgument, hasItem(<span class="string"><span class="delimiter">&quot;</span><span class="content">someElement</span><span class="delimiter">&quot;</span></span>));
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="mockito_answers"><a class="link" href="#mockito_answers">4.7. Using Answers for complex mocks</a></h3>
+<div class="paragraph">
+<p>It is possible to define a <code>Answer</code> object for complex results.
+While <code>thenReturn</code> returns a predefined value every time,
+with answers you can calculate a response based on the arguments given to your stubbed method.
+This can be useful if your stubbed method is supposed to call a function on one of the arguments
+or if your method is supposed to return the first argument to allow method chaining.
+There exists a static method for the latter.
+Also note that there a different ways to configure an answer:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">import</span> <span class="include">static</span> <span class="include">org.mockito.AdditionalAnswers.returnsFirstArg</span>;
+
+<span class="annotation">@Test</span>
+<span class="directive">public</span> <span class="directive">final</span> <span class="type">void</span> answerTest() {
+    <span class="comment">// with doAnswer():</span>
+    doAnswer(returnsFirstArg()).when(list).add(anyString());
+    <span class="comment">// with thenAnswer():</span>
+    when(list.add(anyString())).thenAnswer(returnsFirstArg());
+    <span class="comment">// with then() alias:</span>
+    when(list.add(anyString())).then(returnsFirstArg());
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Or if you need to do a callback on your argument:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Test</span>
+<span class="directive">public</span> <span class="directive">final</span> <span class="type">void</span> callbackTest() {
+    ApiService service = mock(ApiService.class);
+    when(service.login(any(<span class="predefined-type">Callback</span>.class))).thenAnswer(i -&gt; {
+        <span class="predefined-type">Callback</span> callback = i.getArgument(<span class="integer">0</span>);
+        callback.notify(<span class="string"><span class="delimiter">&quot;</span><span class="content">Success</span><span class="delimiter">&quot;</span></span>);
+        <span class="keyword">return</span> <span class="predefined-constant">null</span>;
+    });
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It is even possible to mock a persistence service like an DAO,
+but you should consider creating a fake class instead of a mock if your Answers become too complex.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="predefined-type">List</span>&lt;User&gt; userMap = <span class="keyword">new</span> <span class="predefined-type">ArrayList</span>&lt;&gt;();
+UserDao dao = mock(UserDao.class);
+when(dao.save(any(User.class))).thenAnswer(i -&gt; {
+    User user = i.getArgument(<span class="integer">0</span>);
+    userMap.add(user.getId(), user);
+    <span class="keyword">return</span> <span class="predefined-constant">null</span>;
+});
+when(dao.find(any(<span class="predefined-type">Integer</span>.class))).thenAnswer(i -&gt; {
+    <span class="type">int</span> id = i.getArgument(<span class="integer">0</span>);
+    <span class="keyword">return</span> userMap.get(id);
+});</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="mocking-final-classes"><a class="link" href="#mocking-final-classes">4.8. Mocking final classes</a></h3>
+<div class="paragraph">
+<p>Since Mockito v2 it is possible to mock final classes.
+This feature is incubating and is deactivated by default.
+To activate the mocking of final classes create the file <code>org.mockito.plugins.MockMaker</code> in either <code>src/test/resources/mockito-extensions/</code> or <code>src/mockito-extensions/</code>.
+Add this line to the file: <em>mock-maker-inline</em>.
+With this modification we now can mock a final class.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">final</span> <span class="type">class</span> <span class="class">FinalClass</span> {
+    <span class="directive">public</span> <span class="directive">final</span> <span class="predefined-type">String</span> finalMethod() { <span class="keyword">return</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">something</span><span class="delimiter">&quot;</span></span>; }
+}
+
+<span class="annotation">@Test</span>
+<span class="directive">public</span> <span class="directive">final</span> <span class="type">void</span> mockFinalClassTest() {
+     FinalClass instance = <span class="keyword">new</span> FinalClass();
+
+     FinalClass mock = mock(FinalClass.class);
+     when(mock.finalMethod()).thenReturn(<span class="string"><span class="delimiter">&quot;</span><span class="content">that other thing</span><span class="delimiter">&quot;</span></span>);
+
+     assertNotEquals(mock.finalMethod(), instance.finalMethod());
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="clean-test-code-with-the-help-of-the-strict-stubs-rule"><a class="link" href="#clean-test-code-with-the-help-of-the-strict-stubs-rule">4.9. Clean test code with the help of the strict stubs rule</a></h3>
+<div class="paragraph">
+<p>The strict stubs rule helps you to keep your test code clean and checks for common oversights.
+It adds the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>test fails early when a stubbed method gets called with different arguments than what it was configured for (with <code>PotentialStubbingProblem</code> exception).</p>
+</li>
+<li>
+<p>test fails when a stubbed method isn&#8217;t called (with <code>UnnecessaryStubbingException</code> exception).</p>
+</li>
+<li>
+<p>org.mockito.Mockito.verifyNoMoreInteractions(Object) also verifies that all stubbed methods have been called during the test</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Test</span>
+<span class="directive">public</span> <span class="type">void</span> withoutStrictStubsTest() <span class="directive">throws</span> <span class="exception">Exception</span> {
+    DeepThought deepThought = mock(DeepThought.class);
+
+    when(deepThought.getAnswerFor(<span class="string"><span class="delimiter">&quot;</span><span class="content">Ultimate Question of Life, The Universe, and Everything</span><span class="delimiter">&quot;</span></span>)).thenReturn(<span class="integer">42</span>);
+    when(deepThought.otherMethod(<span class="string"><span class="delimiter">&quot;</span><span class="content">some mundane thing</span><span class="delimiter">&quot;</span></span>)).thenReturn(<span class="predefined-constant">null</span>);
+
+    <span class="predefined-type">System</span>.out.println(deepThought.getAnswerFor(<span class="string"><span class="delimiter">&quot;</span><span class="content">Six by nine</span><span class="delimiter">&quot;</span></span>));
+
+    assertEquals(<span class="integer">42</span>, deepThought.getAnswerFor(<span class="string"><span class="delimiter">&quot;</span><span class="content">Ultimate Question of Life, The Universe, and Everything</span><span class="delimiter">&quot;</span></span>));
+    verify(deepThought, times(<span class="integer">1</span>)).getAnswerFor(<span class="string"><span class="delimiter">&quot;</span><span class="content">Ultimate Question of Life, The Universe, and Everything</span><span class="delimiter">&quot;</span></span>);
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="comment">// activate the strict subs rule</span>
+<span class="annotation">@Rule</span> <span class="directive">public</span> MockitoRule rule = MockitoJUnit.rule().strictness(Strictness.STRICT_STUBS);
+
+<span class="annotation">@Test</span>
+<span class="directive">public</span> <span class="type">void</span> withStrictStubsTest() <span class="directive">throws</span> <span class="exception">Exception</span> {
+    DeepThought deepThought = mock(DeepThought.class);
+
+    when(deepThought.getAnswerFor(<span class="string"><span class="delimiter">&quot;</span><span class="content">Ultimate Question of Life, The Universe, and Everything</span><span class="delimiter">&quot;</span></span>)).thenReturn(<span class="integer">42</span>);
+    <span class="comment">// this fails now with an UnnecessaryStubbingException since it is never called in the test</span>
+    when(deepThought.otherMethod(<span class="string"><span class="delimiter">&quot;</span><span class="content">some mundane thing</span><span class="delimiter">&quot;</span></span>)).thenReturn(<span class="predefined-constant">null</span>);
+
+    <span class="comment">// this will now throw a PotentialStubbingProblem Exception since we usually don't want to call methods on mocks without configured behavior</span>
+    deepThought.someMethod();
+
+    assertEquals(<span class="integer">42</span>, deepThought.getAnswerFor(<span class="string"><span class="delimiter">&quot;</span><span class="content">Ultimate Question of Life, The Universe, and Everything</span><span class="delimiter">&quot;</span></span>));
+    <span class="comment">// verifyNoMoreInteractions now automatically verifies that all stubbed methods have been called as well</span>
+    verifyNoMoreInteractions(deepThought);
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="mockito_limitations"><a class="link" href="#mockito_limitations">4.10. Limitations</a></h3>
+<div class="paragraph">
+<p>Mockito has certain limitations.
+For example, you cannot mock static methods and <a href="https://github.com/mockito/mockito/wiki/Mockito-And-Private-Methods">private methods</a>.</p>
+</div>
+<div class="paragraph">
+<p>See <a href="https://github.com/mockito/mockito/wiki/FAQ#what-are-the-limitations-of-mockito">FAQ for Mockito limitations for the details</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="behavior-testing-vrs-state-testing"><a class="link" href="#behavior-testing-vrs-state-testing">4.11. Behavior testing vrs. state testing</a></h3>
+<div class="paragraph">
+<p>Mockito puts a focus on behavior testing, vrs. result testing.
+This is not always correct, for example, if you are testing a sort algorithm, you should test the result not the internal behavior.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="comment">// state testing</span>
+testSort() {
+    testList = [<span class="integer">1</span>, <span class="integer">7</span>, <span class="integer">3</span>, <span class="integer">8</span>, <span class="integer">2</span>]
+    MySorter.sort(testList)
+
+    <span class="keyword">assert</span> testList equals [<span class="integer">1</span>, <span class="integer">2</span>, <span class="integer">3</span>, <span class="integer">7</span>, <span class="integer">8</span>]
+}
+
+
+<span class="comment">// incorrect would be behavior testing</span>
+<span class="comment">// the following tests internal of the implementation</span>
+testSort() {
+    testList = [<span class="integer">1</span>, <span class="integer">7</span>, <span class="integer">3</span>, <span class="integer">8</span>, <span class="integer">2</span>]
+    MySorter.sort(testList)
+
+    <span class="keyword">assert</span> that compare(<span class="integer">1</span>, <span class="integer">2</span>) was called once
+    <span class="keyword">assert</span> that compare(<span class="integer">1</span>, <span class="integer">3</span>) was not called
+    <span class="keyword">assert</span> that compare(<span class="integer">2</span>, <span class="integer">3</span>) was called once
+    ....
+}</code></pre>
+</div>
+</div>
+<!-- Responsive Lake Quincy Ads -->
+<div id='ad-inBetween02'>
+	<script type='text/javascript'>googletag.cmd.push(function(){googletag.display('ad-inBetween02');});</script>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="exercise_mockito_android"><a class="link" href="#exercise_mockito_android">5. Exercise: Write an instrumented unit test using Mockito</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="mockito_android1"><a class="link" href="#mockito_android1">5.1. Create Application under tests on Android</a></h3>
+<div class="paragraph">
+<p>Create an Android application with the package name <code>com.vogella.android.testing.mockito.contextmock</code>.
+Add a <code>Util</code> class with a static method which allows to create an intent with certain parameters as in the following example.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">package</span> <span class="namespace">com.vogella.android.testing.mockito.contextmock</span>;
+
+<span class="keyword">import</span> <span class="include">android.content.Context</span>;
+<span class="keyword">import</span> <span class="include">android.content.Intent</span>;
+
+<span class="directive">public</span> <span class="type">class</span> <span class="class">Util</span> {
+
+    <span class="directive">public</span> <span class="directive">static</span> Intent createQuery(<span class="predefined-type">Context</span> context, <span class="predefined-type">String</span> query, <span class="predefined-type">String</span> value) {
+        <span class="comment">// Reuse MainActivity for simplification</span>
+        Intent i = <span class="keyword">new</span> Intent(context, MainActivity.class);
+        i.putExtra(<span class="string"><span class="delimiter">&quot;</span><span class="content">QUERY</span><span class="delimiter">&quot;</span></span>, query);
+        i.putExtra(<span class="string"><span class="delimiter">&quot;</span><span class="content">VALUE</span><span class="delimiter">&quot;</span></span>, value);
+        <span class="keyword">return</span> i;
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="mockito_android2"><a class="link" href="#mockito_android2">5.2. Add the Mockito dependency to the app/build.gradle file</a></h3>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">dependencies {
+    <span class="comment">// ... more entries</span>
+    testCompile <span class="string"><span class="delimiter">'</span><span class="content">junit:junit:4.12</span><span class="delimiter">'</span></span>
+
+    <span class="comment">// required if you want to use Mockito for unit tests</span>
+    testCompile <span class="string"><span class="delimiter">'</span><span class="content">org.mockito:mockito-core:2.7.22</span><span class="delimiter">'</span></span>
+    <span class="comment">// required if you want to use Mockito for Android tests</span>
+    androidTestCompile <span class="string"><span class="delimiter">'</span><span class="content">org.mockito:mockito-android:2.7.22</span><span class="delimiter">'</span></span>
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="mockito_android_createtest"><a class="link" href="#mockito_android_createtest">5.3. Create test</a></h3>
+<div class="paragraph">
+<p>Create a new unit test running on Android using Mockito in the <code>androidTest</code> folder.
+This test should check if the intent contains the correct extras.
+For this you mock the <code>Context</code> object with Mockito.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">package</span> <span class="namespace">com.vogella.android.testing.mockito.contextmock</span>;
+
+<span class="keyword">import</span> <span class="include">android.content.Context</span>;
+<span class="keyword">import</span> <span class="include">android.content.Intent</span>;
+<span class="keyword">import</span> <span class="include">android.os.Bundle</span>;
+<span class="keyword">import</span> <span class="include">android.support.test.runner.AndroidJUnit4</span>;
+
+<span class="keyword">import</span> <span class="include">org.junit.Test</span>;
+<span class="keyword">import</span> <span class="include">org.junit.runner.RunWith</span>;
+
+<span class="keyword">import</span> <span class="include">static</span> <span class="include">org.junit.Assert.assertEquals</span>;
+<span class="keyword">import</span> <span class="include">static</span> <span class="include">org.junit.Assert.assertNotNull</span>;
+<span class="keyword">import</span> <span class="include">static</span> <span class="include">org.mockito.Mockito.mock</span>;
+
+<span class="annotation">@RunWith</span>(AndroidJUnit4.class)
+<span class="directive">public</span> <span class="type">class</span> <span class="class">UtilTest2</span> {
+
+    <span class="annotation">@Test</span>
+    <span class="directive">public</span> <span class="type">void</span> shouldContainTheCorrectExtras()  <span class="directive">throws</span> <span class="exception">Exception</span> {
+        <span class="predefined-type">Context</span> context = mock(<span class="predefined-type">Context</span>.class);
+        Intent intent = <span class="predefined-type">Util</span>.createQuery(context, <span class="string"><span class="delimiter">&quot;</span><span class="content">query</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">value</span><span class="delimiter">&quot;</span></span>);
+        assertNotNull(intent);
+        Bundle extras = intent.getExtras();
+        assertNotNull(extras);
+        assertEquals(<span class="string"><span class="delimiter">&quot;</span><span class="content">query</span><span class="delimiter">&quot;</span></span>, extras.getString(<span class="string"><span class="delimiter">&quot;</span><span class="content">QUERY</span><span class="delimiter">&quot;</span></span>));
+        assertEquals(<span class="string"><span class="delimiter">&quot;</span><span class="content">value</span><span class="delimiter">&quot;</span></span>, extras.getString(<span class="string"><span class="delimiter">&quot;</span><span class="content">VALUE</span><span class="delimiter">&quot;</span></span>));
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="exercise-creating-mock-objects-using-mockito"><a class="link" href="#exercise-creating-mock-objects-using-mockito">6. Exercise: Creating mock objects using Mockito</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="target"><a class="link" href="#target">6.1. Target</a></h3>
+<div class="paragraph">
+<p>Create an API, which can be mocked and use Mockito to do the job.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="create-a-sample-twitter-api"><a class="link" href="#create-a-sample-twitter-api">6.2. Create a sample Twitter API</a></h3>
+<div class="paragraph">
+<p>Implement a <code>TwitterClient</code>, which works with <code>ITweet</code> instances.
+But imagine these <code>ITweet</code> instances are pretty cumbersome to get, e.g., by using a complex service, which would have to be started.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">interface</span> <span class="class">ITweet</span> {
+
+    <span class="predefined-type">String</span> getMessage();
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">TwitterClient</span> {
+
+    <span class="directive">public</span> <span class="type">void</span> sendTweet(ITweet tweet) {
+        <span class="predefined-type">String</span> message = tweet.getMessage();
+
+        <span class="comment">// send the message to Twitter</span>
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="mocking-itweet-instances"><a class="link" href="#mocking-itweet-instances">6.3. Mocking ITweet instances</a></h3>
+<div class="paragraph">
+<p>In order to avoid starting up a complex service to get <code>ITweet</code> instances, they can also be mocked by Mockito.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Test</span>
+<span class="directive">public</span> <span class="type">void</span> testSendingTweet() {
+    TwitterClient twitterClient = <span class="keyword">new</span> TwitterClient();
+
+    ITweet iTweet = mock(ITweet.class);
+
+    when(iTweet.getMessage()).thenReturn(<span class="string"><span class="delimiter">&quot;</span><span class="content">Using mockito is great</span><span class="delimiter">&quot;</span></span>);
+
+    twitterClient.sendTweet(iTweet);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now the <code>TwitterClient</code> can make use of a mocked <code>ITweet</code> instance and will get "Using Mockito is great" as message when calling <code>getMessage()</code> on the mocked <code>ITweet</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="verify-method-invocation"><a class="link" href="#verify-method-invocation">6.4. Verify method invocation</a></h3>
+<div class="paragraph">
+<p>Ensure that getMessage() is at least called once.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Test</span>
+<span class="directive">public</span> <span class="type">void</span> testSendingTweet() {
+    TwitterClient twitterClient = <span class="keyword">new</span> TwitterClient();
+
+    ITweet iTweet = mock(ITweet.class);
+
+    when(iTweet.getMessage()).thenReturn(<span class="string"><span class="delimiter">&quot;</span><span class="content">Using mockito is great</span><span class="delimiter">&quot;</span></span>);
+
+    twitterClient.sendTweet(iTweet);
+
+    verify(iTweet, atLeastOnce()).getMessage();
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="validate"><a class="link" href="#validate">6.5. Validate</a></h3>
+<div class="paragraph">
+<p>Run the test and validate that it is successful.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="using-powermock-with-mockito"><a class="link" href="#using-powermock-with-mockito">7. Using PowerMock with Mockito</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="powermock-for-mocking-static-methods"><a class="link" href="#powermock-for-mocking-static-methods">7.1. Powermock for mocking static methods</a></h3>
+<div class="paragraph">
+<p>Mockito cannot mock static methods. For this you can use <code>Powermock</code>.
+PowerMock provides a class called "PowerMockito" for creating mock/object/class and initiating verification, and expectations, everything else you can still use Mockito to setup and verify expectation (e.g. times(), anyInt()).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">import</span> <span class="include">java.net.InetAddress</span>;
+<span class="keyword">import</span> <span class="include">java.net.UnknownHostException</span>;
+
+<span class="directive">public</span> <span class="directive">final</span> <span class="type">class</span> <span class="class">NetworkReader</span> {
+    <span class="directive">public</span> <span class="directive">static</span> <span class="predefined-type">String</span> getLocalHostname() {
+        <span class="predefined-type">String</span> hostname = <span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>;
+        <span class="keyword">try</span> {
+            <span class="predefined-type">InetAddress</span> addr = <span class="predefined-type">InetAddress</span>.getLocalHost();
+            <span class="comment">// Get hostname</span>
+            hostname = addr.getHostName();
+        } <span class="keyword">catch</span> ( <span class="exception">UnknownHostException</span> e ) {
+        }
+        <span class="keyword">return</span> hostname;
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To write a test which mocks away the NetworkReader as dependency you can use the following snippet.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">import</span> <span class="include">org.junit.runner.RunWith</span>;
+<span class="keyword">import</span> <span class="include">org.powermock.core.classloader.annotations.PrepareForTest</span>;
+
+<span class="annotation">@RunWith</span>( PowerMockRunner.class )
+<span class="annotation">@PrepareForTest</span>( NetworkReader.class )
+<span class="directive">public</span> <span class="type">class</span> <span class="class">MyTest</span> {
+
+<span class="comment">// Find the tests here</span>
+
+ <span class="annotation">@Test</span>
+<span class="directive">public</span> <span class="type">void</span> testSomething() {
+    mockStatic( NetworkUtil.class );
+    when( NetworkReader.getLocalHostname() ).andReturn( <span class="string"><span class="delimiter">&quot;</span><span class="content">localhost</span><span class="delimiter">&quot;</span></span> );
+
+    <span class="comment">// now test the class which uses NetworkReader</span>
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="using-a-wrapper-instead-of-powermock"><a class="link" href="#using-a-wrapper-instead-of-powermock">8. Using a wrapper instead of Powermock</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Sometimes you can also use a wrapper around a static method, which can be mocked with Mockito.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="type">class</span> <span class="class">FooWraper</span> {
+   <span class="type">void</span> someMethod() {
+     Foo.someStaticMethod()
+   }
+}</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="learn-more-about-powermock"><a class="link" href="#learn-more-about-powermock">8.1. Learn more about Powermock</a></h3>
+<div class="paragraph">
+<p>See <a href="https://github.com/jayway/powermock/wiki/MockitoUsage">Using PowerMock with Mockito</a> for more information</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="resources_mockito"><a class="link" href="#resources_mockito">9. Mockito resources</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="http://site.mockito.org">Mockito home page</a></p>
+</div>
+<div class="paragraph">
+<p><a href="https://dzone.com/refcardz/mockito">Dzone reference card</a></p>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/mockito/mockito">Mockito project hosting page</a></p>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/mockito/mockito/blob/master/doc/release-notes/official.md">Mockito release notes</a></p>
+</div>
+<div class="paragraph">
+<p><a href="http://martinfowler.com/articles/mocksArentStubs.html">Martin Fowler about Mocks, Stubs etc.</a></p>
+</div>
+<div class="paragraph">
+<p><a href="http://chiuki.github.io/advanced-android-espresso/">Chiu-Ki Chan Advanced Android Espresso presentation</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="vogella-training-and-consulting-support"><a class="link" href="#vogella-training-and-consulting-support">10. vogella training and consulting support</a></h2>
+<div class="sectionbody">
+<div class="about_vogella_container">
+    <div class="about_vogella">
+    	<a href="https://learn.vogella.com/">
+            <img src="https://www.vogella.com/img/common/logo_very_rough_white.svg" alt="Online Training" title="Online Training" onclick="_gaq.push(['_trackEvent', 'Buttom tutorial', 'clicked', 'Online Training']);"/>
+			<h1>Online Training</h1>
+		</a>
+	</div>
+	<div class="about_vogella">
+    	<a href="https://www.vogella.com/training/">
+            <i class="material-icons md-48 white" onclick="_gaq.push(['_trackEvent', 'Buttom tutorial', 'clicked', 'Onsite Training']);">
+				fitness_center
+			</i>
+            <h1>Onsite Training</h1>
+		</a>
+	</div>
+	<div class="about_vogella">
+    	<a href="https://www.vogella.com/consulting/">
+            <i class="material-icons md-48 white" onclick="_gaq.push(['_trackEvent', 'Buttom tutorial', 'clicked', 'Consulting']);">
+				group
+			</i>
+            <h1>Consulting</h1>
+		</a>
+	</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="copyright-license-and-source-code"><a class="link" href="#copyright-license-and-source-code">Appendix A: Copyright, License and Source code</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Copyright &#169; 2012-2018 vogella GmbH.
+Free use of the software examples is granted under the terms of the <a href="https://www.eclipse.org/legal/epl-2.0">Eclipse Public License 2.0</a>.
+This tutorial is published under the  <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.en">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Germany</a> license.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://www.vogella.com/license.html">Licence</a></p>
+</div>
+<div class="paragraph">
+<p><a href="https://www.vogella.com/code/index.html">Source code</a></p>
+</div>
+<div class="paragraph">
+<p><a href="https://www.vogella.com/support.html">Support free tutorials</a></p>
+</div>
+<img src="https://ssl-vg03.met.vgwort.de/na/27d90952a5254731bed50a1ef8bd6fb3" width="1" height="1" alt=""/>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2019-04-24 17:06:34 +02:00
+</div>
+</div>
+<script data-pagespeed-no-defer>//<![CDATA[
+(function(){window.pagespeed=window.pagespeed||{};var f=window.pagespeed;function h(c,a,e,b){this.f=c;this.a=a;this.b=e;this.g=b}f.beaconUrl="";
+function k(c){var a=c.f,e=window.mod_pagespeed_start,b=Number(new Date)-e,a=a+(-1==a.indexOf("?")?"?":"&"),a=a+"ets="+("load"==c.a?"load:":"unload:");if("beforeunload"!=c.a||!window.mod_pagespeed_loaded){a=a+b+("&r"+c.a+"=");if(window.performance){var b=window.performance.timing,d=b.navigationStart,g=b.requestStart,a=a+(b[c.a+"EventStart"]-d),a=a+("&nav="+(b.fetchStart-d)),a=a+("&dns="+(b.domainLookupEnd-b.domainLookupStart)),a=a+("&connect="+(b.connectEnd-b.connectStart)),a=a+("&req_start="+(g-d))+
+("&ttfb="+(b.responseStart-g)),a=a+("&dwld="+(b.responseEnd-b.responseStart)),a=a+("&dom_c="+(b.domContentLoadedEventStart-d));window.performance.navigation&&(a+="&nt="+window.performance.navigation.type);d=-1;b.msFirstPaint?d=b.msFirstPaint:window.chrome&&window.chrome.loadTimes&&(d=Math.floor(1E3*window.chrome.loadTimes().firstPaintTime));d-=g;0<=d&&(a+="&fp="+d)}else a+=b;f.getResourceTimingData&&window.parent==window&&(a+=f.getResourceTimingData());a+=window.parent!=window?"&ifr=1":"&ifr=0";"load"==
+c.a&&(window.mod_pagespeed_loaded=!0,(b=window.mod_pagespeed_num_resources_prefetched)&&(a+="&nrp="+b),(b=window.mod_pagespeed_prefetch_start)&&(a+="&htmlAt="+(e-b)));f.criticalCss&&(e=f.criticalCss,a+="&ccis="+e.total_critical_inlined_size+"&cces="+e.total_original_external_size+"&ccos="+e.total_overhead_size+"&ccrl="+e.num_replaced_links+"&ccul="+e.num_unreplaced_links);a+="&dpr="+window.devicePixelRatio;""!=c.b&&(a+=c.b);document.referrer&&(a+="&ref="+encodeURIComponent(document.referrer));a+=
+"&url="+encodeURIComponent(c.g);f.beaconUrl=a;(new Image).src=a}}f.c=function(c,a,e,b){var d=new h(c,a,e,b);window.addEventListener?window.addEventListener(a,function(){k(d)},!1):window.attachEvent("on"+a,function(){k(d)})};f.addInstrumentationInit=f.c;})();
+
+pagespeed.addInstrumentationInit('/mod_pagespeed_beacon', 'load', '', 'https://www.vogella.com/tutorials/Mockito/article.html');
+//]]></script></body>
+</html>

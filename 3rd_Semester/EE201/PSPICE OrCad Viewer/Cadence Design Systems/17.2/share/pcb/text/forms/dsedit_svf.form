@@ -1,0 +1,179 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 102 35
+HEADER "Die-stack Editor"
+
+POPUP <diestackNamePopup>"""".
+POPUP <diestackViewPopup>"NORTH""NORTH","EAST""EAST","SOUTH""SOUTH","WEST""WEST".
+POPUP <diestackLayerPopup>"TOP_COND" "TOP_COND".
+
+POPUP <dieRefdesPopup>"""".
+POPUP <typePopup>"FLIPCHIP""FLIPCHIP","WIREBOND""WIREBOND".
+POPUP <orientationPopup>"CHIP_UP""CHIP_UP","CHIP_DOWN""CHIP_DOWN".
+POPUP <rotationPopup>"0""0.000","90""90.000","180""180.000","270""270.000".
+POPUP <RMBMenuPopup>"""".
+POPUP <dieLayerPopup>"""".
+POPUP <dieWBLayerPopup>"""".
+POPUP <spacerLayerPopup>"""".
+POPUP <dielectricMaterialPopup>"""".
+POPUP <conductorMaterialPopup>"""".
+POPUP <diestackCavityTopLayerPopup>"""".
+TILE
+TEXT "Die stack name:"
+TLOC 1 1
+ENDTEXT
+FIELD diestackName
+FLOC 13 1
+ENUMSET 15
+POP "diestackNamePopup"
+ENDFIELD
+FIELD diestackRename
+FLOC 32 1
+MENUBUTTON "Rename..." 9 3
+ENDFIELD
+
+GROUP "Stack Placement"
+GLOC 1 5
+GSIZE 37 20
+ENDGROUP
+
+TEXT "Substrate location:"
+TLOC 3 7
+ENDTEXT
+TEXT
+TLOC 19 7
+INFO diestackLocation 16
+ENDTEXT
+
+TEXT "Sits on layer:"
+TLOC 3 9
+ENDTEXT
+FIELD dieStackStartLayer
+FLOC 19 9
+ENUMSET 14
+POP "diestackLayerPopup"
+ENDFIELD
+
+TEXT "Cavity top layer:"
+TLOC 3 12
+ENDTEXT
+FIELD cavityTopLayer
+FLOC 19 12
+ENUMSET 14
+POP "diestackCavityTopLayerPopup"
+ENDFIELD
+
+TEXT "Cavity edge clearance:"
+TLOC 3 14
+ENDTEXT
+FIELD dieStackCavityClearance
+FLOC 19 14
+STRFILLIN 15 128
+ENDFIELD
+
+TEXT "Expansion per layer:"
+TLOC 3 16
+ENDTEXT
+FIELD dieStackCavityExpansion
+FLOC 19 16
+STRFILLIN 15 128
+ENDFIELD
+
+TEXT "Die stack height:"
+TLOC 3 19
+ENDTEXT
+TEXT
+TLOC 19 19
+INFO diestackHeight 16
+ENDTEXT
+
+#ifndef FREE_VIEWER
+FIELD report
+FLOC 45 22
+MENUBUTTON "Report" 9 3
+ENDFIELD
+#endif
+
+
+TEXT "View Orientation:"
+TLOC 75 22
+ENDTEXT
+FIELD diestackView
+FLOC 88 22
+ENUMSET 7
+POP "diestackViewPopup"
+ENDFIELD
+
+####################################
+# die stack members info all in the grid
+####################################
+GROUP "Die stack members:"
+INFO  components_group 40
+GLOC 1 24
+GSIZE 100 21
+ENDGROUP
+
+FIELD placementbox
+FLOC 2 26
+CHECKLIST "Placement" "radio"
+ENDFIELD
+
+FIELD detailsbox
+FLOC 15 26
+CHECKLIST "Member details" "radio"
+ENDFIELD
+
+#FIELD dieStretchEtch
+#FLOC 55 26
+#CHECKLIST "Stretch bond wires on Move"
+#ENDFIELD
+
+#FIELD dieRipupEtch
+#FLOC 80 26
+#CHECKLIST "Ripup etch on Delete"
+#ENDFIELD
+
+GRID symsGrid
+FLOC 2 28
+FSIZE 98 17
+POP "RMBMenuPopup"
+OPTIONS HLINES VLINES USERSIZE 
+
+GHEAD TOP 
+HEADSIZE 2
+OPTIONS 3D 
+ENDGHEAD
+
+ENDGRID
+
+# BITMAPS
+FIELD diestackDwg
+THUMBNAIL
+FLOC 46 1
+FSIZE 51 20
+ENDFIELD
+
+FIELD bumpDwg
+THUMBNAIL
+FLOC 46 1
+FSIZE 51 20
+ENDFIELD
+
+FIELD close 
+FLOC 2 46
+MENUBUTTON "Close" 9 3
+ENDFIELD
+
+
+FLEXMODE    edgegravity
+FLEX         report             1   0   0   0
+FLEX        components_group    0   0   1   1
+FLEX        symsGrid            0   0   1   1
+FLEX        done                0   1   0   0
+FLEX        cancel              0   1   0   0
+FLEX        apply               0   1   0   0
+FLEX        help                1   1   0   0
+
+ENDTILE
+ENDFORM

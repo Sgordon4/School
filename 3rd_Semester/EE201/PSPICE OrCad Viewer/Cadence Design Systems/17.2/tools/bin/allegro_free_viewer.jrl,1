@@ -1,0 +1,36 @@
+\t (00:00:00) allegro_free_viewer 17.2 S048 Windows SPB 64-bit Edition
+\t (00:00:00)     Journal start - Fri Nov 16 06:20:55 2018
+\t (00:00:00)         Host=GAMINGPC User=Sean Pid=8068 CPUs=4
+\t (00:00:00) CmdLine= C:\Users\Sean\Downloads\School\EE201\PSPICE OrCad\Cadence Design Systems\17.2\tools\bin\allegro_free_viewer.exe
+\t (00:00:00) 
+\t (00:00:00) Starting new design...
+\i (00:00:00) trapsize 920
+\i (00:00:00) trapsize 896
+\i (00:00:00) trapsize 920
+\i (00:00:00) trapsize 756
+\i (00:00:00) trapsize 1438
+\i (00:00:11) trapsize 1016
+\i (00:01:04) open 
+\i (00:01:06) fillin "menu_cancel"
+\i (00:01:55) dehilight 
+\i (00:01:56) dehilight 
+\i (00:01:57) hilight 
+\i (00:01:57) hilight 
+\i (00:02:02) plot setup 
+\i (00:02:03) setwindow form.fpfileplotsetup
+\i (00:02:03) FORM fpfileplotsetup windows  
+\i (00:02:04) FORM fpfileplotsetup general  
+\i (00:02:05) FORM fpfileplotsetup cancel  
+\i (00:02:08) setwindow pcb
+\i (00:02:08) cdsdoc allegro allegrolaunch 
+\i (00:03:11) trapsize 909
+\i (00:03:18) setwindow worldview
+\i (00:03:18) trapsize 1917
+\i (00:03:19) trapsize 1043
+\i (00:03:23) setwindow pcb
+\i (00:03:23) open 
+\i (00:03:24) fillin "menu_cancel"
+\i (00:03:24) trapsize 1438
+\i (00:03:25) trapsize 1139
+\i (00:04:58) exit 
+\t (00:04:58)     Journal end - Fri Nov 16 06:25:53 2018
