@@ -1,0 +1,24 @@
+#Ignoring LaTex file compilation output
+**/LaTexFiles/*.aux
+**/LaTexFiles/*.glo
+**/LaTexFiles/*.idx
+**/LaTexFiles/*.log
+**/LaTexFiles/*.toc
+**/LaTexFiles/*.ist
+**/LaTexFiles/*.acn
+**/LaTexFiles/*.acr
+**/LaTexFiles/*.alg
+**/LaTexFiles/*.bbl
+**/LaTexFiles/*.blg
+**/LaTexFiles/*.dvi
+**/LaTexFiles/*.glg
+**/LaTexFiles/*.gls
+**/LaTexFiles/*.ilg
+**/LaTexFiles/*.ind
+**/LaTexFiles/*.lof
+**/LaTexFiles/*.lot
+**/LaTexFiles/*.maf
+**/LaTexFiles/*.mtc
+**/LaTexFiles/*.mtc1
+**/LaTexFiles/*.out
+**/LaTexFiles/*.synctex.gz
