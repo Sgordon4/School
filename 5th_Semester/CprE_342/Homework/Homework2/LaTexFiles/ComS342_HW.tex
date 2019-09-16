@@ -43,7 +43,18 @@
 
 \noindent 3a) AST provides functions and helpers to work with the program, while Evaluator makes use of those functions to compute the result of the program. \\
 
-\noindent b) Once the interpreter reads $(+1 1)$ from the console, it will use evaluator to find the result of the program.
+\noindent b) Once the input is read, it is parsed into its respective parse tree by the Reader class. This tiered object is then passed to the Evaluator class. This object is passed around through various methods so the methods defined in Evaluator can climb the tree, evaluating as they go until the result is finally returned.\\
+Assuming the interpreter reads $(+\ 1\  1)$ from the console, it will first parse the program into an $\textit{AddExp}$ containing two $\textit{\_val}$s (1 and 1).\\ 
+It is then passed through Evaluator until it reaches the corresponding visit method for AddExp, where it loops through each operand and performs the addition operation.\\ 
+This value is then returned up through the chain until it reaches interpreter once more and is printed to the screen.\\
+
+c) The visitor pattern defined in AST.java is implemented in Evaluator.java as a set of functions that match with a given operator to work with its operands.\\ 
+For example, if a DivExp operator is given with two operands, the values will be passed into the visit function with the DivExp parameter where the two operands will be divided.\\
+
+
+4)...
+
+5)...
 
 %\end{addmargin}
 \end{document}

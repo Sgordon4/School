@@ -1,0 +1,15 @@
+task runInterpreter(type: JavaExec) {
+  classpath sourceSets.main.runtimeClasspath
+   main = "arithlang.Interpreter"
+}
+
+run {
+   standardInput = System.in
+// 	main = "arithlang.Interpreter"
+}
+
+mainClassName="arithlang.Interpreter"
+
+generateGrammarSource {
+    arguments += ["-no-listener", "-package", "arithlang.parser; import static arithlang.AST.*"]
+}
