@@ -34,17 +34,17 @@ public interface AST {
 
     }
 
-    public static class NumExp extends Exp {
-        double _val;
+    public static class CharExp extends Exp {
+        char _val;
 
-        public NumExp(double v) {
-            _val = v;
+        public CharExp(String v) {
+            _val = v.charAt(0);
         }
 
-        public double v() {
+        public char v() {
             return _val;
         }
-		
+
         public Object accept(Visitor visitor) {
             return visitor.visit(this);
         }
@@ -70,35 +70,8 @@ public interface AST {
         }
     }
 
-    public static class SubExp extends CompoundArithExp {
-        public SubExp(List<Exp> args) {
-            super(args);
-        }
-        public Object accept(Visitor visitor) {
-            return visitor.visit(this);
-        }
-    }
-
-    public static class DivExp extends CompoundArithExp {
-        public DivExp(List<Exp> args) {
-            super(args);
-        }
-        public Object accept(Visitor visitor) {
-            return visitor.visit(this);
-        }
-    }
-
     public static class MultExp extends CompoundArithExp {
         public MultExp(List<Exp> args) {
-            super(args);
-        }
-        public Object accept(Visitor visitor) {
-            return visitor.visit(this);
-        }
-    }
-
-    public static class PowExp extends CompoundArithExp {
-        public PowExp(List<Exp> args) {
             super(args);
         }
         public Object accept(Visitor visitor) {
@@ -108,12 +81,9 @@ public interface AST {
 		
     public interface Visitor <T> {
         // This interface should contain a signature for each concrete AST node.
-        public T visit(AST.NumExp e);
+        public T visit(AST.CharExp e);
         public T visit(AST.AddExp e);
-        public T visit(AST.SubExp e);
         public T visit(AST.MultExp e);
-        public T visit(AST.DivExp e);
-        public T visit(AST.PowExp e);
         public T visit(AST.Program p);
     }	
 }

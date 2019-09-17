@@ -13,19 +13,12 @@ public class Printer {
             return (String) p.e().accept(this);
         }
 		
-        public String visit(NumExp e) {
+        public String visit(CharExp e) {
             return "" + e.v();
         }
 		
         public String visit(AddExp e) {
             String result = "(+";
-            for(AST.Exp exp : e.all()) 
-                result += " " + exp.accept(this);
-            return result + ")";
-        }		
-		
-        public String visit(SubExp e) {
-            String result = "(-";
             for(AST.Exp exp : e.all()) 
                 result += " " + exp.accept(this);
             return result + ")";
@@ -38,18 +31,5 @@ public class Printer {
             return result + ")";
         }
 
-        public String visit(DivExp e) {
-            String result = "(/";
-            for(AST.Exp exp : e.all()) 
-                result += " " + exp.accept(this);
-            return result + ")";
-        }
-
-        public String visit(PowExp e) {
-            String result = "(pow";
-            for(AST.Exp exp : e.all())
-                result += " " + exp.accept(this);
-            return result + ")";
-        }
     }
 }

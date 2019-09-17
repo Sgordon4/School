@@ -5,7 +5,7 @@ import static arithlang.Value.*;
 import java.util.List;
 
 public class Evaluator implements Visitor<Value> {
-    private NumVal record = new NumVal(0);
+    private CharVal record = new CharVal('0');
     Printer.Formatter ts = new Printer.Formatter();
 	
     Value valueOf(Program p) {
@@ -13,85 +13,80 @@ public class Evaluator implements Visitor<Value> {
         return (Value) p.accept(this);
     }
 	
+
+
+    @Override
+    public Value visit(CharExp e) {
+        return new CharVal(e.v());
+    }
+
     @Override
     public Value visit(AddExp e) {
+        System.out.println("Adding");
+
         List<Exp> operands = e.all();
-        double result = 0;
+        int length = operands.size();
+
+        if(length != 2) {
+            System.out.println("Only two operators allowed");
+            return new DynamicError(ts.visit(e));
+        }
+
+        /*
+        char result = 0;
         for(Exp exp: operands) {
-            NumVal intermediate = (NumVal) exp.accept(this); // Dynamic type-checking
+            CharVal intermediate = (CharVal) exp.accept(this); // Dynamic type-checking
             result += intermediate.v(); //Semantics of AddExp in terms of the target language.
         }
-        return new NumVal(result);
-    }
+        return new CharVal(result);
 
-    @Override
-    public Value visit(NumExp e) {
-        return new NumVal(e.v());
-    }
-
-    @Override
-    public Value visit(DivExp e) {
-        List<Exp> operands = e.all();
-        NumVal lVal = (NumVal) operands.get(0).accept(this);
-        double result = lVal.v();
-        for(int i=1; i<operands.size(); i++) {
-            NumVal rVal = (NumVal) operands.get(i).accept(this);
-            if (rVal.v() == 0) {
-                return new DynamicError(ts.visit(e));
-            }
-            result = result / rVal.v();
-        }
-        return new NumVal(result);
+         */
+        return new CharVal('a');
     }
 
     @Override
     public Value visit(MultExp e) {
+        System.out.println("Multiplying");
+
         List<Exp> operands = e.all();
-        double result = 1;
+        int length = operands.size();
+
+        if(length != 2) {
+            System.out.println("Only two operators allowed");
+            return new DynamicError(ts.visit(e));
+        }
+
+
+        CharVal val1 = (CharVal) operands.get(0).accept(this);
+        char char1 = val1.v();
+        CharVal val2 = (CharVal) operands.get(1).accept(this);
+        char char2 = val2.v();
+
+
+
+        char result;
+        //Switch case that implements the rules outlined in the HW2 PDF
+        switch(char1){
+            case 'e': 
+        }
+
+        System.out.println(char1);
+        System.out.println(char2);
+
+        /*
+        char result = 0;
         for(Exp exp: operands) {
-            NumVal intermediate = (NumVal) exp.accept(this); // Dynamic type-checking
+            CharVal intermediate = (CharVal) exp.accept(this); // Dynamic type-checking
             result *= intermediate.v(); //Semantics of MultExp.
         }
-        return new NumVal(result);
+        return new CharVal(result);
+         */
+        return new CharVal('m');
     }
 
     @Override
     public Value visit(Program p) {
         return (Value) p.e().accept(this);
-    }
-
-    @Override
-    public Value visit(SubExp e) {
-        List<Exp> operands = e.all();
-        NumVal lVal = (NumVal) operands.get(0).accept(this);
-        double result = lVal.v();
-        for(int i=1; i<operands.size(); i++) {
-            NumVal rVal = (NumVal) operands.get(i).accept(this);
-            result = result - rVal.v();
-        }
-        return new NumVal(result);
-    }
-
-
-    @Override
-    public Value visit(PowExp e) {
-        List<Exp> operands = e.all();
-
-        NumVal lVal = (NumVal) operands.get(0).accept(this);
-        double result = lVal.v();
-
-        for(int i=1; i<operands.size(); i++) {
-            NumVal rVal = (NumVal) operands.get(i).accept(this);
-
-            //System.out.println("rVal: "+rVal.v());
-
-            if (rVal.v() < 0) {
-                System.out.println("The exponent value cannot be negative.");
-                return new DynamicError(ts.visit(e));
-            }
-            result = Math.pow(result, rVal.v());
-        }
-        return new NumVal(result);
     }
 
 }
