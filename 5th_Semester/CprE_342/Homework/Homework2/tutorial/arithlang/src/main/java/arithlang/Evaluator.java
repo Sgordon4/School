@@ -33,7 +33,7 @@ public class Evaluator implements Visitor<Value> {
     public Value visit(DivExp e) {
         List<Exp> operands = e.all();
         NumVal lVal = (NumVal) operands.get(0).accept(this);
-        double result = lVal.v(); 
+        double result = lVal.v();
         for(int i=1; i<operands.size(); i++) {
             NumVal rVal = (NumVal) operands.get(i).accept(this);
             if (rVal.v() == 0) {
@@ -71,4 +71,27 @@ public class Evaluator implements Visitor<Value> {
         }
         return new NumVal(result);
     }
+
+
+    @Override
+    public Value visit(PowExp e) {
+        List<Exp> operands = e.all();
+
+        NumVal lVal = (NumVal) operands.get(0).accept(this);
+        double result = lVal.v();
+
+        for(int i=1; i<operands.size(); i++) {
+            NumVal rVal = (NumVal) operands.get(i).accept(this);
+
+            //System.out.println("rVal: "+rVal.v());
+
+            if (rVal.v() < 0) {
+                System.out.println("The exponent value cannot be negative.");
+                return new DynamicError(ts.visit(e));
+            }
+            result = Math.pow(result, rVal.v());
+        }
+        return new NumVal(result);
+    }
+
 }
