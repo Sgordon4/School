@@ -8,6 +8,7 @@
 \usepackage{listings}
 \usepackage{scrextend}
 
+
 \title{EE 330\\Section 5\\Homework 4}
 \author{Sean Gordon}
 %\date{09/09/2019}
@@ -19,7 +20,7 @@ This is just algebra busy work.\\\indent There is little learning being done her
 
 \noindent 1) Area of wafer = $\pi (300/2)^2 = 70685.8mm^2$\\
 \# Chips/Wafer: $70685.8/50 = 1413\ chips$\\
-Hours/Year: $365\ days/yr * 24\ hrs/day = 8760 hrs$ \\
+Hours/Year: $365\ days/yr * 24\ hrs/day = 8760 hrs$ 
 \begin{multicols}{2}
 
 \noindent 248 nm Machine:\\
@@ -44,19 +45,102 @@ Thickness must be proportional to dielectric, therefore $t_{HfO_2} = 25/3.9 * 2 
 \noindent 3) Vol $SiO_2 = .044nm^3\indent \indent 25 A \to 2.5 nm$\\
 $7nm * 14nm * 2.5nm = 245 nm ^3 = 5568\ molecules$\\
 
-\noindent 4) Resistivity of Aluminum = $2.8*10^{-8}\Omega m$\\
+\noindent 4) Resistivity of Aluminum = $2.8*10^{-8}\Omega m$,\indent $R = \frac{\rho*l}{w*t}$\\
+$R_{Al} = \frac{(2.8*10^{-8})*(200*10^{-6})}{(60*10^{-9})*(60*10^{-9})} = 1555.5\Omega$\\
 
 
 \noindent 5) Silver. Expensive with high electron migration potential.\\ 
 
 
-\noindent 6) 300mm wafer thickness = 775 +/- 25um, + 150um for saw = 925um\\
-$2m / (925 +/- 25um ) = 2105 \to 2222\ wafers$\\
+\noindent 6) 300mm wafer thickness $= 775 \pm 25um$, $+ 150um$ for saw $= 925um$\\
+$2m / (925 \pm 25um ) = 2105 \to 2222$ wafers.\\
 
-\noindent 7)
+
+\noindent 7) What is this.\\
+
+
+\noindent 8a) Length = 1um Width = 3um\\
+b) Photoresist under-exposed $\to length = .8 um$\\
+A combination of both issues leaves width unchanged = 3um.\\
+c) Width still unchanged, but now issues cancel out so length is unchanged so that length = 1um.\\
+
+
+\noindent 9) $\rho_{Al} = 2.8*10^{-8}\Omega m,\ \ \  R = \frac{\rho*l}{w*t}$\\
+t = $ \frac{ (2.8*10^{-8}) * (250*10^{-6}) }{ (2*10^{-6}) * 25 } = .14um $\\
+Sheet Resistance = $\frac{\rho}{t} = \frac{2.8*10^{-8}}{.14*10^{-6}} = .2\Omega$ \\
+
+
+\noindent 10)   $\rho_{Cu} 1.68*10^{-8}\Omega m,\ \ \  R = \frac{\rho*l}{w*t}$\\
+$ l = \frac{ (2*10^{-6}) * (.14*10^{-6}) * 25 }{(1.68*10^{-8})} = 417um $\\
+
+\noindent 11) Thermal silicon growth uses silicon from substrate, approx .47x full height of oxide. Therefore, if oxide is 5000A, $W_{height}$ increase is $5000*(1-.47) = 2650A$  \\
+
+\noindent 12) Sheet resistance given, $R_{poly} = 23.2\ \Omega/sq\ somethings$ (thanks for leaving that blank btw, very helpful), and $R_{p+} = 106.7\ \Omega/sq\ somethings$.\\
+As the units are conveniently obfuscated, I will be assuming they are $sq\ um$.\\\\
+5k resistor: Poly $\to 5000/23.2= 215.52um $ len,\\ 
+\indent \indent \indent \ \ \ P+ $\to 5000/106.7 = 46.86um$ len.\\
+Min size Poly = .2um\ x\ .2um, Min size P+ = .3um\ x\ .3um\\
+Min Poly serpentine = $.2*.2*215.52 = 8.62um^3$.\\ 
+Min P+ serpentine\ \ = $.3*.3*46.86\ \ = 4.22 um^3$.\\
+$8.62/4.22 \to 2.04x$ area increase if using Poly.
+
+\iffalse
+
+\noindent 12) Noted in lecture 7, $R_{poly} = 25\Omega \pm25\%$, and $R_{p+} = 80\Omega \pm 25$.\\
+However, the units are conveniently obfuscated, so I will be assuming they are um.\\
+5k resistor: Poly $\to 5000/25= 200um $ len, P+ $\to 5000/80 = 62.5um$ len.\\
+Min size Poly = .2um\ x\ .2um, Min size P+ = .3um\ x\ .3um\\
+Min Poly serpentine = $.2*.2*200 = 8um^3$.\\ Min P+ serpentine = $.3*.3*62.5 = 5.625 um^3$.\\
+$8/5.625 \to 1.42x$ size if using Poly.\\\\
+
+\fi
+
+
 
 
 
 
 
 \end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
