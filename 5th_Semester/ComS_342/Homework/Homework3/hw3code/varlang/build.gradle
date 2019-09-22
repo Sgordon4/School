@@ -1,0 +1,3 @@
+generateGrammarSource {
+    arguments += ["-lib", "../grammars", "-no-listener", "-package", "varlang.parser; import static varlang.AST.*"]
+}

@@ -1,0 +1,116 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage[latin1]{inputenc}
+\usepackage{listings}
+\usepackage{scrextend}
+
+
+% Used for code blocks ----------------------------------------------------------------
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{listings}
+
+\usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
+% -----------------------------------------------------------------------------------------
+
+
+
+\title{ComS 342\\Recitation 2, 10:00 Tuesday\\Homework 2}
+\author{Sean Gordon}
+%\date{09/09/2019}
+
+\begin{document}
+\maketitle
+
+
+\noindent 1.\\
+\indent (a) (let ((f 58)) (* (- f 32) (/ 5 9) ))\\\\
+\indent (b) ( let( (x 12) (y 1) )( let( (x (- x 11)) )(- x y)))\\
+
+
+\noindent 2.\\
+\indent (a) This expression returns an error. The issue is in the second scope:\\
+\indent \indent (let ((z 2) (x y)) (+ x z))\\
+\indent \indent This can be evaluated as $\to$ (z = 2), (x = y), (x += z)\\
+\indent \indent However, y is undefined here, so x = y is unable to be calculated.\\
+
+\indent (b) This expression evaluates to 3. Procedure below:\\
+\indent \indent \{x = 3, y = 0, \{y = (y = x)\}\} $\Rightarrow$ \{\{y = (y = 3)\}\} $\Rightarrow$ \{\{y = 3\}\} $\Rightarrow$ 3\\
+
+\noindent 3.\\
+\indent (a) Free: a, b\\
+\indent \indent Bound: c, x, y, z\\
+
+\indent (b) Free: b, c, g, y\\
+\indent \indent Bound: a, x\\
+
+
+
+%\begin{lstlisting}
+%\end{lslisting}
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
