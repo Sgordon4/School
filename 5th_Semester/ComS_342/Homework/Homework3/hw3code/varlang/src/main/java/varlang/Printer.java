@@ -51,6 +51,17 @@ public class Printer {
 		public String visit(AST.VarExp e, Env env) {
 			return "" + e.name();
 		}
+
+
+
+		public String visit(AST.ConstExp e, Env env) {
+			String result = "(define ";
+			for(AST.Exp exp : e.all())
+				result += exp.accept(this, env) + " ";
+			return result + ")";
+		}
+
+
 		
 		public String visit(AST.LetExp e, Env env) {
 			String result = "(let (";

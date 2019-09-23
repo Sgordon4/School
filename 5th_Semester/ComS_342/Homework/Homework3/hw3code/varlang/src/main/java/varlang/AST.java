@@ -202,6 +202,28 @@ public interface AST {
 			return visitor.visit(this, env);
 		}
 	}
+
+	public static class ConstExp extends CompoundArithExp {
+		public ConstExp(Exp fst) {
+			super(fst);
+		}
+
+		public ConstExp(List<Exp> args) {
+			super(args);
+		}
+
+		public ConstExp(Exp fst, List<Exp> rest) {
+			super(fst, rest);
+		}
+
+		public ConstExp(Exp left, Exp right) {
+			super(left, right);
+		}
+
+		public Object accept(Visitor visitor, Env env) {
+			return visitor.visit(this, env);
+		}
+	}
 	
 	/**
 	 * A let expression has the syntax 
@@ -243,6 +265,7 @@ public interface AST {
 		public T visit(AST.Program p, Env env);
 		public T visit(AST.SubExp e, Env env);
 		public T visit(AST.VarExp e, Env env);
+		public T visit(AST.ConstExp e, Env env);
 		public T visit(AST.LetExp e, Env env); // New for the varlang
 	}	
 }

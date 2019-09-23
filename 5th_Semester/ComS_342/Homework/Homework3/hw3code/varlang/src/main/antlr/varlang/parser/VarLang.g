@@ -12,6 +12,7 @@ import ArithLang; //Import all rules from Arithlang grammar.
         | s=subexp { $ast = $s.ast; }
         | m=multexp { $ast = $m.ast; }
         | d=divexp { $ast = $d.ast; }
+        | c=constexp { $ast = $c.ast; } //C for constant
         | l=letexp { $ast = $l.ast; }
         ;
 

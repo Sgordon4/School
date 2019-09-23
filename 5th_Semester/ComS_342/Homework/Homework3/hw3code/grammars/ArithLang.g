@@ -12,6 +12,7 @@ grammar ArithLang;
         | s=subexp { $ast = $s.ast; }
         | m=multexp { $ast = $m.ast; }
         | d=divexp { $ast = $d.ast; }
+        | c=constexp { $ast = $c.ast; } //C for constant
         ;
   
  numexp returns [NumExp ast]:
@@ -56,6 +57,16 @@ grammar ArithLang;
  		    ( e=exp { $list.add($e.ast); } )+ 
  		')' { $ast = new DivExp($list); }
  		;
+
+  constexp returns [ConstExp ast]
+         locals [ArrayList<Exp> list]
+  		@init { $list = new ArrayList<Exp>(); } :
+  		'(' Define
+  		    e=exp { $list.add($e.ast); }
+  		    ( e=exp { $list.add($e.ast); } )+
+  		')' { $ast = new ConstExp($list); }
+  		;
+
 
 
  // Lexical Specification of this Programming Language

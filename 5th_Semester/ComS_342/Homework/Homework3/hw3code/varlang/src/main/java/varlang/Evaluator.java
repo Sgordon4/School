@@ -17,6 +17,9 @@ import varlang.Env.EmptyEnv;
 import varlang.Env.ExtendEnv;
 
 public class Evaluator implements Visitor<Value> {
+
+	//Make a global variables list here?
+	List<>
 	
 	Value valueOf(Program p) {
 		Env env = new EmptyEnv();
@@ -84,20 +87,52 @@ public class Evaluator implements Visitor<Value> {
 	public Value visit(VarExp e, Env env) {
 		// Previously, all variables had value 42. New semantics.
 		return env.get(e.name());
-	}	
+	}
+
+
+
+	@Override
+	public Value visit(ConstExp e, Env env) {
+
+		System.out.println("Defined *dabs*");
+
+		return new NumVal(0);
+	}
+
+
 
 	@Override
 	public Value visit(LetExp e, Env env) { // New for varlang.
 		List<String> names = e.names();
+
+		/*
 		List<Exp> value_exps = e.value_exps();
 		List<Value> values = new ArrayList<Value>(value_exps.size());
 		
-		for(Exp exp : value_exps) 
+		for(Exp exp : value_exps)
 			values.add((Value)exp.accept(this, env));
+
 		
 		Env new_env = env;
 		for (int i = 0; i < names.size(); i++)
 			new_env = new ExtendEnv(new_env, names.get(i), values.get(i));
+		 */
+
+		// ------ Above turned into below: ------ \\
+		// Lumped both operations into a single for loop
+		// Passed the new environment with the updated variables every time
+
+		List<Exp> value_exps = e.value_exps();
+		List<Value> values = new ArrayList<Value>(value_exps.size());
+		Env new_env = env;
+
+		for (int i = 0; i < names.size(); i++) {
+			Exp exp = value_exps.get(i);
+			values.add((Value)exp.accept(this, new_env));
+
+			new_env = new ExtendEnv(new_env, names.get(i), values.get(i));
+		}
+
 
 		return (Value) e.body().accept(this, new_env);		
 	}	
