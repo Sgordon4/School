@@ -56,8 +56,7 @@ public class Printer {
 
 		public String visit(AST.ConstExp e, Env env) {
 			String result = "(define ";
-			for(AST.Exp exp : e.all())
-				result += exp.accept(this, env) + " ";
+			result += e.name() + " " + e.v();
 			return result + ")";
 		}
 

@@ -12,23 +12,27 @@ import ArithLang; //Import all rules from Arithlang grammar.
         | s=subexp { $ast = $s.ast; }
         | m=multexp { $ast = $m.ast; }
         | d=divexp { $ast = $d.ast; }
-        | c=constexp { $ast = $c.ast; } //C for constant
         | l=letexp { $ast = $l.ast; }
+        | c=constexp { $ast = $c.ast; }
         ;
 
- varexp returns [VarExp ast]: 
+ varexp returns [VarExp ast]:
  		id=Identifier { $ast = new VarExp($id.text); }
  		;
 
- letexp  returns [LetExp ast] 
+ letexp  returns [LetExp ast]
         locals [ArrayList<String> names, ArrayList<Exp> value_exps]
  		@init { $names = new ArrayList<String>(); $value_exps = new ArrayList<Exp>(); } :
- 		'(' Let 
+ 		'(' Let
  			'(' ( '(' id=Identifier e=exp ')' { $names.add($id.text); $value_exps.add($e.ast); } )+  ')'
- 			body=exp 
+ 			body=exp
  			')' { $ast = new LetExp($names, $value_exps, $body.ast); }
  		;
 
+constexp returns [ConstExp ast]:
+        '(' Define (id=Identifier num=Number)
+        ')' { $ast = new ConstExp($id.text, Integer.parseInt($num.text)); }
+        ;
+
  // Lexical Specification of this Programming Language
  //  - lexical specification rules start with uppercase
- 

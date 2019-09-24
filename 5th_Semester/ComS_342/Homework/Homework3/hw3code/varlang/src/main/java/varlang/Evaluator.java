@@ -19,7 +19,7 @@ import varlang.Env.ExtendEnv;
 public class Evaluator implements Visitor<Value> {
 
 	//Make a global variables list here?
-	List<>
+	List<ConstExp> globals = new ArrayList<ConstExp>();
 	
 	Value valueOf(Program p) {
 		Env env = new EmptyEnv();
@@ -47,7 +47,7 @@ public class Evaluator implements Visitor<Value> {
 	public Value visit(DivExp e, Env env) {
 		List<Exp> operands = e.all();
 		NumVal lVal = (NumVal) operands.get(0).accept(this, env);
-		double result = lVal.v(); 
+		double result = lVal.v();
 		for(int i=1; i<operands.size(); i++) {
 			NumVal rVal = (NumVal) operands.get(i).accept(this, env);
 			result = result / rVal.v();
@@ -94,9 +94,14 @@ public class Evaluator implements Visitor<Value> {
 	@Override
 	public Value visit(ConstExp e, Env env) {
 
+		String name = e.name();
+		double val = e.v();
+
+		this.globals.add(new ConstExp(name, val));
+
 		System.out.println("Defined *dabs*");
 
-		return new NumVal(0);
+		return new NumVal(val);
 	}
 
 
@@ -122,13 +127,29 @@ public class Evaluator implements Visitor<Value> {
 		// Lumped both operations into a single for loop
 		// Passed the new environment with the updated variables every time
 
+
 		List<Exp> value_exps = e.value_exps();
 		List<Value> values = new ArrayList<Value>(value_exps.size());
 		Env new_env = env;
 
 		for (int i = 0; i < names.size(); i++) {
 			Exp exp = value_exps.get(i);
-			values.add((Value)exp.accept(this, new_env));
+
+			try {
+				values.add((Value) exp.accept(this, new_env));
+			}
+			//If the variable is not in the environment
+			catch(Env.LookupException err){
+				String name;
+				//Check in globals
+				//Check backwards to get latest, I don't have overwriting implemented
+				for(int j = this.globals.size(); j >= 0; j--){
+					name = globals.get(j).name();
+					if (name == )
+				}
+
+				throw err;
+			}
 
 			new_env = new ExtendEnv(new_env, names.get(i), values.get(i));
 		}

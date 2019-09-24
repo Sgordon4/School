@@ -1,4 +1,4 @@
-// Generated from varlang\parser\VarLang.g by ANTLR 4.5
+// Generated from varlang/parser/VarLang.g by ANTLR 4.5
 package varlang.parser; import static varlang.AST.*;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;

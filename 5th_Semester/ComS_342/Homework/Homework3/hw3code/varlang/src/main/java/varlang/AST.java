@@ -203,27 +203,27 @@ public interface AST {
 		}
 	}
 
-	public static class ConstExp extends CompoundArithExp {
-		public ConstExp(Exp fst) {
-			super(fst);
+	public static class ConstExp extends Exp {
+		String _name;
+		double _v;
+
+		public ConstExp(String name, double v) {
+			_name = name;
+			_v = v;
 		}
 
-		public ConstExp(List<Exp> args) {
-			super(args);
+		public String name() {
+			return _name;
 		}
-
-		public ConstExp(Exp fst, List<Exp> rest) {
-			super(fst, rest);
-		}
-
-		public ConstExp(Exp left, Exp right) {
-			super(left, right);
+		public double v(){
+			return _v;
 		}
 
 		public Object accept(Visitor visitor, Env env) {
 			return visitor.visit(this, env);
 		}
 	}
+
 	
 	/**
 	 * A let expression has the syntax 

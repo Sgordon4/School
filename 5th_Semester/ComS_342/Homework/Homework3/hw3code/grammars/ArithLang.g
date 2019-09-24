@@ -12,7 +12,6 @@ grammar ArithLang;
         | s=subexp { $ast = $s.ast; }
         | m=multexp { $ast = $m.ast; }
         | d=divexp { $ast = $d.ast; }
-        | c=constexp { $ast = $c.ast; } //C for constant
         ;
   
  numexp returns [NumExp ast]:
@@ -58,20 +57,10 @@ grammar ArithLang;
  		')' { $ast = new DivExp($list); }
  		;
 
-  constexp returns [ConstExp ast]
-         locals [ArrayList<Exp> list]
-  		@init { $list = new ArrayList<Exp>(); } :
-  		'(' Define
-  		    e=exp { $list.add($e.ast); }
-  		    ( e=exp { $list.add($e.ast); } )+
-  		')' { $ast = new ConstExp($list); }
-  		;
-
-
 
  // Lexical Specification of this Programming Language
  //  - lexical specification rules start with uppercase
- 
+
  Define : 'define' ;
  Let : 'let' ;
  Dot : '.' ;
@@ -81,15 +70,15 @@ grammar ArithLang;
  Identifier :   Letter LetterOrDigit*;
 
  Letter :   [a-zA-Z$_]
-	|   ~[\u0000-\u00FF\uD800-\uDBFF] 
+	|   ~[\u0000-\u00FF\uD800-\uDBFF]
 		{Character.isJavaIdentifierStart(_input.LA(-1))}?
-	|   [\uD800-\uDBFF] [\uDC00-\uDFFF] 
+	|   [\uD800-\uDBFF] [\uDC00-\uDFFF]
 		{Character.isJavaIdentifierStart(Character.toCodePoint((char)_input.LA(-2), (char)_input.LA(-1)))}? ;
 
  LetterOrDigit: [a-zA-Z0-9$_]
-	|   ~[\u0000-\u00FF\uD800-\uDBFF] 
+	|   ~[\u0000-\u00FF\uD800-\uDBFF]
 		{Character.isJavaIdentifierPart(_input.LA(-1))}?
-	|    [\uD800-\uDBFF] [\uDC00-\uDFFF] 
+	|    [\uD800-\uDBFF] [\uDC00-\uDFFF]
 		{Character.isJavaIdentifierPart(Character.toCodePoint((char)_input.LA(-2), (char)_input.LA(-1)))}?;
 
  fragment DIGIT: ('0'..'9');
