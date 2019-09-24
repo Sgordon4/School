@@ -23,6 +23,12 @@ public class Evaluator implements Visitor<Value> {
 	
 	Value valueOf(Program p) {
 		Env env = new EmptyEnv();
+
+		//To implement define, add the global variables to the environment first
+        for(ConstExp constExp : globals){
+			env = new ExtendEnv(env, constExp.name(), new NumVal(constExp.v()));
+		}
+
 		// Value of a program in this language is the value of the expression
 		return (Value) p.accept(this, env);
 	}
@@ -93,15 +99,11 @@ public class Evaluator implements Visitor<Value> {
 
 	@Override
 	public Value visit(ConstExp e, Env env) {
+		this.globals.add(e);
 
-		String name = e.name();
-		double val = e.v();
+		//System.out.println("Defined *dabs*");
 
-		this.globals.add(new ConstExp(name, val));
-
-		System.out.println("Defined *dabs*");
-
-		return new NumVal(val);
+		return new NumVal(e.v());
 	}
 
 
@@ -135,21 +137,7 @@ public class Evaluator implements Visitor<Value> {
 		for (int i = 0; i < names.size(); i++) {
 			Exp exp = value_exps.get(i);
 
-			try {
-				values.add((Value) exp.accept(this, new_env));
-			}
-			//If the variable is not in the environment
-			catch(Env.LookupException err){
-				String name;
-				//Check in globals
-				//Check backwards to get latest, I don't have overwriting implemented
-				for(int j = this.globals.size(); j >= 0; j--){
-					name = globals.get(j).name();
-					if (name == )
-				}
-
-				throw err;
-			}
+			values.add((Value) exp.accept(this, new_env));
 
 			new_env = new ExtendEnv(new_env, names.get(i), values.get(i));
 		}
