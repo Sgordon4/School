@@ -98,6 +98,18 @@ public class Evaluator implements Visitor<Value> {
 
 
 	@Override
+	public Value visit(DecExp e, Env env) {
+		// Previously, all variables had value 42. New semantics.
+		return decrypt(e.key(), (NumVal) env.get(e.name()));
+	}
+
+	public Value decrypt(double key, NumVal val){
+		//Im just gunna assume its always a double
+
+		return new NumVal(val.v() - key);
+	}
+
+	@Override
 	public Value visit(ConstExp e, Env env) {
 		this.globals.add(e);
 
@@ -106,13 +118,10 @@ public class Evaluator implements Visitor<Value> {
 		return new NumVal(e.v());
 	}
 
-
-
 	@Override
 	public Value visit(LetExp e, Env env) { // New for varlang.
-		List<String> names = e.names();
-
 		/*
+		List<String> names = e.names();
 		List<Exp> value_exps = e.value_exps();
 		List<Value> values = new ArrayList<Value>(value_exps.size());
 		
@@ -130,6 +139,7 @@ public class Evaluator implements Visitor<Value> {
 		// Passed the new environment with the updated variables every time
 
 
+		List<String> names = e.names();
 		List<Exp> value_exps = e.value_exps();
 		List<Value> values = new ArrayList<Value>(value_exps.size());
 		Env new_env = env;
@@ -144,6 +154,29 @@ public class Evaluator implements Visitor<Value> {
 
 
 		return (Value) e.body().accept(this, new_env);		
-	}	
-	
+	}
+
+
+
+	@Override
+	public Value visit(LeteExp e, Env env) { // New for varlang.
+		System.out.println("Here");
+		List<String> names = e.names();
+
+		List<Exp> value_exps = e.value_exps();
+		List<Value> values = new ArrayList<Value>(value_exps.size());
+		Env new_env = env;
+
+		for (int i = 0; i < names.size(); i++) {
+			Exp exp = value_exps.get(i);
+
+			values.add((Value) exp.accept(this, new_env));
+
+			new_env = new ExtendEnv(new_env, names.get(i), values.get(i));
+		}
+
+
+		return (Value) e.body().accept(this, new_env);
+	}
+
 }

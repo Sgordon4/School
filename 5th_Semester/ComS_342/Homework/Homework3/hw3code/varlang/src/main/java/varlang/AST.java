@@ -30,6 +30,7 @@ public interface AST {
 			return visitor.visit(this, env);
 		}
 	}
+
 	public static abstract class Exp extends ASTNode {
 
 	}
@@ -45,6 +46,28 @@ public interface AST {
 			return _name;
 		}
 		
+		public Object accept(Visitor visitor, Env env) {
+			return visitor.visit(this, env);
+		}
+	}
+
+	public static class DecExp extends Exp {
+		double _key;
+		String _name;
+
+		public DecExp(double key, String name) {
+			_key = key;
+			_name = name;
+		}
+
+		public double key() {
+			return _key;
+		}
+
+		public String name() {
+			return _name;
+		}
+
 		public Object accept(Visitor visitor, Env env) {
 			return visitor.visit(this, env);
 		}
@@ -255,6 +278,37 @@ public interface AST {
 		public Exp body() { return _body; }
 
 	}
+
+
+	public static class LeteExp extends Exp {
+		double _key;
+		List<String> _names;
+		List<Exp> _value_exps;
+		Exp _body;
+
+		//public LeteExp(double key, List<String> names, List<Exp> value_exps, Exp body) {
+		public LeteExp(List<String> names, List<Exp> value_exps, Exp body) {
+			//_key = key;
+			_key = 0;
+			_names = names;
+			_value_exps = value_exps;
+			_body = body;
+		}
+
+		public Object accept(Visitor visitor, Env env) {
+			return visitor.visit(this, env);
+		}
+
+		//Very secure
+		public double key() {return _key; }
+
+		public List<String> names() { return _names; }
+
+		public List<Exp> value_exps() { return _value_exps; }
+
+		public Exp body() { return _body; }
+
+	}
 	
 	public interface Visitor <T> {
 		// This interface should contain a signature for each concrete AST node.
@@ -265,7 +319,9 @@ public interface AST {
 		public T visit(AST.Program p, Env env);
 		public T visit(AST.SubExp e, Env env);
 		public T visit(AST.VarExp e, Env env);
+		public T visit(AST.DecExp e, Env env);
 		public T visit(AST.ConstExp e, Env env);
 		public T visit(AST.LetExp e, Env env); // New for the varlang
+		public T visit(AST.LeteExp e, Env env);
 	}	
 }
