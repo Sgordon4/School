@@ -7,7 +7,7 @@ import ArithLang; //Import all rules from Arithlang grammar.
 
  exp returns [Exp ast]: 
 		v=varexp { $ast = $v.ast; }
-		| b=decexp { $ast = $b.ast; }
+		//| b=decexp { $ast = $b.ast; }
 		| n=numexp { $ast = $n.ast; }
         | a=addexp { $ast = $a.ast; }
         | s=subexp { $ast = $s.ast; }
@@ -15,7 +15,7 @@ import ArithLang; //Import all rules from Arithlang grammar.
         | d=divexp { $ast = $d.ast; }
         | l=letexp { $ast = $l.ast; }
         | c=constexp { $ast = $c.ast; }
-        | le=leteexp { $ast = $le.ast; }
+        | y=leteexp { $ast = $y.ast; }
         ;
 
  varexp returns [VarExp ast]:
@@ -25,12 +25,13 @@ import ArithLang; //Import all rules from Arithlang grammar.
  decexp returns [DecExp ast]:
   		id=Identifier key=Number { $ast = new DecExp(Integer.parseInt($key.text), $id.text); }
   		;
-  		*/
+
 
  decexp returns [DecExp ast]:
          '(' Dec (num=Number id=Identifier)
          ')' { $ast = new DecExp(Integer.parseInt($num.text), $id.text); }
          ;
+         */
 
  letexp  returns [LetExp ast]
         locals [ArrayList<String> names, ArrayList<Exp> value_exps]
@@ -46,17 +47,19 @@ import ArithLang; //Import all rules from Arithlang grammar.
         ')' { $ast = new ConstExp($id.text, Integer.parseInt($num.text)); }
         ;
 
- leteexp  returns [LetExp ast]
-         locals [ArrayList<String> names, ArrayList<Exp> value_exps]
-  		@init2 { $names = new ArrayList<String>(); $value_exps = new ArrayList<Exp>(); } :
-  		'(' Lete
+ leteexp  returns [LeteExp ast]
+         locals [ArrayList<String> names, ArrayList<Exp> value_exps]:
+  		//@init2 { $names = new ArrayList<String>(); $value_exps = new ArrayList<Exp>(); }
+  		'(' 'lete'
   			'(' ( '(' id=Identifier e=exp ')' { $names.add($id.text); $value_exps.add($e.ast); } )+  ')'
   			body=exp
-  			')' { $ast = new LetExp($names, $value_exps, $body.ast); }
+  			')' { $ast = new LeteExp($names, $value_exps, $body.ast); }
   		;
 
  // Lexical Specification of this Programming Language
  //  - lexical specification rules start with uppercase
 
+/*
 Lete : 'lete' ;
 Dec : 'dec' ;
+*/

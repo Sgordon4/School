@@ -158,25 +158,23 @@ public class Evaluator implements Visitor<Value> {
 
 
 
-	@Override
-	public Value visit(LeteExp e, Env env) { // New for varlang.
-		System.out.println("Here");
-		List<String> names = e.names();
+    @Override
+    public Value visit(LeteExp e, Env env) { // New for varlang.
+        List<String> names = e.names();
+        List<Exp> value_exps = e.value_exps();
+        List<Value> values = new ArrayList<Value>(value_exps.size());
+        Env new_env = env;
 
-		List<Exp> value_exps = e.value_exps();
-		List<Value> values = new ArrayList<Value>(value_exps.size());
-		Env new_env = env;
+        for (int i = 0; i < names.size(); i++) {
+            Exp exp = value_exps.get(i);
 
-		for (int i = 0; i < names.size(); i++) {
-			Exp exp = value_exps.get(i);
+            values.add((Value) exp.accept(this, new_env));
 
-			values.add((Value) exp.accept(this, new_env));
-
-			new_env = new ExtendEnv(new_env, names.get(i), values.get(i));
-		}
+            new_env = new ExtendEnv(new_env, names.get(i), values.get(i));
+        }
 
 
-		return (Value) e.body().accept(this, new_env);
-	}
+        return (Value) e.body().accept(this, new_env);
+    }
 
 }
