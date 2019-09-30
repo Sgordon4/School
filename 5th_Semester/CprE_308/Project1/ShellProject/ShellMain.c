@@ -10,15 +10,35 @@ static void promptUsr(){
 
 static void readUsr(char *buffer){
     printf("Reading user...\n");
-    while(1){
-        if(fgets(buffer, sizeof(buffer), stdin) != NULL)
+
+
+    if(fgets(buffer, BUFFER_SIZE, stdin) != NULL){
+        //Remove newline
+        buffer[strcspn(buffer, "\n")] = 0;
+        printf("The string is %s", buffer);
+    }
+
+    else
+        printf("There was an error reading input!\n");
+    //printf("%d", sizeof(buffer));
+
+    /*
+    //while(1){
+        if(fgets(buffer, BUFFER_SIZE, stdin) != NULL){
+            //Remove newline if present
+
+
+
+
             //buffer = strchr(buffer, '\n');   //Remove trailing newline
             printf("%s", buffer);
-
-    }
+            printf("..\n");
+        }
+    //}
+    */
 }
 
-
+/*
 static int readLine(char *buffer)
 {
     while (fgets(buffer, sizeof(buffer), stdin) != 0)
@@ -35,10 +55,21 @@ static int readLine(char *buffer)
 
     return 0;
 }
-
+*/
 
 
 int main(int argc, char** argv) {
+    //Grab passed parameters
+    char processName[30];
+    strcpy(processName, argv[0]);
+    char prompt[16] = "308sh> ";
+    //Shell only supports "'-p prompt'"
+    if(argc == 3){
+
+    }
+
+
+
     char buff[BUFFER_SIZE];
 
     int i;
