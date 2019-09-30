@@ -73,10 +73,9 @@ $\frac{n}{2^k}=2\ \ \ \Rightarrow\ \ \ n=2^k*2\ \ \ \Rightarrow\ \ \  n=2^{k+1}\
 log(n)=k+1\ \ \ \Rightarrow\ k=log(n)-1$\\
 \indent $\therefore$ end term == $3^{log(n)-1}*c$\\
 
-\noindent Full: $3^{log(n)-1}*c + cn^2\sum_{k=0}^{log(n)-1} \frac{3^k}{2^{k*2}}$\\
-However, $\lim_{k\to\infty} \frac{3^k}{2^{k*2}} = 0$\\
-\noindent $\Rightarrow 3^{log(n)-1}*c + cn^2*(0)\ \ \ \Rightarrow$\\
-$c*3^{log(n)-1}$
+\noindent Full: $3^{log(n)-1}*c + cn^2\sum_{k=0}^{log(n)-1} (\frac{3}{2^{2}})^k$\\
+However, $\lim_{k\to\infty}  (\frac{3}{2^{2}})^k = \frac{1}{1-3/4}$\\
+\noindent $\Rightarrow c*3^{log(n)-1}+cn^2 \frac{1}{1-3/4}$
 
 \end{adjustwidth}
 
@@ -134,17 +133,31 @@ n=2^k*2=2^{k+1}\ \ \ \Rightarrow\\
 k=log(n)-1$\\
 
 
-\noindent Full: $2^{log(n)-1}*c + cn \sum_{k=0}^{log(n)-1}log(\frac{n}{2^k})$\\
-As n increases, the summed term $\to \frac{n}{2^{log(n)-1}}$\\
-$\therefore$ the solution = $c*2^{log(n)-1} + 
-cn\frac{n}{2^{log(n)-1}}$
+\noindent Full: $2^{log(n)-1}*c + cn \sum_{k=0}^{log(n)-1}log(\frac{n}{2^k})\Rightarrow $\\
+\indent $2^{log(n)-1}*c+ cn \sum_{k=0}^{log(n)-1}log(n)+ cn \sum_{k=0}^{log(n)-1}log(2^k)$\\
+\indent $2^{log(n)-1}*c+ cnlog(n)+ cn \sum_{k=0}^{log(n)-1}k$\\
+
+\noindent However, $\sum_{k=0}^{log(n)-1}k = \frac{(log(n))(log(n)+1)}{2} = \frac{2log(n)+log(n)}{2}$\\
+
+\noindent$\therefore$ Full: $c*2^{log(n)-1}+ cn\frac{2log(n)+log(n)}{2} \Rightarrow$\\
+
 
 
 \end{adjustwidth}
 
 
+\pagebreak
 
 
+2) This shit dumb af\\ \\ 
+
+3) To classify purple points, this algorithm will recursively sort the points by their x-coordinate values, then parse the sorted array.\\
+
+
+
+
+%In a set containing points A and B, A is purple if A=(x,y) and B=(x+n, y+m) where n\&m are positive, non-zero values.\\
+%As it is is specified that all numbers must be unique
 
 %\begin{lstlisting}
 %\end{lslisting}
