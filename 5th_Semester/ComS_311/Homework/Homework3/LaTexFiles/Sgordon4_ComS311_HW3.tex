@@ -1,0 +1,164 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage[latin1]{inputenc}
+\usepackage{listings}
+\usepackage{scrextend}
+\usepackage{changepage} %Adjustwidth
+
+
+% Used for code blocks ----------------------------------------------------------------
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{listings}
+
+\usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
+% -----------------------------------------------------------------------------------------
+
+
+\title{ComS 311\\Recitation 3, 2:00 Monday\\Homework 3}
+\author{Sean Gordon}
+%\date{09/29/2019}
+
+\begin{document}
+\maketitle
+
+
+\noindent 1a) $T(n) \le 3T(\frac{n}{2}) + Cn^2,\ \ T(2) \le c$\\
+
+\begin{adjustwidth}{.25in}{0in}
+
+$3[3T(\frac{n}{4})+c(\frac{n}{2})^2] + cn^2$\\
+$9T(\frac{n}{4})+3c(\frac{n}{2})^2 + cn^2$\\
+
+\noindent
+$9[3T(\frac{n}{8})+c(\frac{n}{4})^2]+
+3c(\frac{n}{2})^2 + cn^2$\\
+\noindent
+$27T(\frac{n}{8})+9c(\frac{n}{4})^2+
+3c(\frac{n}{2})^2 + cn^2$\\
+
+
+\noindent
+$27[3T(\frac{n}{16})+c(\frac{n}{8})^2]+
+9c(\frac{n}{4})^2+
+3c(\frac{n}{2})^2 + cn^2$\\
+\noindent
+$81T(\frac{n}{16})+27c(\frac{n}{8})^2+
+9c(\frac{n}{4})^2+
+3c(\frac{n}{2})^2 + cn^2$\\
+
+
+\noindent
+$3^4T(\frac{n}{2^4}) + 
+3^3c(\frac{n}{2^3})^2 + 
+3^2c(\frac{n}{2^2})^2 + 
+3^1c(\frac{n}{2^1})^2 + 
+3^0c(\frac{n}{2^0})^2$\\
+\noindent
+$3^4T(\frac{n}{2^4}) + 
+\frac{3^3}{2^{3*2}}cn^2 + 
+\frac{3^2}{2^{2*2}}cn^2 + 
+\frac{3^1}{2^{1*2}}cn^2 + 
+\frac{3^0}{2^{0*2}}cn^2$\\
+
+\noindent Final term is $3^kT(\frac{n}{2^k})$. Assuming that $n/2^k =2$ so that T(2) = c\\
+$\frac{n}{2^k}=2\ \ \ \Rightarrow\ \ \ n=2^k*2\ \ \ \Rightarrow\ \ \  n=2^{k+1}\ \ \ \Rightarrow\\
+log(n)=k+1\ \ \ \Rightarrow\ k=log(n)-1$\\
+\indent $\therefore$ end term == $3^{log(n)-1}*c$\\
+
+\noindent Full: $3^{log(n)-1}*c + cn^2\sum_{k=0}^{log(n)-1} (\frac{3}{2^{2}})^k$\\
+However, $\lim_{k\to\infty}  (\frac{3}{2^{2}})^k = \frac{1}{1-3/4}$\\
+\noindent $\Rightarrow c*3^{log(n)-1}+cn^2 \frac{1}{1-3/4}$
+
+\end{adjustwidth}
+
+
+\pagebreak
+
+
+\noindent 1b) $T(n) \le 2T(\frac{n}{2}) + Cnlog(n),\ \ T(2) \le c$\\
+
+\begin{adjustwidth}{.25in}{0in}
+
+
+$2[2T(\frac{n}{4})+
+c(\frac{n}{2})log(\frac{n}{2})] + 
+cnlog(n)$\\
+\noindent
+$4T(\frac{n}{4})+
+2c(\frac{n}{2})log(\frac{n}{2}) + 
+cnlog(n)$\\
+
+
+\noindent
+$4[2T(\frac{n}{8})+
+c(\frac{n}{4})log(\frac{n}{4})] + 
+2c(\frac{n}{2})log(\frac{n}{2}) +
+cnlog(n)$\\
+\noindent
+$8T(\frac{n}{8})+
+4c(\frac{n}{4})log(\frac{n}{4}) + 
+2c(\frac{n}{2})log(\frac{n}{2}) +
+cnlog(n)$\\
+
+
+\noindent
+$8[2T(\frac{n}{16})+
+c(\frac{n}{8})log(\frac{n}{8})] + 
+4c(\frac{n}{4})log(\frac{n}{4}) + 
+2c(\frac{n}{2})log(\frac{n}{2}) +
+cnlog(n)$\\
+\noindent
+$16T(\frac{n}{16})+
+8c(\frac{n}{8})log(\frac{n}{8}) + 
+4c(\frac{n}{4})log(\frac{n}{4}) + 
+2c(\frac{n}{2})log(\frac{n}{2}) +
+cnlog(n)$\\
+
+
+End term: $2^kT(\frac{n}{2^k})$ \\
+\indent Assuming $\frac{n}{2^k}$ = 2 so that $T(\frac{n}{2^k})=T(2) = c$\\
+
+
+$\frac{n}{2^k}=2\ \ \ \Rightarrow\ \ \ 
+n=2^k*2=2^{k+1}\ \ \ \Rightarrow\\
+\indent log(n)=k+1\ \ \ \Rightarrow\ \ \ 
+k=log(n)-1$\\
+
+
+\noindent Full: $2^{log(n)-1}*c + cn \sum_{k=0}^{log(n)-1}log(\frac{n}{2^k})\Rightarrow $\\
+\indent $2^{log(n)-1}*c+ cn \sum_{k=0}^{log(n)-1}log(n)+ cn \sum_{k=0}^{log(n)-1}log(2^k)$\\
+\indent $2^{log(n)-1}*c+ cnlog(n)+ cn \sum_{k=0}^{log(n)-1}k$\\
+
+\noindent However, $\sum_{k=0}^{log(n)-1}k = \frac{(log(n))(log(n)+1)}{2} = \frac{2log(n)+log(n)}{2}$\\
+
+\noindent$\therefore$ Full: $c*2^{log(n)-1}+ cn\frac{2log(n)+log(n)}{2} \Rightarrow$\\
+
+
+
+\end{adjustwidth}
+
+
+\pagebreak
+
+
+2) This shit dumb af\\ \\ 
+
+3) To classify purple points, this algorithm will recursively sort the points by their x-coordinate values, then parse the sorted array.\\
+
+
+
+
+%In a set containing points A and B, A is purple if A=(x,y) and B=(x+n, y+m) where n\&m are positive, non-zero values.\\
+%As it is is specified that all numbers must be unique
+
+%\begin{lstlisting}
+%\end{lslisting}
+\end{document}
