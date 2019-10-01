@@ -5,7 +5,7 @@
 #include <sys/wait.h>
 #include <unistd.h>
 
-#define DEBUG 1
+#define DEBUG 0
 #define debug_print(fmt, ...) \
             do { if (DEBUG) fprintf(stderr, fmt, __VA_ARGS__); } while (0)
 
@@ -44,101 +44,6 @@ int readLine(char *buffer){
 }
 
 
-/** Given a string, parse it into a command and its options/arguments, then store
-    those parts in their respective buffers.
-
-@param buffer   The string to be split
-@param cmd      The buffer to store the parsed command
-@param params   The array of buffers to store the command's options/arguments
-@param paramCount   An int to store the final size of 'params' in
-@return         0 on success, -1 on failure (currently no failure)
-*/
-int parseCmd(char *buffer, char *cmd, char **params, int *paramCount){
-    char delim[] = " ";             //Use a space as our delimiter
-
-    //Split the line into keys...
-    char *ptr = strtok(buffer, delim);
-    strcpy(cmd, ptr);               //The first item is the command
-    debug_print("Cmd: %s\n", cmd);
-
-    int i = 0;
-	while(ptr != NULL){             //While end of buffer has not been reached...
-		ptr = strtok(NULL, delim);  //Grab the next item
-        params[i] = ptr;
-        debug_print("Params at %d: %s\n", i, params[i]);
-        i++;
-	}
-    *paramCount = i - 1;
-
-    return 0;
-}
-
-
-
-/** Parses given array of values into options and arguments
-
-@param argc     Count of the number of arguments contained in argv
-@param argv     Values of the arguments
-@return         0 for success, -1 for error
-*/
-int parseArgs(int argc, char **argv){
-
-    if(DEBUG){
-        int i;
-        for(i = 0; i < argc; i++){
-            debug_print("Arg at %d: ", i);
-            debug_print("%s\n", argv[i]);
-        }
-    }
-
-    char allOptions[] = "p:c";       //Every available option
-                                    // ":x" for no args required
-
-    int option;
-
-    //I'm using getopt for command parsing because its just really really
-    //really really really nice. Please God let this be allowed.
-    while((option = getopt(argc, argv, allOptions)) != -1){
-
-        debug_print("Option: %c\n", option);
-        switch(option)
-        {
-            case 'p':
-                strcpy(prompt, optarg); //Replace prompt with provided one
-                break;
-            case 'c': printf("mmmmmmm\n");
-            break;
-            //-------------------------------------------------------------
-            case '?':
-                /* getopt() automatically prints errors for us :D
-                    Gists of what it prints:
-
-                printf("Option -%c requires an argument.\n", optopt);
-                printf("Unknown option '-%c'.\n", optopt);
-                printf("Unknown option character '\\x%x'.\n", optopt);
-                */
-                //Continue on to default's return...
-
-            default: return -1;
-                    break;
-            //-------------------------------------------------------------
-        }
-
-        // optind is for the extra arguments
-        // which are not parsed
-        int index;
-        for (index = optind; index < argc; index++)
-            printf ("Non-option argument %s\n", argv[index]);
-
-    }
-
-    return 0;
-}
-
-
-
-
-
 /** Final State Machine used to split strings by spaces and quotations marks.
     Modified but initially from https://stackoverflow.com/a/26913698/11723253
 
@@ -148,12 +53,12 @@ int parseArgs(int argc, char **argv){
 @param num_args     Total number of values split
 @return             0 on success, -1 on failure
 */
-size_t splitString(char *buffer, char *argv[], size_t argv_size, size_t *num_args)
+size_t splitString(char *buffer, char *argv[], size_t argv_size, int *num_args)
 {
     char *p, *start_of_word;
     int c;
     enum states { DULL, IN_WORD, IN_STRING } state = DULL;
-    size_t argc = 0;
+    int argc = 0;
 
     for (p = buffer; argc < argv_size && *p != '\0'; p++) {
         c = (unsigned char) *p;
@@ -200,15 +105,168 @@ size_t splitString(char *buffer, char *argv[], size_t argv_size, size_t *num_arg
 
 
 
+void printArr(char **argv, int start, int argc){
+    int i;
+    for(i = start; i < argc; i++){
+        printf("%s ", argv[i]);
+    }
+}
+
+
+
+/** Parses given array of values into options and arguments
+
+@param argc     Count of the number of arguments contained in argv
+@param argv     Values of the arguments
+@param start    Index to start parsing from
+@return         0 for success, -1 for error
+*/
+int parseArgs(int argc, char **argv, int start){
+
+    if(DEBUG){
+        debug_print("Size: %d\n",  argc);
+
+        int i;
+        for(i = 0; i < argc; i++){
+            debug_print("Arg at %d: ", i);
+            debug_print("%s\n", argv[i]);
+        }
+    }
+
+
+    int i;
+    for(i = start; i < argc; i++){
+        //Grab the command (exit, ls, cd, etc...)
+        char *command = argv[i];
+        debug_print("Command: %s\n", argv[i]);
+
+
+        if (strcmp(command, "exit") == 0){
+            printf("Exiting shell...\n");
+            exit(0);
+        }
+        else if (strcmp(command, "pid") == 0){
+            printf("PID: %d\n", getpid());
+        }
+        else if (strcmp(command, "ppid") == 0){
+            printf("PPID: %d\n", getppid());
+        }
+        else if (strcmp(command, "cd") == 0){
+            if((argc-i) < 2){
+                chdir(getenv("HOME"));
+                return 0;
+            }
+            chdir(argv[++i]);
+            return 0;
+        }
+        else if (strcmp(command, "pwd") == 0){
+            char buffer[100];
+            printf("%s\n", getcwd(buffer, sizeof(buffer)));
+        }
+        else if (strcmp(command, "-p") == 0){
+            if((argc-i) < 2){
+                printf("Option -p requires an argument!\n");
+                return -1;
+            }
+            strcpy(prompt, argv[++i]);
+            debug_print("Changed prompt: %s\n", argv[i]);
+        }
+        else{
+
+            pid_t  child;
+            int    cstatus;  /* Exit status of child. */
+            pid_t  c;        /* Pid of child to be returned by wait. */
+            char *args[3];   /* List of arguments for the child process. */
+
+            /* Set up arguments to run an exec in the child process.  */
+            /* (This example runs the "ls" program with "-l" option.) */
+            args[0] = "ls";
+            args[1] = "-l";
+            args[2] = NULL;   /* Indicates the end of arguments. */
+            if ((child = fork()) == 0) { /* Child process. */
+                printf("Child: PID of Child = %ld\n", (long) getpid());
+                execvp(args[0], args); /* arg[0] has the command name. */
+
+
+                /* If the child process reaches this point, then  */
+                /* execvp must have failed.                       */
+
+                fprintf(stderr, "Child process could not do execvp.\n");
+                exit(1);
+            }
+            else { /* Parent process. */
+                if (child == (pid_t)(-1)) {
+                    fprintf(stderr, "Fork failed.\n");
+                    exit(1);
+                }
+                else {
+                    c = wait(&cstatus); /* Wait for child to complete. */
+                    printf("Parent: Child  %ld exited with status = %d\n",(long) c, cstatus);
+                }
+            }
+            return  0;
+
+
+            /*
+            //Try to start a program command
+            pid_t child_pid;
+            int child_stat;
+            pid_t tpid;
+
+            child_pid = fork();
+            if(child_pid){
+                if(child_pid == (pid_t)(-1)){
+                    printf("Fork failed.");
+                    return -1;
+                }
+
+                printf(">>>[%ld] %s\n", (long)child_pid, command);
+                tpid = wait(&child_stat);
+                printf(">>>[%ld] %s Exit %d\n", (long)tpid, command, child_stat);
+
+                if(child_stat == 0)
+                    continue;
+            }
+            else{
+                //char *execargs[] = {"ls", "-l", NULL};
+                //execvp(execargs[0], execargs);
+
+                printArr(argv+i, i, argc-i);
+                printf("\n");
+
+                //Send execvp the remaining arguments
+                execvp((argv+i)[0], argv+i);
+                //If execvp returns, command was not recognized
+            }
+
+            printf("Unknown command %s\n", command);
+            return -1;
+            */
+        }
+    }
+
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
 int main(int argc, char** argv) {
     char buffer[1024];
 
     char *command[100];         //ls -l, cd /something, exit, etc...
-    size_t commandSize = 0;     //ls -l => 2, exit => 1, etc...
+    int commandSize = 0;        //ls -l => 2, exit => 1, etc...
 
+    strcpy(processName, argv[0]+2);    //Grab the name of this shell, trim off the './'
 
-    strcpy(processName, argv[0]);    //Grab the name of this shell
-    if(parseArgs(argc, argv))        //If returned -1
+    if(parseArgs(argc, argv, 1))        //If returned -1
         abort();
 
     //clrScreen();
@@ -220,7 +278,7 @@ int main(int argc, char** argv) {
 
         splitString(buffer, command, sizeof(command), &commandSize);
 
-        printf("return: %d\n", parseArgs(commandSize, command));
+        parseArgs(commandSize, command, 0);
 
 
     }

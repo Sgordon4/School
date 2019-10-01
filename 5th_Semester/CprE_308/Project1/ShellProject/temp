@@ -88,3 +88,82 @@ int main(int argc, char** argv) {
     }
     return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/** Parses given array of values into options and arguments
+
+@param argc     Count of the number of arguments contained in argv
+@param argv     Values of the arguments
+@return         0 for success, -1 for error
+*/
+int parseArgs(int argc, char **argv){
+
+    if(DEBUG){
+        debug_print("Size: %d\n",  argc);
+
+        int i;
+        for(i = 0; i < argc; i++){
+            debug_print("Arg at %d: ", i);
+            debug_print("%s\n", argv[i]);
+        }
+    }
+
+
+    char allOptions[] = "p:";       //Every available option
+                                    // ":x" for no args required
+
+    int option;
+
+    //I'm using getopt for command parsing because its just really really
+    //really really really nice. Please God let this be allowed.
+    while((option = getopt(argc, argv, allOptions)) != -1){
+
+        printf("We out here\n");
+
+        debug_print("Option: %c\n", option);
+        switch(option)
+        {
+            case 'p':
+                strcpy(prompt, optarg); //Replace prompt with provided one
+                break;
+            case 'c':
+                printf("mmmmmmm\n");
+                break;
+            //-------------------------------------------------------------
+            case '?':
+                /* getopt() automatically prints errors for us :D
+                    Gists of what it prints:
+
+                printf("Option -%c requires an argument.\n", optopt);
+                printf("Unknown option '-%c'.\n", optopt);
+                printf("Unknown option character '\\x%x'.\n", optopt);
+                */
+                //Continue on to default's return...
+
+            default: return -1;
+                    break;
+            //-------------------------------------------------------------
+        }
+
+        // optind is for the extra arguments
+        // which are not parsed
+        int index;
+        for (index = optind; index < argc; index++)
+            printf ("Non-option argument %s\n", argv[index]);
+
+    }
+
+    return 0;
+}
