@@ -98,7 +98,10 @@ size_t splitString(char *buffer, char *argv[], size_t argv_size, int *num_args)
     if (state != DULL && argc < argv_size)
         argv[argc++] = start_of_word;
 
-    *num_args = argc;
+
+    argv[argc] = NULL;  //Smack a null pointer on the end
+    *num_args = argc;   //Update our personal array-size pointer
+
     return 0;
 }
 
@@ -127,7 +130,7 @@ int parseArgs(int argc, char **argv, int start){
         debug_print("Size: %d\n",  argc);
 
         int i;
-        for(i = 0; i < argc; i++){
+        for(i = 0; i <= argc; i++){
             debug_print("Arg at %d: ", i);
             debug_print("%s\n", argv[i]);
         }
@@ -141,17 +144,20 @@ int parseArgs(int argc, char **argv, int start){
         debug_print("Command: %s\n", argv[i]);
 
 
-        if (strcmp(command, "exit") == 0){
+        if (strcmp(command, "exit") == 0){//------------------------------------
             printf("Exiting shell...\n");
             exit(0);
         }
-        else if (strcmp(command, "pid") == 0){
+        if (strcmp(command, "clear") == 0){//------------------------------------
+            clrScreen();
+        }
+        else if (strcmp(command, "pid") == 0){//--------------------------------
             printf("PID: %d\n", getpid());
         }
-        else if (strcmp(command, "ppid") == 0){
+        else if (strcmp(command, "ppid") == 0){//-------------------------------
             printf("PPID: %d\n", getppid());
         }
-        else if (strcmp(command, "cd") == 0){
+        else if (strcmp(command, "cd") == 0){//---------------------------------
             if((argc-i) < 2){
                 chdir(getenv("HOME"));
                 return 0;
@@ -159,11 +165,11 @@ int parseArgs(int argc, char **argv, int start){
             chdir(argv[++i]);
             return 0;
         }
-        else if (strcmp(command, "pwd") == 0){
+        else if (strcmp(command, "pwd") == 0){//--------------------------------
             char buffer[100];
             printf("%s\n", getcwd(buffer, sizeof(buffer)));
         }
-        else if (strcmp(command, "-p") == 0){
+        else if (strcmp(command, "-p") == 0){//---------------------------------
             if((argc-i) < 2){
                 printf("Option -p requires an argument!\n");
                 return -1;
@@ -171,77 +177,77 @@ int parseArgs(int argc, char **argv, int start){
             strcpy(prompt, argv[++i]);
             debug_print("Changed prompt: %s\n", argv[i]);
         }
-        else{
-
-            pid_t  child;
-            int    cstatus;  /* Exit status of child. */
-            pid_t  c;        /* Pid of child to be returned by wait. */
-            char *args[3];   /* List of arguments for the child process. */
-
-            /* Set up arguments to run an exec in the child process.  */
-            /* (This example runs the "ls" program with "-l" option.) */
-            args[0] = "ls";
-            args[1] = "-l";
-            args[2] = NULL;   /* Indicates the end of arguments. */
-            if ((child = fork()) == 0) { /* Child process. */
-                printf("Child: PID of Child = %ld\n", (long) getpid());
-                execvp(args[0], args); /* arg[0] has the command name. */
+        else{//-----------------------------------------------------------------
 
 
-                /* If the child process reaches this point, then  */
-                /* execvp must have failed.                       */
+            //Fork observer to keep track of child process, allowing main to be
+            //unblocked in case of background process
 
-                fprintf(stderr, "Child process could not do execvp.\n");
-                exit(1);
+            //Check to see if a background process is requested, eg
+            //If the last item in argv == "&"
+            int background = 0;
+
+            if(strcmp(argv[argc-1], "&") == 0){
+                argv[argc-1] = NULL;
+                background = 1;
             }
-            else { /* Parent process. */
-                if (child == (pid_t)(-1)) {
-                    fprintf(stderr, "Fork failed.\n");
-                    exit(1);
+
+
+
+            pid_t   observer;   //PID of observer
+            int     obs_status; //Exit status of observer
+            pid_t   tobs;       //PID of observer to be returned by wait()
+
+            //Launch observer
+            observer = fork();
+
+            //Observer ---------------------------------------------------------
+            if(observer == 0){
+                if(DEBUG) printf("Launching observer\n");
+
+                pid_t   worker;     //PID of worker
+                int     wrk_status; //Exit status of worker
+                pid_t   twrk;       //PID of worker to be returned by wait()
+
+
+                //Launch worker
+                worker = fork();
+
+                //Worker -------------------------------------------------------
+                if(worker == 0){
+                    printf(">>>[%ld] %s\n", (long)getpid(), command);
+                    execvp(command, (argv+i));
+
+                    //execvp() does not return, must have failed
+                    fprintf(stderr, "Cannot exec %s: No such file or directory\n", command);
+                    kill(getpid(), SIGTERM);    //Destroy worker
                 }
-                else {
-                    c = wait(&cstatus); /* Wait for child to complete. */
-                    printf("Parent: Child  %ld exited with status = %d\n",(long) c, cstatus);
-                }
+                else{   //Observer
+                    if (worker == (pid_t)(-1)) {
+                        fprintf(stderr, "Worker fork failed.\n");
+                        return -1;
+                    }
+                    twrk = wait(&wrk_status);   //Wait for worker to complete
+                    printf(">>>[%ld] %s Exit %d\n", (long)twrk, command, wrk_status);
+                    kill(getpid(), SIGTERM);    //Destroy observer
+                }//-------------------------------------------------------------
+
             }
-            return  0;
-
-
-            /*
-            //Try to start a program command
-            pid_t child_pid;
-            int child_stat;
-            pid_t tpid;
-
-            child_pid = fork();
-            if(child_pid){
-                if(child_pid == (pid_t)(-1)){
-                    printf("Fork failed.");
+            else{   //Main
+                if (observer == (pid_t)(-1)) {
+                    fprintf(stderr, "Observer fork failed.\n");
                     return -1;
                 }
+                //If this is not a background process, wait for observer
+                if(!background)
+                    //tobs = wait(&obs_status);   //Wait for worker to complete
+                    wait(&obs_status);
 
-                printf(">>>[%ld] %s\n", (long)child_pid, command);
-                tpid = wait(&child_stat);
-                printf(">>>[%ld] %s Exit %d\n", (long)tpid, command, child_stat);
+            }//-----------------------------------------------------------------
 
-                if(child_stat == 0)
-                    continue;
-            }
-            else{
-                //char *execargs[] = {"ls", "-l", NULL};
-                //execvp(execargs[0], execargs);
-
-                printArr(argv+i, i, argc-i);
-                printf("\n");
-
-                //Send execvp the remaining arguments
-                execvp((argv+i)[0], argv+i);
-                //If execvp returns, command was not recognized
-            }
-
-            printf("Unknown command %s\n", command);
-            return -1;
-            */
+            //For now, so we don't have to parse strings,
+            //just assume that was the last command and return
+            return 0;
         }
     }
 
@@ -269,7 +275,7 @@ int main(int argc, char** argv) {
     if(parseArgs(argc, argv, 1))        //If returned -1
         abort();
 
-    //clrScreen();
+    clrScreen();
 
     while(1){
 

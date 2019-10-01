@@ -167,3 +167,89 @@ int parseArgs(int argc, char **argv){
 
     return 0;
 }
+
+
+
+
+
+
+
+
+
+
+/*
+//Try to start a program command
+pid_t child_pid;
+int child_stat;
+pid_t tpid;
+
+child_pid = fork();
+if(child_pid){
+    if(child_pid == (pid_t)(-1)){
+        printf("Fork failed.");
+        return -1;
+    }
+
+    printf(">>>[%ld] %s\n", (long)child_pid, command);
+    tpid = wait(&child_stat);
+    printf(">>>[%ld] %s Exit %d\n", (long)tpid, command, child_stat);
+
+    if(child_stat == 0)
+        continue;
+}
+else{
+    //char *execargs[] = {"ls", "-l", NULL};
+    //execvp(execargs[0], execargs);
+
+    printArr(argv+i, i, argc-i);
+    printf("\n");
+
+    //Send execvp the remaining arguments
+    execvp((argv+i)[0], argv+i);
+    //If execvp returns, command was not recognized
+}
+
+printf("Unknown command %s\n", command);
+return -1;
+*/
+
+
+
+
+
+
+
+
+
+            pid_t  child;
+            int    cstatus;  /* Exit status of child. */
+            pid_t  c;        /* Pid of child to be returned by wait. */
+            char *args[3];   /* List of arguments for the child process. */
+
+            /* Set up arguments to run an exec in the child process.  */
+            /* (This example runs the "ls" program with "-l" option.) */
+            args[0] = "ls";
+            args[1] = "-l";
+            args[2] = NULL;   /* Indicates the end of arguments. */
+            if ((child = fork()) == 0) { /* Child process. */
+                printf("Child: PID of Child = %ld\n", (long) getpid());
+                execvp(args[0], args); /* arg[0] has the command name. */
+
+
+                /* If the child process reaches this point, then  */
+                /* execvp must have failed.                       */
+
+                fprintf(stderr, "Child process could not do execvp.\n");
+                exit(1);
+            }
+            else { /* Parent process. */
+                if (child == (pid_t)(-1)) {
+                    fprintf(stderr, "Fork failed.\n");
+                    exit(1);
+                }
+                else {
+                    c = wait(&cstatus); /* Wait for child to complete. */
+                    printf("Parent: Child  %ld exited with status = %d\n",(long) c, cstatus);
+                }
+            }
+            return  0;
