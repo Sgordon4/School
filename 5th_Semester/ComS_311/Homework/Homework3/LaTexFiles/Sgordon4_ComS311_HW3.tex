@@ -149,9 +149,91 @@ k=log(n)-1$\\
 \pagebreak
 
 
-2) This shit dumb af\\ \\ 
+2) Given a k-sorted arrayList...\\
+\begin{lstlisting}[label=some-code]
+kSort(int k, List<> kSorted){
 
-3) To classify purple points, this algorithm will recursively sort the points by their x-coordinate values, then parse the sorted array.\\
+    //Make two temporary arrays with their own ks...
+    int k1 = k-(k/2)
+    int k2 = k/2
+    
+    List<> arr1 = new ArrayList();
+    List<> arr2 = new ArrayList();
+    
+    
+    // Split the kSorted array into two
+    // {1, 4, 7, 3, 5,  3, 9, 12, 6, 19,  7, 83, 14}   k=5 
+    // ==>
+    // {1, 4, 7,        3, 9, 12,         7, 83, 14}   k=3
+    // {         3, 5,            6, 19            }   k=2
+    
+    // ==>>
+    // {1, 4, 7, 3, 9, 12, 7, 83, 14} k=3
+    // ==>
+    // {1, 4,    3, 9,     7, 83    } k=2
+    // {      7,       12,        14} k=1
+    
+    // etc...
+
+
+    //Copy the data to the temp arrays...
+    
+    int i, j;
+    int x = 0, y = 0;
+    for (i = 0; x < kSorted.size(); i++){
+        x = i + k2*(i/k1);
+
+        arr1.add(kSorted.get(x));
+    }
+
+    for (j = 0; y < kSorted.size(); j++){
+        y = i + k1*(i/k2) + k1;
+
+        arr2.add(kSorted.get(y));
+    }
+    
+    
+    //If k1 > 1, call again
+    if(k1 > 1)
+    	arr1 = kSort(k1, arr1);
+    
+    //If k2 > 1 call again
+    if(k2 > 1)
+	arr2 = kSort(k2, arr2);
+    
+    
+    //Merge the two arrays in a merge-sort fashion,
+    //and return the result
+    return merge(arr1, arr2);
+    
+}
+\end{lstlisting}
+This algorithm runs in some amount of time, of which I have none of to calculate.\\
+
+\pagebreak
+
+3) \\
+Given an array of points...\\
+Declare an empty array of purple points.\\
+
+\noindent Sort the array by the y values of each point.\\
+
+\noindent Inside the funct(arr)\{\\
+\indent Split the array at the midpoint into two arrays, smaller and larger.\\
+
+Find the largest x-value of the larger array.\\
+\indent Compare this value to each value in the smaller array, adding each smaller\\
+\indent point to the array of purple values.\\
+
+Recursively call this function with the larger array.\\
+\}\\
+
+As we divide the array in half each time, there are log(n) recurrence levels.\\
+Therefore time is  $cn*\sum_{k=0}^{log(n)}(1/2)^k \Rightarrow O(n)$\\
+Multiplied by the sort in the beginning, the algorithm takes O(nlog(n) time.
+
+
+%To classify purple points, this algorithm will recursively sort the points by their x-coordinate values, then parse the sorted array.\\
 
 
 
