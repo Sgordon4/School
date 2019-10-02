@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 #include <sys/wait.h>
 #include <unistd.h>
 
@@ -14,6 +15,67 @@
 
 char processName[100];
 char prompt[] = "308sh> ";
+
+
+//Node in a linked list. Used to store currently active jobs
+struct node{
+    int pid;
+    char *name;
+    struct node *next;
+};
+struct node *head = NULL;
+
+bool listEmpty(){
+    //printf("Head: %s", head);
+    return (head == NULL);
+}
+void listAdd(int pid, char *name){
+    struct node *link = (struct node*)malloc(sizeof(struct node));
+    link->pid = pid;
+    link->name = name;
+    link->next = head;
+    head = link;
+}
+struct node* listRemove(int pid){
+    struct node *current = head;
+    struct node *previous = NULL;
+
+    if(listEmpty())
+        return NULL;
+
+    //While this node's PID doesn't match...
+    while(current->pid != pid){
+
+        //If this is the last node...
+        if(current->next == NULL)
+            return NULL;
+
+        //Otherwise, continue down the line
+        previous = current;
+        current = current->next;
+    }
+
+    //Remove the discovered node
+    if(current == head)
+        head = head->next;
+    else
+        previous->next = current->next;
+
+    return current;
+}
+void listPrint(){
+    printf("Jobs:----------------------\n");
+    struct node *current = head;
+    while(current != NULL){
+        printf("%d: %s\n", current->pid, current->name);
+        current = current->next;
+    }
+    printf("---------------------------\n");
+}
+
+
+
+
 
 
 
@@ -117,6 +179,8 @@ void printArr(char **argv, int start, int argc){
 
 
 
+
+
 /** Parses given array of values into options and arguments
 
 @param argc     Count of the number of arguments contained in argv
@@ -169,6 +233,9 @@ int parseArgs(int argc, char **argv, int start){
             char buffer[100];
             printf("%s\n", getcwd(buffer, sizeof(buffer)));
         }
+        else if (strcmp(command, "jobs") == 0){//-------------------------------
+            listPrint();
+        }
         else if (strcmp(command, "-p") == 0){//---------------------------------
             if((argc-i) < 2){
                 printf("Option -p requires an argument!\n");
@@ -196,7 +263,7 @@ int parseArgs(int argc, char **argv, int start){
 
             pid_t   observer;   //PID of observer
             int     obs_status; //Exit status of observer
-            pid_t   tobs;       //PID of observer to be returned by wait()
+            //pid_t   tobs;       //PID of observer to be returned by wait()
 
             //Launch observer
             observer = fork();
@@ -215,21 +282,33 @@ int parseArgs(int argc, char **argv, int start){
 
                 //Worker -------------------------------------------------------
                 if(worker == 0){
+                    //Add this child to the jobs list
+                    listAdd(getpid(), command);
+                    debug_print("Adding worker %d, %s to list\n", getpid(), command);
+
                     printf(">>>[%ld] %s\n", (long)getpid(), command);
                     execvp(command, (argv+i));
 
                     //execvp() does not return, must have failed
                     fprintf(stderr, "Cannot exec %s: No such file or directory\n", command);
-                    kill(getpid(), SIGTERM);    //Destroy worker
+                    //kill(getpid(), SIGTERM);    //Destroy worker
+                    exit(-1); 
                 }
                 else{   //Observer
                     if (worker == (pid_t)(-1)) {
                         fprintf(stderr, "Worker fork failed.\n");
                         return -1;
                     }
-                    twrk = wait(&wrk_status);   //Wait for worker to complete
+                    twrk = waitpid(worker, &wrk_status, WUNTRACED);   //Wait for worker to complete
                     printf(">>>[%ld] %s Exit %d\n", (long)twrk, command, wrk_status);
+                    //Remove child from jobs list
+                    debug_print("Removing worker %d, %s to list\n", worker, command);
+                    listRemove(worker);
+
+
                     kill(getpid(), SIGTERM);    //Destroy observer
+                    //exit(0);
+
                 }//-------------------------------------------------------------
 
             }
@@ -241,9 +320,15 @@ int parseArgs(int argc, char **argv, int start){
                 //If this is not a background process, wait for observer
                 if(!background)
                     //tobs = wait(&obs_status);   //Wait for worker to complete
-                    wait(&obs_status);
+                    waitpid(observer, &obs_status, WUNTRACED);
+                else
+                    //Let the system know we don't care about the exit status,
+                    //and to just delete the dead child lol rip
+                    signal(SIGCHLD, SIG_IGN);
 
             }//-----------------------------------------------------------------
+
+
 
             //For now, so we don't have to parse strings,
             //just assume that was the last command and return
