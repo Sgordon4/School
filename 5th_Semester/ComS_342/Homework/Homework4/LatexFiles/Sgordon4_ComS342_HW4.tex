@@ -8,6 +8,7 @@
 \usepackage{listings}
 \usepackage{scrextend}
 \usepackage{changepage} %Adjustwidth
+\usepackage[margin=1in]{geometry}
 
 
 % Used for code blocks ----------------------------------------------------------------
@@ -31,7 +32,7 @@
 \maketitle
 
 
-\noindent 1.\\
+\noindent 1.
 \begin{adjustwidth}{.25in}{0in}
 (define X 88) (define Y 89) (define Z 90)\\
 (+ X 32)\\
@@ -42,6 +43,235 @@
 \$ 122\\
 
 \end{adjustwidth}
+
+\noindent 2.
+\begin{lstlisting}
+(define fib (
+	lambda (n) (
+		if (> n 1) 
+		(+ (fib (- n 1)) (fib (- n 2))) 
+		n
+	)
+))
+
+(define fib (lambda (n) (if (> n 1) (+ (fib (- n 1)) ...
+				 (fib (- n 2))) n)))
+
+\end{lstlisting}
+
+\pagebreak
+
+
+\noindent 3a.
+\begin{lstlisting}
+(define count (
+	lambda (n lst) (
+		if(null? lst) 0
+		(
+			if (= n (car lst)) 
+				(+ 1 (count n (cdr lst)))
+				(+ 0 (count n (cdr lst)))
+		)
+	)
+))
+
+
+(define count (lambda (n lst) (if(null? lst) 0(if (= n (car lst)) ...
+	(+ 1 (count n (cdr lst)))(+ 0 (count n (cdr lst)))))))
+
+\end{lstlisting}
+
+\pagebreak
+
+\noindent 3b.
+\begin{lstlisting}
+(define maxhelp (
+	lambda (n lst) (
+		if(null? lst)
+			n
+			(if (> n (car lst)) 
+				(maxhelp n (cdr lst))
+				(maxhelp (car lst) (cdr lst))
+			)
+	)
+))
+
+
+(define max (
+	lambda (lst) (
+		if(null? lst) 0 
+			(maxhelp(car lst) lst)
+	)
+))
+
+
+1.
+(define maxhelp (lambda (n lst) (if(null? lst)n(if (> n (car lst)) ...
+		(maxhelp n (cdr lst))(maxhelp (car lst) (cdr lst))))))
+2.
+(define max (lambda (lst) (if(null? lst) 0 (maxhelp(car lst) lst))))
+\end{lstlisting}
+
+\pagebreak
+
+\noindent 3c.
+\begin{lstlisting}
+(define max2 (
+	lambda (a b) (
+		if(> a b) a b
+	)
+))
+
+
+(define maxrepeat (
+	lambda (lst) (
+		if(null? lst) 0
+			(max2 
+				(count (car lst) lst)
+				(maxrepeat (cdr lst))
+			)
+	)
+))
+
+
+1.
+(define count (lambda (n lst) (if(null? lst) 0(if (= n (car lst)) ...
+		(+ 1 (count n (cdr lst)))(+ 0 (count n (cdr lst)))))))
+2.
+(define max2 (lambda (a b) (if(> a b) a b)))
+3.
+(define maxrepeat (lambda (lst) (if(null? lst) 0 ...
+(max2 (count (car lst) lst)(maxrepeat (cdr lst))))))
+\end{lstlisting}
+
+\pagebreak
+
+\noindent 4a.
+Should ``cons'' be used here? It is specified this should be done "using list expression"
+\begin{lstlisting}
+(define pairs (list (list 1 5) (list 6 4) (list 7 8) (list 15 10)))
+\end{lstlisting}
+
+
+\noindent 4b.
+\begin{lstlisting}
+(define secondSum (
+	lambda (lst) (
+		+ (car (cdr (car lst))) (
+			+ (car (cdr (car (cdr lst)))) (
+				+ (car (cdr (car (cdr (cdr lst)))))
+				(car (cdr (car (cdr (cdr (cdr lst))))))
+			) 
+		)
+	)
+))
+
+(define secondSum (lambda (lst) (+ (car (cdr (car lst))) ...
+(+ (car (cdr (car (cdr lst)))) ...
+(+ (car (cdr (car (cdr (cdr lst))))) ...
+(car (cdr (car (cdr (cdr (cdr lst))))))) ))))
+\end{lstlisting}
+
+\pagebreak
+
+\noindent 5a.
+\begin{lstlisting}
+(define second (
+	lambda (apr) (
+		apr #f
+	)
+))
+
+(define second (lambda (apr) (apr #f)))
+\end{lstlisting}
+
+\noindent 5b.
+Honestly I'm just really confused. There's like 6 ways to do this and nobody has given a clear answer, only cutely dodged questions and withheld important information.
+\begin{lstlisting}
+(define pair (
+    lambda (fst snd) (
+        lambda (op) (
+            if (= op 1) (+ fst snd) (
+                if (= op 2) (- fst snd) (
+                    if (= op 3) (* fst snd) (
+                        if (= op 4) (/ fst snd)
+                                                0
+                    )
+                )
+            )
+        )
+    )
+))
+
+(define pair (lambda (fst snd) (lambda (op) (if (= op 1) ...
+(+ fst snd) (if (= op 2) (- fst snd) ...
+(if (= op 3) (* fst snd) (if (= op 4) (/ fst snd)0)))))))
+\end{lstlisting}
+
+\noindent 5c.
+\begin{lstlisting}
+(define add (lambda (p) (p 1)))
+    ==>
+(add apair)
+5
+\end{lstlisting}
+
+\pagebreak
+
+\noindent 6a.
+\begin{lstlisting}
+(define mylist (list (list 1 3) (list 4 2) (list 5 6)))
+\end{lstlisting}
+
+
+
+\noindent 6b.
+\begin{lstlisting}
+(define applyonnth (
+	lambda (op lst n) (
+		
+		if(null? lst) -1
+			(if (= n 1)
+				(op (car (car lst)) (car (cdr (car lst))))
+				(applyonnth op (cdr lst) (- n 1))
+			)
+	)
+))
+
+
+(define applyonnth (lambda (op lst n) (if(null? lst) -1 ...
+	(if (= n 1)(op (car (car lst)) (car (cdr (car lst)))) ...
+	(applyonnth op (cdr lst) (- n 1))))))
+
+
+Assuming operators are defined as such:
+(define add (lambda (x y)(+ x y)))
+(define subtract (lambda (x y)(- x y)))
+\end{lstlisting}
+
+\noindent 6c.
+\begin{lstlisting}
+(define applyonnth (
+    lambda (op) (
+        lambda(lst) (
+            lambda(n) (
+		
+                if(null? lst) -1
+                    (if (= n 1)
+                        (op (car (car lst)) (car (cdr (car lst))))
+                        (((applyonnth op) (cdr lst)) (- n 1))
+                    )
+                )
+            )
+        )
+))
+
+(define applyonnth (lambda (op) (lambda(lst) (lambda(n) ...
+(if(null? lst) -1(if (= n 1)(op (car (car lst)) ...
+(car (cdr (car lst))))(((applyonnth op) (cdr lst)) (- n 1))))))))
+\end{lstlisting}
+
+
 
 
 %\begin{lstlisting}

@@ -70,7 +70,7 @@ grammar ArithLang;
  Cdr : 'cdr' ; 
  Cons : 'cons' ; 
  List : 'list' ; 
- Null : 'null?' ; 
+ Null : 'null?' ; d))))
  Less : '<' ;
  Equal : '=' ;
  Greater : '>' ;
