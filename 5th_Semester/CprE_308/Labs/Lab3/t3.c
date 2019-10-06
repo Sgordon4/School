@@ -1,5 +1,5 @@
 /*
- * Fill in the "producer" function to satisfy the requirements 
+ * Fill in the "producer" function to satisfy the requirements
  * set forth in the lab description.
  */
 
@@ -9,7 +9,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-/* 
+/*
  * the total number of consumer threads created.
  * each consumer thread consumes one item
  */
@@ -19,7 +19,7 @@
 #define NUM_ITEMS_PER_PRODUCE  10
 
 /*
- * the two functions for the producer and 
+ * the two functions for the producer and
  * the consumer, respectively
  */
 void *producer(void *);
@@ -29,13 +29,13 @@ void *consumer(void *);
 /********** global variables begin *******/
 
 pthread_mutex_t mut;
-pthread_cond_t producer_cv; 	
+pthread_cond_t producer_cv;
 pthread_cond_t consumer_cv;
 int supply = 0;  /* inventory remaining */
 
-/* 
+/*
  * Number of consumer threads that are yet to consume items.  Remember
- * that each consumer thread consumes only one item, so initially, this 
+ * that each consumer thread consumes only one item, so initially, this
  * is set to TOTAL_CONSUMER_THREADS
  */
 int num_cons_remaining = TOTAL_CONSUMER_THREADS;
@@ -89,7 +89,21 @@ void *producer(void *arg)
 
   while (!producer_done)
   {
-    /* TODO: fill in the code here */
+    pthread_mutex_lock(&mut);                       //Lock supply
+
+    if(supply == 0){                                //If empty
+
+      supply += NUM_ITEMS_PER_PRODUCE;              //Make more
+
+      pthread_cond_signal(&consumer_cv);            //Spread the good word
+      pthread_cond_wait(&producer_cv, &mut);        //Twiddle thumbs
+    }
+
+    pthread_mutex_unlock(&mut);                     //Unlock supply
+
+    if(!num_cons_remaining)                         //If everyone died
+      producer_done = 1;                            //Follow them
+
   }
   return NULL;
 }
@@ -117,4 +131,3 @@ void *consumer(void *arg)
 
   return NULL;
 }
-
