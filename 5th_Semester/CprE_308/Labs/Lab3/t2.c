@@ -62,7 +62,7 @@ void* world() {
 
     done = 2;       //---------------------------Update var for again()'s while
 
-    printf("World");    //------------------------------------Capitalized hello
+    printf("World");    //------------------------------------Capitalized world
     fflush(stdout);
     pthread_cond_signal(&done_world);	//----------------Signal alone() thread
     pthread_mutex_unlock(&mutex); // unlocks mutex
