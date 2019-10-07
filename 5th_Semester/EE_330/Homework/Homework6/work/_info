@@ -1,0 +1,188 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dU:/School/5th_Semester/EE_330/Homework/Homework6
+Efadder
+Z1 w1570475721
+Z2 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
+Z3 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
+Z4 DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
+Z5 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z6 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+R0
+Z7 8U:/School/5th_Semester/EE_330/Homework/Homework6/FAdder.vhd
+Z8 FU:/School/5th_Semester/EE_330/Homework/Homework6/FAdder.vhd
+l0
+L7
+VKQB8gCMRbG5^dSJNTZ?Jj3
+!s100 :joZ:AYM[eE;3J8Sg4NCS0
+Z9 OP;C;10.7b;67
+32
+Z10 !s110 1570475726
+!i10b 1
+Z11 !s108 1570475726.000000
+Z12 !s90 -reportprogress|300|-work|work|U:/School/5th_Semester/EE_330/Homework/Homework6/FAdder.vhd|
+Z13 !s107 U:/School/5th_Semester/EE_330/Homework/Homework6/FAdder.vhd|
+!i113 1
+Z14 o-work work
+Z15 tExplicit 1 CvgOpt 0
+Astructure
+R2
+R3
+R4
+R5
+R6
+Z16 DEx4 work 6 fadder 0 22 KQB8gCMRbG5^dSJNTZ?Jj3
+l29
+L17
+VeFWmDaPTHWQ[HEL]VZUMJ1
+!s100 QilUcTcQFL<Jl1CbhXfSh1
+R9
+32
+R10
+!i10b 1
+R11
+R12
+R13
+!i113 1
+R14
+R15
+Efadder_tb
+Z17 w1570474814
+R2
+R5
+R6
+R0
+Z18 8U:/School/5th_Semester/EE_330/Homework/Homework6/FAdder_tb.vhd
+Z19 FU:/School/5th_Semester/EE_330/Homework/Homework6/FAdder_tb.vhd
+l0
+L5
+VDn>JD5_V6>P@Cbe=9b;GH2
+!s100 VfI4iDWTB;:RQUzb__j191
+R9
+32
+Z20 !s110 1570475728
+!i10b 1
+Z21 !s108 1570475728.000000
+Z22 !s90 -reportprogress|300|-work|work|U:/School/5th_Semester/EE_330/Homework/Homework6/FAdder_tb.vhd|
+Z23 !s107 U:/School/5th_Semester/EE_330/Homework/Homework6/FAdder_tb.vhd|
+!i113 1
+R14
+R15
+Abehavior
+R3
+R4
+R16
+R2
+R5
+R6
+Z24 DEx4 work 9 fadder_tb 0 22 Dn>JD5_V6>P@Cbe=9b;GH2
+l15
+L8
+Z25 VilajP<XOcY`i>GCzKD9VM0
+Z26 !s100 UEY6EFc@ZdGj?IAC_f^4T3
+R9
+32
+R20
+!i10b 1
+R21
+R22
+R23
+!i113 1
+R14
+R15
+Ehadder
+Z27 w1570472591
+R2
+R3
+R4
+R5
+R6
+R0
+Z28 8U:/School/5th_Semester/EE_330/Homework/Homework6/HAdder.vhd
+Z29 FU:/School/5th_Semester/EE_330/Homework/Homework6/HAdder.vhd
+l0
+L13
+VkTRb23EJQB@[lB:nAiGD21
+!s100 KJ9d7`=ZPFBf76hXLOGie0
+R9
+32
+Z30 !s110 1570475617
+!i10b 1
+Z31 !s108 1570475617.000000
+Z32 !s90 -reportprogress|300|-work|work|U:/School/5th_Semester/EE_330/Homework/Homework6/HAdder.vhd|
+Z33 !s107 U:/School/5th_Semester/EE_330/Homework/Homework6/HAdder.vhd|
+!i113 1
+R14
+R15
+Astructure
+R2
+R3
+R4
+R5
+R6
+Z34 DEx4 work 6 hadder 0 22 kTRb23EJQB@[lB:nAiGD21
+l23
+L22
+VOk6WRZhD;dNlEZ85_4[D22
+!s100 7`Jceo4lCcf]?3`TzPSDK3
+R9
+32
+R30
+!i10b 1
+R31
+R32
+R33
+!i113 1
+R14
+R15
+Ehadder_tb
+Z35 w1570474613
+R2
+R5
+R6
+R0
+Z36 8U:/School/5th_Semester/EE_330/Homework/Homework6/HAdder_tb.vhd
+Z37 FU:/School/5th_Semester/EE_330/Homework/Homework6/HAdder_tb.vhd
+l0
+L5
+VI_CQd5b0lQk3?cmi1FD3S1
+!s100 eQdUZAaGfHn9W08;TXB>]2
+R9
+32
+Z38 !s110 1570475618
+!i10b 1
+Z39 !s108 1570475618.000000
+Z40 !s90 -reportprogress|300|-work|work|U:/School/5th_Semester/EE_330/Homework/Homework6/HAdder_tb.vhd|
+Z41 !s107 U:/School/5th_Semester/EE_330/Homework/Homework6/HAdder_tb.vhd|
+!i113 1
+R14
+R15
+Abehavior
+R3
+R4
+R34
+R2
+R5
+R6
+DEx4 work 9 hadder_tb 0 22 I_CQd5b0lQk3?cmi1FD3S1
+l13
+L8
+V>P>G:[PSn7]:g0VOBO@gb0
+!s100 A<Bm7RV@ZRg:fJ19@fg5:1
+R9
+32
+R38
+!i10b 1
+R39
+R40
+R41
+!i113 1
+R14
+R15
