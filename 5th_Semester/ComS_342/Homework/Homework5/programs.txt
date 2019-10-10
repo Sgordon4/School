@@ -1,0 +1,6 @@
+1.
+(define Find (
+    lambda(chr lst) (
+        
+    )
+))
