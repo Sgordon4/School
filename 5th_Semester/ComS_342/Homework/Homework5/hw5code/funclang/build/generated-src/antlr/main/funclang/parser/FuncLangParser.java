@@ -1,4 +1,4 @@
-// Generated from funclang/parser/FuncLang.g by ANTLR 4.5
+// Generated from funclang\parser\FuncLang.g by ANTLR 4.5
 package funclang.parser; import static funclang.AST.*;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;

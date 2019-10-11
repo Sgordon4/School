@@ -1,6 +1,69 @@
-1.
+1a.
+
+(Find 88 (list (list 77 73) (list 89) (list 88 90 76)))
+
+((77 73) (89) (88 90 76))
+
+(define helper (
+	lambda (chr lst) (
+		//Look through this string for the char
+		(if (null? lst)
+			()
+			(if (= (car lst) car)		\\If this is the char we're looking for...
+				(list chr)				\\Return some non-null list
+				(helper chr (cdr lst))	\\Otherwise keep looking									((77 73) (89) (88 90 76))
+			)
+		)
+	)
+))
+
+
 (define Find (
     lambda(chr lst) (
+	
+		(if (null? lst)
+			() 
+			(if (null? (helper chr (car lst)))		// If this string is not the one...
+				(Find chr (cdr lst))				// Return the same thing but with the next string
+				(car lst)							// Otherwise return this string
+			)
+		)
         
     )
 ))
+
+(define helper (lambda (chr lst)(if (null? lst)(list)(if (= (car lst) chr)(list chr)(helper chr (cdr lst))))))
+(define Find (lambda(chr lst)(if (null? lst)(list)(if (null? (helper chr (car lst)))(Find chr (cdr lst))(car lst)))))
+
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+1b. 
+
+(define helper1 (
+	lambda (curr rest)
+		(
+		if (null? curr)			//If we have reached the end of curr-ent string
+			(Concatenate rest)	//Continue with the rest
+			(cons (car curr) (helper1 (cdr curr) rest))
+		)
+))
+
+
+(define Concatenate (
+	lambda(lst)
+		(
+		if (null? lst)
+			(list)
+			(
+			if (null? (car lst))
+				(Concatenate (cdr lst))
+				(helper1 (car lst) (cdr lst))
+			)
+		)
+))
+
+(define helper1 (lambda (curr rest)(if (null? curr)(Concatenate rest)(cons (car curr)(helper1 (cdr curr) rest)))))
+(define Concatenate (lambda(lst)(if (null? lst)(list)(if (null? (car lst))(Concatenate (cdr lst))(helper1 (car lst) (cdr lst))))))
+
+-----------------------------------------------------------------------------------------------------------------------------
