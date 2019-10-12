@@ -3,6 +3,7 @@
 #include <sys/shm.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 #define SHMSZ     27	// Define size of shared memory segment
 
@@ -46,15 +47,18 @@ void main()
     s[i] = 0;
 
     /*
-     * Finally, we wait until the other process 
+     * Finally, we wait until the other process
      * changes the first character of our memory
-     * to '*', indicating that it has read what 
+     * to '*', indicating that it has read what
      * we put there.
      */
     while (*shm != '*')
         sleep(1);
 
     printf("Server detected client read\n");
+
+    shmdt(shm);
+    shmctl(shmid, IPC_RMID, 0);
 
     exit(0);
 }

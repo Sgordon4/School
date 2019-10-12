@@ -6,6 +6,7 @@
 #include <sys/shm.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 #define SHMSZ     27	// Define size of shared memory segment
 
@@ -47,8 +48,8 @@ void main()
     printf("Client done reading memory\n");
 
     /*
-     * Finally, change the first character of the 
-     * segment to '*', indicating we have read 
+     * Finally, change the first character of the
+     * segment to '*', indicating we have read
      * the segment.
      */
     *shm = '*';
