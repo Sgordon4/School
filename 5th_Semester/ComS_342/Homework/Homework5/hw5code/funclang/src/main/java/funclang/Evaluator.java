@@ -170,6 +170,27 @@ public class Evaluator implements Visitor<Value> {
 	}
 //======================================================================================================================
 
+	public boolean compareLists(Value list1, Value list2){
+
+		//If one is null, they must both be null
+		if(list1 instanceof Value.Null){
+			if(list2 instanceof Value.Null)
+				return true;
+			return false;
+		}
+		//If we got this far, list1 is not null
+		if(list2 instanceof Value.Null)
+			return false;
+
+		//Assume the values are pairs
+		Value.PairVal pair1 = (Value.PairVal)list1;
+		Value.PairVal pair2 = (Value.PairVal)list2;
+		if(pair1.fst() != pair2.fst())
+			return false;
+
+		return compareLists(pair1.snd(), pair2.snd());
+	}
+
 	public Value.NumVal listSize(Value list){
 		//If the passed value is null...
 		if(list instanceof Value.Null)
@@ -194,27 +215,23 @@ public class Evaluator implements Visitor<Value> {
 
 		Object result1 = e.first_exp().accept(this, env);
 		Object result2 = e.second_exp().accept(this, env);
-		Value.NumVal sizeFirst;
-		Value.NumVal sizeSecond;
 
 		//If the results are NumVals
 		if((result1 instanceof Value.NumVal) && (result2 instanceof Value.NumVal)){
-			sizeFirst =(Value.NumVal) result1;
-			sizeSecond =(Value.NumVal) result2;
+			double val1 = ((Value.NumVal) result1).v();
+			double val2 = ((Value.NumVal) result2).v();
+			return new Value.BoolVal(val1 < val2);
 		}
 		//If the results are StringVals
 		else if((result1 instanceof Value.StringVal) && (result2 instanceof Value.StringVal)) {
-			//These if-elses are for portability
-			sizeFirst = new Value.NumVal(((StringVal) result1).v().length());
-			sizeSecond = new Value.NumVal(((StringVal) result2).v().length());
+			String str1 = ((Value.StringVal) result1).v();
+			String str2 = ((Value.StringVal) result2).v();
+			return new Value.BoolVal(str1.compareTo(str2) < 0);
 		}
 		//Otherwise they are PairVals
 		else{
-			sizeFirst = listSize((Value) result1);
-			sizeSecond = listSize((Value) result2);
+			return new Value.BoolVal(compareLists((Value) result1, (Value) result2));
 		}
-
-		return new Value.BoolVal(sizeFirst.v() < sizeSecond.v());
 	}
 //----------------------------------------------------------------------------------------------------------------------
 	@Override
