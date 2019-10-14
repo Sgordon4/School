@@ -170,43 +170,33 @@ public class Evaluator implements Visitor<Value> {
 	}
 //======================================================================================================================
 
-	public boolean compareLists(Value list1, Value list2){
+	/** Helper method to compare length and content of two lists
+	 *
+	 * @param list1 First list
+	 * @param list2 Second list
+	 * @return 0 if both lists are equal in length and content,
+	 * 			-1 if list1.length < list2.length,
+	 * 		 	 1 if list1.length > list2.length
+	 */
+	public double compareLists(Value list1, Value list2){
 
-		//If one is null, they must both be null
+		//Have we hit the end of the first list
 		if(list1 instanceof Value.Null){
 			if(list2 instanceof Value.Null)
-				return true;
-			return false;
+				return 0;	//l1.length == l2.length
+			return 1;		//l1.length > l2.length
 		}
 		//If we got this far, list1 is not null
 		if(list2 instanceof Value.Null)
-			return false;
+			return -1;		//l1.length < l2.length
 
 		//Assume the values are pairs
 		Value.PairVal pair1 = (Value.PairVal)list1;
 		Value.PairVal pair2 = (Value.PairVal)list2;
-		if(pair1.fst() != pair2.fst())
-			return false;
+		if(((Value.NumVal)pair1.fst()).v() != ((Value.NumVal)pair2.fst()).v())
+			return -1;		//Could also return 1 if we wanted, arbitrary as long as it's not 0
 
 		return compareLists(pair1.snd(), pair2.snd());
-	}
-
-	public Value.NumVal listSize(Value list){
-		//If the passed value is null...
-		if(list instanceof Value.Null)
-			return new Value.NumVal(0);
-
-		//Assume the value is a pair
-		Value.PairVal pair = (Value.PairVal)list;
-		double counter = 1;
-
-		//While the rest of the list is not empty
-		while(!(pair.snd() instanceof Value.Null)){
-			//Grab the rest of the list, and assume it's always going to be a list because who writes good code anyway
-			pair = ((Value.PairVal)pair.snd());
-			counter++;
-		}
-		return new Value.NumVal(counter);
 	}
 
 
@@ -215,84 +205,93 @@ public class Evaluator implements Visitor<Value> {
 
 		Object result1 = e.first_exp().accept(this, env);
 		Object result2 = e.second_exp().accept(this, env);
+		double firstVal;
+		double secondVal;
 
 		//If the results are NumVals
 		if((result1 instanceof Value.NumVal) && (result2 instanceof Value.NumVal)){
-			double val1 = ((Value.NumVal) result1).v();
-			double val2 = ((Value.NumVal) result2).v();
-			return new Value.BoolVal(val1 < val2);
+			firstVal  = ((Value.NumVal) result1).v();
+			secondVal = ((Value.NumVal) result2).v();
 		}
 		//If the results are StringVals
 		else if((result1 instanceof Value.StringVal) && (result2 instanceof Value.StringVal)) {
 			String str1 = ((Value.StringVal) result1).v();
 			String str2 = ((Value.StringVal) result2).v();
-			return new Value.BoolVal(str1.compareTo(str2) < 0);
+			firstVal = str1.compareTo(str2);
+			secondVal = 0;
 		}
 		//Otherwise they are PairVals
 		else{
-			return new Value.BoolVal(compareLists((Value) result1, (Value) result2));
-		}
-	}
-//----------------------------------------------------------------------------------------------------------------------
-	@Override
-	public Value visit(EqualExp e, Env env) { // New for funclang.
-		Object result1 = e.first_exp().accept(this, env);
-		Object result2 = e.second_exp().accept(this, env);
-		Value.NumVal sizeFirst;
-		Value.NumVal sizeSecond;
-
-		//If the results are NumVals
-		if((result1 instanceof Value.NumVal) && (result2 instanceof Value.NumVal)){
-			sizeFirst =(Value.NumVal) result1;
-			sizeSecond =(Value.NumVal) result2;
-		}
-		//If the results are BoolVals
-		else if((result1 instanceof Value.BoolVal) && (result2 instanceof Value.BoolVal)){
-			//These if-elses are for portability
-			sizeFirst = new Value.NumVal(  ((BoolVal) result1).v()   ? 1 : 0);
-			sizeSecond = new Value.NumVal( ((BoolVal) result2).v()   ? 1 : 0);
-		}
-		//If the results are StringVals
-		else if((result1 instanceof Value.StringVal) && (result2 instanceof Value.StringVal)) {
-			//These if-elses are for portability
-			sizeFirst = new Value.NumVal(((StringVal) result1).v().length());
-			sizeSecond = new Value.NumVal(((StringVal) result2).v().length());
-		}
-		//Otherwise they are PairVals
-		else{
-			sizeFirst = listSize((Value) result1);
-			sizeSecond = listSize((Value) result2);
+			firstVal = compareLists((Value) result1, (Value) result2);
+			secondVal = 0;
 		}
 
-		return new Value.BoolVal(sizeFirst.v() == sizeSecond.v());
+		return new Value.BoolVal(firstVal < secondVal);
 	}
+
 //----------------------------------------------------------------------------------------------------------------------
 	@Override
 	public Value visit(GreaterExp e, Env env) { // New for funclang.
 
 		Object result1 = e.first_exp().accept(this, env);
 		Object result2 = e.second_exp().accept(this, env);
-		Value.NumVal sizeFirst;
-		Value.NumVal sizeSecond;
+		double firstVal;
+		double secondVal;
 
 		//If the results are NumVals
 		if((result1 instanceof Value.NumVal) && (result2 instanceof Value.NumVal)){
-			sizeFirst =(Value.NumVal) result1;
-			sizeSecond =(Value.NumVal) result2;
+			firstVal  =((Value.NumVal) result1).v();
+			secondVal =((Value.NumVal) result2).v();
 		}
 		//If the results are StringVals
 		else if((result1 instanceof Value.StringVal) && (result2 instanceof Value.StringVal)) {
-			//These if-elses are for portability
-			sizeFirst = new Value.NumVal(((StringVal) result1).v().length());
-			sizeSecond = new Value.NumVal(((StringVal) result2).v().length());
+			String str1 = ((Value.StringVal) result1).v();
+			String str2 = ((Value.StringVal) result2).v();
+			firstVal = str1.compareTo(str2);
+			secondVal = 0;
 		}
 		//Otherwise they are PairVals
 		else{
-			sizeFirst = listSize((Value) result1);
-			sizeSecond = listSize((Value) result2);
+			firstVal = compareLists((Value) result1, (Value) result2);
+			secondVal = 0;
 		}
 
-		return new Value.BoolVal(sizeFirst.v() > sizeSecond.v());
+		return new Value.BoolVal(firstVal > secondVal);
+	}
+
+//----------------------------------------------------------------------------------------------------------------------
+	@Override
+	public Value visit(EqualExp e, Env env) { // New for funclang.
+
+		Object result1 = e.first_exp().accept(this, env);
+		Object result2 = e.second_exp().accept(this, env);
+		double firstVal;
+		double secondVal;
+
+		//If the results are NumVals
+		if((result1 instanceof Value.NumVal) && (result2 instanceof Value.NumVal)){
+			firstVal  = ((Value.NumVal) result1).v();
+			secondVal = ((Value.NumVal) result2).v();
+		}
+		//If the results are BoolVals
+		else if((result1 instanceof Value.BoolVal) && (result2 instanceof Value.BoolVal)){
+			firstVal  = ((BoolVal) result1).v()   ? 1 : 0;
+			secondVal = ((BoolVal) result2).v()   ? 1 : 0;
+		}
+		//If the results are StringVals
+		else if((result1 instanceof Value.StringVal) && (result2 instanceof Value.StringVal)) {
+			String str1 = ((Value.StringVal) result1).v();
+			String str2 = ((Value.StringVal) result2).v();
+			firstVal = str1.compareTo(str2);
+			secondVal = 0;
+		}
+		//Otherwise they are PairVals
+		else{
+			firstVal = compareLists((Value) result1, (Value) result2);
+			secondVal = 0;
+		}
+
+		return new Value.BoolVal(firstVal == secondVal);
 	}
 //======================================================================================================================
 
