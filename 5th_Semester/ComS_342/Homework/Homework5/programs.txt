@@ -67,3 +67,54 @@
 (define Concatenate (lambda(lst)(if (null? lst)(list)(if (null? (car lst))(Concatenate (cdr lst))(helper1 (car lst) (cdr lst))))))
 
 -----------------------------------------------------------------------------------------------------------------------------
+
+2)
+
+(define max (
+    lambda (lst)
+        (
+        if (null? lst) -1
+            (
+            if (> (car lst) (max (cdr lst)))
+                (car lst)
+                (max (cdr lst))
+            )
+        )
+))
+
+(define rest (
+    lambda (x l) 
+        (
+        if (null? l) (list)
+            (
+            if (= (car l) x)
+                (cdr l)
+                (cons (car l) (rest x (cdr l)))
+            )
+        )
+))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
