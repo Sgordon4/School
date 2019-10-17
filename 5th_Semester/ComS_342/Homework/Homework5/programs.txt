@@ -20,15 +20,15 @@
 
 (define Find (
     lambda(chr lst) (
-	
+
 		(if (null? lst)
-			() 
+			()
 			(if (null? (helper chr (car lst)))		// If this string is not the one...
 				(Find chr (cdr lst))				// Return the same thing but with the next string
 				(car lst)							// Otherwise return this string
 			)
 		)
-        
+
     )
 ))
 
@@ -38,7 +38,7 @@
 
 -----------------------------------------------------------------------------------------------------------------------------
 
-1b. 
+1b.
 
 (define helper1 (
 	lambda (curr rest)
@@ -83,7 +83,7 @@
 ))
 
 (define rest (
-    lambda (x l) 
+    lambda (x l)
         (
         if (null? l) (list)
             (
@@ -93,28 +93,55 @@
             )
         )
 ))
+(define rest (lambda (x l)(if (null? l) (list)(if (= (car l) x)(cdr l)(cons (car l) (rest x (cdr l)))))))
 
+(define Shuffle(
+    lambda (lst)
+        (
+        if (null? lst)
+            (list)
 
+            (
+            helper(Random lst) lst
+            )
+        )
+))
 
+(define Shuffle(lambda (lst)(if (null? lst)(list)(helper (Random lst) lst))))
 
+(define helper(
+    lambda (x lst)
+        (
+        cons x (Shuffle (rest x lst))
+        )
+))
 
+(define helper(lambda (x lst)(cons x (Shuffle (rest x lst)))))
 
+-----------------------------------------------------------------------------------------------------------------------------
 
+3)
 
+(= "abc" "abc")
+(= "abc" "abcd")
+(> "abc" "abcd")
+(< "abc" "abcdef")
+(= #t #t)
+(= #t #f)
 
+(= (list) (list))
+(= (list 1 2 3 4) (list 1 2 3 4))
+(= (list 1 2 3 4) (list 1 2 3 4 5))
+(= (list 1 2 3 4 (list)) (list 1 2 3 4 (list)))
 
+(= (car (list 1 2 3)) 1)
+(= (car (list 1 2 3)) 2)
+(= (cdr (list 1 2 3)) 2)
+(= (cdr (list 1 2 3)) (list 2 3))
+(= (cdr (list 1 2 3)) (cdr (list 4 2 3)))
+(= (cons 0 (list 1 2)) (list 0 (list 1 2)))
+(= (cons 0 (list 1 2)) (list 0 1 2))
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+(> (list 1 2) (list))
+(> (list) (list 1))
+(< (list 1 2) (cdr (list 2 3 4 5)))

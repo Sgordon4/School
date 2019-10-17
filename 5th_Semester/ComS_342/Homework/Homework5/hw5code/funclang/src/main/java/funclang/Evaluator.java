@@ -184,17 +184,28 @@ public class Evaluator implements Visitor<Value> {
 		if(list1 instanceof Value.Null){
 			if(list2 instanceof Value.Null)
 				return 0;	//l1.length == l2.length
-			return 1;		//l1.length > l2.length
+			return -1;		//l1.length < l2.length
 		}
 		//If we got this far, list1 is not null
 		if(list2 instanceof Value.Null)
-			return -1;		//l1.length < l2.length
+			return 1;		//l1.length > l2.length
 
 		//Assume the values are pairs
 		Value.PairVal pair1 = (Value.PairVal)list1;
 		Value.PairVal pair2 = (Value.PairVal)list2;
-		if(((Value.NumVal)pair1.fst()).v() != ((Value.NumVal)pair2.fst()).v())
+
+		//Check if values are null (There can be empty lists inside a list)
+		if(pair1.fst() instanceof Value.Null){
+			if(!(pair2.fst() instanceof Value.Null))
+				return -1;	//Pair1 == null, Pair2 != null
+		}
+		//If we got this far, pair1 is not null
+		else if(pair2.fst() instanceof Value.Null)
+			return 1;		//Pair1 != null, Pair2 == null
+		//Now just check if the values are equal or not
+		else if(((Value.NumVal)pair1.fst()).v() != ((Value.NumVal)pair2.fst()).v())
 			return -1;		//Could also return 1 if we wanted, arbitrary as long as it's not 0
+
 
 		return compareLists(pair1.snd(), pair2.snd());
 	}
@@ -217,7 +228,7 @@ public class Evaluator implements Visitor<Value> {
 		else if((result1 instanceof Value.StringVal) && (result2 instanceof Value.StringVal)) {
 			String str1 = ((Value.StringVal) result1).v();
 			String str2 = ((Value.StringVal) result2).v();
-			firstVal = str1.compareTo(str2);
+			firstVal = str1.length() - str2.length();
 			secondVal = 0;
 		}
 		//Otherwise they are PairVals
@@ -247,7 +258,7 @@ public class Evaluator implements Visitor<Value> {
 		else if((result1 instanceof Value.StringVal) && (result2 instanceof Value.StringVal)) {
 			String str1 = ((Value.StringVal) result1).v();
 			String str2 = ((Value.StringVal) result2).v();
-			firstVal = str1.compareTo(str2);
+			firstVal = str1.length() - str2.length();
 			secondVal = 0;
 		}
 		//Otherwise they are PairVals
