@@ -142,10 +142,12 @@ public class Evaluator implements Visitor<Value> {
 		List<Exp> operands = e.operands();
 
 		// Call-by-value semantics
+        //Just call them values or something. Who tf decided on 'actuals'
 		List<Value> actuals = new ArrayList<Value>(operands.size());
 		for(Exp exp : operands)
 			actuals.add((Value)exp.accept(this, env));
 
+		//These are names but some asshat decided to call them formals
 		List<String> formals = operator.formals();
 		if (formals.size()!=actuals.size())
 			return new Value.DynamicError("Argument mismatch in call " + ts.visit(e, env));
