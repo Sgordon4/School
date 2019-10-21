@@ -106,7 +106,7 @@ public class Printer {
 			result += e.body().accept(this, env);
 			return result + ")";
 		}
-		
+
 		public String visit(AST.CallExp e, Env env) {
 			String result = "(";
 			result += e.operator().accept(this, env) + " ";

@@ -5,16 +5,30 @@
 ((77 73) (89) (88 90 76))
 
 (define helper (
-	lambda (chr lst) (
-		//Look through this string for the char
-		(if (null? lst)
-			()
-			(if (= (car lst) car)		\\If this is the char we're looking for...
-				(list chr)				\\Return some non-null list
-				(helper chr (cdr lst))	\\Otherwise keep looking									((77 73) (89) (88 90 76))
+    lambda (chr lst)
+	
+	    ( //Look through this string for the char
+		if (null? lst)
+			(list)
+			(
+			if (= (car lst) chr)
+				(list chr)
+				(helper chr (cdr lst))
 			)
 		)
-	)
+))
+
+(define Find (
+lambda(chr lst)
+(
+if (null? lst)
+(list)
+(
+if (null? (helper chr (car lst)))
+(Find chr (cdr lst))
+(car lst)
+)
+)
 ))
 
 
@@ -41,26 +55,26 @@
 1b.
 
 (define helper1 (
-	lambda (curr rest)
-		(
-		if (null? curr)			//If we have reached the end of curr-ent string
-			(Concatenate rest)	//Continue with the rest
-			(cons (car curr) (helper1 (cdr curr) rest))
-		)
+    lambda (curr rest)
+        (
+	    if (null? curr)
+            (Concatenate rest)
+            (cons (car curr)(helper1 (cdr curr) rest))
+        )
 ))
 
 
 (define Concatenate (
-	lambda(lst)
-		(
-		if (null? lst)
-			(list)
-			(
-			if (null? (car lst))
-				(Concatenate (cdr lst))
-				(helper1 (car lst) (cdr lst))
-			)
-		)
+    lambda(lst)
+        (
+        if (null? lst)
+            (list)
+            (
+            if (null? (car lst))
+                (Concatenate (cdr lst))
+                (helper1 (car lst) (cdr lst))
+            )
+        )
 ))
 
 (define helper1 (lambda (curr rest)(if (null? curr)(Concatenate rest)(cons (car curr)(helper1 (cdr curr) rest)))))
@@ -70,28 +84,18 @@
 
 2)
 
-(define max (
-    lambda (lst)
-        (
-        if (null? lst) -1
-            (
-            if (> (car lst) (max (cdr lst)))
-                (car lst)
-                (max (cdr lst))
-            )
-        )
-))
 
 (define rest (
     lambda (x l)
-        (
-        if (null? l) (list)
-            (
-            if (= (car l) x)
-                (cdr l)
-                (cons (car l) (rest x (cdr l)))
-            )
-        )
+	    (
+		if (null? l) 
+		    (list)
+			(
+			if (= (car l) x)
+			    (cdr l)
+				(cons (car l) (rest x (cdr l)))
+			)
+		)
 ))
 (define rest (lambda (x l)(if (null? l) (list)(if (= (car l) x)(cdr l)(cons (car l) (rest x (cdr l)))))))
 

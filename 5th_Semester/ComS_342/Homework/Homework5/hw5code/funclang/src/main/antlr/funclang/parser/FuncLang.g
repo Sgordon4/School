@@ -16,7 +16,6 @@ import ListLang; //Import all rules from ListLang grammar.
         | div=divexp { $ast = $div.ast; }
         | let=letexp { $ast = $let.ast; }
         | lam=lambdaexp { $ast = $lam.ast; }
-        | def=defaultexp { $ast = $def.ast; }
         | call=callexp { $ast = $call.ast; }
         | i=ifexp { $ast = $i.ast; }
         | less=lessexp { $ast = $less.ast; }
@@ -29,21 +28,47 @@ import ListLang; //Import all rules from ListLang grammar.
         | nl=nullexp { $ast = $nl.ast; }
         ;
 
- lambdaexp returns [LambdaExp ast] 
+/*
+ lambdaexp returns [LambdaExp ast]
         locals [ArrayList<String> formals ]
  		@init { $formals = new ArrayList<String>(); } :
- 		'(' Lambda 
+ 		'(' Lambda
  			'(' (id=Identifier { $formals.add($id.text); } )* ')'
- 			body=exp 
+ 			body=exp
  		')' { $ast = new LambdaExp($formals, $body.ast); }
  		;
+*/
 
- defaultexp returns [DefaultExp ast] :
- 		'(' id=Identifier
- 		    '='
- 			e=exp
- 			')' { $ast = new DefaultExp($id.text, $e.ast); }
-    ;
+
+
+ lambdaexp returns [LambdaExp ast] 
+        locals [ArrayList<String> formals, ArrayList<String> values]
+ 		@init { $formals = new ArrayList<String>(); $values = new ArrayList<String>(); } :
+
+ 		'(' Lambda
+
+         	'('
+         	    (id=Identifier { $formals.add($id.text); $values.add(null); } )*
+         	')'
+
+         	body=exp
+
+        ')' { $ast = new LambdaExp($formals, $values, $body.ast); }
+ 		|
+ 		'(' Lambda
+
+ 			'('
+ 			    (id=Identifier { $formals.add($id.text); $values.add(null); } )*
+ 			    ( '('
+ 			        id=Identifier '=' n=Number { $formals.add($id.text); $values.add($n.text); }
+ 			    ')' )*
+ 			')'
+
+ 			body=exp
+
+ 		')' { $ast = new LambdaExp($formals, $values, $body.ast); }
+ 		;
+
 
  callexp returns [CallExp ast] 
         locals [ArrayList<Exp> arguments = new ArrayList<Exp>();  ] :

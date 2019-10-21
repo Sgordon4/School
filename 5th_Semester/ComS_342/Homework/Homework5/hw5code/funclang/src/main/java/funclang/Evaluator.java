@@ -128,10 +128,40 @@ public class Evaluator implements Visitor<Value> {
 		return new Value.UnitVal();
 	}
 
+	/*
 	@Override
 	public Value visit(LambdaExp e, Env env) { // New for funclang.
+		//Check for any default parameters and add them to the environment:
+
+
 		return new Value.FunVal(env, e.formals(), e.body());
 	}
+	*/
+
+//======================================================================================================================
+
+	@Override
+	public Value visit(LambdaExp e, Env env) { // New for funclang.
+
+		//I'm assuming formals and values are the same size because otherwise something is big fucked lol
+
+		//Check for any default parameters and add them to the environment:
+		for(int i = 0; i < e.formals().size(); i++){
+
+			//The value will either be null, or the default value provided
+			if(e.values().get(i) != null){
+				//Grab the provided default value and its paired variable name
+				Value.NumVal defaultVal = new Value.NumVal(Integer.parseInt(e.values().get(i)));
+				String name = e.formals().get(i);
+
+				//Add them to the environment
+				env = new ExtendEnv(env, name, defaultVal);
+			}
+		}
+
+		return new Value.FunVal(env, e.formals(), e.body());
+	}
+
 
 	@Override
 	public Value visit(CallExp e, Env env) { // New for funclang.
@@ -149,15 +179,38 @@ public class Evaluator implements Visitor<Value> {
 
 		//These are names but some asshat decided to call them formals
 		List<String> formals = operator.formals();
+
+		/*	The size no longer needs to match because of default parameters, must use a different method \/\/
 		if (formals.size()!=actuals.size())
 			return new Value.DynamicError("Argument mismatch in call " + ts.visit(e, env));
 
 		Env fun_env = operator.env();
 		for (int index = 0; index < formals.size(); index++)
 			fun_env = new ExtendEnv(fun_env, formals.get(index), actuals.get(index));
+		 */
+
+		//Because all default parameters must come after non-default ones, we can assume that any parameters not
+		//covered by the passed actuals [values >:( ] are either in the environment because of the work done in
+		//LambdaExp, or they are nonexistent and we should throw an error.
+
+		//Add all passed actuals [values >:( ] to the environment
+		Env fun_env = operator.env();
+		int i;
+		for (i = 0; i < actuals.size(); i++)
+			fun_env = new ExtendEnv(fun_env, formals.get(i), actuals.get(i));
+
+		//Now check the environment for any remaining actuals [values >:( ]
+		//If the value does not already exist in the environment, throw an error
+		//(I'm letting the env throw its own error when it can't find a binding for the passed name)
+		for(i = i; i < formals.size(); i++){
+			fun_env.get(formals.get(i));
+		}
+
 
 		return (Value) operator.body().accept(this, fun_env);
 	}
+
+//======================================================================================================================
 
 	@Override
 	public Value visit(IfExp e, Env env) { // New for funclang.
@@ -170,6 +223,7 @@ public class Evaluator implements Visitor<Value> {
 			return (Value) e.then_exp().accept(this, env);
 		else return (Value) e.else_exp().accept(this, env);
 	}
+
 //======================================================================================================================
 
 	/** Helper method to compare length and content of two lists
@@ -307,6 +361,7 @@ public class Evaluator implements Visitor<Value> {
 		return new Value.BoolVal(firstVal == secondVal);
 	}
 //======================================================================================================================
+
 
 	@Override
 	public Value visit(CarExp e, Env env) {

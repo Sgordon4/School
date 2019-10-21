@@ -309,7 +309,10 @@ public interface AST {
 		public Exp value_exp() { return _value_exp; }
 
 	}
-	
+
+
+//============================================================================================================
+
 	/**
 	 * An anonymous procedure declaration has the syntax
 	 * 
@@ -318,14 +321,17 @@ public interface AST {
 	 */
 	public static class LambdaExp extends Exp {		
 		List<String> _formals;
+		List<String> _values;
 		Exp _body;
 		
-		public LambdaExp(List<String> formals, Exp body) {
+		public LambdaExp(List<String> formals, List<String> values, Exp body) {
 			_formals = formals;
+			_values = values;
 			_body = body;
 		}
 		
 		public List<String> formals() { return _formals; }
+		public List<String> values() { return _values; }
 		
 		public Exp body() { return _body; }
 		
@@ -333,7 +339,28 @@ public interface AST {
 			return visitor.visit(this, env);
 		}
 	}
-	
+	/*
+	public static class LambdaExp extends Exp {
+		List<String> _formals;
+		Exp _body;
+
+		public LambdaExp(List<String> formals, Exp body) {
+			_formals = formals;
+			_body = body;
+		}
+
+		public List<String> formals() { return _formals; }
+
+		public Exp body() { return _body; }
+
+		public Object accept(Visitor visitor, Env env) {
+			return visitor.visit(this, env);
+		}
+	}
+	 */
+
+//============================================================================================================
+
 	/**
 	 * A call expression has the syntax
 	 * 
