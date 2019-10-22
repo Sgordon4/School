@@ -80,30 +80,55 @@ int main()
   return 0;
 }
 
+
+//Used for sorting running order of proc
+typedef struct pair{
+    int index;
+    process proc;
+} pair;
+
 void first_come_first_served(process *proc)
 {
 
-    //Sort proc by earliest arrival time:
-    int i, j;
-    for (i = 0; i < NUM_PROCESSES; i++){
-        for (j = 0; j < NUM_PROCESSES; j++){
+    pair sorted[NUM_PROCESSES];
 
-            if (proc[j].arrivaltime > proc[i].arrivaltime){
-                process tmp = proc[i];
-                proc[i] = proc[j];
-                proc[j] = tmp;
+    //Copy proc over to sorted
+    for(int i = 0; i < NUM_PROCESSES; i++){
+        sorted[i].index = i;
+        sorted[i].proc = proc[i];
+    }
+
+    //Sort sorted according to arrivaltime
+    for (int i = 0; i < NUM_PROCESSES; i++)
+    {
+        for (int j = 0; j < NUM_PROCESSES; j++)
+        {
+            if (sorted[j].proc.arrivaltime > sorted[i].proc.arrivaltime)
+            {
+                pair tmp = sorted[i];
+                sorted[i] = sorted[j];
+                sorted[j] = tmp;
             }
         }
     }
+    /*
+    printf("\n\nAscending: \n");
+    for (int i = 0; i < NUM_PROCESSES; i++)
+    {
+        printf("%d. %d::%d\n", i, sorted[i].index, sorted[i].proc.arrivaltime);
+    }
+    */
+
 
     int time = 1;       // time stamp
     int t = 1;          // Length of time slot
     int finished = 0;   // number of finished processes
 
-    i = 0;
 
     while (finished < NUM_PROCESSES) // while there are still unfinished processes
     {
+        int i, j;
+        i = sorted[finished].index;
 
         // Assuming the process to run is at index "i" of proc array
         if (proc[i].starttime == 0) // this is the first time this process gets to run
@@ -129,8 +154,6 @@ void first_come_first_served(process *proc)
             proc[i].flag = 1; // mark process as done
             finished++;
             printf("Process %d finished at time %d\n", i, proc[i].endtime);
-
-            i = finished;   //i == finished, just kept it as i for readability
         }
     }
 
@@ -138,11 +161,11 @@ void first_come_first_served(process *proc)
     For each process, wait time = endtime - arrivaltime. */
 
     int avgWaitTime = 0;
-    for(i = 0; i < NUM_PROCESSES; i++){
+    for(int i = 0; i < NUM_PROCESSES; i++){
+        printf("%d. %d::%d\n", i, proc[i].starttime, proc[i].arrivaltime);
         avgWaitTime += proc[i].starttime - proc[i].arrivaltime;
     }
-    //Or, as proc is sorted
-    //int avgWaitTime = time - proc[NUM_PROCESSES].runtime;
+    avgWaitTime = avgWaitTime/NUM_PROCESSES;
 
     printf("Average time from arrival to finish is %d seconds\n", avgWaitTime);
 }
