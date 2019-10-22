@@ -116,6 +116,8 @@ int sortByArrivalTime(process *proc, pair *sorted){
             printf("%d. %d::%d\n", i, sorted[i].index, sorted[i].proc.arrivaltime);
         }
     }
+
+    return 0;
 }
 
 
@@ -136,7 +138,7 @@ void first_come_first_served(process *proc)
 
     while (finished < NUM_PROCESSES) // while there are still unfinished processes
     {
-        int i, j;
+        int i;
         i = sorted[finished].index;
 
         // Assuming the process to run is at index "i" of proc array
@@ -232,6 +234,10 @@ void shortest_remaining_time(process *proc)
             if(!proc[i].flag && proc[i].arrivaltime <= time){
                 break;
             }
+
+            //If there is no available process, wait a cycle
+            if(j == NUM_PROCESSES-1)
+                time++;
         }
 
 
