@@ -47,7 +47,7 @@ int main()
     proc[i].arrivaltime = rand()%100;
     proc[i].runtime = (rand()%30)+10;
     proc[i].priority = rand()%3;
-	
+
     proc[i].starttime = 0;
     proc[i].endtime = 0;
     proc[i].flag = 0;
@@ -82,8 +82,69 @@ int main()
 
 void first_come_first_served(process *proc)
 {
-  /* TODO: Implement scheduling algorithm here */
-  
+
+    //Sort proc by earliest arrival time:
+    int i, j;
+    for (i = 0; i < NUM_PROCESSES; i++){
+        for (j = 0; j < NUM_PROCESSES; j++){
+
+            if (proc[j].arrivaltime > proc[i].arrivaltime){
+                process tmp = proc[i];
+                proc[i] = proc[j];
+                proc[j] = tmp;
+            }
+        }
+    }
+
+    int time = 1;       // time stamp
+    int t = 1;          // Length of time slot
+    int finished = 0;   // number of finished processes
+
+    i = 0;
+
+    while (finished < NUM_PROCESSES) // while there are still unfinished processes
+    {
+
+        // Assuming the process to run is at index "i" of proc array
+        if (proc[i].starttime == 0) // this is the first time this process gets to run
+        {
+            proc[i].starttime = time;
+            proc[i].remainingtime = proc[i].runtime;
+            printf("Process %d started at time %d\n", i, proc[i].starttime);
+        }
+        /*TODO: determine how many time slots to give this process
+        HINT: in FCFS, the process should be given as much as it needed;
+        in other algorithms, you can assign only one time slot and re-evaluate
+        in the next iteration*/
+
+        // Assuming we are giving this process "t" times
+        // Assign time to this process and update time
+        proc[i].remainingtime -= t;
+        time += t;
+
+        // If this process finished, announce it
+        if (proc[i].remainingtime==0)
+        {
+            proc[i].endtime = time; // mark the end time
+            proc[i].flag = 1; // mark process as done
+            finished++;
+            printf("Process %d finished at time %d\n", i, proc[i].endtime);
+
+            i = finished;   //i == finished, just kept it as i for readability
+        }
+    }
+
+    /* TODO: At the end, loop through *proc and calculate the average wait time.
+    For each process, wait time = endtime - arrivaltime. */
+
+    int avgWaitTime = 0;
+    for(i = 0; i < NUM_PROCESSES; i++){
+        avgWaitTime += proc[i].starttime - proc[i].arrivaltime;
+    }
+    //Or, as proc is sorted
+    //int avgWaitTime = time - proc[NUM_PROCESSES].runtime;
+
+    printf("Average time from arrival to finish is %d seconds\n", avgWaitTime);
 }
 
 void shortest_remaining_time(process *proc)
@@ -100,4 +161,3 @@ void round_robin_priority(process *proc)
 {
   /* TODO: Implement scheduling algorithm here */
 }
-
