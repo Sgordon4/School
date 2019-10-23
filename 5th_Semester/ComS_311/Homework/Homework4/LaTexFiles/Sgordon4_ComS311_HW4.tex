@@ -11,7 +11,8 @@
 \usepackage{float}
 
 \usepackage{algorithm}
-\usepackage{algorithmic}
+%\usepackage{algorithmic}
+\usepackage{algpseudocode}
 
 
 \title{ComS 311\\Recitation 3, 2:00 Monday\\Homework 4}
@@ -25,43 +26,46 @@
 \begin{algorithm}[H]
 \caption{Define G$^2$ from G using paths of length 2, excluding cycles.}
 \begin{algorithmic}
-\REQUIRE G is provided as an adjacency list'.
-\STATE Assume G is stored in ``G"
+%\REQUIRE G is provided as an adjacency list'.
+\State Assume G is stored in ``G"
 
-\STATE
-\STATE Create empty adjacency list named ``G2''
-\STATE
+\State
+\State Create empty adjacency list named ``G2''
+\State
 
-\STATE \#For every vertex...
-\FORALL{list in G}
-\STATE start = current vertex
-\STATE G2.add(start)
-\STATE
-\STATE \#For every vertex this points to...
-\FORALL{vertex in list}
-\STATE innerList = G.get(vertex)
-\STATE
-\STATE \#For every vertex that that vertex points to...
-\FORALL{boof}
+\State \#For every vertex...
+\ForAll{list in G}
+\State start = current vertex
+\State G2.add(start)
+\State
+\State \#For every vertex this points to...
+\ForAll{vertex in list}
+\State innerList = G.get(vertex)
+\State
+\State \#For every vertex that that vertex points to...
+\ForAll{boof}
 
-\STATE
-\STATE \#If this vertex is the start (u == v)
-\IF{vertex == start}
-\STATE continue
-\ENDIF
-\STATE
-\STATE \#Add this edge (of length 2) to the new graph
-\STATE G2.get(start).add(vertex)
+\State
+\State \#If this vertex is the start (u == v)
+\If{vertex == start}
+\State continue
+\EndIf
+\State
+\State \#Add this edge (of length 2) to the new graph
+\State G2.get(start).add(vertex)
 
-\ENDFOR
-\ENDFOR
-\ENDFOR
-\STATE
-
-\STATE The runtime of this algorithm is
-\STATE 1st-Loop(V) * 2nd-Loop(E) * 3rd-Loop(V): O(V$^2$*E)
+\EndFor
+\EndFor
+\EndFor
+\State
 \end{algorithmic}
 \end{algorithm}
+\noindent The runtime of this algorithm is as follows:\\
+1 for loop through every vertex $\Rightarrow$ O(V)\\
+1 for loop through every edge $\Rightarrow$ O(E) with\\
+1 for loop through every edge $\Rightarrow$ O(E)\\
+This combines to become O(V+E$^2$)
+
 
 
 
@@ -72,46 +76,46 @@
 \begin{algorithm}[H]
 \caption{Find the number of shortest paths from s to vertex i.}
 \begin{algorithmic}
-\STATE Assume G is stored in adjacency list ``G"
+\State Assume G is stored in adjacency list ``G"
 
-\STATE 
-\STATE Create object \textit{Pair} that stores two Integers
-\STATE Create an array \textit{paths} of size V
-\STATE The array will store \textit{path length} and \textit{count} for each vertex in a \textit{Pair} obj
-\STATE
-\STATE //Perform breadth first search on the graph -----------------------------------
-\STATE
-\STATE //Create a queue for BFS that holds \textit{depth} and the \textit{vertex} in a \textit{Pair}
-\STATE LinkedList$<$Pair$>$ queue = new LinkedList$<$Pair$>$();
-\STATE boolean visited = new boolean[V];
-\STATE
-\STATE //Mark the current node as visited, add it to the array, and enqueue it 
-\STATE visited[s] = true; 
-\STATE paths[s] = new Pair(0, 1);
-\STATE queue.add(new Pair(0, s)); 
-\STATE
-\WHILE {queue.size() != 0}
-\STATE //Dequeue a vertex
-\STATE Pair pair = queue.poll(); 
-\STATE int depth = vertex.depth;
-\STATE int vertex = vertex.node;
-\STATE
-\STATE Iterator iterator = G[vertex].listIterator();
-\WHILE {iterator.hasNext()}
-\STATE int v = iterator.next(); 
-\STATE
-\IF {!visited[v]}
-\STATE visited[v] = true; 
-\STATE paths[s] = new Pair(depth+1, 1);
-\STATE queue.add(new Pair(depth+1, v));
-\STATE
-\ELSIF {paths[v].length == depth+1}
-\STATE //If this depth == the one already stored, this is a shortest path
-\STATE paths[v].count = paths[v].count + 1;
-\ENDIF
-\ENDWHILE
-\ENDWHILE
-\STATE return paths[i].count;
+\State 
+\State Create object \textit{Pair} that stores two Integers
+\State Create an array \textit{paths} of size V
+\State The array will store \textit{path length} and \textit{count} for each vertex in a \textit{Pair} obj
+\State
+\State //Perform breadth first search on the graph -----------------------------------
+\State
+\State //Create a queue for BFS that holds \textit{depth} and the \textit{vertex} in a \textit{Pair}
+\State LinkedList$<$Pair$>$ queue = new LinkedList$<$Pair$>$();
+\State boolean visited = new boolean[V];
+\State
+\State //Mark the current node as visited, add it to the array, and enqueue it 
+\State visited[s] = true; 
+\State paths[s] = new Pair(0, 1);
+\State queue.add(new Pair(0, s)); 
+\State
+\While {queue.size() != 0}
+\State //Dequeue a vertex
+\State Pair pair = queue.poll(); 
+\State int depth = vertex.depth;
+\State int vertex = vertex.node;
+\State
+\State Iterator iterator = G[vertex].listIterator();
+\While {iterator.hasNext()}
+\State int v = iterator.next(); 
+\State
+\If {!visited[v]}
+\State visited[v] = true; 
+\State paths[s] = new Pair(depth+1, 1);
+\State queue.add(new Pair(depth+1, v));
+\State
+\ElsIf {paths[v].length == depth+1}
+\State //If this depth == the one already stored, this is a shortest path
+\State paths[v].count = paths[v].count + 1;
+\EndIf
+\EndWhile
+\EndWhile
+\State return paths[i].count;
 
 \end{algorithmic}
 \end{algorithm}
@@ -126,61 +130,43 @@ These two combine to become O(V+E)
 \pagebreak
 
 
-\noindent 3a) \textit{Prove that every DAG (Directed Acyclic Graph) has a sink.}\\
+\noindent 3a) \textit{Prove that every DAG (Directed Acyclic Graph) has a sink.}\\\\
 Let G be a directed graph with number of verticies n, each with at least one outgoing edge. To prove the claim we show that if there is no sink, there must be a cycle. \\
-Picking any vertex u, we begin to follow each edge outward. If there are no sinks, we will be able to continue to node v, then w, and so on. However, with a graph of order n, we must eventually reach a previously seen vertex after at most n+1 steps. This is clearly a cycle, breaking the acyclic assumption made earlier.\\
+Picking any vertex u, we begin to follow each edge outward. If there are no sinks, we will be able to continue to node v, then w, and so on. However, with a graph of order n, we must eventually reach a previously seen vertex after at most n+1 steps. This is clearly a cycle, breaking the acyclic assumption made earlier.
 
 \begin{algorithm}[H]
 \caption{Compute topological ordering of a DAG.}
 \begin{algorithmic}
-\STATE Assume G is stored in adjacency list ``G"
-
-\STATE 
-\STATE Create object \textit{Pair} that stores two Integers
-\STATE Create an array \textit{paths} of size V
-\STATE The array will store \textit{path length} and \textit{count} for each vertex in a \textit{Pair} obj
-\STATE
-\STATE //Perform breadth first search on the graph -----------------------------------
-\STATE
-\STATE //Create a queue for BFS that holds \textit{depth} and the \textit{vertex} in a \textit{Pair}
-\STATE LinkedList$<$Pair$>$ queue = new LinkedList$<$Pair$>$();
-\STATE boolean visited = new boolean[V];
-\STATE
-\STATE //Mark the current node as visited, add it to the array, and enqueue it 
-\STATE visited[s] = true; 
-\STATE paths[s] = new Pair(0, 1);
-\STATE queue.add(new Pair(0, s)); 
-\STATE
-\WHILE {queue.size() != 0}
-\STATE //Dequeue a vertex
-\STATE Pair pair = queue.poll(); 
-\STATE int depth = vertex.depth;
-\STATE int vertex = vertex.node;
-\STATE
-\STATE Iterator iterator = G[vertex].listIterator();
-\WHILE {iterator.hasNext()}
-\STATE int v = iterator.next(); 
-\STATE
-\IF {!visited[v]}
-\STATE visited[v] = true; 
-\STATE paths[s] = new Pair(depth+1, 1);
-\STATE queue.add(new Pair(depth+1, v));
-\STATE
-\ELSIF {paths[v].length == depth+1}
-\STATE //If this depth == the one already stored, this is a shortest path
-\STATE paths[v].count = paths[v].count + 1;
-\ENDIF
-\ENDWHILE
-\ENDWHILE
-\STATE return paths[i].count;
-
+\Require G is stored in adjacency list ``G"
+\State Create an array \textit{visited} of size V, with all indicies initialized to false
+\State Create an empty queue \textit{queue} to store vertex order
+\State
+\State topSort(0) //Call recursive function with first vertex
+\State
+\Function {topSort}{int vertex}
+\State visited[vertex] = true
+\State List linked = G.get(vertex)
+\State
+\ForAll {vertex v in linked}
+\If {visited[v]} 
+\State continue
+\EndIf
+\State
+\State topSort(v)
+\State
+\State queue.add(v)
+\EndFor
+\EndFunction
+\State
+\State Print out queue, or do something else with it
 \end{algorithmic}
 \end{algorithm}
+\noindent This algorithm computes the topological ordering by counting on the fact that it will eventually reach a sink vertex and be able to return up the chain.\\
+Without a sink/with a cycle, this algorithm cannot perform.
 
 \pagebreak
 
-4) \\
-Goddamnit
+4) Define a graph G' whose verticies and edges mirror the strongly connected components and the connections between them of G.
 
 
 %\begin{lstlisting}
