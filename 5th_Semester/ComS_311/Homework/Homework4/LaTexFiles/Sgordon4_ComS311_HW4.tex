@@ -8,6 +8,7 @@
 \usepackage{listings}
 \usepackage{scrextend}
 \usepackage{changepage} %Adjustwidth
+\usepackage{float}
 
 \usepackage{algorithm}
 \usepackage{algorithmic}
@@ -21,7 +22,7 @@
 \maketitle
 
 
-\begin{algorithm}
+\begin{algorithm}[H]
 \caption{Define G$^2$ from G using paths of length 2, excluding cycles.}
 \begin{algorithmic}
 \REQUIRE G is provided as an adjacency list'.
@@ -68,13 +69,58 @@
 \pagebreak
 
 
-\noindent 2)
+\begin{algorithm}[H]
+\caption{Find the number of shortest paths from s to vertex i.}
+\begin{algorithmic}
+\STATE Assume G is stored in adjacency list ``G"
 
-\begin{adjustwidth}{.25in}{0in}
+\STATE 
+\STATE Create object \textit{Pair} that stores two Integers
+\STATE Create an array \textit{paths} of size V
+\STATE The array will store \textit{path length} and \textit{count} for each vertex in a \textit{Pair} obj
+\STATE
+\STATE //Perform breadth first search on the graph -----------------------------------
+\STATE
+\STATE //Create a queue for BFS that holds \textit{depth} and the \textit{vertex} in a \textit{Pair}
+\STATE LinkedList$<$Pair$>$ queue = new LinkedList$<$Pair$>$();
+\STATE boolean visited = new boolean[V];
+\STATE
+\STATE //Mark the current node as visited, add it to the array, and enqueue it 
+\STATE visited[s] = true; 
+\STATE paths[s] = new Pair(0, 1);
+\STATE queue.add(new Pair(0, s)); 
+\STATE
+\WHILE {queue.size() != 0}
+\STATE //Dequeue a vertex
+\STATE Pair pair = queue.poll(); 
+\STATE int depth = vertex.depth;
+\STATE int vertex = vertex.node;
+\STATE
+\STATE Iterator iterator = G[vertex].listIterator();
+\WHILE {iterator.hasNext()}
+\STATE int v = iterator.next(); 
+\STATE
+\IF {!visited[v]}
+\STATE visited[v] = true; 
+\STATE paths[s] = new Pair(depth+1, 1);
+\STATE queue.add(new Pair(depth+1, v));
+\STATE
+\ELSIF {paths[v].length == depth+1}
+\STATE //If this depth == the one already stored, this is a shortest path
+\STATE paths[v].count = paths[v].count + 1;
+\ENDIF
+\ENDWHILE
+\ENDWHILE
+\STATE return paths[i].count;
 
-Algorithm here...
+\end{algorithmic}
+\end{algorithm}
+Honestly I have no idea how to induction this crap lol\\
+\noindent Runtime for above algorithm: \\
+1 while loop through each vertex $\Rightarrow$ O(V)\\
+1 while loop through each edge of each vertex $\Rightarrow$ O(E)\\
+These two combine to become O(V+E)
 
-\end{adjustwidth}
 
 
 \pagebreak
