@@ -126,12 +126,56 @@ These two combine to become O(V+E)
 \pagebreak
 
 
-\noindent 3)
-\begin{lstlisting}[label=some-code]
+\noindent 3a) \textit{Prove that every DAG (Directed Acyclic Graph) has a sink.}\\
+Let G be a directed graph with number of verticies n, each with at least one outgoing edge. To prove the claim we show that if there is no sink, there must be a cycle. \\
+Picking any vertex u, we begin to follow each edge outward. If there are no sinks, we will be able to continue to node v, then w, and so on. However, with a graph of order n, we must eventually reach a previously seen vertex after at most n+1 steps. This is clearly a cycle, breaking the acyclic assumption made earlier.\\
 
-Shit here...
+\begin{algorithm}[H]
+\caption{Compute topological ordering of a DAG.}
+\begin{algorithmic}
+\STATE Assume G is stored in adjacency list ``G"
 
-\end{lstlisting}
+\STATE 
+\STATE Create object \textit{Pair} that stores two Integers
+\STATE Create an array \textit{paths} of size V
+\STATE The array will store \textit{path length} and \textit{count} for each vertex in a \textit{Pair} obj
+\STATE
+\STATE //Perform breadth first search on the graph -----------------------------------
+\STATE
+\STATE //Create a queue for BFS that holds \textit{depth} and the \textit{vertex} in a \textit{Pair}
+\STATE LinkedList$<$Pair$>$ queue = new LinkedList$<$Pair$>$();
+\STATE boolean visited = new boolean[V];
+\STATE
+\STATE //Mark the current node as visited, add it to the array, and enqueue it 
+\STATE visited[s] = true; 
+\STATE paths[s] = new Pair(0, 1);
+\STATE queue.add(new Pair(0, s)); 
+\STATE
+\WHILE {queue.size() != 0}
+\STATE //Dequeue a vertex
+\STATE Pair pair = queue.poll(); 
+\STATE int depth = vertex.depth;
+\STATE int vertex = vertex.node;
+\STATE
+\STATE Iterator iterator = G[vertex].listIterator();
+\WHILE {iterator.hasNext()}
+\STATE int v = iterator.next(); 
+\STATE
+\IF {!visited[v]}
+\STATE visited[v] = true; 
+\STATE paths[s] = new Pair(depth+1, 1);
+\STATE queue.add(new Pair(depth+1, v));
+\STATE
+\ELSIF {paths[v].length == depth+1}
+\STATE //If this depth == the one already stored, this is a shortest path
+\STATE paths[v].count = paths[v].count + 1;
+\ENDIF
+\ENDWHILE
+\ENDWHILE
+\STATE return paths[i].count;
+
+\end{algorithmic}
+\end{algorithm}
 
 \pagebreak
 
