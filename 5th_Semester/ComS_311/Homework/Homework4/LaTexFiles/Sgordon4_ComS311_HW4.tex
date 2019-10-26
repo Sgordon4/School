@@ -43,7 +43,7 @@
 \State innerList = G.get(vertex)
 \State
 \State \#For every vertex that that vertex points to...
-\ForAll{boof}
+\ForAll{vertex in innerList}
 
 \State
 \State \#If this vertex is the start (u == v)
@@ -64,7 +64,7 @@
 1 for loop through every vertex $\Rightarrow$ O(V)\\
 1 for loop through every edge $\Rightarrow$ O(E) with\\
 1 for loop through every edge $\Rightarrow$ O(E)\\
-This combines to become O(V+E$^2$)
+This combines to become O(V*E$^2$)
 
 
 
@@ -119,7 +119,12 @@ This combines to become O(V+E$^2$)
 
 \end{algorithmic}
 \end{algorithm}
-Honestly I have no idea how to induction this crap lol\\
+\noindent Proof by Induction:\\\\
+\noindent Starting at vertex 1, we loop through each vertex 1$_2$ it is linked to, and in turn each vertex 1$_3$ those are linked to, creating an edge in our graph from 1 $\to$ each 1$_3$. This ensures each edge is of length 2 in G.\\
+Next, we assume this works for vertex k.\\
+Then, the vertex next in line in the adjacency list would be vertex (k+1). There is no difference in the process between each vertex, and each is inspected separately from the others. Therefore, all verticies 1 $\to$ n will be treated the same.\\\\
+ 
+
 \noindent Runtime for above algorithm: \\
 1 while loop through each vertex $\Rightarrow$ O(V)\\
 1 while loop through each edge of each vertex $\Rightarrow$ O(E)\\
@@ -166,7 +171,9 @@ Without a sink/with a cycle, this algorithm cannot perform.
 
 \pagebreak
 
-4) Define a graph G' whose verticies and edges mirror the strongly connected components and the connections between them of G.
+\noindent 4) Prove that G' is a DAG:\\\\
+\noindent It is given that verticies \textit{v} and \textit{u} in G' each represent a strongly connected component in G, and that each edge \textit{e} in G' represents a connection between two strongly connected components in G.\\
+We know that G' is a DAG because it is required that v and u must be \textit{distinct} strongly connected components. If G' were not a DAG, there is the possibility that for a single edge from v $\to$ u, there would be an edge running from u $\to$ v. This however would mean that v and u in G' and their counterpart groups in G are strongly connected, breaking the design rules of the graph.
 
 
 %\begin{lstlisting}
