@@ -10,8 +10,8 @@
 
 \usepackage{subcaption}
 
-\title{ComS 342\\Section 3\\Homework 2}
-\author{Sean Gordon}
+\title{CprE 308\\Section 3\\Homework 2}
+\author{Sean Gordon\\Sgordon4}
 %\date{09/09/2019}
 
 \begin{document}
@@ -19,9 +19,19 @@
 
 \noindent 1) 4KB = 4 * 1024 = 4096\\
 Page Number: 16390 / 4096 = 4\\
-Offset: 16390 \% 4096 = 6\\
+Offset: 16390 \% 4096 = 6\\\\
 
-\noindent 2) 
+\noindent 2a) Addr: 10 + 16 + 22 + offset = 64\\
+offset = 16 $\Rightarrow$ Page size = 2$^{16}$\\
+2$^{16}$ = 65536 $\to$ 65536 / 2014 = 64 KB\\
+
+\noindent 2b) \# of Pages = Memory available / Page size $\Rightarrow$\\
+ 2$^{64}$ / 2$^{16}$ = 2$^{48}$ pages max\\\\
+ 
+\noindent 3a) Page 3 will be replaced, as it was loaded first.\\
+\noindent 3b) Page 1 will be replaced, as it was used last.\\
+\noindent 3c) Page 1 will be replaced, as it has not been referenced recently.\\
+\noindent 3d) Page 0 will be replaced, as the algorithm will skip pages 2 and 3 as their reference bits are 1, moving to the next page with a 0 reference bit (page 0).\\
 
 
 %\end{addmargin}
