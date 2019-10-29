@@ -1,0 +1,126 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage[latin1]{inputenc}
+\usepackage{listings}
+\usepackage{scrextend}
+\usepackage{changepage} %Adjustwidth
+\usepackage[margin=1in]{geometry}
+
+\usepackage{algorithm}
+%\usepackage{algorithmic}
+\usepackage{algpseudocode}
+\usepackage{alltt}
+
+
+% Used for code blocks ----------------------------------------------------------------
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{listings}
+
+\usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
+% -----------------------------------------------------------------------------------------
+
+
+
+\title{ComS 342\\Recitation 2, 10:00 Tuesday\\Homework 6}
+\author{Sean Gordon}
+%\date{09/09/2019}
+
+\begin{document}
+\maketitle
+
+
+\noindent 1a)\\
+(( ($\lambda$(x)(x x)) ($\lambda$(y)(y x)) ) z)\\
+(( (x x) [x $\to$ $\lambda$(y)(y x)] ) z)\\
+
+\noindent (( ($\lambda$(y)(y x) $\lambda$(y)(y x)) ) z)\\
+(( (y x) [y $\to$ $\lambda$(y)(y x)] ) z)\\
+
+\noindent (( ($\lambda$(y)(y x) x) ) z)\\
+(( (y x) [y $\to$ x]) z)\\
+
+\noindent ((x x) z)\\\\\\
+
+
+\noindent 1b)\\
+(( ($\lambda$(a)( $\lambda$(b)(a b) )) (($\lambda$(c) c) x) ) y)\\
+(( ($\lambda$(a)( $\lambda$(b)(a b) )) ((c) [c $\to$ x]) ) y)\\
+
+\noindent (( ($\lambda$(a)( $\lambda$(b)(a b) )) x ) y)\\
+(( ($\lambda$(b)(a b)) [a $\to$ x] ) y)\\
+
+\noindent (( $\lambda$(b)(x b)) y)\\
+((x b) [b $\to$ y])\\
+\noindent (x y)\\\\
+
+\pagebreak
+
+\noindent 1c)\\
+(( ($\lambda$(x)(x x)) ($\lambda$(y) y) ) ($\lambda$(y) y) )\\
+(( (x x) [x $\to$ $\lambda$(y) y] ) ($\lambda$(y) y) )\\
+
+\noindent(( ($\lambda$(y) y) ($\lambda$(y) y) ) ($\lambda$(y) y) )\\
+(( y [y $\to$ ($\lambda$(y) y) ]) ($\lambda$(y) y) )\\
+
+\noindent( ($\lambda$(y) y) ($\lambda$(y) y) )\\
+( y [y $\to$ ($\lambda$(y) y) ] )\\
+
+\noindent($\lambda$(y) y)\\
+
+\hrulefill \\
+
+\noindent 2a)\\
+( ($\lambda$(x) p) ( ($\lambda$(y)(y y)) ($\lambda$(z)(z z)) ) )\\
+( (p) [x $\to$ ( ($\lambda$(y)(y y)) ($\lambda$(z)(z z)) ) ] )\\
+(p)\\
+
+
+\noindent 2b)\\
+\noindent( ($\lambda$(x) p) ( ($\lambda$(y)(y y)) ($\lambda$(z)(z z)) ) )\\
+( ($\lambda$(x) p) ( (y y) [y $\to$ ($\lambda$(z)(z z)) ] ) )\\
+
+\noindent( ($\lambda$(x) p) ( ( ($\lambda$(z)(z z)) ($\lambda$(z)(z z)) ) ) )\\
+( ($\lambda$(x) p) ( ( (z z) [z $\to$ ($\lambda$(z)(z z)) ] ) ) )\\
+
+\noindent( ($\lambda$(x) p) ( ($\lambda$(z)(z z)) ($\lambda$(z)(z z)) ) )\\
+( (p) [x $\to$ ( ($\lambda$(z)(z z)) ($\lambda$(z)(z z)) ) ] )\\
+(p)\\
+
+
+3) ($\lambda$(a)($\lambda$(b) a b F))
+
+\pagebreak 
+
+\begin{algorithm}[H]
+\caption{U gey}
+\begin{algorithmic}
+\State Boof
+\end{algorithmic}
+\end{algorithm}
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
