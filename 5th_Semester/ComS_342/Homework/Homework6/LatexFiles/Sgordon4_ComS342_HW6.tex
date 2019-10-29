@@ -89,14 +89,60 @@
 
 \noindent( ($\lambda$(x) p) ( ( ($\lambda$(z)(z z)) ($\lambda$(z)(z z)) ) ) )\\
 ( ($\lambda$(x) p) ( ( (z z) [z $\to$ ($\lambda$(z)(z z)) ] ) ) )\\
+...\\
+\noindent( ($\lambda$(x) p) ( ( ($\lambda$(z)(z z)) ($\lambda$(z)(z z)) ) ) )\\
+( ($\lambda$(x) p) ( ( (z z) [z $\to$ ($\lambda$(z)(z z)) ] ) ) )\\
+...\\
 
 \noindent( ($\lambda$(x) p) ( ($\lambda$(z)(z z)) ($\lambda$(z)(z z)) ) )\\
 ( (p) [x $\to$ ( ($\lambda$(z)(z z)) ($\lambda$(z)(z z)) ) ] )\\
 (p)\\
 
+\hrulefill \\
 
-3) ($\lambda$(a)($\lambda$(b) a b F))
+\noindent 3) and = ($\lambda$(a)($\lambda$(b) ite a b false)) \\
 
+\hrulefill \\
+
+\pagebreak
+
+\noindent 4a) \\
+(($\lambda$(z)((two f ) z)) (succ zero))\\
+(($\lambda$(z)((two f ) z)) 1)\\
+(((two f ) z) [z $\to$ 1])\\
+((two f ) 1)\\
+(f(f(1)))\\
+This function applies f to the successor of 0 (1) two times.\\
+
+\noindent 4b) zero = $\lambda$(f)($\lambda$(x)x), one = $\lambda$(f)($\lambda$(x) f(x)), two = $\lambda$(f)($\lambda$(x) f(f(x)))\\
+i. (g zero)\\
+(($\lambda$(n)((n unknown) false)) zero)\\
+((zero unknown) false)\\
+((($\lambda$(f)($\lambda$(x)x)) unknown) false)\\
+(false)\\
+
+\noindent ii. (g one)\\
+(($\lambda$(n)((n unknown) false)) one)\\
+((one unknown) false)\\
+((($\lambda$(f)($\lambda$(x) f(x) )) unknown) false)\\
+(unknown (false))\\
+(($\lambda$(x)($\lambda$(y)($\lambda$(z) y))) (false))\\
+($\lambda$(y)($\lambda$(z) y))\\
+(true)\\
+
+\noindent iii. (g two)\\
+(($\lambda$(n)((n unknown) false)) two)\\
+((two unknown) false)\\
+((($\lambda$(f)($\lambda$(x) f(f(x)) )) unknown) false)\\
+(unknown (unknown (false)))\\
+(unknown (($\lambda$(x)($\lambda$(y)($\lambda$(z) y))) (false)))\\
+(unknown ($\lambda$(y)($\lambda$(z) y)))\\
+(unknown (true))\\
+(($\lambda$(x)($\lambda$(y)($\lambda$(z) y))) (true))\\
+(($\lambda$(y)($\lambda$(z) y)))\\
+(true)\\
+
+iv. (n != 0)
 \pagebreak 
 
 \begin{algorithm}[H]

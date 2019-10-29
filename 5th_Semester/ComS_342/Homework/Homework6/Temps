@@ -2,17 +2,30 @@
 
 
 
+(λ(f)(λ(x) x ))
+(λ(f)(λ(x) f(x) ))
+(λ(f)(λ(x) f(f(x)) ))
 
-( (λ(x) p) ( (λ(y)(y y)) (λ(z)(z z)) ) )
-( (p) [x to ( (λ(y)(y y)) (λ(z)(z z)) ) ] )
-(p)
+((λ(n)((n unknown) false)) zero)
+((zero unknown) false)
+(((λ(f)(λ(x)x)) unknown) false)
+(false)
 
-( (λ(x) p) ( (λ(y)(y y)) (λ(z)(z z)) ) )
-( (λ(x) p) ( (y y) [y to (λ(z)(z z)) ] ) )
+((λ(n)((n unknown) false)) one)
+((one unknown) false)
+(((λ(f)(λ(x) f(x) )) unknown) false)
+(unknown (false))
+((λ(x)(λ(y)(λ(z) y))) (false))
+(λ(y)(λ(z) y))
+(true)
 
-( (λ(x) p) ( ( (λ(z)(z z)) (λ(z)(z z)) ) ) )
-( (λ(x) p) ( ( (z z) [z to (λ(z)(z z)) ] ) ) )
-
-( (λ(x) p) ( (λ(z)(z z)) (λ(z)(z z)) ) )
-( (p) [x to ( (λ(z)(z z)) (λ(z)(z z)) ) ] )
-(p)
+((λ(n)((n unknown) false)) two)
+((two unknown) false)
+(((λ(f)(λ(x) f(f(x)) )) unknown) false)
+(unknown (unknown (false)))
+(unknown ((λ(x)(λ(y)(λ(z) y))) (false)))
+(unknown (λ(y)(λ(z) y)))
+(unknown (true))
+((λ(x)(λ(y)(λ(z) y))) (true))
+((λ(y)(λ(z) y)))
+(true)
