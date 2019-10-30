@@ -2,30 +2,33 @@
 
 
 
-(λ(f)(λ(x) x ))
-(λ(f)(λ(x) f(x) ))
-(λ(f)(λ(x) f(f(x)) ))
 
-((λ(n)((n unknown) false)) zero)
-((zero unknown) false)
-(((λ(f)(λ(x)x)) unknown) false)
-(false)
 
-((λ(n)((n unknown) false)) one)
-((one unknown) false)
-(((λ(f)(λ(x) f(x) )) unknown) false)
-(unknown (false))
-((λ(x)(λ(y)(λ(z) y))) (false))
-(λ(y)(λ(z) y))
-(true)
+(g one)
+(((a)((b)((c)((a b) ((a b) c))))) one)
+(((b)((c)((one b) ((one b) c)))))
+(((b)((c)((one b) (b(c))))))
+((b) ((c) (b(b(c))) ) )
+(two)
 
-((λ(n)((n unknown) false)) two)
-((two unknown) false)
-(((λ(f)(λ(x) f(f(x)) )) unknown) false)
-(unknown (unknown (false)))
-(unknown ((λ(x)(λ(y)(λ(z) y))) (false)))
-(unknown (λ(y)(λ(z) y)))
-(unknown (true))
-((λ(x)(λ(y)(λ(z) y))) (true))
-((λ(y)(λ(z) y)))
-(true)
+
+(g two)
+(((a)((b)((c)((a b) ((a b) c))))) two)
+(((b)((c)((a b) ((a b) c))))) [a $\to$ two ])
+(((b)((c)((two b) ((two b) c))))))
+(((b)((c)((two b) (b(b(c))) ))))
+((b)((c) (b(b (b(b(c))) )) ))
+(four)
+
+
+
+
+
+\noindent (b) (g two)\\
+(($\lambda$(a)($\lambda$(b)($\lambda$(c)((a b) ((a b) c))))) two)\\
+($\lambda$(b)($\lambda$(c)((a b) ((a b) c))) [a $\to$ two])\\
+
+(($\lambda$(b)($\lambda$(c)((two b) ((two b) c))))))\\
+(($\lambda$(b)($\lambda$(c)((two b) (b(b(c))) ))))\\
+($\lambda$(b)($\lambda$(c) (b(b (b(b(c))) )) ))\\
+(four)\\
