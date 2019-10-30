@@ -32,3 +32,6 @@
 (($\lambda$(b)($\lambda$(c)((two b) (b(b(c))) ))))\\
 ($\lambda$(b)($\lambda$(c) (b(b (b(b(c))) )) ))\\
 (four)\\
+
+((((x)(x x))((y)(y x))) z)
+((((x)(x x))((y)(y x))) z)
