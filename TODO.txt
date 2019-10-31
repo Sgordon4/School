@@ -1,9 +1,6 @@
-Due 10/31/2019:
-- EE 330 Lab9
-- CprE 394 Syllabus Review
 
 Due 11/1/2019:
-- EE 330 HW9
+X EE 330 HW9
 - Engl 314 Progress Report
 
 Due 11/3/2019:
@@ -16,11 +13,19 @@ Due 11/6/2019:
 Due 11/8/2019:
 - Engl 314 Technical Desc.
 
-Due 11/10/2019:
-- ComS 311 Proj1
+Due 11/14/2019:
+- ComS 311 Proj1 Early
 
 Due 11/15/2019:
+- ComS 311 Proj1
 - CprE 308 Proj2
 
 Due 11/22/2019
 - CPRE 308 EXAM 2
+
+
+-------------------------------------------------
+
+Due 10/31/2019:
+X EE 330 Lab9
+X CprE 394 Syllabus Review
