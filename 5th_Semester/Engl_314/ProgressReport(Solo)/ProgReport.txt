@@ -1,0 +1,25 @@
+Subject:    Progress report for Technical Description assignment.
+
+To:         Prof. Brian Dewall
+
+Dear Prof. Dewall:
+    The purpose of this report is to update you on the progress of my team's
+Technical Description assignment
+
+
+
+- Intro
+    > Purpose of this report is to update you on team progress on description
+    > Background and scope?
+- Next
+    > Technical description teaches dummby 3d printing
+        Gives dummby adequate background for good understanding
+- Tasks
+    > Description
+    > Methods of printing
+    > Stages in printing
+    > Materials
+    > Troubleshooting
+    > Formatting document
+- Done so far (went good/bad)
+- What's left
