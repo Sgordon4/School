@@ -1,0 +1,5 @@
+mainClassName="funclang.Interpreter"
+
+generateGrammarSource {
+    arguments += ["-lib", "../grammars", "-no-listener", "-package", "reflang.parser; import static reflang.AST.*"]
+}
