@@ -4,8 +4,22 @@ To:         Prof. Brian Dewall
 
 Dear Prof. Dewall:
     The purpose of this report is to update you on the progress of my team's
-Technical Description assignment
+Technical Description assignment. The description focuses on 3d printing, giving
+a beginner to the process a good understanding of the constituent parts and their
+typical uses.
+	To adequately fill out the description, we need to cover a description of 
+a 3d printer, the different methods of printing, the stages in printing, 
+materials used, and troubleshooting common problems that arise. Finally, the
+document will need to be formatted appropriately, with images included where
+necessary.
+	All but the materials and troubleshooting are done, with final formatting
+to be left to the end. The majority of the group had a fair knowledge base,
+with each member able to provide some level of technical detail to the document.
+The remaining work will be done this coming weekend (11/2-11/3), with the group
+meeting at Parks library to finish the last sections.
 
+Sincerely,
+Sean Gordon
 
 
 - Intro
