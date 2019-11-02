@@ -22,6 +22,29 @@ Sincerely,
 Sean Gordon
 
 
+
+
+Subject:    Progress report for Technical Description assignment.
+
+To:         Prof. Brian Dewall
+
+From:		Sean Gordon
+
+
+1. Introduction
+
+1.1 Purpose
+	This report is to provide an update on the status of my team's
+Technical Description assignment.
+
+1.2 Background
+The team began work on October 16th, coming up with 3 ideas: mechanics of a
+computer, 3d printing, and mechanics of a bycicle. Eventually it was decided 
+that 3d printing was the most viable option. Thus, the description focuses on 
+3d printing, giving a beginner to the process a good understanding of the 
+constituent parts and their typical uses.
+
+1.3 SCOPE
 - Intro
     > Purpose of this report is to update you on team progress on description
     > Background and scope?
