@@ -1,12 +1,4 @@
 
-Due 11/1/2019:
-X EE 330 HW9
-X Engl 314 Progress Report
-
-Due 11/3/2019:
-X ComS 311 HW5
-X Engl 314 Quiz
-
 Due 11/6/2019:
 - COMS 311 EXAM 8:15PM–9:45PM
 
@@ -26,6 +18,14 @@ Due 11/22/2019
 
 
 -------------------------------------------------
+
+Due 11/3/2019:
+X ComS 311 HW5
+X Engl 314 Quiz
+
+Due 11/1/2019:
+X EE 330 HW9
+X Engl 314 Progress Report
 
 Due 10/31/2019:
 X EE 330 Lab9
