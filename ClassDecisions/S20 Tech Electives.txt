@@ -1,0 +1,68 @@
+
+CprE 329 --> CprE Elective
+
+
+Want -
+
+
+CprE 430 or 431, but they don't exist
+
+
+Neutral -
+CprE 450: Distributed Systems and Middleware
+T R	9:30 - 10:50
+
+CprE 538: Reverse Engineering and Security Testing
+M W F	12:10 - 1:00P
+
+CprE 539: Cyber Physical System Security for the Smart Grid
+T R	2:10 - 3:30P
+CONFLICTS
+
+
+-----------------------------------------------
+
+Don't want -
+CprE 419: Software tools for Large Scale Data Analysis
+M W 5:10 - 6:30P
+R	1:10 - 3:00P
+
+
+CprE 488: Embedded Systems Design
+T R 12:40 - 2:00P
+F	9:00 - 11:50
+
+-----------------------------------------------
+
+Conflicts -
+CprE 421: Software Analysis and Verification for Safety and Security
+<=> Stats 330
+
+CprE 489: Computer networking and Data Communications
+This would actually fit really nicely
+T R 11:00 - 12:20P
+T	2:10 - 4:00P
+<=> CprE 491
+
+==============================================================================================================================
+
+ComS 477 --> Tech Elective
+
+
+-----------------------------------------------
+
+Neutral - 
+ComS 319: Construction of User Interfaces
+M W F	11:00 - 11:50
+
+ComS 435: Algorithms for Large Data Sets: Theory and Practice
+Prereq ComS 311
+
+-----------------------------------------------
+
+Don't Want -
+ComS 331: Theory of Computing
+M W F	11:00 - 11:50
+T		9:00 - 9:50, 10:00 - 10:50, 3:10 - 4:00P
+Looks like a serious, big class. Big no
+Oh boy very big no

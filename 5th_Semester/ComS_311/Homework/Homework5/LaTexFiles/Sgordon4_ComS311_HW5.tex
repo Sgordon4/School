@@ -23,15 +23,190 @@
 \maketitle
 
 
+%\begin{algorithm}[H]
+%\caption{Find MST of G'.}
+%\begin{algorithmic}
+%\REQUIRE G is provided as an adjacency list'.
+%\State Create an array \textit{arr} of size n
+%\State Set every edge to `empty' (like null)
+%\ForAll {vertex in T}
+%\State Add each edge and cost to n
+%\EndFor
+%\ForAll {vertex in G}
+%\State \#If this vertex is not in T
+%\If {arr[v] == empty}
+%\State arr[v] = cost of edge - $\delta$
+%\EndIf
+%\EndFor
+%\State Run Prim's algorithm on n to find the MST
+%\end{algorithmic}
+%\end{algorithm}
+
+%\noindent \textbf{Runtime of algorithm:} \\
+%Setting n to empty: O(n)\\
+%Loop through T: O(n)\\
+%Loop through G: O(n)\\
+%Prim's Algorithm: O(mlog(n))\\
+%Runtime = O(3n + mlog(n)) $\Rightarrow$ O(mlog(n))
+
+
+
 \begin{algorithm}[H]
 \caption{Find MST of G'.}
 \begin{algorithmic}
 %\REQUIRE G is provided as an adjacency list'.
-\State Hmmmmmmm
+\State Add e with its updated cost to the MST \textit{T}
+\State \#There will now be a single cycle in the MST
+\State Run BFS recursively beginning at a vertex v in edge e
+\State \indent While running BFS, make a list \textit{lst} of the edges that have
+\State \indent been passed so far
+\State \indent When vertex v is found again we know we have found the cycle,
+\State \indent so we can pass lst back up to the top to be used later
+\State Find the maximum cost edge in lst and remove it from the MST
+\end{algorithmic}
+\end{algorithm}
+\noindent \textbf{Runtime of algorithm:} \\
+Adding e to MST: O(1)\\
+Running BFS: O(m+n)\\
+Runtime = O(n+m)
+
+%\noindent This idea of this algorithm is to:\\
+%- Add the modified edge to the MST T\\
+%- Find the new cycle in T\\
+%- Remove the heaviest edge in the cycle\\
+
+\noindent \textbf{Proof:}\\
+A valid MST contains no cycles.\\
+If we add the edge \textit{e} with modified weight to the MST T, there will be a  single cycle present.\\
+In order to re-form the MST, we must remove the heaviest edge in this cycle.\\
+We use BFS to build a list of the edges that make up the cycle.\\
+Let A be the heaviest edge in that cycle.\\
+Removing A from T will remove the cycle and re-form the MST.\\
+
+
+
+
+\begin{algorithm}[H]
+\caption{Find MST of G, with all S as leaf nodes.}
+\begin{algorithmic}
+%\REQUIRE G is provided as an adjacency list'.
+\State Create empty array \textit{B}
+\ForAll {vertex in G}
+\If {vertex is not in S}
+\State Add vertex and cost to arr
+\EndIf
+\EndFor
+\State Run Prim's algorithm on B to find MST
+\ForAll {vertex in S}
+\State vertex smallestEdge = -$\infty$
+\ForAll {edge in vertex}
+\If {edge does not go to a vertex in S}
+\If {edge.cost $<$ smallestEdge.cost}
+\State smallestEdge = edge
+\EndIf
+\EndIf
+\If {smallestEdge == -$\infty$}
+\State return false\indent \#This MST is impossible
+\EndIf
+\State Add vertex to the MST with smallestEdge
+\EndFor
+\EndFor
 \end{algorithmic}
 \end{algorithm}
 
+\noindent \textbf{Runtime of algorithm:} \\
+Loop through G: O(n)\\
+\indent If inside loop O(1)\\
+Prim's Algorithm: O(mlog(n))\\
+Nested loop for each edge in S: O(m)\\
+\indent If inside loops O(1)\\
+Runtime = O(n + mlog(n) + m) $\Rightarrow$ O(mlog(n))\\
+
+
+\begin{algorithm}[H]
+\caption{Does d[v] correctly contain the length of all shortest paths}
+\begin{algorithmic}
+%\REQUIRE G is provided as an adjacency list'.
+\State Create new array \textit{A} of size n
+\ForAll {vertex in G}
+\ForAll {edge in vertex}
+\State \#Turn outgoing edges to incoming edges
+\State \#If edge in u from u $\to$ v, make edge in v from v $\to$ u
+\State Add the incoming edge to A
+\EndFor
+\EndFor
+\ForAll {vertex in A}
+\If {vertex == S}
+\State continue
+\EndIf
+\ForAll {edge in vertex}
+\State \#Assume values in d are correct, and build off of them
+\State int cost = edge.cost + d[edge.v]
+\If {cost == d[vertex]}
+\State goto OK
+\EndIf
+\EndFor
+\State \#If the cost is incorrect, d is incorrect
+\State return false
+\State OK:
+\EndFor
+\State return true
+\end{algorithmic}
+\end{algorithm}
+
+\noindent \textbf{Runtime of algorithm:} \\
+Nested loop for each edge in G: O(m)\\
+Nested loop for each edge in A: O(m)\\
+Runtime = O(m+m) = O(2m) = O(m)
+
+\pagebreak
+
+\begin{algorithm}[H]
+\caption{Schedule cake baking and decorating in minimum time}
+\begin{algorithmic}
+%\REQUIRE G is provided as an adjacency list'.
+\State Assume cake information is given in \textit{C}
+\State Use mergesort to sort C in order of longest decoration time to shortest decoration time
+\State When two decoration times are equal, use longest baking times to break the tie (longest goes first)
+\end{algorithmic}
+\end{algorithm}
+
+\noindent \textbf{Proof:}\\
+Assume our ordering C is not optimal\\
+Assume that there is an optimal ordering O\\
+This means there must be an inversion.\\
+Then, we can modify O to find O' that is:\\
+- No worse than O\\
+- Closer to A in some measurable way\\
+
+\noindent This process will continue until we reach A\\
+O $\Rightarrow$ O' $\Rightarrow$ O'' $\Rightarrow$ A\\
+This gradually transforms O into A without hurting the solution\\
+Therefore A must be optimal
+
+%Sort by longest decoration time first
+%Break ties using largest baking time
 
 %\begin{lstlisting}
 %\end{lslisting}
 \end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
