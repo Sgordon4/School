@@ -1,4 +1,4 @@
-// Generated from reflang/parser/RefLang.g by ANTLR 4.5
+// Generated from reflang\parser\RefLang.g by ANTLR 4.5
 package reflang.parser; import static reflang.AST.*;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;

@@ -106,4 +106,19 @@ public interface Value {
 		public DynamicError(String message) { this.message = message; }
 	    public String tostring() { return "" + message; }
 	}
+
+	//------------------------------------------------------------------------------------------------------------------
+	static class RefVal implements Value {
+		public int _loc = -1;	//Location
+		public RefVal(int loc) {
+			_loc = loc ;
+		}
+		public String tostring() {
+			return "loc:" + this.loc();
+		}
+		public int loc() {
+			return _loc ;
+		}
+	}
+	//------------------------------------------------------------------------------------------------------------------
 }

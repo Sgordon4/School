@@ -530,7 +530,7 @@ public interface AST {
 		}
 	}
 
-  /**
+  	/**
 	 * A letrec expression has the syntax 
 	 * 
 	 *  (letrec ((name expression)* ) expression)
@@ -704,6 +704,90 @@ public interface AST {
 			return visitor.visit(this, env);
 		}
 	}
+
+
+	//------------------------------------------------------------------------------------------------------------------
+	/*
+	public static class DefineDecl extends Exp {
+		String _name;
+		Exp _value_exp;
+		public DefineDecl(String name, Exp value_exp) {
+			_name = name;
+			_value_exp = value_exp;
+		}
+		public Object accept(Visitor visitor, Env env) {
+			return visitor.visit(this, env);
+		}
+		public String name() { return _name; }
+		public Exp value_exp() { return _value_exp; }
+	}*/
+
+	public static class RefExp extends Exp {
+		private Exp _value_exp;
+
+		public RefExp(Exp value_exp) {
+			this._value_exp = value_exp;
+		}
+
+		public Object accept(Visitor visitor, Env env){
+			return visitor.visit(this, env);
+		}
+
+		public Exp get_value_exp(){
+			return _value_exp;
+		}
+	}
+	public static class DerefExp extends Exp {
+		private Exp _value_exp;
+
+		public DerefExp(Exp value_exp) {
+			this._value_exp = value_exp;
+		}
+
+		public Object accept(Visitor visitor, Env env){
+			return visitor.visit(this, env);
+		}
+
+		public Exp get_value_exp(){
+			return _value_exp;
+		}
+	}
+	public static class AssignExp extends Exp {
+		private Exp _loc_exp;
+		private Exp _value_exp;
+
+		public AssignExp(Exp loc_exp, Exp value_exp) {
+			this._loc_exp = loc_exp;
+			this._value_exp = value_exp;
+		}
+
+		public Object accept(Visitor visitor, Env env){
+			return visitor.visit(this, env);
+		}
+
+		public Exp get_loc_exp(){
+			return _loc_exp;
+		}
+		public Exp get_value_exp(){
+			return _value_exp;
+		}
+	}
+	public static class FreeExp extends Exp {
+		private Exp _value_exp;
+
+		public FreeExp(Exp value_exp) {
+			this._value_exp = value_exp;
+		}
+
+		public Object accept(Visitor visitor, Env env){
+			return visitor.visit(this, env);
+		}
+
+		public Exp get_value_exp(){
+			return _value_exp;
+		}
+	}
+	//------------------------------------------------------------------------------------------------------------------
 	
 	public interface Visitor <T> {
 		// This interface should contain a signature for each concrete AST node.
@@ -742,5 +826,12 @@ public interface AST {
 		public T visit(AST.IsListExp e, Env env);
 		public T visit(AST.IsPairExp e, Env env);
 		public T visit(AST.IsUnitExp e, Env env);
+
+		//------------------------------------------------------------------------------------------------------------------
+		public T visit(AST.RefExp e, Env env);
+		public T visit(AST.DerefExp e, Env env);
+		public T visit(AST.AssignExp e, Env env);
+		public T visit(AST.FreeExp e, Env env);
+		//------------------------------------------------------------------------------------------------------------------
 	}
 }

@@ -88,6 +88,10 @@ grammar ArithLang;
  Stop : 'stop' ;
  Self : 'self' ;
  Dot : '.' ;
+ Ref : 'ref' ;
+ Deref : 'deref' ;
+ Assign : 'set!' ;
+ Free : 'free' ;
 
  Number : DIGIT+ ;
 

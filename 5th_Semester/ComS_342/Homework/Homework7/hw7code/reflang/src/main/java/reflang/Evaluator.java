@@ -15,6 +15,10 @@ public class Evaluator implements Visitor<Value> {
 
 	Env initEnv = initialEnv(); //New for definelang
 
+	//------------------------------------------------------------------------------------------------------------------
+	Heap heap = new Heap.Heap16Bit();
+	//------------------------------------------------------------------------------------------------------------------
+
 	Value valueOf(Program p) {
 			return (Value) p.accept(this, initEnv);
 	}
@@ -413,4 +417,39 @@ public class Evaluator implements Visitor<Value> {
 	public Evaluator(Reader reader) {
 		_reader = reader;
 	}
+
+	//------------------------------------------------------------------------------------------------------------------
+
+	@Override
+	public Value visit(RefExp e, Env env) {
+		Value val = (Value) e.get_value_exp().accept(this, env);
+		return heap.ref(val);
+	}
+
+	@Override
+	public Value visit(DerefExp e, Env env) {
+		Value.RefVal val = (Value.RefVal) e.get_value_exp().accept(this, env);
+		return heap.deref(val);
+	}
+
+	@Override
+	public Value visit(AssignExp e, Env env) {
+		Exp loc = e.get_loc_exp();
+		Exp val = e.get_value_exp();
+
+		Value valVal = (Value) val.accept(this, env);
+		Value.RefVal locVal = (Value.RefVal) loc.accept(this, env);
+
+		Value retVal = heap.setref(locVal, valVal);
+		return retVal;
+	}
+
+	@Override
+	public Value visit(FreeExp e, Env env) {
+		Value.RefVal val = (Value.RefVal) e.get_value_exp().accept(this, env);
+		heap.free(val);
+		return new Value.UnitVal();
+	}
+
+	//------------------------------------------------------------------------------------------------------------------
 }
