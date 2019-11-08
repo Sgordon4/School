@@ -1,0 +1,7 @@
+This is some attempt to make any sense or order at all out of what we've been
+vaguely directed toward:
+
+Small signal g parameters are called inverse hybrid params
+
+g11 = I1/V1     (Open circuit admittance)
+g21 = V2/V1     (Open circuit forward voltage gain)
