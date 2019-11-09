@@ -1,9 +1,9 @@
 
 
 Due 11/8/2019:
-- Engl 314 Technical Desc.
-- ComS 342 HW7
-- Bitchass 330 HW11
+X Engl 314 Technical Desc.
+~ ComS 342 HW7
+X Bitchass 330 HW11
 
 Due 11/14/2019:
 - ComS 311 Proj1 Early

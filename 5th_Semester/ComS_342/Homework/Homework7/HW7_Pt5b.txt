@@ -1,0 +1,12 @@
+(define alias (ref 1))
+(let ((b alias)) b)
+(define alias2 (deref (ref 1)))
+(let ((b alias2)) b)
+
+
+(define alias (ref 1))
+(let ((b alias)) b)
+$ $ loc:0
+(define alias2 (deref (ref 1)))
+(let ((b alias2)) b)
+$ $ 1
