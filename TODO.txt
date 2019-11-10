@@ -1,10 +1,4 @@
 
-
-Due 11/8/2019:
-X Engl 314 Technical Desc.
-~ ComS 342 HW7
-X Bitchass 330 HW11
-
 Due 11/14/2019:
 - ComS 311 Proj1 Early
 - Bitchass 330 Lab 11
@@ -14,11 +8,20 @@ Due 11/15/2019:
 - CprE 308 Proj2
 - Bitchass 330 HW12
 
+Due 11/20/2019
+- ComS 342 HW8 Early
+
 Due 11/22/2019
 - CPRE 308 EXAM 2
+- ComS 342 HW8
 
 
 -------------------------------------------------
+
+Due 11/8/2019:
+X Engl 314 Technical Desc.
+X ComS 342 HW7
+X Bitchass 330 HW11
 
 Due 11/7/2019:
 X Bitchass 330 Lab 10
