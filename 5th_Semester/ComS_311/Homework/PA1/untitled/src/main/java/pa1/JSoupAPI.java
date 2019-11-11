@@ -57,6 +57,9 @@ public class JSoupAPI {
                 catch (HttpStatusException e){
                     System.out.println("--invalid link, do nothing");
                 }
+                catch (Exception e){
+                    System.out.println(e.getMessage());
+                }
             }
             else{
                 System.out.println("--ignore");

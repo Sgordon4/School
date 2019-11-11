@@ -7,7 +7,7 @@ import api.TaggedVertex;
 /**
  * Implementation of an inverted index for a web graph.
  * 
- * @author PLEASE FILL IN TEAM MEMBER NAMES HERE
+ * @author Sean Gordon (Sgordon4)
  */
 public class Index
 {

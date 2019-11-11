@@ -1,4 +1,9 @@
-package pa1;
+package testing;
+
+import pa1.Crawler;
+import pa1.PolitenessPolicy;
+import pa1.Vertex;
+import pa1.WebGraph;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -36,7 +41,7 @@ public class Testing {
         System.out.println();
 
 
-        graph.graph.get(vertex.getIdentifier()).addIncoming(2);
+        graph.getGraph().get(vertex.getIdentifier()).addIncoming(2);
         list = (graph.getGraph().get(vertex.getIdentifier()).getIncoming());
 
         System.out.printf("Trial 2: ");
@@ -46,7 +51,7 @@ public class Testing {
         System.out.println();
 
 
-        Vertex<String, Integer> vertex2 = graph.graph.get(vertex.getIdentifier());
+        Vertex<String, Integer> vertex2 = graph.getGraph().get(vertex.getIdentifier());
         vertex2.addIncoming(3);
         list = (graph.getGraph().get(vertex.getIdentifier()).getIncoming());
 
