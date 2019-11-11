@@ -56,6 +56,7 @@ public class Crawler {
         linkQueue.add(new Edge(null, seedUrl));
         linkQueue.add(null);        //Add a null sentinel to mark end of level
         int depth = 0;
+        int numPages = 0;
 
         //There will always be a null in the queue
         //Therefore there when there is only one item left (the null), we have run out of links
@@ -71,37 +72,42 @@ public class Crawler {
             }
 
             String currentLink = currentEdge.getEnd();
+            Vertex<String, Integer> vertex;
 
-            //If this link is already in the graph, skip it...
-            if(graph.getGraph().containsKey(currentLink))
-                continue;
+            //If link is not in the graph
+            if(!(graph.getGraph().containsKey(currentLink))){
+                //If we have reached max # of unique pages, skip it
+                if(numPages == maxPages)
+                    continue;
 
-            //Otherwise add it...
-            int index = graph.vertexListAdd(currentLink);
+                //Add the link to the graph
+                int index = graph.vertexListAdd(currentLink);
+                vertex = new Vertex<>(currentLink, index);
+                graph.addVertexToGraph(vertex);
+                numPages++;
+            }
+            //Otherwise grab it
+            else
+                vertex = graph.getGraph().get(currentLink);
 
-            Vertex<String, Integer> vertex = new Vertex<>(currentLink, index);
-            graph.addVertexToGraph(vertex);
-
-
-            //Update this vertex's incoming edges...
-            Integer start = currentEdge.getStart();
 
             //If start is null, this is the starting link and there is no incoming node
-            //Otherwise...
+            //Otherwise update this vertex's incoming edges...
+            Integer start = currentEdge.getStart();
+            Integer index = vertex.getIndex();
+
             if(start != null) {
                 vertex.addIncoming(start);
+
+                //Update the predecessor's outgoing edges...
+                String predURL = graph.getVertexList().get(start);
+                Vertex<String, Integer> pred = graph.getGraph().get(predURL);
+
+                pred.addOutgoing(index);
             }
 
 
-            //Update the predecessor's outgoing edges...
-            String predURL = graph.getVertexList().get(start);
-            Vertex<String, Integer> pred = graph.getGraph().get(predURL);
-
-            pred.addOutgoing(index);
-
-
-
-            //Now continue
+            //Now continue -----------------------------------------
 
             //Grab all links contained in the current link
             String[] links = JSoupAPI.getLinks(currentLink, policy);

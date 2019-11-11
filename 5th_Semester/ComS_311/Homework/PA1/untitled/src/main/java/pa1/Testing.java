@@ -66,7 +66,12 @@ public class Testing {
         System.out.println();
 
 
+        System.out.println(graph.getGraph().get("oof"));
+        System.out.println(graph.getGraph().containsKey("oof"));
 
+        Crawler crawler = new Crawler("http://class.ece.iastate.edu/ee330/", 3, 10);
+        crawler.crawl();
+        System.out.printf("Completed");
 
     }
 }
