@@ -36,6 +36,24 @@ public class WebGraph<E> implements Graph {
 
             arr.add(taggedVertex);
         }
+
+
+        //If the seed vertex has no incoming edges it will never show up in search results, so we must add a fake one
+        //If the array isn't empty and the seed vertex has no incoming edges...
+        if(!arr.isEmpty()){
+            //The seed vertex will always be the first
+            TaggedVertex<E> first = arr.get(0);
+
+            //If the seed vertex has no incoming edges...
+            if(first.getTagValue() == 0){
+                //Add a fake edge
+                first = new TaggedVertex<>(first.getVertexData(), 1);
+
+                //Re-add it
+                arr.set(0, first);
+            }
+        }
+
         return arr;
     }
 

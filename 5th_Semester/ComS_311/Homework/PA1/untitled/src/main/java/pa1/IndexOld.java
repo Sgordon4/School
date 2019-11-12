@@ -1,25 +1,15 @@
 package pa1;
 
-import java.util.*;
-
 import api.TaggedVertex;
+
+import java.util.List;
 
 /**
  * Implementation of an inverted index for a web graph.
  *
  * @author Sean Gordon (Sgordon4)
  */
-public class Index {
-
-    HashMap<String, List<TaggedVertex<String>>> index;
-    List<TaggedVertex<String>> urls;
-
-    PolitenessPolicy policy;
-    JSoupAPI jSoupAPI;
-
-
-
-
+public class IndexOld {
     /**
      * Constructs an index from the given list of urls.  The
      * tag value for each url is the indegree of the corresponding
@@ -27,41 +17,14 @@ public class Index {
      *
      * @param urls information about graph to be indexed
      */
-    public Index(List<TaggedVertex<String>> urls) {
-        index = new HashMap<>();
-        this.urls = urls;
+    public IndexOld(List<TaggedVertex<String>> urls) {
 
-        policy = new PolitenessPolicy();
-        jSoupAPI = new JSoupAPI();
-    }
-    //Used for testing
-    public Index(List<TaggedVertex<String>> urls, JSoupAPI jSoupAPI) {
-        index = new HashMap<>();
-        this.urls = urls;
-
-        policy = new PolitenessPolicy();
-        this.jSoupAPI = jSoupAPI;
     }
 
     /**
      * Creates the index.
      */
     public void makeIndex() {
-
-        //For every vertex in our graph...
-        for(TaggedVertex<String> vertex : urls){
-            String url = vertex.getVertexData();
-
-            HashMap<String, Integer> words = jSoupAPI.getWords(url, policy);
-            Set<Map.Entry<String, Integer>> entrySet =  words.entrySet();
-
-            //For every word we recieved...
-            for(Map.Entry<String, Integer> word : entrySet){
-
-            }
-        }
-
-
         // TODO
     }
 
@@ -138,5 +101,4 @@ public class Index {
         // TODO
         return null;
     }
-
 }

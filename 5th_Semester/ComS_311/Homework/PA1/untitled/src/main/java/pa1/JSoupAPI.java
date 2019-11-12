@@ -9,8 +9,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class JSoupAPI {
 
@@ -21,13 +20,22 @@ public class JSoupAPI {
      * Majority of code pulled from JSoupTest.
      *
      * @param url Webpage to search for useful links
+     * @param polPolicy Politeness policy to limit load on servers
      * @return List of all useful links contained in a webpage
      */
-    public static String[] getLinks(String url, PolitenessPolicy polPolicy) throws IOException {
+    public String[] getLinks(String url, PolitenessPolicy polPolicy){
 
         System.out.println("Fetching " + url);
         polPolicy.incrementRequest();
-        Document doc = Jsoup.connect(url).get();
+
+        Document doc;
+        try {
+            doc = Jsoup.connect(url).get();
+        }
+        catch (IOException e){
+            System.out.println("--IOException. Link get failed");
+            return new String[] {};
+        }
 
         List<String> validLinks = new ArrayList<>();
 
@@ -73,4 +81,97 @@ public class JSoupAPI {
 
         return validLinksRet;
     }
+
+
+
+    /**
+     * Helper method to pull all valid words from a webpage.
+     * Useful words are defined in the PDF as punctuation stripped text that isn't a stop word.
+     *
+     * @param url Webpage to parse for words
+     * @param polPolicy Politeness policy to limit load on servers (probably not needed here)
+     * @return List of all valid words in a webpage
+     */
+    public HashMap<String, Integer> getWords(String url, PolitenessPolicy polPolicy){
+        System.out.println("Fetching " + url);
+        polPolicy.incrementRequest();
+
+        //Get the body text from the webpage
+        String bodyText;
+        try {
+            bodyText = Jsoup.connect(url).get().body().text();
+        }
+        catch (IOException e){
+            System.out.println("--IOException. Link get failed");
+            return new HashMap<String, Integer>();
+        }
+
+        //Parse the body text into individual words
+        HashMap<String, Integer> words = new HashMap<>();
+        Scanner scanner = new Scanner(bodyText);
+
+        while(scanner.hasNext()){
+            String word = scanner.next();
+
+            //Check if the word is not one of the droids we're looking for -------
+
+            //Strip the word of punctuation, and if it is a stop word, skip it
+            word = Util.stripPunctuation(word);
+            if(Util.isStopWord(word))
+                continue;
+
+            //Add the word to the pile
+            words.putIfAbsent(word, 0);
+            words.put(word, words.get(word) + 1);
+        }
+        scanner.close();
+
+        //Return the resulting HashMap
+        return words;
+    }
 }
+
+
+/*
+public String[] getWords(String url, PolitenessPolicy polPolicy){
+        System.out.println("Fetching " + url);
+        polPolicy.incrementRequest();
+
+        //Get the body text from the webpage
+        String bodyText;
+        try {
+            bodyText = Jsoup.connect(url).get().body().text();
+        }
+        catch (IOException e){
+            System.out.println("--IOException. Link get failed");
+            return new String[] {};
+        }
+
+        //Parse the body text into individual words
+        List<String> words = new ArrayList<>();
+        Scanner scanner = new Scanner(bodyText);
+
+        while(scanner.hasNext()){
+            String word = scanner.next();
+
+            //Check if the word is not one of the droids we're looking for -------
+
+            //Strip the word of punctuation
+            word = Util.stripPunctuation(word);
+
+            //If it is a stop word, skip it
+            if(Util.isStopWord(word))
+                continue;
+
+            //Add the word to the list
+            words.add(word);
+        }
+        scanner.close();
+
+        //Turn resulting list into an array and return it
+        String validWords[] = new String[words.size()];
+        validWords = words.toArray(validWords);
+
+        return validWords;
+    }
+ */

@@ -15,6 +15,6 @@ dependencies {
     implementation 'org.jsoup:jsoup:1.12.1'
 
     // JUnit and Mockito
-    implementation "junit:junit:4.11"
+    testImplementation "junit:junit:4.11"
     testImplementation "org.mockito:mockito-core:1.+"
 }

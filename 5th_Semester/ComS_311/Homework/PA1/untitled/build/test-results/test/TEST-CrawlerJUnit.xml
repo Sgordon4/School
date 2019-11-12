@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="CrawlerJUnit" tests="2" skipped="0" failures="0" errors="0" timestamp="2019-11-12T07:48:11" hostname="GamingPC" time="0.017">
+  <properties/>
+  <testcase name="crawlerTestDepth1" classname="CrawlerJUnit" time="0.015"/>
+  <testcase name="crawlerTestDepth6" classname="CrawlerJUnit" time="0.002"/>
+  <system-out><![CDATA[Asking for links from A
+# of links: 3
+Asking for links from B
+# of links: 3
+Asking for links from C
+# of links: 4
+Asking for links from D
+# of links: 3
+Tagged vertex shit: 
+1, 1, 1, 1, 
+
+
+
+Asking for links from A
+# of links: 3
+Asking for links from B
+# of links: 3
+Asking for links from C
+# of links: 4
+Asking for links from D
+# of links: 3
+Asking for links from I
+# of links: 0
+Asking for links from J
+# of links: 0
+Tagged vertex shit: 
+1, 2, 2, 2, 1, 1, 
+
+
+
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
