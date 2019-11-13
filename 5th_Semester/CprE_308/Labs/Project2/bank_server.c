@@ -10,41 +10,22 @@ typedef enum{
     TRANSJOB = 2
 } JobType;
 
-
-/*
-//Represents the tail node in the queue
-typedef struct{
-    struct job *prev;   //Pointer to the previous request
-} TailNode;
-*/
-//Represents the tail node in the queue
-struct TailNode{
-    struct job *prev;   //Pointer to the previous request
+struct TailNode {
+    struct Job* prev;
 };
-
-
-//Account-balance-check job
-typedef struct{
-    int account_ID;     //ID of account to check balance
-} CheckJob;
-
-
-//Individual transaction job
-typedef struct {
+struct CheckJob {
+    int account_ID;
+};
+struct Trans{
     int account_ID;     //ID of account to operate on
     int amount;         //Amount to add or remove from account balance
-} Trans;
-//Holder for multiple transaction jobs, as up to 10 are allowed in a command
-typedef struct {
-    struct Trans *trans_list;   //List of individual transaction
+};
+struct TransJob {
+    struct Trans *trans_list[10];//List of individual transaction
     int num_trans;              //Number of transactions in list
-} TransJob;
+};
 
-
-//An individual job present in the queue.
-//job_type identifies it as one of the unique job types,
-//represented by the structs above this one
-typedef struct{
+struct Job {
     int request_ID;
     JobType job_type;           //Is this job a CheckJob, TransJob, ...?
     struct timeval time_arrival;//Arrival time
@@ -54,33 +35,14 @@ typedef struct{
     struct TransJob *trans_job; //If this job is a TransJob, this holds info
     struct TailNode *tail_node; //If this job is the TailNode, points to prev job
 
-    struct job *next;           //Pointer to the next request
-} Job;
+    struct Job *next;           //Pointer to the next request
+};
 
-
-
-typedef struct{
-    struct Job *head, *tail;
-    int num_jobs; // number of jobs in current queue
-} Queue;
-
-
-
-
-Queue *queue;
 
 int main(int argc, char *argv[])
 {
-    struct TailNode tailnode = {
-        .prev = NULL
-    };
-    Job tail_job = {
-        .job_type = TAILNODE,
-        .tail_node = tailnode
-    };
 
-    queue = (struct Queue*) malloc(sizeof(struct Queue*));
-    queue->head = &tail_node;
-    queue->tail = &tail_node;
+
+    printf("Hello world\n");
 
 }
