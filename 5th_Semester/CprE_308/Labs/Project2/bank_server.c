@@ -3,62 +3,51 @@
 #include <sys/time.h>
 
 
-
 typedef enum{
-    TAILNODE = 0,
-    CHECKJOB = 1,
-    TRANSJOB = 2
+    CHECKJOB = 0,
+    TRANSJOB = 1,
+    ENDJOB = 2
 } JobType;
 
 
-struct CheckJob {
+typedef struct Job {
+    int request_ID;
+    JobType job_type;
+
+    struct Job *next;
+} Job;
+
+typedef struct CheckJob {
     int account_ID;
-};
-struct Trans{
+} CheckJob;
+
+typedef struct Trans{
     int account_ID;     //ID of account to operate on
     int amount;         //Amount to add or remove from account balance
-};
-struct TransJob {
+} Trans;
+typedef struct TransJob {
     struct Trans *trans_list[10];//List of individual transaction
     int num_trans;              //Number of transactions in list
-};
+} TransJob;
 
-struct Job {
-    int request_ID;
-    JobType job_type;           //Is this job a CheckJob, TransJob, QueueHead?
-    struct timeval time_arrival;//Arrival time
-    struct timeval time_end;    //End time
+typedef struct Queue {
+    Job *head;
+    Job *tail;
+} Queue;
 
-    struct CheckJob *check_job; //If this job is a CheckJob, this holds info
-    struct TransJob *trans_job; //If this job is a TransJob, this holds info
-
-    struct Job *next;           //Pointer to the next request
-};
-
-struct Queue {
-    struct Job *head;
-    struct Job *tail;
-};
-
-
-struct Job newJob(JobType job_type);
+Job newJob(JobType job_type);
 struct CheckJob newCheckJob(int account_ID);
 struct TransJob newTransJob();
 int addTransToJob(struct TransJob transJob, struct Trans transaction);
 struct Trans newTransaction(int account_ID, int amount);
 
 int isQueueEmpty();
-int addToQueue(struct Job job);
-struct Job popQueue();
+int enQueue(Job job);
+Job popQueue();
+void swapJobs(Job *job1, Job *job2);
 
 
-
-
-
-
-
-struct Queue *QUEUE;
-int REQUESTNUM = 0;
+Queue *QUEUE;
 
 int main(int argc, char *argv[])
 {
@@ -67,79 +56,67 @@ int main(int argc, char *argv[])
     //Initialize queue
     QUEUE = (struct Queue*)malloc(sizeof(struct Queue));
 
-    //Create the head node
-    struct Job tailJob = newJob(TAILNODE);
+    Job jobTail = {
+        .request_ID = -1,
+        .job_type = TAILNODE
+    };
+    QUEUE->head = &jobTail;
+    QUEUE->tail = &jobTail;
 
-    //Add it to the queue
-    QUEUE->head = &tailJob;
-    QUEUE->tail = &tailJob;
+    printf("Empty? - %d\n", isQueueEmpty());
 
-    struct Job job1 = newJob(CHECKJOB);
-    struct timeval time = job1.time_arrival;
-    printf("time is: %ld.%6.ld\n", time.tv_sec, time.tv_usec);
+    Job job1 = {
+        .request_ID = 1,
+        .job_type = CHECKJOB
+    };
+    Job job2 = {
+        .request_ID = 2,
+        .job_type = CHECKJOB
+    };
 
-    struct Job job2 = newJob(CHECKJOB);
-    struct Job job3 = newJob(CHECKJOB);
-    struct Job job4 = newJob(CHECKJOB);
-    printf("%d\n", job1.request_ID);
-    printf("%d\n", job2.request_ID);
-    printf("%d\n", job3.request_ID);
-    printf("%d\n", job4.request_ID);
 
-    addToQueue(job1);
-    addToQueue(job2);
-    addToQueue(job3);
-    addToQueue(job4);
+    enQueue(job1);
 
-    struct CheckJob checkJob1 = newCheckJob(3);
-    job1.check_job = &checkJob1;
 
-    printf("Q head: %d\n", QUEUE->head->request_ID);
-    printf("Q 1: %d\n", QUEUE->head->next->request_ID);
-    printf("Q 2: %d\n", QUEUE->head->next->next->request_ID);
-    printf("Q 3: %d\n", QUEUE->head->next->next->next->request_ID);
 
-    /*
-    while(!isQueueEmpty()){
-        struct Job popped = popQueue();
-        int requestID = popped.request_ID;
-        JobType type = popped.job_type;
-
-        printf("Job %d: %d\n", requestID, type);
-    }
-    */
+    printf("\n-------\n");
+    printf("Job1: %d\n", job1.request_ID);
+    printf("Job2: %d\n", job2.request_ID);
+    printf("-------\n");
+    swapJobs(&job1, &job2);
+    printf("Job1: %d\n", job1.request_ID);
+    printf("Job2: %d\n", job2.request_ID);
+    printf("-------\n");
+    swapJobs(&job1, &job2);
+    printf("Job1: %d\n", job1.request_ID);
+    printf("Job2: %d\n", job2.request_ID);
+    printf("-------\n\n");
 
 }
-
-
 
 
 int isQueueEmpty(){
     return (QUEUE->head == QUEUE->tail);
 }
-//Adding to the queue is thread safe
-int addToQueue(struct Job job){
-    struct Job *tailPointer = (QUEUE->tail);
-    job.next = tailPointer;
-    *QUEUE->tail = job;
-    QUEUE->tail = tailPointer;
+int enQueue(Job job){
+    Job *temp = &newJob(CHECKJOB);
     return 0;
 }
-//Popping from the queue is NOT thread safe
-struct Job popQueue(){
-    struct Job temp;
-    temp = *(QUEUE->head);
-    QUEUE->head = QUEUE->head->next;
-    return temp;
-}
-int replaceNode(struct Job toReplace, struct Job replacer){
-
-    return 0;
+Job popQueue(){
+    
 }
 
+//Swap the pointers of two jobs, effectively swapping contents
+void swapJobs(Job *job1, Job *job2){
+    Job temp = *job1;
+    *job1 = *job2;
+    *job2 = temp;
+}
 
 
-struct Job newJob(JobType job_type){
+
+
+Job newJob(JobType job_type){
     struct Job temp = {
         .request_ID = REQUESTNUM++, //Global request number (increment it after)
         .job_type = job_type
@@ -179,24 +156,99 @@ struct Trans newTransaction(int account_ID, int amount){
 
 
 
+/*
+int addToQueue(struct Job job){
+    printf("AAAA: %d\n", job.request_ID);
+    printf("Urg0: %d\n", QUEUE->tail->request_ID);
+    swapJobs(&job, QUEUE->tail);
+    printf("Urg1: %d\n", QUEUE->tail->request_ID);
+
+    QUEUE->tail->next = &job;   //Job is now the old tail
+    printf("Urg2: %d\n", QUEUE->tail->request_ID);
+    Job jobTail = {
+        .request_ID = -1,
+        .job_type = TAILNODE
+    };
+    QUEUE->tail = &jobTail;
+    printf("Urg3: %d\n", QUEUE->tail->request_ID);
+    return 0;
+}
+*/
+
+
+
+void thing(){
+    Job job1 = {
+        .request_ID = 1,
+        .job_type = CHECKJOB
+    };
+    Job job2 = {
+        .request_ID = 2,
+        .job_type = CHECKJOB
+    };
+    Job job3 = {
+        .request_ID = 3,
+        .job_type = CHECKJOB
+    };
+
+    QUEUE->head = &job1;
+    QUEUE->tail = &job1;
+    printf("%d\n", isQueueEmpty());
+
+    QUEUE->head->next = &job2;
+    QUEUE->head->next->next = &job3;
+    QUEUE->tail = &job3;
 
 
 
 
 
 
+    int a = QUEUE->head->request_ID;
+    printf("%d:", a);
+    int b = QUEUE->head->next->request_ID;
+    printf("%d:", b);
+    int c = QUEUE->head->next->next->request_ID;
+    printf("%d\n", c);
+
+
+    printf("%d\n", isQueueEmpty());
+}
 
 
 /*
-struct Job *newJob(int request_ID, JobType job_type){
-    struct Job *temp = NULL;
-    temp = (struct Job*)malloc(sizeof(struct Job));
+int a = job.request_ID;
+int b = QUEUE->head->request_ID;
+printf("Job1: %d, Job2: %d\n", a, b);
 
-    temp->request_ID = request_ID;
-    temp->job_type = job_type;
+swapJobs(&job, QUEUE->tail);
 
-    gettimeofday(&(temp->time_arrival), NULL);
+a = job.request_ID;
+b = QUEUE->head->request_ID;
+printf("Job1: %d, Job2: %d\n", a, b);
 
-    return temp;
-}
+*/
+
+/*
+printf("%d\n", isQueueEmpty());
+
+a = QUEUE->head->request_ID;
+b = QUEUE->head->next->request_ID;
+int c = QUEUE->head->next->next->request_ID;
+
+printf("%d:%d:%d\n", a, b, c);
+
+
+
+
+
+printf("%d:%d\n", job1.request_ID, job2.request_ID);
+swapJobs(&job1, &job2);
+printf("%d:%d\n", job1.request_ID, job2.request_ID);
+*/
+
+/*
+printf("%d:%d\n", job1.request_ID, job2.request_ID);
+swapJobs(&job1, &job2);
+printf("%d:%d\n", job1.request_ID, job2.request_ID);
 */
