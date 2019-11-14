@@ -47,6 +47,10 @@ struct TransJob newTransJob();
 int addTransToJob(struct TransJob transJob, struct Trans transaction);
 struct Trans newTransaction(int account_ID, int amount);
 
+int isQueueEmpty();
+int addToQueue(struct Job job);
+struct Job popQueue();
+
 
 
 
@@ -74,12 +78,36 @@ int main(int argc, char *argv[])
     struct timeval time = job1.time_arrival;
     printf("time is: %ld.%6.ld\n", time.tv_sec, time.tv_usec);
 
-    QUEUE->head->next = &job1;
+    struct Job job2 = newJob(CHECKJOB);
+    struct Job job3 = newJob(CHECKJOB);
+    struct Job job4 = newJob(CHECKJOB);
+    printf("%d\n", job1.request_ID);
+    printf("%d\n", job2.request_ID);
+    printf("%d\n", job3.request_ID);
+    printf("%d\n", job4.request_ID);
 
-
+    addToQueue(job1);
+    addToQueue(job2);
+    addToQueue(job3);
+    addToQueue(job4);
 
     struct CheckJob checkJob1 = newCheckJob(3);
     job1.check_job = &checkJob1;
+
+    printf("Q head: %d\n", QUEUE->head->request_ID);
+    printf("Q 1: %d\n", QUEUE->head->next->request_ID);
+    printf("Q 2: %d\n", QUEUE->head->next->next->request_ID);
+    printf("Q 3: %d\n", QUEUE->head->next->next->next->request_ID);
+
+    /*
+    while(!isQueueEmpty()){
+        struct Job popped = popQueue();
+        int requestID = popped.request_ID;
+        JobType type = popped.job_type;
+
+        printf("Job %d: %d\n", requestID, type);
+    }
+    */
 
 }
 
@@ -87,19 +115,26 @@ int main(int argc, char *argv[])
 
 
 int isQueueEmpty(){
-    return (QUEUE->head->next == NULL);
+    return (QUEUE->head == QUEUE->tail);
 }
-
+//Adding to the queue is thread safe
 int addToQueue(struct Job job){
-    job.next = QUEUE->tail;
-    QUEUE->tail = &job;
-    return 1;
+    struct Job *tailPointer = (QUEUE->tail);
+    job.next = tailPointer;
+    *QUEUE->tail = job;
+    QUEUE->tail = tailPointer;
+    return 0;
 }
+//Popping from the queue is NOT thread safe
 struct Job popQueue(){
-    struct Job temp = NULL;
-    temp = (QUEUE->head);
-    QUEUE->head = QUEUE->head.next;
+    struct Job temp;
+    temp = *(QUEUE->head);
+    QUEUE->head = QUEUE->head->next;
     return temp;
+}
+int replaceNode(struct Job toReplace, struct Job replacer){
+
+    return 0;
 }
 
 
