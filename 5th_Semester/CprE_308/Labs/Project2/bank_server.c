@@ -10,13 +10,6 @@ typedef enum{
 } JobType;
 
 
-typedef struct Job {
-    int request_ID;
-    JobType job_type;
-
-    struct Job *next;
-} Job;
-
 typedef struct CheckJob {
     int account_ID;
 } CheckJob;
@@ -29,6 +22,20 @@ typedef struct TransJob {
     struct Trans *trans_list[10];//List of individual transaction
     int num_trans;              //Number of transactions in list
 } TransJob;
+
+
+typedef struct Job {
+    int request_ID;             //Global ID
+    JobType job_type;           //Is this a CheckJob, TransJob, ...?
+    struct timeval time_arrival;//Time job is created
+    struct timeval time_end;    //Time job is completed
+
+    CheckJob *check_job;        //If this job is a CheckJob, this holds info
+    TransJob *trans_job;        //If this job is a TransJob, this holds info
+
+    struct Job *next;
+} Job;
+
 
 typedef struct Queue {
     Job *head;
@@ -48,6 +55,7 @@ void swapJobs(Job *job1, Job *job2);
 
 
 Queue *QUEUE;
+int REQUESTNUM = 0;
 
 int main(int argc, char *argv[])
 {
@@ -58,7 +66,7 @@ int main(int argc, char *argv[])
 
     Job jobTail = {
         .request_ID = -1,
-        .job_type = TAILNODE
+        .job_type = CHECKJOB
     };
     QUEUE->head = &jobTail;
     QUEUE->tail = &jobTail;
@@ -99,11 +107,11 @@ int isQueueEmpty(){
     return (QUEUE->head == QUEUE->tail);
 }
 int enQueue(Job job){
-    Job *temp = &newJob(CHECKJOB);
+    //Job *temp = &newJob(CHECKJOB);
     return 0;
 }
 Job popQueue(){
-    
+    return;
 }
 
 //Swap the pointers of two jobs, effectively swapping contents
@@ -126,28 +134,28 @@ Job newJob(JobType job_type){
     return temp;
 }
 
-struct CheckJob newCheckJob(int account_ID){
-    struct CheckJob temp = {
+CheckJob newCheckJob(int account_ID){
+    CheckJob temp = {
         .account_ID = account_ID
     };
     return temp;
 }
 
-struct TransJob newTransJob(){
-    struct TransJob transJob = {
+TransJob newTransJob(){
+    TransJob transJob = {
         .num_trans = 0
     };
     return transJob;
 }
-int addTransToJob(struct TransJob transJob, struct Trans transaction){
+int addTransToJob(TransJob transJob, Trans transaction){
     int index = transJob.num_trans;
     transJob.trans_list[index] = &transaction;
     transJob.num_trans = transJob.num_trans + 1;
 
     return index;
 }
-struct Trans newTransaction(int account_ID, int amount){
-    struct Trans trans = {
+Trans newTransaction(int account_ID, int amount){
+    Trans trans = {
         .account_ID = account_ID,
         .amount = amount
     };
