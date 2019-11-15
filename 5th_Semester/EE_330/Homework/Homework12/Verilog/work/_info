@@ -1,0 +1,76 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/home/sgordon4/1_School/5th_Semester/EE_330/Homework/Homework12/Verilog
+vDFF_Sync
+!s110 1573837640
+!i10b 1
+!s100 ?JiMEc_WFY@>b1ELa>LU23
+IA28zGm7L]AD:KUii_bh<?3
+Z1 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1573836846
+8/home/sgordon4/1_School/5th_Semester/EE_330/Homework/Homework12/Verilog/DFF_Sync.v
+F/home/sgordon4/1_School/5th_Semester/EE_330/Homework/Homework12/Verilog/DFF_Sync.v
+L0 8
+Z2 OP;L;10.7b;67
+r1
+!s85 0
+31
+!s108 1573837640.000000
+!s107 /home/sgordon4/1_School/5th_Semester/EE_330/Homework/Homework12/Verilog/DFF_Sync.v|
+!s90 -reportprogress|300|-work|work|/home/sgordon4/1_School/5th_Semester/EE_330/Homework/Homework12/Verilog/DFF_Sync.v|
+!i113 1
+Z3 o-work work
+Z4 tCvgOpt 0
+n@d@f@f_@sync
+vShift_4Bit
+!s110 1573835061
+!i10b 1
+!s100 hQGFC:TVMhn:82040mRNJ1
+IAX9Z<PW;mFi;RZ5U8GKDZ2
+R1
+R0
+w1573834861
+8/home/sgordon4/1_School/5th_Semester/EE_330/Homework/Homework12/Verilog/Shift_4Bit.v
+F/home/sgordon4/1_School/5th_Semester/EE_330/Homework/Homework12/Verilog/Shift_4Bit.v
+L0 8
+R2
+r1
+!s85 0
+31
+!s108 1573835061.000000
+!s107 /home/sgordon4/1_School/5th_Semester/EE_330/Homework/Homework12/Verilog/Shift_4Bit.v|
+!s90 -reportprogress|300|-work|work|/home/sgordon4/1_School/5th_Semester/EE_330/Homework/Homework12/Verilog/Shift_4Bit.v|
+!i113 1
+R3
+R4
+n@shift_4@bit
+vShift_4it_tb
+!s110 1573838130
+!i10b 1
+!s100 Xnm]W0oc=`D4a=oFHzl[>3
+IhWliK<`dB:m:ZQ3z9SJ<X1
+R1
+R0
+w1573838021
+8/home/sgordon4/1_School/5th_Semester/EE_330/Homework/Homework12/Verilog/Shift_4Bit_tb.v
+F/home/sgordon4/1_School/5th_Semester/EE_330/Homework/Homework12/Verilog/Shift_4Bit_tb.v
+L0 3
+R2
+r1
+!s85 0
+31
+!s108 1573838130.000000
+!s107 /home/sgordon4/1_School/5th_Semester/EE_330/Homework/Homework12/Verilog/Shift_4Bit_tb.v|
+!s90 -reportprogress|300|-work|work|/home/sgordon4/1_School/5th_Semester/EE_330/Homework/Homework12/Verilog/Shift_4Bit_tb.v|
+!i113 1
+R3
+R4
+n@shift_4it_tb

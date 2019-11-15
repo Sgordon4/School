@@ -31,6 +31,7 @@ module boolean_function_tb;
 		i_C = 1;
 		#period;
 
+
 		i_A = 1; 
 		i_B = 0; 
 		i_C = 0;
