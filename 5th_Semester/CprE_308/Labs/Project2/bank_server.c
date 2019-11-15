@@ -7,9 +7,10 @@
 
 
 typedef enum{
-    CHECKJOB = 0,
-    TRANSJOB = 1,
-    ENDJOB = 2
+    ERROR = 0,          //Job init failure sentinel value
+    CHECKJOB = 1,
+    TRANSJOB = 2,
+    ENDJOB = 3
 } JobType;
 
 
@@ -68,6 +69,11 @@ pthread_mutex_t reader_lock;
 int numThreads;
 pthread_t *tid;
 
+int numAccounts;
+pthread_mutex_t *accLocks;
+
+char *outputFile;
+
 
 int main(int argc, char *argv[])
 {
@@ -82,11 +88,10 @@ int main(int argc, char *argv[])
     //                                 Initialization 
     //----------------------------------------------------------------------------
 
-    //Use #threads passed via cmd to make a large enough array to hold all threads
-    numThreads = atoi(argv[1]);
-    tid = malloc (numThreads * sizeof (pthread_t));
-
     //Initialize threads
+    numThreads = atoi(argv[1]);
+    tid = malloc (numThreads * sizeof (pthread_t)); //Holds all thread IDs
+
     for(int i = 0; i < numThreads; i++){
         int error = pthread_create(&(tid[i]), NULL, &threadDoJobs, "blarg"); 
         if (error != 0) 
@@ -94,6 +99,19 @@ int main(int argc, char *argv[])
         
         pthread_join(tid[i], NULL);
     }
+
+
+    //Initialize account locks
+    numAccounts = atoi(argv[2]);
+    accLocks = malloc (numAccounts * sizeof (pthread_mutex_t));
+
+    for(int i = 0; i < numAccounts; i++){
+        int error = pthread_mutex_init(&(accLocks[i]), NULL); 
+        if (error != 0) 
+            printf("\nMutex can't be created :[%s]", strerror(error)); 
+    }
+
+
 
     //Initialize queue
     QUEUE = (struct Queue*)malloc(sizeof(struct Queue));
@@ -119,11 +137,22 @@ int main(int argc, char *argv[])
     //                                  Begin Loop 
     //----------------------------------------------------------------------------
 
+    char line[1024];
     while(1){
-        //Ask for user input
+        printf("> ");                           //Ask for user input
+
+        char *str = fgets(line, 1024, stdin);   //Grab user input
+        if (!str){
+            printf("Couldn't read user input\n");
+            continue;
+        }
+        str[strcspn(str, "\n")] = 0;            //Remove the newline char
+
+        printf("String: %s\n", str);
 
 
         //Convert input into a job
+        Job job = stringToJob(str);
 
         //Add job to queue
 
@@ -151,6 +180,7 @@ int main(int argc, char *argv[])
 
     free(QUEUE);    //Free Queue
     free(tid);      //Free thread array
+    free(accLocks); //Free account mutex locks array
 
     return 0;
 }
@@ -221,6 +251,71 @@ void *threadDoJobs(void *arg){
     printf("Thread created\n");
     
     return NULL;
+}
+
+Job stringToJob(char *str){
+    char s = ' ';       //Split command on space
+    char *jobType = strtok(str, s);
+
+
+    if(!strcmp("CHECK", jobType)){
+        int accID = atoi(strtok(str, s));
+
+        CheckJob checkJob = newCheckJob(accID);
+        Job job = newJob(CHECKJOB);
+
+        job.check_job = &checkJob;
+        return job;
+    }
+
+
+    else if(!strcmp("TRANS", jobType)){
+        TransJob transJob = newTransJob();
+
+        char *id = "";
+        char *amount = "";
+        int count = 0;
+        while(count < 10){
+            //Get the information if we haven't reached the end
+            id = strtok(str, s);
+            if(!id) break;
+
+            amount = strtok(str, s);
+            if(!amount) {           //Uneven #, need to come in pairs
+                printf("Invalid number of arguments\n");
+                return newJob(ERROR);
+            }
+
+            //Make the transaction
+            Trans trans = newTransaction(atoi(id), atoi(amount));
+
+            //Add to the list
+            transJob.trans_list[count++] = &trans;
+            transJob.num_trans = count;
+        }
+
+        //Make the main job
+        Job job = newJob(TRANSJOB);
+        job.trans_job = &transJob;
+        return job;
+    }
+
+    else if(!strcmp("EXIT", jobType)){
+        
+    }
+    else{
+        printf("< Invalid command %s\n", jobType);
+        return newJob(ERROR);
+    }
+
+    //Grab first word
+
+
+    //Turn string into stuff
+    char commands[20];
+    for(int i = 0; i < 20; i++){
+
+    }
 }
 
 
