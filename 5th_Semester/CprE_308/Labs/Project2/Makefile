@@ -1,5 +1,5 @@
 TARGET = bank_server
-LIBS = -lm
+LIBS = -pthread -lm
 CC = gcc
 CFLAGS = -g -Wall
 

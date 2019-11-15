@@ -1,6 +1,9 @@
 #include <stdio.h>
+#include<string.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include <sys/time.h>
+#include <pthread.h> 
 
 
 typedef enum{
@@ -53,53 +56,103 @@ int enQueue(Job job);
 Job popQueue();
 void swapJobs(Job *job1, Job *job2);
 
+void *threadDoJobs(void *arg);
+
 
 Queue *QUEUE;
 int REQUESTNUM = 0;
+
+pthread_mutex_t writer_lock;
+pthread_mutex_t reader_lock;
+
+int numThreads;
+pthread_t *tid;
+
 
 int main(int argc, char *argv[])
 {
     printf("Hello world\n");
 
+    if(argc != 4){
+        printf("Incorrect number of input parameters: 4 required\n");
+        return 1;
+    }
+
+    //----------------------------------------------------------------------------
+    //                                 Initialization 
+    //----------------------------------------------------------------------------
+
+    //Use #threads passed via cmd to make a large enough array to hold all threads
+    numThreads = atoi(argv[1]);
+    tid = malloc (numThreads * sizeof (pthread_t));
+
+    //Initialize threads
+    for(int i = 0; i < numThreads; i++){
+        int error = pthread_create(&(tid[i]), NULL, &threadDoJobs, "blarg"); 
+        if (error != 0) 
+            printf("\nThread can't be created :[%s]", strerror(error)); 
+        
+        pthread_join(tid[i], NULL);
+    }
+
     //Initialize queue
     QUEUE = (struct Queue*)malloc(sizeof(struct Queue));
+    if (QUEUE == NULL) { 
+        printf("Queue not allocated.\n"); 
+        return 1;
+    }
 
-    Job jobTail = {
-        .request_ID = -1,
-        .job_type = CHECKJOB
-    };
-    QUEUE->head = &jobTail;
-    QUEUE->tail = &jobTail;
-
-    printf("Empty? - %d\n", isQueueEmpty());
-
-    Job job1 = {
-        .request_ID = 1,
-        .job_type = CHECKJOB
-    };
-    Job job2 = {
-        .request_ID = 2,
-        .job_type = CHECKJOB
-    };
-
-
-    enQueue(job1);
+    //Initialize the mutexes
+    if (pthread_mutex_init(&writer_lock, NULL) != 0) { 
+        printf("\n Writer mutex init has failed!\n"); 
+        return 1; 
+    }
+    if (pthread_mutex_init(&reader_lock, NULL) != 0) { 
+        printf("\n Reader mutex init has failed!\n"); 
+        return 1; 
+    }
 
 
 
-    printf("\n-------\n");
-    printf("Job1: %d\n", job1.request_ID);
-    printf("Job2: %d\n", job2.request_ID);
-    printf("-------\n");
-    swapJobs(&job1, &job2);
-    printf("Job1: %d\n", job1.request_ID);
-    printf("Job2: %d\n", job2.request_ID);
-    printf("-------\n");
-    swapJobs(&job1, &job2);
-    printf("Job1: %d\n", job1.request_ID);
-    printf("Job2: %d\n", job2.request_ID);
-    printf("-------\n\n");
 
+    //----------------------------------------------------------------------------
+    //                                  Begin Loop 
+    //----------------------------------------------------------------------------
+
+    while(1){
+        //Ask for user input
+
+
+        //Convert input into a job
+
+        //Add job to queue
+
+        //If the job is an exit job, break loop
+        break;
+    }
+
+
+    //----------------------------------------------------------------------------
+    //                                 Dissasembly 
+    //----------------------------------------------------------------------------
+
+
+    //Reconnect with all threads
+    for(int i = 0; i < numThreads; i++){
+        pthread_join(tid[i], NULL); 
+    }
+
+    //Destroy mutexes
+    pthread_mutex_destroy(&writer_lock);
+    pthread_mutex_destroy(&reader_lock); 
+
+    
+
+
+    free(QUEUE);    //Free Queue
+    free(tid);      //Free thread array
+
+    return 0;
 }
 
 
@@ -111,7 +164,8 @@ int enQueue(Job job){
     return 0;
 }
 Job popQueue(){
-    return;
+    Job temp = newJob(CHECKJOB);
+    return temp;
 }
 
 //Swap the pointers of two jobs, effectively swapping contents
@@ -160,6 +214,13 @@ Trans newTransaction(int account_ID, int amount){
         .amount = amount
     };
     return trans;
+}
+
+
+void *threadDoJobs(void *arg){
+    printf("Thread created\n");
+    
+    return NULL;
 }
 
 
@@ -221,6 +282,43 @@ void thing(){
 
 
     printf("%d\n", isQueueEmpty());
+}
+void thing2(){
+    Job jobTail = {
+        .request_ID = -1,
+        .job_type = CHECKJOB
+    };
+    QUEUE->head = &jobTail;
+    QUEUE->tail = &jobTail;
+
+    printf("Empty? - %d\n", isQueueEmpty());
+
+    Job job1 = {
+        .request_ID = 1,
+        .job_type = CHECKJOB
+    };
+    Job job2 = {
+        .request_ID = 2,
+        .job_type = CHECKJOB
+    };
+
+
+    enQueue(job1);
+
+
+
+    printf("\n-------\n");
+    printf("Job1: %d\n", job1.request_ID);
+    printf("Job2: %d\n", job2.request_ID);
+    printf("-------\n");
+    swapJobs(&job1, &job2);
+    printf("Job1: %d\n", job1.request_ID);
+    printf("Job2: %d\n", job2.request_ID);
+    printf("-------\n");
+    swapJobs(&job1, &job2);
+    printf("Job1: %d\n", job1.request_ID);
+    printf("Job2: %d\n", job2.request_ID);
+    printf("-------\n\n");
 }
 
 
