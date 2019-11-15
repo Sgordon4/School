@@ -1,0 +1,259 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage[latin1]{inputenc}
+\usepackage{listings}
+\usepackage{scrextend}
+\usepackage{changepage} %Adjustwidth
+\usepackage{float}
+
+\usepackage{algorithm}
+%\usepackage{algorithmic}
+\usepackage{algpseudocode}
+
+
+\title{ComS 311\\Recitation 3, 2:00 Monday\\Project 1}
+\author{Sean Gordon}
+%\date{09/29/2019}
+
+\begin{document}
+\maketitle
+
+\pagebreak 
+
+\begin{algorithm}[H]
+\caption{Pseudocode for crawl().}
+\begin{algorithmic}
+\State \#Run the proposed BFS with modifications:
+\State \#I used a null sentinel to mark the end of a level/depth
+\State Add seed to queue
+\While {Queue isn't empty \&\& we haven't reached max depth}
+\State Grab the next link
+\State If we have reached the end of this depth/level, \textit{continue}
+\State 
+\If {the link is not in the graph}
+\State If we have reached max \# of unique pages, skip it
+\State 
+\State Grab all links contained in the current link's webpage
+\For {Every link l returned}
+\State Add l to the queue
+\EndFor
+\Else \ Grab the link from the graph
+\EndIf
+\State Update the incoming and outgoing edges of each link
+\EndWhile
+\State Return the completed graph
+\end{algorithmic}
+\end{algorithm}
+
+\noindent \textbf{Runtime of algorithm:} \\
+Assuming there are n total vertices and m total edges in our `internet'...\\
+Assuming our depth and max pages = $\infty$\ ...\\\\
+Loop through all links in the queue = O(n)\\
+Grab all links within a link = O(m)\\
+Add link to queue if new = O(1)\\
+
+\noindent Runtime = O(n*m)
+
+
+\pagebreak 
+
+\begin{algorithm}[H]
+\caption{Pseudocode for makeIndex().}
+\begin{algorithmic}
+\For {For every vertex in our graph}
+\State Grab the vertex data (url and indegree)
+\State Grab all words from the page and throw them in a hashmap with their frequency
+\For {Every word we have recieved}
+\State Calculate the weight (freq * indegree)
+\State 
+\State If the word isn't already in the index, add an empty SortedList
+\State \#SortedList is an extension of ArrayList
+\State \#It adds new items in decreasing order using binary search
+\State 
+\State Add the data to the index with the word as the key
+\EndFor
+\EndFor
+\end{algorithmic}
+\end{algorithm}
+
+\noindent \textbf{Runtime of algorithm:} \\
+Assuming there are n total vertices in our graph...\\
+Assuming there are m total words in our graph (duplicates included)...\\\\
+Loop through all vertices = O(n)\\
+Get all words in a webpage = O(m)\\
+Loop through all words = O(m)\\
+Add a word to SortedList = O(log(m))\\
+
+\noindent Runtime = O(n*2m*log(m)) = O(n*m*log(m))
+
+
+
+
+\pagebreak
+
+
+
+\begin{algorithm}[H]
+\caption{Pseudocode for search().}
+\begin{algorithmic}
+\State 
+\State 
+\State Grab list of TaggedVertices for a word
+\State 
+\State \#The SortedLists used in the crawler ensure the pages are ordered
+\State \#in decreasing order by weight(freq*indegree) already
+\State 
+\end{algorithmic}
+\end{algorithm}
+
+\noindent \textbf{Runtime of algorithm:} \\
+Grab list = O(1)\\
+Runtime = O(1)\\
+
+\pagebreak
+
+\begin{algorithm}[H]
+\caption{Pseudocode for searchWithAnd().}
+\begin{algorithmic}
+\State Grab list of all TaggedVertices for w1, name it \textit{pageList1}
+\State Grab list of all TaggedVertices for w2, name it \textit{pageList2}
+\State 
+\State \#Allows finding weight for url in pageList2 take O(1) time
+\For {Each TaggedVertex v in pageList2}
+\State Add v to hashmap \textit{mapList2} with the url as the key
+\EndFor
+%\State Throw all of pageList2 into hashmap \textit{mapList2}, with the url inside the TaggedVertex as the key
+\State Make a SortedList \textit{searchResults}
+\State \#SortedList is an extension of ArrayList
+\State \#It adds new items in decreasing order using binary search
+\State 
+\For {All urls in pageList1}
+\State If mapList2 doesn't contain the url, \textit{continue}
+\State 
+\State Add both url weights together (weight = freq*indegree)
+\State 
+\State Make TaggedVertex v with the url and the new conbined weight
+\State Add it to the search results
+\EndFor
+\State return searchResults
+\end{algorithmic}
+\end{algorithm}
+
+\noindent \textbf{Runtime of algorithm:} \\
+Assuming there are n total words in our index...\\\\
+Loop through pageList2 = O(n)\\
+Loop through pageList1 = O(n)\\
+Runtime = O(2n) = O(n)
+
+
+
+\pagebreak
+
+
+
+\begin{algorithm}[H]
+\caption{Pseudocode for searchWithOr().}
+\begin{algorithmic}
+\State Grab list of all TaggedVertices for w1, name it \textit{pageList1}
+\State Grab list of all TaggedVertices for w2, name it \textit{pageList2}
+\State 
+\State \#Allows finding weight for url in pageList2 take O(1) time
+\For {Each TaggedVertex v in pageList2}
+\State Add v to hashmap \textit{mapList2} with the url as the key
+\EndFor
+%\State Throw all of pageList2 into hashmap \textit{mapList2}, with the url inside the TaggedVertex as the key
+\State Make a SortedList \textit{searchResults}
+\State \#SortedList is an extension of ArrayList
+\State \#It adds new items in decreasing order using binary search
+\State 
+\For {All urls in pageList1}
+\State If mapList2 doesn't contain the url, \textit{continue}
+\State 
+\State *Remove this url from mapList2
+\State 
+\State Add both url weights together (weight = freq*indegree)
+\State 
+\State Make TaggedVertex v with the url and the new conbined weight
+\State Add it to the search results
+\EndFor
+\For {Everything left in mapList2}
+\State Make TaggedVertex v with the url and weight
+\State Add v to searchResults
+\EndFor
+\State return searchResults
+
+\end{algorithmic}
+\end{algorithm}
+
+\noindent \textbf{Runtime of algorithm:} \\
+Assuming there are n total words in our index...\\\\
+Loop through pageList2 = O(n)\\
+Loop through pageList1 = O(n)\\
+Loop through what remains of pageLis2 = O(n)\\\\
+Runtime = O(3n) = O(n)
+
+
+\pagebreak 
+
+
+\begin{algorithm}[H]
+\caption{Pseudocode for searchWithNot().}
+\begin{algorithmic}
+\State \#Near identical to searchWithAnd, but skips url if it \textit{is} in the hashmap
+\State
+\State Grab list of all TaggedVertices for w1, name it \textit{pageList1}
+\State Grab list of all TaggedVertices for w2, name it \textit{pageList2}
+\State 
+\State \#Allows finding weight for url in pageList2 take O(1) time
+\For {Each TaggedVertex v in pageList2}
+\State Add v to hashmap \textit{mapList2} with the url as the key
+\EndFor
+%\State Throw all of pageList2 into hashmap \textit{mapList2}, with the url inside the TaggedVertex as the key
+\State Make a SortedList \textit{searchResults}
+\State \#SortedList is an extension of ArrayList
+\State \#It adds new items in decreasing order using binary search
+\State 
+\For {All urls in pageList1}
+\State If mapList2 \textit{does} contain the url, \textit{continue}
+\State 
+\State Add both url weights together (weight = freq*indegree)
+\State 
+\State Make TaggedVertex v with the url and the new conbined weight
+\State Add it to the search results
+\EndFor
+\State return searchResults
+\end{algorithmic}
+\end{algorithm}
+
+\noindent \textbf{Runtime of algorithm:} \\
+Assuming there are n total words in our index...\\\\
+Loop through pageList2 = O(n)\\
+Loop through pageList1 = O(n)\\
+Runtime = O(2n) = O(n)
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

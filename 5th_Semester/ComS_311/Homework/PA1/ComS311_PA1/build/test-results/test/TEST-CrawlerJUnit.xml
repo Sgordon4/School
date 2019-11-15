@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="CrawlerJUnit" tests="2" skipped="0" failures="0" errors="0" timestamp="2019-11-13T01:02:30" hostname="GamingPC" time="0.016">
+<testsuite name="CrawlerJUnit" tests="2" skipped="0" failures="0" errors="0" timestamp="2019-11-14T22:12:50" hostname="GamingPC" time="0.015">
   <properties/>
-  <testcase name="crawlerTestDepth1" classname="CrawlerJUnit" time="0.014"/>
+  <testcase name="crawlerTestDepth1" classname="CrawlerJUnit" time="0.013"/>
   <testcase name="crawlerTestDepth6" classname="CrawlerJUnit" time="0.001"/>
   <system-out><![CDATA[Asking for links from A
 # of links: 3
@@ -29,7 +29,7 @@ Asking for links from I
 Asking for links from J
 # of links: 0
 Tagged vertex shit: 
-1, 2, 2, 2, 1, 1, 
+2, 2, 2, 2, 1, 1, 
 
 
 
