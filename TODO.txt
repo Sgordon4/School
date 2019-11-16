@@ -1,13 +1,4 @@
 
-Due 11/14/2019:
-- ComS 311 Proj1 Early
-X Bitchass 330 Lab 12
-
-Due 11/15/2019:
-- ComS 311 Proj1
-- CprE 308 Proj2
-- Bitchass 330 HW12
-
 Due 11/16/2019:
 - CprE 394 Ethics Essay
 
@@ -20,6 +11,7 @@ Due 11/19/2019:
 Due 11/20/2019
 - ComS 342 HW8 Early
 - Engl 314 Feas&Rec Quiz
+- CprE 308 HW3
 
 Due 11/21/2019
 - Bitchass 330 Lab 11
@@ -28,6 +20,7 @@ Due 11/22/2019
 - CPRE 308 EXAM 2
 - ComS 342 HW8
 - CprE 394 Mind Map 2
+- Bitchass 330 HW13
 
 Due 11/24/2019
 - Engl 314 Instructions Proj
@@ -36,6 +29,15 @@ Due 12/4/2019
 - Engl 314 Visuals Quiz
 
 -------------------------------------------------
+
+Due 11/15/2019:
+X ComS 311 Proj1
+X CprE 308 Proj2
+X Bitchass 330 HW12
+
+Due 11/14/2019:
+X ComS 311 Proj1 Early
+X Bitchass 330 Lab 12
 
 Due 11/8/2019:
 X Engl 314 Technical Desc.
