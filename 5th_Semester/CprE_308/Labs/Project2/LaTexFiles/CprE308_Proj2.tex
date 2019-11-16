@@ -1,0 +1,83 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage[latin1]{inputenc}
+\usepackage{listings}
+\usepackage{scrextend}
+
+\usepackage{subcaption}
+
+\title{CprE 308\\Section 3\\Project 2}
+\author{Sean Gordon\\Sgordon4}
+\date{November 12, 2019}
+
+\begin{document}
+\maketitle
+
+\noindent This project focused on the integration of multithreading with many of the other topics we've worked with previously. I haven't had much experience with multithreading in C, and it has been a while since I made such a large project in the language. As such, syntax presented the largest hurdle to the project's completion.\\
+
+\noindent Overall, I learned a fair amount about correct programming techniques with multithreading, and a queue was reinforced as an important data structure for these types of applications. I will certainly remember what I learned when building future projects.\\\\\\
+
+\noindent 1) Which technique was faster - coarse or fine grained locking?\\
+In practice my coarse grain implementation was only slightly faster than my fine grain, but generally coarse grain would beat out fine-grain by a fair margin.\\
+
+
+\noindent 2) Why was this technique faster?\\
+Rather than looping through each account in a TRANS request, the jobs need only acquire one mutex.\\
+
+
+\noindent 3) Are there any instances where the other technique would be faster?\\
+If each TRANS request was on a different account so that they would never intersect, there  would be no waiting with a fine-grain approach.\\
+
+
+\noindent 4)What would happen to the performance if a lock was used for every 10 accounts? Why?\\
+Performance would increase, as that strikes the middle ground between coarse and fine grain for this application. On average there would be less looping over locks, but there is still the chance a thread would still loop 10 times for a TRANS request.\\
+
+
+\noindent 5) What is the optimal locking granularity (fine, coarse, or medium)?\\
+Medium is optimal, as long as it is tailored to the current algorithm.
+
+\pagebreak
+
+
+\noindent The variable \verb!COARSE_LOCK! at the top of \verb!bank_server.c! switches between coarse and fine locking.\\
+
+\noindent Performance Measurements - \verb!time ./testscript.pl ./bank_server 10 1000 0!\\\\
+Non-coarse: --------------------------------------\\
+
+\noindent real	0m25.015s\\
+user	0m0.005s\\
+sys	    0m0.010s\\
+
+\noindent real	0m25.015s\\
+user	0m0.011s\\
+sys	    0m0.004s\\
+
+\noindent real    0m25.013s\\
+user	0m0.008s\\
+sys	0m0.005s\\
+
+\noindent realAvg = 25.0343\\\\
+
+
+\noindent Coarse: --------------------------------------------\\
+
+\noindent real	0m25.015s\\
+user	0m0.014s\\
+sys	0m0.000s\\
+
+\noindent real	0m25.014s\\
+user	0m0.005s\\
+sys	0m0.009s\\
+
+\noindent real	0m25.012s\\
+user	0m0.012s\\
+sys	0m0.000s\\
+
+\noindent realAvg = 25.031\\
+
+
+\end{document}

@@ -1,5 +1,5 @@
-TARGET = queueTesting
-LIBS = -lm
+TARGET = bank_server
+LIBS = -pthread -lm
 CC = gcc
 CFLAGS = -g -Wall
 

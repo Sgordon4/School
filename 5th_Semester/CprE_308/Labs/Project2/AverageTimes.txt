@@ -1,0 +1,32 @@
+Non-coarse: time ./testscript.pl ./bank_server 10 1000 0
+
+real	0m25.015s
+user	0m0.005s
+sys	    0m0.010s
+
+real	0m25.015s
+user	0m0.011s
+sys	    0m0.004s
+
+real	0m25.013s
+user	0m0.008s
+sys	0m0.005s
+
+realAvg = 25.0343
+
+
+Coarse: 
+
+real	0m25.015s
+user	0m0.014s
+sys	0m0.000s
+
+real	0m25.014s
+user	0m0.005s
+sys	0m0.009s
+
+real	0m25.012s
+user	0m0.012s
+sys	0m0.000s
+
+realAvg = 25.031
