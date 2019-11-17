@@ -1,11 +1,4 @@
 
-
-Due 11/16/2019:
-- CprE 394 Ethics Essay
-
-Due 11/17/2019:
-- Engl 314 Quiz (Wordiness)
-
 Due 11/19/2019:
 - CprE 308 Lab6
 
@@ -31,6 +24,12 @@ Due 12/4/2019
 - Engl 314 Visuals Quiz
 
 -------------------------------------------------
+
+Due 11/17/2019:
+X Engl 314 Quiz (Wordiness)
+
+Due 11/16/2019:
+X CprE 394 Ethics Essay
 
 Due 11/15/2019:
 X ComS 311 Proj1
