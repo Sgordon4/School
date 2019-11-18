@@ -1,0 +1,5 @@
+mainClassName="funclang.Interpreter"
+
+generateGrammarSource {
+    arguments += ["-no-listener", "-package", "typelang.parser; import static typelang.AST.*; import typelang.*; import typelang.Type.*"]
+}
