@@ -199,9 +199,9 @@ int main ()
 		/* Memory access analysis with random access */
 		initialize_page_frames(PageFrames,NUM_FRAMES);
 		build_random_access_seq(PageAccesses,NUM_ACCESSES);
-		PageFaultTotals.page_faults_FIFO_rand += handle_page_accesses(PageFrames,NUM_FRAMES,PageAccesses,NUM_ACCESSES,PRAlgo_FIFO);
+		//PageFaultTotals.page_faults_FIFO_rand += handle_page_accesses(PageFrames,NUM_FRAMES,PageAccesses,NUM_ACCESSES,PRAlgo_FIFO);
 		initialize_page_frames(PageFrames,NUM_FRAMES);
-		PageFaultTotals.page_faults_LRU_rand += handle_page_accesses(PageFrames,NUM_FRAMES,PageAccesses,NUM_ACCESSES,PRAlgo_LRU);
+		//PageFaultTotals.page_faults_LRU_rand += handle_page_accesses(PageFrames,NUM_FRAMES,PageAccesses,NUM_ACCESSES,PRAlgo_LRU);
 		initialize_page_frames(PageFrames,NUM_FRAMES);
 		PageFaultTotals.page_faults_OPT_rand += handle_page_accesses(PageFrames,NUM_FRAMES,PageAccesses,NUM_ACCESSES,PRAlgo_OPT);
 	
@@ -209,9 +209,9 @@ int main ()
 		/* Memory access analysis with sequential access */
 		initialize_page_frames(PageFrames,NUM_FRAMES);
 		build_sequential_access_seq(PageAccesses,NUM_ACCESSES); 
-		PageFaultTotals.page_faults_FIFO_seq += handle_page_accesses(PageFrames,NUM_FRAMES,PageAccesses,NUM_ACCESSES,PRAlgo_FIFO);
+		//PageFaultTotals.page_faults_FIFO_seq += handle_page_accesses(PageFrames,NUM_FRAMES,PageAccesses,NUM_ACCESSES,PRAlgo_FIFO);
 		initialize_page_frames(PageFrames,NUM_FRAMES);
-		PageFaultTotals.page_faults_LRU_seq += handle_page_accesses(PageFrames,NUM_FRAMES,PageAccesses,NUM_ACCESSES,PRAlgo_LRU);
+		//PageFaultTotals.page_faults_LRU_seq += handle_page_accesses(PageFrames,NUM_FRAMES,PageAccesses,NUM_ACCESSES,PRAlgo_LRU);
 		initialize_page_frames(PageFrames,NUM_FRAMES);
 		PageFaultTotals.page_faults_OPT_seq += handle_page_accesses(PageFrames,NUM_FRAMES,PageAccesses,NUM_ACCESSES,PRAlgo_OPT);
 
@@ -219,9 +219,9 @@ int main ()
 		/* Memory access analysis with LR workload access */
 		initialize_page_frames(PageFrames,NUM_FRAMES);
 		build_lr_workload_access_seq(PageAccesses,NUM_ACCESSES);
-		PageFaultTotals.page_faults_FIFO_lr += handle_page_accesses(PageFrames,NUM_FRAMES,PageAccesses,NUM_ACCESSES,PRAlgo_FIFO);
+		//PageFaultTotals.page_faults_FIFO_lr += handle_page_accesses(PageFrames,NUM_FRAMES,PageAccesses,NUM_ACCESSES,PRAlgo_FIFO);
 		initialize_page_frames(PageFrames,NUM_FRAMES);
-		PageFaultTotals.page_faults_LRU_lr += handle_page_accesses(PageFrames,NUM_FRAMES,PageAccesses,NUM_ACCESSES,PRAlgo_LRU);
+		//PageFaultTotals.page_faults_LRU_lr += handle_page_accesses(PageFrames,NUM_FRAMES,PageAccesses,NUM_ACCESSES,PRAlgo_LRU);
 		initialize_page_frames(PageFrames,NUM_FRAMES);
 		PageFaultTotals.page_faults_OPT_lr += handle_page_accesses(PageFrames,NUM_FRAMES,PageAccesses,NUM_ACCESSES,PRAlgo_OPT);
 		
