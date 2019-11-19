@@ -6,9 +6,8 @@
 #define NUM_PAGES       128     /* Number of memory pages. 
 				   The pages are numbered 1..NUM_PAGES */
 #define NUM_ACCESSES    10000    /* Number of memory accesses */
-#define NUM_RUNS	50	/* Number of times to run each case */
 //#define NUM_ACCESSES    1000    /* Number of memory accesses */
-//#define NUM_RUNS	50	/* Number of times to run each case */
+#define NUM_RUNS	50	/* Number of times to run each case */
 
 int seed = 0;
 
