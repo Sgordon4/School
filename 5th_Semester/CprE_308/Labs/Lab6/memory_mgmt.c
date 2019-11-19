@@ -110,6 +110,7 @@ int * build_lr_workload_access_seq(int * PageAccesses, int num_accesses)
 }
 
 
+
 /* Function to handle the page accesses. It uses the Page replacement Handlers. Returns the number of page faults */
 int handle_page_accesses(PageFrame * PageFrames, int num_frames, int * PageAccesses, int num_accesses, PRAlgoType PRAlgo)
 {
@@ -256,7 +257,14 @@ int PRAlgo_FIFO(const PageFrame * PageFrames, int num_frames, const int * PageAc
 {
 	int frame_to_evict = 0;
 	/*TODO: fill in the code below */
+	//Search through current pages to find oldest time_of_arrive 
+	int earliest = 0;
+	for(int i = 1; i < num_frames; i++){
+		if(PageFrames[i].time_of_arrival < PageFrames[earliest].time_of_arrival)
+			earliest = i;
+	}
 
+	frame_to_evict = earliest;
 
 	return frame_to_evict;
 }
@@ -274,7 +282,14 @@ int PRAlgo_LRU(const PageFrame * PageFrames, int num_frames, const int * PageAcc
 {
 	int frame_to_evict = 0;
 	/*TODO: fill in the code below */
+	//Search through current pages to find oldest time_of_access
+	int earliest = 0;
+	for(int i = 1; i < num_frames; i++){
+		if(PageFrames[i].time_of_access < PageFrames[earliest].time_of_access)
+			earliest = i;
+	}
 
+	frame_to_evict = earliest;
 
 	return frame_to_evict;
 
@@ -294,8 +309,24 @@ int PRAlgo_OPT(const PageFrame * PageFrames, int num_frames, const int * PageAcc
 {
 	int frame_to_evict = 0;
 	/*TODO: fill in the code below */
+	//For each page in frame, compare it's next use time to the current greatest and save the greatest
+	int next_use = -1;
 
+	//For every page in frame
+	for(int i = 0; i < num_frames; i++){
+		//For every access to any page in the
+		for(int j = current_access+1; j < num_accesses; j++){
+			//If this access is to the current page
+			if(PageAccesses[j] == PageFrames[i].page_id){
+				//If this access is farther away then the current max
+				if(j > next_use){
+					//Update the current farthest
+					frame_to_evict = PageFrames[i].page_id;
+					next_use = j;
+				}
+			}
+		}
+	}
 
 	return frame_to_evict;
-
 }
