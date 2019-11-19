@@ -1,4 +1,6 @@
 Berkely EE 105:
 https://inst.eecs.berkeley.edu/~ee105/fa19/lectures.html
 
-
+UKansas EE shit:
+http://www.ittc.ku.edu/~jstiles/412/handouts/5.6%20Small%20Signal%20Operation%20and%20Models/?C=N;O=A
+http://www.ittc.ku.edu/~jstiles/412/handouts/5.6%20Small%20Signal%20Operation%20and%20Models/A%20Small%20Signal%20Analysis%20of%20a%20BJT%20lecture.pdf
