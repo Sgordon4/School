@@ -1,9 +1,11 @@
-The average number of page faults for FIFO with Random Access is 8760.
-The average number of page faults for LRU with Random Access is 8759.
-The average number of page faults for OPT with Random Access is 8746.
-The average number of page faults for FIFO with Sequential Access is 10000.
-The average number of page faults for LRU with Sequential Access is 10000.
-The average number of page faults for OPT with Sequential Access is 8752.
-The average number of page faults for FIFO with LR Workload Access is 883.
-The average number of page faults for LRU with LR Workload Access is 874.
-The average number of page faults for OPT with LR Workload Access is 8474.
+The average number of page faults for FIFO with Random Access is 876.
+The average number of page faults for LRU with Random Access is 875.
+The average number of page faults for OPT with Random Access is 841.
+The average number of page faults for FIFO with Sequential Access is 1000.
+The average number of page faults for LRU with Sequential Access is 1000.
+The average number of page faults for OPT with Sequential Access is 888.
+The average number of page faults for FIFO with LR Workload Access is 93.
+The average number of page faults for LRU with LR Workload Access is 92.
+The average number of page faults for OPT with LR Workload Access is 116.
+
+Running num = 1000 because anything larger than 1011 segfaults
