@@ -1,11 +1,8 @@
 
-Due 11/19/2019:
-- CprE 308 Lab6
-
 Due 11/20/2019
-- ComS 342 HW8 Early
+X ComS 342 HW8 Early
 - Engl 314 Feas&Rec Quiz
-- CprE 308 HW3
+X CprE 308 HW3
 - Bitchass 330 HW13
 
 Due 11/21/2019
@@ -13,7 +10,7 @@ Due 11/21/2019
 
 Due 11/22/2019
 - CPRE 308 EXAM 2
-- ComS 342 HW8
+X ComS 342 HW8
 - CprE 394 Mind Map 2
 - Bitchass 330 Exam 3
 
@@ -24,6 +21,9 @@ Due 12/4/2019
 - Engl 314 Visuals Quiz
 
 -------------------------------------------------
+
+Due 11/19/2019:
+X CprE 308 Lab6
 
 Due 11/17/2019:
 X Engl 314 Quiz (Wordiness)
