@@ -323,6 +323,7 @@ int PRAlgo_OPT(const PageFrame * PageFrames, int num_frames, const int * PageAcc
 					//Update the current farthest
 					frame_to_evict = PageFrames[i].page_id;
 					next_use = j;
+					break;
 				}
 			}
 		}
