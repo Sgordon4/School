@@ -7,6 +7,8 @@
 				   The pages are numbered 1..NUM_PAGES */
 #define NUM_ACCESSES    10000    /* Number of memory accesses */
 #define NUM_RUNS	50	/* Number of times to run each case */
+//#define NUM_ACCESSES    1000    /* Number of memory accesses */
+//#define NUM_RUNS	50	/* Number of times to run each case */
 
 int seed = 0;
 
@@ -309,56 +311,32 @@ int PRAlgo_OPT(const PageFrame * PageFrames, int num_frames, const int * PageAcc
 {
 	int frame_to_evict = 0;
 	/*TODO: fill in the code below */
-	int res = -1;
+
 	int farthest = current_access;
+
+	//For every page in the frame
 	for(int i = 0; i < num_frames; i++){
+		//For every access to any page in the future
 		int j;
-		for(j = current_access; j < num_accesses; j++){
-			if(PageFrames[i].page_id == PageAccesses[j]){
-				if(j > farthest){
-					farthest = j;
-					res = i;
-				}
+		for(j = current_access+1; j < num_accesses; j++){
+			//If this page ID is the same as i's
+			if(PageAccesses[j] == PageFrames[i].page_id){
+				//We have found the next earliest use
 				break;
 			}
 		}
 		
-		//If this page is never used, let's evict it
-		if(j == num_accesses)
-			return j;
-	}
-	
-	//If none of the pages were used again, just return 0
-	if(res == -1)
-		return 0;
-	
-	return res;
-	
-	
-	
-	
-	
-	/*
-	//For each page in frame, compare it's next use time to the current greatest and save the greatest
-	int next_use = -1;
 
-	//For every page in frame
-	for(int i = 0; i < num_frames; i++){
-		//For every access to any page in the
-		for(int j = current_access+1; j < num_accesses; j++){
-			//If this access is to the current page
-			if(PageAccesses[j] == PageFrames[i].page_id){
-				//If this access is farther away then the current max
-				if(j > next_use){
-					//Update the current farthest
-					frame_to_evict = PageFrames[i].page_id;
-					next_use = j;
-					break;
-				}
-			}
+		//If i is never used again, evict it
+		if(j == num_accesses)
+			return i;
+		//Otherwise update the farthest page
+		if(j > farthest){
+			farthest = j;
+			frame_to_evict = j;
 		}
 	}
 
 	return frame_to_evict;
-	*/
+	
 }
