@@ -199,9 +199,9 @@ int main ()
 		/* Memory access analysis with random access */
 		initialize_page_frames(PageFrames,NUM_FRAMES);
 		build_random_access_seq(PageAccesses,NUM_ACCESSES);
-		//PageFaultTotals.page_faults_FIFO_rand += handle_page_accesses(PageFrames,NUM_FRAMES,PageAccesses,NUM_ACCESSES,PRAlgo_FIFO);
+		PageFaultTotals.page_faults_FIFO_rand += handle_page_accesses(PageFrames,NUM_FRAMES,PageAccesses,NUM_ACCESSES,PRAlgo_FIFO);
 		initialize_page_frames(PageFrames,NUM_FRAMES);
-		//PageFaultTotals.page_faults_LRU_rand += handle_page_accesses(PageFrames,NUM_FRAMES,PageAccesses,NUM_ACCESSES,PRAlgo_LRU);
+		PageFaultTotals.page_faults_LRU_rand += handle_page_accesses(PageFrames,NUM_FRAMES,PageAccesses,NUM_ACCESSES,PRAlgo_LRU);
 		initialize_page_frames(PageFrames,NUM_FRAMES);
 		PageFaultTotals.page_faults_OPT_rand += handle_page_accesses(PageFrames,NUM_FRAMES,PageAccesses,NUM_ACCESSES,PRAlgo_OPT);
 	
@@ -209,9 +209,9 @@ int main ()
 		/* Memory access analysis with sequential access */
 		initialize_page_frames(PageFrames,NUM_FRAMES);
 		build_sequential_access_seq(PageAccesses,NUM_ACCESSES); 
-		//PageFaultTotals.page_faults_FIFO_seq += handle_page_accesses(PageFrames,NUM_FRAMES,PageAccesses,NUM_ACCESSES,PRAlgo_FIFO);
+		PageFaultTotals.page_faults_FIFO_seq += handle_page_accesses(PageFrames,NUM_FRAMES,PageAccesses,NUM_ACCESSES,PRAlgo_FIFO);
 		initialize_page_frames(PageFrames,NUM_FRAMES);
-		//PageFaultTotals.page_faults_LRU_seq += handle_page_accesses(PageFrames,NUM_FRAMES,PageAccesses,NUM_ACCESSES,PRAlgo_LRU);
+		PageFaultTotals.page_faults_LRU_seq += handle_page_accesses(PageFrames,NUM_FRAMES,PageAccesses,NUM_ACCESSES,PRAlgo_LRU);
 		initialize_page_frames(PageFrames,NUM_FRAMES);
 		PageFaultTotals.page_faults_OPT_seq += handle_page_accesses(PageFrames,NUM_FRAMES,PageAccesses,NUM_ACCESSES,PRAlgo_OPT);
 
@@ -219,9 +219,9 @@ int main ()
 		/* Memory access analysis with LR workload access */
 		initialize_page_frames(PageFrames,NUM_FRAMES);
 		build_lr_workload_access_seq(PageAccesses,NUM_ACCESSES);
-		//PageFaultTotals.page_faults_FIFO_lr += handle_page_accesses(PageFrames,NUM_FRAMES,PageAccesses,NUM_ACCESSES,PRAlgo_FIFO);
+		PageFaultTotals.page_faults_FIFO_lr += handle_page_accesses(PageFrames,NUM_FRAMES,PageAccesses,NUM_ACCESSES,PRAlgo_FIFO);
 		initialize_page_frames(PageFrames,NUM_FRAMES);
-		//PageFaultTotals.page_faults_LRU_lr += handle_page_accesses(PageFrames,NUM_FRAMES,PageAccesses,NUM_ACCESSES,PRAlgo_LRU);
+		PageFaultTotals.page_faults_LRU_lr += handle_page_accesses(PageFrames,NUM_FRAMES,PageAccesses,NUM_ACCESSES,PRAlgo_LRU);
 		initialize_page_frames(PageFrames,NUM_FRAMES);
 		PageFaultTotals.page_faults_OPT_lr += handle_page_accesses(PageFrames,NUM_FRAMES,PageAccesses,NUM_ACCESSES,PRAlgo_OPT);
 		
@@ -309,6 +309,36 @@ int PRAlgo_OPT(const PageFrame * PageFrames, int num_frames, const int * PageAcc
 {
 	int frame_to_evict = 0;
 	/*TODO: fill in the code below */
+	int res = -1;
+	int farthest = current_access;
+	for(int i = 0; i < num_frames; i++){
+		int j;
+		for(j = current_access; j < num_accesses; j++){
+			if(PageFrames[i].page_id == PageAccesses[j]){
+				if(j > farthest){
+					farthest = j;
+					res = i;
+				}
+				break;
+			}
+		}
+		
+		//If this page is never used, let's evict it
+		if(j == num_accesses)
+			return j;
+	}
+	
+	//If none of the pages were used again, just return 0
+	if(res == -1)
+		return 0;
+	
+	return res;
+	
+	
+	
+	
+	
+	/*
 	//For each page in frame, compare it's next use time to the current greatest and save the greatest
 	int next_use = -1;
 
@@ -330,4 +360,5 @@ int PRAlgo_OPT(const PageFrame * PageFrames, int num_frames, const int * PageAcc
 	}
 
 	return frame_to_evict;
+	*/
 }
