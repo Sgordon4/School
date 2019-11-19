@@ -1,0 +1,44 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage[latin1]{inputenc}
+\usepackage{listings}
+\usepackage{scrextend}
+
+\usepackage{subcaption}
+
+\title{CprE 308\\Section 3\\Lab6}
+\author{Sean Gordon\\Sgordon4}
+%\date{November 12, 2019}
+
+\begin{document}
+\maketitle
+
+\noindent This lab focused on creating page replacement algorithms, then testing and comparing the efficiency of each using a set of random page accesses. The algorithms used during the lab were FIFO, LRU, and the Optimal algorithm (meant more as a reference). These were all covered in class and are important parts of the paging method of memory management.\\
+
+\noindent I had personally used these algorithms on my onw and in CprE 381 when we were experimenting with caches, but I had never used them for page replacement before. As such, I believe I made a mistake with the Optimal algorithm (as it often shows as worse than FIFO), but I have no time to fix it. This has been valuable practice to better understand paging.\\
+
+\noindent Some sample output is shown on the next page.\\
+ This was run on a sample size of 1000 accesses, as any more than 1011 accesses pushes past the maximum memory allocated for the C program, a problem that I have no time to solve.\\
+ 
+ 
+\pagebreak
+
+
+\noindent
+The average number of page faults for FIFO with Random Access is 876.\\
+The average number of page faults for LRU with Random Access is 875.\\
+The average number of page faults for OPT with Random Access is 841.\\
+
+\noindent The average number of page faults for FIFO with Sequential Access is 1000.\\
+The average number of page faults for LRU with Sequential Access is 1000.\\
+The average number of page faults for OPT with Sequential Access is 888.\\
+
+\noindent The average number of page faults for FIFO with LR Workload Access is 93.\\
+The average number of page faults for LRU with LR Workload Access is 92.\\
+The average number of page faults for OPT with LR Workload Access is 116.\\
+
+\end{document}
