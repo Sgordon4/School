@@ -333,7 +333,7 @@ int PRAlgo_OPT(const PageFrame * PageFrames, int num_frames, const int * PageAcc
 		//Otherwise update the farthest page
 		if(j > farthest){
 			farthest = j;
-			frame_to_evict = j;
+			frame_to_evict = i;
 		}
 	}
 
