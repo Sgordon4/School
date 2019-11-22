@@ -1,4 +1,4 @@
-// Generated from typelang/parser/TypeLang.g by ANTLR 4.5
+// Generated from typelang\parser\TypeLang.g by ANTLR 4.5
 package typelang.parser; import static typelang.AST.*; import typelang.*; import typelang.Type.*;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
