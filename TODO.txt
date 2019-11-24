@@ -1,8 +1,4 @@
 
-Due 11/24/2019
-- Engl 314 Instructions Proj
-- Engl 314 Coord&Subord Quiz
-
 Due 12/3/2019
 - CprE 308 Lab 7&8
 
@@ -21,13 +17,23 @@ Due 12/8/2019
 - ComS 311 HW6
 - Engl 314 Adv&Adj Quiz
 
+Due 12/9/2019
+- EE330 Project Demo Start
+
 Due 12/11/2019
 - ComS 311 PA2 Early
 
 Due 12/12/2019
 - ComS 311 PA2
 
+Due 12/13/2019
+- EE330 Project Demo End
+
 -------------------------------------------------
+
+Due 11/24/2019
+X Engl 314 Instructions Proj
+X Engl 314 Coord&Subord Quiz
 
 Due 11/22/2019
 X CPRE 308 EXAM 2
