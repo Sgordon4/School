@@ -1,13 +1,15 @@
-/* bsdump.c 
- * 
+/* bsdump.c
+ *
  * Reads the boot sector of an MSDOS floppy disk
  */
- 
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/types.h>
 #include <fcntl.h>
+
+#include <string.h> 
 
 #define SIZE 32  /* size of the read buffer */
 //define PRINT_HEX // un-comment this to print the values in hex for debugging
@@ -16,19 +18,19 @@ struct BootSector
 {
     unsigned char  sName[9];            // The name of the volume
     unsigned short iBytesSector;        // Bytes per Sector
-    
+
     unsigned char  iSectorsCluster;     // Sectors per Cluster
     unsigned short iReservedSectors;    // Reserved sectors
     unsigned char  iNumberFATs;         // Number of FATs
-    
+
     unsigned short iRootEntries;        // Number of Root Directory entries
     unsigned short iLogicalSectors;     // Number of logical sectors
     unsigned char  xMediumDescriptor;   // Medium descriptor
-    
+
     unsigned short iSectorsFAT;         // Sectors per FAT
     unsigned short iSectorsTrack;       // Sectors per Track
     unsigned short iHeads;              // Number of heads
-    
+
     unsigned short iHiddenSectors;      // Number of hidden sectors
 };
 
@@ -55,26 +57,26 @@ int main(int argc, char * argv[])
 	int pBootSector = 0;
 	unsigned char buffer[SIZE];
 	struct BootSector sector;
-    
+
 	// Check for argument
 	if (argc < 2) {
 		printf("Please specify the boot sector file!\n");
 		exit(1);
 	}
-    
+
 	// Open the file and read the boot sector
 	pBootSector = open(argv[1], O_RDONLY);
 	read(pBootSector, buffer, SIZE);
     close(pBootSector);
-    
+
 	// Decode the boot Sector
 	decodeBootSector(&sector, buffer);
-    
+
 	// Print Boot Sector information
 	printBootSector(&sector);
-    
+
     return 0;
-} 
+}
 
 
 // Converts two characters to an unsigned short with (two, one)
@@ -90,19 +92,32 @@ unsigned short endianSwap(unsigned char one, unsigned char two)
 // TODO: Fills out the BootSector Struct from the buffer
 void decodeBootSector(struct BootSector * pBootS, unsigned char buffer[])
 {
-	
+
 	// TODO: Pull the name and put it in the struct pBootS (remember to null-terminate)
-    
+    //Already null terminated in buffer, just copy over the 8 bits + the null
+	memcpy(pBootS->sName, &buffer[3], 9);
+
 	// TODO: Read bytes/sector and convert to big endian
-    
+	pBootS->iBytesSector = endianSwap(buffer[11], buffer[12]);
+
 	// TODO: Read sectors/cluster, Reserved sectors and Number of Fats
-    
+	pBootS->iSectorsCluster = buffer[13];
+	pBootS->iReservedSectors = endianSwap(buffer[14], buffer[15]);
+	pBootS->iNumberFATs = buffer[16];
+
 	// TODO: Read root entries, logicical sectors and medium descriptor
-    
+	pBootS->iRootEntries = endianSwap(buffer[17], buffer[18]);
+	pBootS->iLogicalSectors = endianSwap(buffer[19], buffer[20]);
+	pBootS->xMediumDescriptor = buffer[21];
+
 	// TODO: Read and covert sectors/fat, sectors/track, and number of heads
-    
+	pBootS->iSectorsFAT = endianSwap(buffer[22], buffer[23]);
+	pBootS->iSectorsTrack = endianSwap(buffer[24], buffer[25]);
+	pBootS->iHeads = endianSwap(buffer[26], buffer[27]);
+
 	// TODO: Read hidden sectors
-	
+	pBootS->iHiddenSectors = endianSwap(buffer[28], buffer[29]);
+
 }
 
 
