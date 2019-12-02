@@ -1,0 +1,101 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage[latin1]{inputenc}
+\usepackage{listings}
+\usepackage{scrextend}
+\usepackage{changepage} %Adjustwidth
+\usepackage[margin=1in]{geometry}
+
+\usepackage{algorithm}
+%\usepackage{algorithmic}
+\usepackage{algpseudocode}
+\usepackage{alltt}
+
+
+% Used for code blocks ----------------------------------------------------------------
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{listings}
+
+\usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
+% -----------------------------------------------------------------------------------------
+
+
+
+\title{ComS 342\\Recitation 2, 10:00 Tuesday\\Homework 9}
+\author{Sean Gordon}
+%\date{09/09/2019}
+
+\begin{document}
+\maketitle
+
+
+\hrulefill \\
+
+
+\begin{center}
+\noindent 1) Z = [1, 4, 6, 3, 6].
+\end{center}
+
+
+\hrulefill \\
+
+
+\begin{multicols}{2}
+
+\noindent 2a)\\\\
+fib(0, 0).\\
+fib(1, 1).\\\\
+fib(N, Res) :-\\
+\indent N $>$ 1,\\
+\indent N1 is N-1,\\
+\indent N2 is N-2,\\\\
+\indent fib(N1, R1),\\
+\indent fib(N2, R2),\\\\
+\indent Res is R1+R2.\\
+
+\columnbreak
+
+\noindent 2b)\\\\
+rev(L, Res) :-\\
+\indent revHelper(L, [], Res).\\\\
+revHelper([], Accum, Accum).\\
+revHelper([H|T], Accum, Res) :-\\
+\indent number(H),\\
+\indent revHelper(T, [H|Accum], Res);\\\\
+\indent revHelper(H, [], Temp),\\
+\indent revHelper(T, [Temp|Accum], Res).\\
+
+\end{multicols} 
+
+
+\hrulefill \\
+\pagebreak
+
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
