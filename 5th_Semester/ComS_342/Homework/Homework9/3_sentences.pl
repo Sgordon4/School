@@ -35,11 +35,11 @@ n([+|Tail], Tail).
 n([-|Tail], Tail).
 n([=|Tail], Tail).
 
-/** <examples> Your example queries go here, e.g.
-?- member(X, [cat, mouse]).
-*/
 /*
-sentence([if, x, >, 0, then, [x, =, 1]]).
-sentence([if, x, >, 0, then, [x, =, 1], else, [x, =, 0]]).
- */
+sentence([if, x, >, 0, then, x, =, 1).
+sentence([if, x, >, 0, then, x, =, 1, else, x, =, 0]).
+sentence([if, x, >, 0, then, x, =, 1, else, if, x, <, 0, then, x, =, 0]).
+*/
+
+
 
