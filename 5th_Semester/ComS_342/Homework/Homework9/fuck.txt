@@ -1,0 +1,18 @@
+
+House: [color, man, pet, drink, cig];
+
+[red, 	englishman, _, 		_, 		_];
+[_, 	spaniard, 	dog, 	_, 		_];
+[green, _, 			_, 		coffee, _];
+[_, 	ukranian, 	_, 		tea, 	_];
+[_, 	_, 			snails, _, 		oldGold];
+[yellow, _, 		_, 		_, 		kools];
+
+  [color, man, 		pet, 	drink, 	cig];
+-------------------------------------------
+* [_,	norwegian,	_,		_, 		_];
+*
+* [_, 	_, 			_, 		milk, 	_];
+*
+*
+--------
