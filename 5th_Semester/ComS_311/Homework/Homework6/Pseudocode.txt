@@ -1,0 +1,123 @@
+Pt2)
+
+U = [1, 7, 3, 9, 14, 0, 6, 22]       k = 3       T = 10
+
+
+//We dont care about what's in the subsets, just that they add up to T and
+// are a certain length. Therefore, just keep a running sum.
+
+boolean func(U, T, k, currSize, currTotal, currIndex){
+	//Subset too big for it own gotdamn feet
+	if (currSize > k) return false;
+	
+	
+	tempTotal = U[currIndex] + total;
+	
+	//If this total == T, we're done here
+	if(tempTotal == T) return true;
+
+	if (tempTotal > T)		//Total too big, skip to next index
+		return func(U, T, k, currSize, currTotal, currIndex + 1);
+
+	//Otherwise, total is too small, go again
+	return func(U, T, k, currSize + 1, tempTotal, currIndex + 1);
+}
+
+
+Recurrence:
+
+T(n) = 4 + T(n-1)
+
+
+
+boolean callFunc(U, T, k){
+	//Do basic checks...
+	if(k == 0 && T == 0) return true	//{} counts
+	if(k < 1) return false
+	
+	if(T < 0) return false
+	
+	return func(U, T, k, 0, 0, 0);
+}
+
+
+boolean func(U, T, k, currSize, currTotal, currIndex){
+	if(currIndex == U.length+1) return false;
+	
+	newTotal = U[currIndex] + currTotal;
+
+	//If adding this # will bring us to max size, stop here
+	if(currSize+1 == k){
+		if(newTotal == T)
+			return true;
+		return false;
+	}
+	
+	//Split
+	result1 = func(U, T, k, currSize, currTotal, currIndex + 1);
+	result2 = func(U, T, k, currSize+1, newTotal, currIndex + 1);
+	
+	return (result1 || result2);
+}
+
+Recurrence:
+ true: currSize == k && total == T
+false: 
+
+
+===================================================================================
+
+Recursive: 
+
+boolean doThing(U, T, k){
+	if(T < 0 || k < 0) return false;
+	return func(U, k, T, 0);
+}
+
+boolean func(U, spaceLeft, remainingSum, index){
+	if(spaceLeft == 0){
+		if(remainingSum == 0) return true;		//{} counts
+		return false;
+	}
+	if(index == U.length) return false	//We have run out of numbers
+	
+	//If this element is too big to add, skip it
+	if(U[index] > remainingSum)
+		return func(U, spaceLeft, remainingSum, index+1);
+		
+	//Check the subsets including and excluding this element
+	result1 = func(U, spaceLeft, remainingSum, index+1);
+	result2 = func(U, spaceLeft-1, remainingSum - U[index], index+1);
+	
+	return (result1 || result2);
+}
+
+
+Recurrence:
+
+func =  true: spaceLeft == 0 && remainingSum == 0
+func = false: (spaceLeft == 0 && remainingSum != 0) || index == U.length
+
+func = func(U, spaceLeft, remainingSum, index+1) ||
+		func(U, spaceLeft-1, remainingSum - U[index], index+1);
+
+
+
+
+Iterative: 
+
+boolean iterFunc(U, T, k){
+	
+	//Do basic checks
+	if(T < 0 || k < 0) return false;
+	if(k == 0){
+		if(T == 0) return true;		//{} counts
+		return false;
+	}
+
+	//Make a 2d array to map subsets
+	subset[][] = new boolean[T+1][U.length+1];
+	
+	//Set column 0 to true, as all sums == 0
+	
+}
