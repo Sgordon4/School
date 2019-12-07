@@ -106,18 +106,68 @@ func = func(U, spaceLeft, remainingSum, index+1) ||
 
 Iterative: 
 
+//Use typical subset problem's 2-D array with T/F.
+//Then keep a hashmap with a list of 
+
+//Use typical subset problem's 2-D array, but instead of just T/F in each cell,
+// have a list of subset lengths that add up to that sum.
+
 boolean iterFunc(U, T, k){
 	
-	//Do basic checks
-	if(T < 0 || k < 0) return false;
-	if(k == 0){
-		if(T == 0) return true;		//{} counts
-		return false;
-	}
+	n = U.length;
 
 	//Make a 2d array to map subsets
-	subset[][] = new boolean[T+1][U.length+1];
+	matrix[][] = new boolean[n][T+1];	//n, 0->T (not 1->T)
 	
-	//Set column 0 to true, as all sums == 0
+	//Make hashmap to keep track of the lengths of each subset that adds to a sum
+	//key = current sum, value = array of subset lengths
+	Hashmap legths = new HashMap<Integer, List<Integer>>();
 	
+	//Set column 0 to true, as all sums == 0 use empty set
+	for (int i = 0; i <= n; i++){
+        matrix[i][0] = true; 
+	}
+		
+		
+	//For each number in the set
+	for(int i = 0; i < n; i++){
+		int number = U[i];
+		
+		
+		for(int sum = 1; sum <= T; sum++){
+			
+			//If this number is too big, grab the val above
+			if(number > sum){
+				matrix[i][sum] = matrix[i-1][sum];
+			}
+			else{
+				//Decide if number can be added to a prev subset to fit the current sum
+				//Use typical subset-sum lookback
+				result1 = matrix[i - 1][sum - number];
+				
+				if(result){
+					//We are adding this to the subset
+					//Ex: if sum = 14, number = 9, and lengths@5 = [1, 3, 4],
+					//lengths@14 will now = [2, 4, 5]
+					lengths@sum = lengths@(sum - number)++
+				}
+				
+				//If this number won't fit, we don't add it to the subsets, but 
+				//this sum may still be possible, so the matrix should reflect that
+				result2 = result || matrix[i-1][sum];
+				
+				matrix[i][j] = result2;
+				
+			}
+		}
+	}
+	
+	if(! matrix[n-1][T]) return false;
+	
+	//If there is a possible subset, check that there is one of length k
+	list = lengths@T
+	for(int i = 0; i < list.length; i++){
+		if(list[i]== k) return true;
+	}
+	return false;
 }
