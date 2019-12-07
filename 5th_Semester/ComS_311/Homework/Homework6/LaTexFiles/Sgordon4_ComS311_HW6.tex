@@ -1,0 +1,188 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage[latin1]{inputenc}
+\usepackage{listings}
+\usepackage{scrextend}
+\usepackage{changepage} %Adjustwidth
+\usepackage{float}
+
+\usepackage{algorithm}
+%\usepackage{algorithmic}
+\usepackage{algpseudocode}
+
+
+\title{ComS 311\\Recitation 3, 2:00 Monday\\Homework 6}
+\author{Sean Gordon}
+%\date{09/29/2019}
+
+\begin{document}
+\maketitle
+
+
+1) Recurrence: \\
+combo = null if remainder $<$ 0\\
+combo = [ ] if remainder == 0\\
+combo = min( from(i = 0 $\to$ n) {combo(set, remaining - set[i], list)} )\\
+
+
+\begin{algorithm}[H]
+\caption{Find non-negative integers w1, ..., wn.}
+\begin{algorithmic} [1]
+
+\State 
+
+\end{algorithmic}
+\end{algorithm}
+
+
+\pagebreak
+
+
+2) Recurrence: \\
+func =  true: spaceLeft == 0 \&\& remainingSum == 0\\
+func = false:(spaceLeft == 0 \&\& remainingSum != 0) $||$ index == U.length\\
+func = func(U, spaceLeft, remainingSum, index+1) $||$\\
+\indent \indent \ \ func(U, spaceLeft-1, remainingSum - U[index], index+1);\\
+
+
+\begin{algorithm}[H]
+\caption{Test for subset of U of size k that adds to T.}
+\begin{algorithmic} [1]
+\State boolean iterFunc(U, T, k)\{
+\State
+\State n = U.length;
+\State 
+\State //Make a 2d array to map subsets
+\State matrix[ ][ ] = new boolean[n][T+1];\indent //n, 0$\to$T (not 1$\to$T)
+\State 
+\State //Make hashmap to track the lengths of each subset that adds to a sum
+\State //key = current sum, value = array of subset lengths
+\State Hashmap legths = new HashMap$<$Integer, List$<$Integer$>>$();
+\State 
+\State //Set column 0 to true, as all sums == 0 use empty set
+\For{int i = 0; i $<$= n; i++}
+\State matrix[i][0] = true;
+\EndFor
+\State 
+\State //For each number in the set
+\For{int i = 0; i $<$ n; i++}
+\State int number = U[i];
+\State 
+\State //From 1$\to$T
+\For{int sum = 1; sum $<$= T; sum++}
+\State//If this number is too big, grab the val above
+\If{number $>$ sum}
+\State matrix[i][sum] = matrix[i-1][sum];
+\State continue;
+\EndIf
+\State
+
+\algstore{alg2}
+\end{algorithmic}
+\end{algorithm}
+
+%Split across 2 pages
+
+\begin{algorithm}                     
+\begin{algorithmic} [1]
+\algrestore{alg2}
+
+\State 
+\State //Decide if \# can be added to a prev subset to fit current sum
+\State //Use typical subset-sum lookback
+\State result1 = matrix[i - 1][sum - number];
+\State
+\If{result}
+\State //We are adding this to the subset
+\State //Ex: if sum = 14, number = 9, and lengths@5 = [1, 3, 4],
+\State //lengths@14 will now = [2, 4, 5]
+\State lengths@sum = lengths@(sum - number)++;
+\EndIf
+\State
+\State //If this number won't fit, we don't add it to the subsets, but
+\State //this sum may still be possible, so the matrix should reflect that
+\State result2 = result $||$ matrix[i-1][sum];
+\State 
+\State matrix[i][j] = result2;
+\EndFor
+\EndFor
+\State
+\State
+\If{! (matrix[n-1][T])}
+\State return false;
+\EndIf
+\State
+\State //If there is a possible subset, check that there is one of length k
+\State list = lengths@T
+\State
+\For{int i = 0; i $<$ list.length; i++}
+\State if(list[i]== k) return true;
+\EndFor
+\State return false;
+\State\}
+\end{algorithmic}
+\end{algorithm}
+
+
+\pagebreak
+
+
+3) Recurrence:\\
+traverse = score if x==M \&\& y==N\\
+traverse = max(traverse(maze, M, N, x,\ \ \ \ y+1, score-2),\\
+\indent \indent \indent \indent \ \ \ traverse(maze, M, N, x+1, y,\ \ \ \ \ score-2),\\
+\indent \indent \indent \indent \ \ \ traverse(maze, M, N, x+1, y+1, score-3))\\
+
+
+
+\begin{algorithm}[H]
+\caption{Maximize score in M x N maze}
+\begin{algorithmic} [1]
+\State int iterTraverse(maze, M, N)\{
+\State 
+\State //Go from left$\to$right, top$\to$bottom, \indent \indent \indent \ \ \ \ [X][X]
+\State //looking at the max of cells to left, top left, and top  [X][O]
+\State 
+\For{int x = 1; x $<$= M; x++}
+\For{int y = 1; y $<$= N; y++}
+\State //Find largest score for transitioning to this cell
+\State int score = max(maze[x-1][y] -2, maze[x-1][y-1] -3, maze[x][y-1] -2)
+\State 
+\State //Replace maze slot with score + maybe diamond, 
+\State // as we no longer need it
+\State maze[x][y] += score
+\EndFor
+\EndFor
+\State 
+\State return maze[M][N]
+\State \}
+\end{algorithmic}
+\end{algorithm}
+
+%\begin{lstlisting}
+%\end{lslisting}
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

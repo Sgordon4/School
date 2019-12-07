@@ -1,0 +1,51 @@
+int doThing(maze, M, N){
+	return traverse(maze, M, N, 1, 1, 0)
+}
+
+int traverse(maze, M, N, x, y, score){
+
+	//maze[x][y] is 0 or a diamond
+	score += maze[x][y]
+
+	if(x==M && y==N) return score
+
+	int a = traverse(maze, M, N, x,   y+1, score-2)
+	int b = traverse(maze, M, N, x+1, y,   score-2)
+	int c = traverse(maze, M, N, x+1, y+1, score-3)
+
+	return max(a, b, c)
+}
+
+
+Recurrence:
+
+traverse = score if x==M && y==N
+traverse = max(
+	traverse(maze, M, N, x,   y+1, score-2),
+	traverse(maze, M, N, x+1, y,   score-2),
+	traverse(maze, M, N, x+1, y+1, score-3)
+	)
+
+
+Iterative:
+
+int iterTraverse(maze, M, N){
+
+	//Go from left->right, top->bottom, 					  [X][X]
+	//looking at the max of cells to left, top left, and top  [X][O]
+
+	for(int x = 1; x <= M; x++){
+		for(int y = 1; y <= N; y++){
+
+			//Find largest score for transitioning to this cell
+			int score = max(maze[x-1][y] -2, maze[x-1][y-1] -3, maze[x][y-1] -2)
+
+			//Replace maze slot with score + maybe diamond, as we no longer need it
+			maze[x][y] += score
+		}
+	}
+
+	return maze[M][N]
+}
+
+O(M*N)
