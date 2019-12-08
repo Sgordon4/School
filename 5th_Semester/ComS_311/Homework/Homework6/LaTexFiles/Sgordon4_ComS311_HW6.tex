@@ -23,6 +23,8 @@
 \maketitle
 
 
+\pagebreak
+
 1) Recurrence: \\
 combo = null if remainder $<$ 0\\
 combo = [ ] if remainder == 0\\
@@ -32,9 +34,76 @@ combo = min( from(i = 0 $\to$ n) {combo(set, remaining - set[i], list)} )\\
 \begin{algorithm}[H]
 \caption{Find non-negative integers w1, ..., wn.}
 \begin{algorithmic} [1]
+\State int[] comboIter(set, W)\{
+\State 
+\State //Store sub problem answers here
+\State int[] sub = new int[W+1]
+\State *Assign each index in sub to infinity
+\State 
+\State //Store the indices of the num used for each sum here
+\State int[] indices = new int[W+1]
+\State 
+\State //Sum of 0 will always be an empty set
+\State sub[0] = 0
+\State 
+\For{(int i = 1; i $<$ W; i++)}
+\For{(int j = 0; j $<$ set.length; j++)}
+\State int num = set[j]
+\State 
+\State //If the current number can fit
+\If{(num $<$= i)}
+\State //Replace current answer if it works better
+\State int current = sub[i]
+\State int new = sub[i - num] + 1
+\State 
+\If{(new $<$ current)}
+\State //Update our records
+\State sub[i] = new
+\State //Save the index of the number that was used
+\State indices[i] = j
+\EndIf
+\EndIf
+\EndFor
+\EndFor
+
+\algstore{alg1}
+\end{algorithmic}
+\end{algorithm}
+
+%Split across 2 pages
+
+\begin{algorithm}                     
+\begin{algorithmic} [1]
+\algrestore{alg1}
+
 
 \State 
-
+\State //If the last cell is unused, there is no answer
+\If{(sub[W] == infinity)}
+\State return []
+\EndIf
+\State 
+\State 
+\State //Otherwise use the stored indices to build a list of [w1, ..., wn]
+\State int[] w = new int[set.length]
+\State *Assign each index in w to 0
+\State 
+\State //Backtrack through our lists
+\State int i = W
+\While{(i $>$ 0)}
+\State 
+\State //Increment the use count (w) of each number used in the end
+\State int index = indices[i]
+\State w[index]++
+\State 
+\State //Go to the number used before this one
+\State i -= set[index]
+\EndWhile
+\State 
+\State return w
+\State \}
+\State 
+\State --------------------------------- Runtime: O(n*W) --------------------------------
 \end{algorithmic}
 \end{algorithm}
 
@@ -74,6 +143,7 @@ func = func(U, spaceLeft, remainingSum, index+1) $||$\\
 \State 
 \State //From 1$\to$T
 \For{int sum = 1; sum $<$= T; sum++}
+\State 
 \State//If this number is too big, grab the val above
 \If{number $>$ sum}
 \State matrix[i][sum] = matrix[i-1][sum];
@@ -100,13 +170,13 @@ func = func(U, spaceLeft, remainingSum, index+1) $||$\\
 \State //We are adding this to the subset
 \State //Ex: if sum = 14, number = 9, and lengths@5 = [1, 3, 4],
 \State //lengths@14 will now = [2, 4, 5]
+\State //** This is a loop through an array **
 \State lengths@sum = lengths@(sum - number)++;
 \EndIf
 \State
 \State //If this number won't fit, we don't add it to the subsets, but
 \State //this sum may still be possible, so the matrix should reflect that
 \State result2 = result $||$ matrix[i-1][sum];
-\State 
 \State matrix[i][j] = result2;
 \EndFor
 \EndFor
@@ -124,8 +194,13 @@ func = func(U, spaceLeft, remainingSum, index+1) $||$\\
 \EndFor
 \State return false;
 \State\}
+\State
+\State
+\State ------------------------------ Runtime: O(n*T*k) --------------------------------
 \end{algorithmic}
 \end{algorithm}
+
+
 
 
 \pagebreak
@@ -160,6 +235,9 @@ traverse = max(traverse(maze, M, N, x,\ \ \ \ y+1, score-2),\\
 \State 
 \State return maze[M][N]
 \State \}
+\State 
+\State 
+\State --------------------------------- Runtime: O(M*N) --------------------------------
 \end{algorithmic}
 \end{algorithm}
 

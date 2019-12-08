@@ -1,32 +1,64 @@
 
-Due 12/4/2019
-- Engl 314 Visuals Quiz
-X ComS 342 HW9 Early
-
-Due 12/6/2019
-X ComS 342 HW9
-
-Due 12/7/2019
-- ComS 311 HW6 Early
-- CprE 394 Portfolio URL
-
 Due 12/8/2019
-- ComS 311 HW6
+X ComS 311 HW6
+- Engl 314 Visuals Quiz
 - Engl 314 Adv&Adj Quiz
 
 Due 12/9/2019
 - EE330 Project Demo Start
+- Engl 314 Feasability Report
+
+Due 12/10/2019
+- CprE 308 Lab9
 
 Due 12/11/2019
 - ComS 311 PA2 Early
 
 Due 12/12/2019
 - ComS 311 PA2
+- EE330 Project Demo 5:00 pm
 
 Due 12/13/2019
 - EE330 Project Demo End
+- EE330 Any Unfinished Lab Demos
+
+Due 12/15/2019
+- Engl 314 Parentheses Quiz
+
+Due 12/18/2019
+- Engl 314 Self Eval
+
+
+-- Finals --
+Thursday 12/18/2019
+ComS 308 7:30 - 9:30 am
+ComS 311 ??
+
+Thursday 12/19/2019
+ComS 342 9:45 - 11:45 am
+
+
+
+
+
+
+Due Sometime
+- Engl 314 Pronoun Ref Quiz
+- Engl 314 Pronoun Ref Quiz
+- Engl 314 ElimRedun&RecogSent Quiz
+- Engl 314 Technical Def Quiz
+- Engl 314 Description of Proc Quiz
 
 -------------------------------------------------
+
+Due 12/7/2019
+X ComS 311 HW6 Early
+X CprE 394 Portfolio URL
+
+Due 12/6/2019
+X ComS 342 HW9
+Due 12/4/2019
+X ComS 342 HW9 Early
 
 Due 12/3/2019
 X CprE 308 Lab 7&8
