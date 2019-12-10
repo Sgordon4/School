@@ -1,4 +1,4 @@
-package imagestitch;
+package pa2;
 
 import java.awt.Color;
 import java.awt.FileDialog;
@@ -273,7 +273,7 @@ public final class Picture implements ActionListener {
    }
 
   /**
-    * Returns the color of pixel ({@code col}, {@code row}) as a {@link java.awt.Color}.
+    * Returns the color of pixel ({@code col}, {@code row}) as a {@link Color}.
     *
     * @param col the column index
     * @param row the row index
@@ -440,7 +440,7 @@ public final class Picture implements ActionListener {
    }
 
   /**
-    * Unit tests this {@code Picture} data type.
+    * Unit tests this {@code pa2.Picture} data type.
     * Reads a picture specified by the command-line argument,
     * and shows it in a window on the screen.
     *

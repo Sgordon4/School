@@ -1,5 +1,3 @@
-package imagestitch;
-
 public class Tuple {
 	
 	private int x, y;

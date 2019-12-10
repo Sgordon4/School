@@ -1,18 +1,10 @@
 
-Due 12/8/2019
-X ComS 311 HW6
-- Engl 314 Visuals Quiz
-- Engl 314 Adv&Adj Quiz
-
-Due 12/9/2019
-- EE330 Project Demo Start
-- Engl 314 Feasability Report
-
 Due 12/10/2019
 - CprE 308 Lab9
 
 Due 12/11/2019
 - ComS 311 PA2 Early
+- Engl 314 Self Eval
 
 Due 12/12/2019
 - ComS 311 PA2
@@ -25,8 +17,8 @@ Due 12/13/2019
 Due 12/15/2019
 - Engl 314 Parentheses Quiz
 
-Due 12/18/2019
-- Engl 314 Self Eval
+Due 12/16/2019
+- Engl 314 Feasability Report
 
 
 -- Finals --
@@ -50,6 +42,14 @@ Due Sometime
 - Engl 314 Description of Proc Quiz
 
 -------------------------------------------------
+
+Due 12/9/2019
+X EE330 Project Demo Start
+
+Due 12/8/2019
+X ComS 311 HW6
+X Engl 314 Visuals Quiz
+X Engl 314 Adv&Adj Quiz
 
 Due 12/7/2019
 X ComS 311 HW6 Early
