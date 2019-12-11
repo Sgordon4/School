@@ -5,6 +5,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.runners.MockitoJUnitRunner;
 import pa2.MatrixCuts;
+import pa2.Tuple;
 
 import java.util.ArrayList;
 

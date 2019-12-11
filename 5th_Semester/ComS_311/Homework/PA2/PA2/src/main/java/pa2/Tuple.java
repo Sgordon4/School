@@ -5,12 +5,12 @@ public class Tuple {
 	private int x, y;
 	
 	
-	Tuple() {
+	public Tuple() {
 		x = 0;
 		y = 0;
 	}
 	
-	Tuple(int a, int b) {
+	public Tuple(int a, int b) {
 		x = a;
 		y = b;
 	}

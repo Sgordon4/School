@@ -9,9 +9,8 @@ public class ImageProcessor {
     public static Picture reduceWidth(int x, String pImage){
 
         Picture p = new Picture(pImage);
-        //Yo what dumbfuck set height() to get width and width() to get height?
-        int m = p.height();
-        int n = p.width();
+        int n = p.height();
+        int m = p.width();
 
         for(; x > 0; x--){
             //Compute the importance matrix
@@ -30,15 +29,17 @@ public class ImageProcessor {
             // This mega inefficient but it's what we got ¯\_(ツ)_/¯
             //=============================================================================
 
+
             //Shift the pixels to the left
-            for(int i = 1; i < widthCut.size(); i++){
-                Tuple removed = widthCut.get(i);
+            for(int i = 0; i < widthCut.size()-1; i++){
+                Tuple removed = widthCut.get(i+1);
 
                 for(int j = removed.getY(); j < m-1; j++){
                     int shift = p.getRGB(j+1, i);
                     p.setRGB(j, i, shift);
                 }
             }
+
 
             //Crop the last column off
             p = ImageStitch.crop(p, 1);
@@ -48,7 +49,7 @@ public class ImageProcessor {
         }
 
 
-        return null;
+        return p;
     }
 
     static int[][] computeImportance(Picture p){
