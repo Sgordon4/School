@@ -1,0 +1,42 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage[latin1]{inputenc}
+\usepackage{listings}
+\usepackage{scrextend}
+\usepackage{tabularx}
+
+\usepackage{subcaption}
+
+\title{CprE 308\\Section 3\\Lab7\&8}
+\author{Sean Gordon\\Sgordon4}
+%\date{November 12, 2019}
+
+\begin{document}
+\maketitle
+
+\noindent These labs focused on decoding sections of the FAT filesystem, giving a deeper understanding of the setup of different headers. The example file image provides a realistic example, with the printed results helping to cement ideas.\\
+
+\noindent I had never done any work with filesystems before, and was suprised with how smoothly these labs went. For some reason I got super stuck on printing out the root directory sizes though, which took a fair amount of time to fix. Other than that, I feel like this was a successful foray into filesystems and their headers.\\\\\\\\
+
+Exercise 1: 
+\begin{center}
+ \begin{tabularx}{1\textwidth} { 
+  | >{\raggedright\arraybackslash}X 
+  | >{\centering\arraybackslash}X 
+  | >{\centering\arraybackslash}X | }
+ \hline
+  & Hex & Decimal \\\hline
+ Bytes per sector & 0x0200 & 512 \\\hline
+ Sectors per cluster & 0x10 & 16 \\\hline
+ Max Number of Root directory entries & 0x00e0 & 224\\ \hline
+ Sectors per FAT & 0x0001 & 1\\  [1ex] 
+ \hline
+\end{tabularx}
+\end{center}
+
+
+\end{document}

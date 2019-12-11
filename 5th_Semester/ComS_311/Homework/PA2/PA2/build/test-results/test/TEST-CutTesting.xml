@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="CutTesting" tests="2" skipped="0" failures="0" errors="0" timestamp="2019-12-10T01:54:16" hostname="GamingPC" time="0.022">
+<testsuite name="CutTesting" tests="2" skipped="0" failures="0" errors="0" timestamp="2019-12-11T03:39:16" hostname="GamingPC" time="0.048">
   <properties/>
-  <testcase name="testWidthCut" classname="CutTesting" time="0.007"/>
-  <testcase name="testStitchCut" classname="CutTesting" time="0.003"/>
+  <testcase name="testWidthCut" classname="CutTesting" time="0.009"/>
+  <testcase name="testStitchCut" classname="CutTesting" time="0.005"/>
   <system-out><![CDATA[
 
 ==================

@@ -13,7 +13,7 @@ public class MatrixCuts {
         int[][] pathCosts = new int[n][m];
 
         //Add the entire first row of M to pathCosts
-        for(int j = 0; j < n; j++){
+        for(int j = 0; j < m; j++){
             pathCosts[0][j] = M[0][j];
         }
 
@@ -96,7 +96,7 @@ public class MatrixCuts {
         int[][] pathCosts = new int[n][m];
 
         //Add the entire first row of M to pathCosts
-        for(int j = 0; j < n; j++){
+        for(int j = 0; j < m; j++){
             pathCosts[0][j] = M[0][j];
         }
 
