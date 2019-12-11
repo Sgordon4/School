@@ -6,11 +6,12 @@ import java.util.ArrayList;
 import static java.lang.Math.min;
 
 public class ImageProcessor {
-    static Picture reduceWidth(int x, String pImage){
+    public static Picture reduceWidth(int x, String pImage){
 
         Picture p = new Picture(pImage);
-        int n = p.height();
-        int m = p.width();
+        //Yo what dumbfuck set height() to get width and width() to get height?
+        int m = p.height();
+        int n = p.width();
 
         for(; x > 0; x--){
             //Compute the importance matrix
