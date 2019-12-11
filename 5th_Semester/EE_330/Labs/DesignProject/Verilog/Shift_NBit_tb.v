@@ -1,6 +1,6 @@
 
 `timescale 1ns/10ps
-module Shift_4it_tb;
+module Shift_NBit_tb;
     reg [9:0] Mi;
 	reg 	  Si;
 	reg Is, Ls;
@@ -42,7 +42,7 @@ module Shift_4it_tb;
 		Ls = 1'b0;
 		@(negedge rst);
 		
-		Mi = 10'b1010101010;
+		Mi = 10'b1111111111;
 		Si = 1'b0;
 		Is = 1'b0;
 		Ls = 1'b0;

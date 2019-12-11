@@ -6,7 +6,7 @@
 // Sean Gordon
 // SGordon4
 //------------------------------------
-module Shift_10Bit(
+module Shift_NBit(
     Mi,     // Main-input lines for the shifter
     Si,     // Shift-input
     
@@ -37,8 +37,6 @@ module Shift_10Bit(
     wire comma;
     //wire Dff_Input[N-1:0];    // Input of the DFFs
     wire [N-1:0] Dff_Output;   // Output of the DFFs
-	
-	wire Is_or_Ls;			  // Is || Ls
     
     wire [N-1:0] MC_Output;    // Mi/Comma mux output
     wire [N-1:0] SMC_Output;   // Si/[Mi/Comma] mux output
@@ -71,10 +69,9 @@ module Shift_10Bit(
     assign SMC_Output[N-1] = Ls ? MC_Output[N-1] : Si;
     
     //Generate the rest of the SMC mux
-	assign Is_or_Ls = Is || Ls;
 	genvar i;
     for(i = N-2; i >= 0; i=i-1) begin: SMC_Mux
-        assign SMC_Output[i] = Is_or_Ls ? MC_Output[i] : Dff_Output[i+1];
+        assign SMC_Output[i] = (Is && (!Ls)) ? MC_Output[i] : Dff_Output[i+1];
     end
 	
 	

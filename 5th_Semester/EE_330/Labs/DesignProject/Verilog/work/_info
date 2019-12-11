@@ -8,47 +8,47 @@ z2
 !i10f 100
 cModel Technology
 Z0 dU:/School/5th_Semester/EE_330/Labs/DesignProject/Verilog
-vShift_10Bit
-!s110 1576086325
+vDFF_Sync
+!s110 1576104263
 !i10b 1
-!s100 AHMl[mlnjO?<dLOcn`ozb3
-Ib_j_Bd^UbFj^P;IDKKV`E0
+!s100 <kYSV6;^JgZdX9izZmY9T0
+Inj>G9jU2l^?6W5]h7IhMM1
 Z1 VDg1SIo80bB@j0V0VzS_@n1
 R0
-w1576086303
-8U:/School/5th_Semester/EE_330/Labs/DesignProject/Verilog/Shift_NBit2.v
-FU:/School/5th_Semester/EE_330/Labs/DesignProject/Verilog/Shift_NBit2.v
-L0 9
+w1576102998
+8U:/School/5th_Semester/EE_330/Labs/DesignProject/Verilog/DFF_Sync.v
+FU:/School/5th_Semester/EE_330/Labs/DesignProject/Verilog/DFF_Sync.v
+L0 8
 Z2 OP;L;10.7b;67
 r1
 !s85 0
 31
-!s108 1576086322.000000
-!s107 U:/School/5th_Semester/EE_330/Labs/DesignProject/Verilog/Shift_NBit2.v|
-!s90 -reportprogress|300|-work|work|U:/School/5th_Semester/EE_330/Labs/DesignProject/Verilog/Shift_NBit2.v|
+!s108 1576104262.000000
+!s107 U:/School/5th_Semester/EE_330/Labs/DesignProject/Verilog/DFF_Sync.v|
+!s90 -reportprogress|300|-work|work|U:/School/5th_Semester/EE_330/Labs/DesignProject/Verilog/DFF_Sync.v|
 !i113 1
 Z3 o-work work
 Z4 tCvgOpt 0
-n@shift_10@bit
-vShift_4it_tb
-!s110 1576086328
+n@d@f@f_@sync
+vShift_NBit
+!s110 1576104280
 !i10b 1
-!s100 8;QR99kYNzff^iRIRkKCQ0
-IAEeQ8PQ55iVFLVL6Bb^]g3
+!s100 ^fJOf_?a@8V>llVb?f=gQ1
+IGTVcO9ak1n^ZO9N08FLY^3
 R1
 R0
-w1576086316
-8U:/School/5th_Semester/EE_330/Labs/DesignProject/Verilog/Shift_NBit_tb2.v
-FU:/School/5th_Semester/EE_330/Labs/DesignProject/Verilog/Shift_NBit_tb2.v
-L0 3
+w1576103399
+8U:/School/5th_Semester/EE_330/Labs/DesignProject/Verilog/Shift_NBit.v
+FU:/School/5th_Semester/EE_330/Labs/DesignProject/Verilog/Shift_NBit.v
+L0 9
 R2
 r1
 !s85 0
 31
-!s108 1576086328.000000
-!s107 U:/School/5th_Semester/EE_330/Labs/DesignProject/Verilog/Shift_NBit_tb2.v|
-!s90 -reportprogress|300|-work|work|U:/School/5th_Semester/EE_330/Labs/DesignProject/Verilog/Shift_NBit_tb2.v|
+!s108 1576104277.000000
+!s107 U:/School/5th_Semester/EE_330/Labs/DesignProject/Verilog/Shift_NBit.v|
+!s90 -reportprogress|300|-work|work|U:/School/5th_Semester/EE_330/Labs/DesignProject/Verilog/Shift_NBit.v|
 !i113 1
 R3
 R4
-n@shift_4it_tb
+n@shift_@n@bit

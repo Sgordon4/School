@@ -17,7 +17,8 @@ module DFF_Sync (
     output Q;
     reg Q;
 
-    always @ ((posedge clk) or en)
+    //always @ ((posedge clk) or en)
+	always @ (posedge clk)
     if(en) begin 
         if(rst) begin
             Q <= 0;
