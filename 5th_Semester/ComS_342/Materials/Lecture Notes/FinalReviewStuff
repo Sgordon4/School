@@ -1,0 +1,42 @@
+Programming Language:
+- Language to communicate instructions to computer
+
+Programs consisting of a pl should be able to express:
+- Atomic expressions
+- Composition (control flow)
+- Abstraction
+
+PLs for different paradigms:
+- Imperative, functional, logic
+> Functional and logic are good with recursion
+> Logic models facts and relations
+
+How to specify a PL:
+- PL Software - takes a program and outputs a value
+- Syntax (grammar) vs Semantics (Operational semantics, typing rules)
+
+
+Grammar:
+- Context free (Start, F, R, S)
+   > Deriving parse trees
+   > Ambiguity can be caused by no operator precedence and not defining LR assoc.
+
+Typical PL Features:
+- Arithmetic (Arithlang)
+- Variables (Varlang, Definelang)
+- Functions (Funclang)
+- Memory Management (Reflang)
+- Types (Typelang)
+- Data Structures (List and Pair)
+- Contril Flow (if-then-else)
+
+- Prefix, infix, postfix
+- Variable scope (bound and free)
+- Functions as first class objects (Higher order functions)
+
+
+
+
+
+
+
