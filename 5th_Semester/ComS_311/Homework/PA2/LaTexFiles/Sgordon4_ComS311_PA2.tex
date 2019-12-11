@@ -1,0 +1,75 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage[latin1]{inputenc}
+\usepackage{listings}
+\usepackage{scrextend}
+\usepackage{changepage} %Adjustwidth
+\usepackage{float}
+
+\usepackage{algorithm}
+%\usepackage{algorithmic}
+\usepackage{algpseudocode}
+
+
+\title{ComS 311\\Recitation 3, 2:00 Monday\\Project 2}
+\author{Sean Gordon}
+%\date{09/29/2019}
+
+\begin{document}
+\maketitle
+
+\pagebreak 
+
+\subsection*{Width Cut}
+\noindent \textbf{Recurrence:} \\
+widthCut = cost \textbf{if} x == height\\
+widthCut = min(widthCut(M, height, width, x+1, y - 1, cost+currentCost),\\
+\indent \indent \indent \indent \indent widthCut(M, height, width, x+1, y \ \ \ , cost+currentCost),\\
+\indent \indent \indent \indent \indent \ widthCut(M, height, width, x+1, y+1, cost+currentCost))\\
+
+\noindent \textbf{Runtime of algorithm:} \\
+Loop through rows: O(n)\\
+Nested loop through columns: O(m)\\
+Runtime = O(n*m)\\
+
+
+\hrulefill\\
+
+
+\subsection*{Stitch Cut}
+\noindent \textbf{Recurrence:} \\
+widthCut = cost \textbf{if} x == height\\
+widthCut = min(widthCut(M, height, width, x \ \ \ , y+1, cost+currentCost),\\
+\indent \indent \indent \indent \indent widthCut(M, height, width, x+1, y \ \ \ , cost+currentCost),\\
+\indent \indent \indent \indent \indent \ widthCut(M, height, width, x+1, y+1, cost+currentCost))\\
+
+\noindent \textbf{Runtime of algorithm:} \\
+Loop through rows: O(n)\\
+Nested loop through columns: O(m)\\
+Runtime = O(n*m)\\
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
