@@ -8,46 +8,90 @@ z2
 !i10f 100
 cModel Technology
 Z0 dU:/School/5th_Semester/EE_330/Labs/DesignProject/Verilog
-vDFF_Sync
-!s110 1576104263
+vDeserializer_NBit
+!s110 1576121309
 !i10b 1
-!s100 <kYSV6;^JgZdX9izZmY9T0
-Inj>G9jU2l^?6W5]h7IhMM1
+!s100 WPnmcQS:KSiIm1d`QD]dS3
+IBb]WfVHZXiVXWddmWcP2V1
 Z1 VDg1SIo80bB@j0V0VzS_@n1
 R0
-w1576102998
-8U:/School/5th_Semester/EE_330/Labs/DesignProject/Verilog/DFF_Sync.v
-FU:/School/5th_Semester/EE_330/Labs/DesignProject/Verilog/DFF_Sync.v
-L0 8
+w1576121307
+8Deserializer_NBit.v
+FDeserializer_NBit.v
+L0 9
 Z2 OP;L;10.7b;67
 r1
 !s85 0
 31
-!s108 1576104262.000000
-!s107 U:/School/5th_Semester/EE_330/Labs/DesignProject/Verilog/DFF_Sync.v|
-!s90 -reportprogress|300|-work|work|U:/School/5th_Semester/EE_330/Labs/DesignProject/Verilog/DFF_Sync.v|
+!s108 1576121309.000000
+!s107 Deserializer_NBit.v|
+!s90 -reportprogress|300|-work|work|Deserializer_NBit.v|
 !i113 1
 Z3 o-work work
 Z4 tCvgOpt 0
-n@d@f@f_@sync
-vShift_NBit
-!s110 1576104280
+n@deserializer_@n@bit
+vDFF_Sync
+!s110 1576115772
 !i10b 1
-!s100 ^fJOf_?a@8V>llVb?f=gQ1
-IGTVcO9ak1n^ZO9N08FLY^3
+!s100 `XB;gUTNDLBa_eMj068<a0
+ILK<3lP:oJJ>6=k88aWiP[0
 R1
 R0
-w1576103399
-8U:/School/5th_Semester/EE_330/Labs/DesignProject/Verilog/Shift_NBit.v
-FU:/School/5th_Semester/EE_330/Labs/DesignProject/Verilog/Shift_NBit.v
+w1576115769
+8DFF_Sync.v
+FDFF_Sync.v
+L0 8
+R2
+r1
+!s85 0
+31
+!s108 1576115772.000000
+!s107 DFF_Sync.v|
+!s90 -reportprogress|300|-work|work|DFF_Sync.v|
+!i113 1
+R3
+R4
+n@d@f@f_@sync
+vSerializer_NBit
+!s110 1576119270
+!i10b 1
+!s100 HAKBeZV@mZ];VXHzF[<b41
+IH=hGB?SWQDcaP`cZ5:Mmb0
+R1
+R0
+w1576119253
+8Serializer_NBit.v
+FSerializer_NBit.v
 L0 9
 R2
 r1
 !s85 0
 31
-!s108 1576104277.000000
-!s107 U:/School/5th_Semester/EE_330/Labs/DesignProject/Verilog/Shift_NBit.v|
-!s90 -reportprogress|300|-work|work|U:/School/5th_Semester/EE_330/Labs/DesignProject/Verilog/Shift_NBit.v|
+!s108 1576119270.000000
+!s107 Serializer_NBit.v|
+!s90 -reportprogress|300|-work|work|Serializer_NBit.v|
+!i113 1
+R3
+R4
+n@serializer_@n@bit
+vShift_NBit
+!s110 1576117737
+!i10b 1
+!s100 >LoI[X`EKG;3<[62h2D9M1
+I;hSPU6Do_:AR@RSF6^Ghl3
+R1
+R0
+w1576117730
+8Shift_NBit.v
+FShift_NBit.v
+L0 9
+R2
+r1
+!s85 0
+31
+!s108 1576117737.000000
+!s107 Shift_NBit.v|
+!s90 -reportprogress|300|-work|work|Shift_NBit.v|
 !i113 1
 R3
 R4

@@ -1,17 +1,18 @@
 //------------------------------------
-// 10-Bit shift register built from
+// N-Bit serializer built from
 // synchronous D-Flip-Flops.
 // This shifter is Big-Endian.
 //
 // Sean Gordon
 // SGordon4
 //------------------------------------
-module Shift_NBit(
+module Serializer_NBit(
     Mi,     // Main-input lines for the shifter
+	Comma,	// Comma input lines for the shifter
     Si,     // Shift-input
     
-    Is,     // Input-select. Select between 'comma' value and Mi
-    Ls,     // Load-select.  Select between comma/Mi or Si
+    Is,     // Input-select. Select between 'Comma' value and Mi
+    Ls,     // Load-select.  Select between Comma/Mi or Si
     
     clk,    // Clock input
     en,     // Enable the registers
@@ -23,6 +24,7 @@ module Shift_NBit(
 	localparam N = 10;
 
     input [N-1:0] 	Mi;
+	input [N-1:0]   Comma;
     input			Si;
     
     input        	Is;
@@ -34,16 +36,13 @@ module Shift_NBit(
     
     output		 	Q;
     
-    wire comma;
-    //wire Dff_Input[N-1:0];    // Input of the DFFs
+	
     wire [N-1:0] Dff_Output;   // Output of the DFFs
     
     wire [N-1:0] MC_Output;    // Mi/Comma mux output
     wire [N-1:0] SMC_Output;   // Si/[Mi/Comma] mux output
-    
-    
+	wire 		 SMCs;		   // SMC select bit
 	
-	assign comma = 1010001110'b1;
     
     //--- DFFs ------------------------------------------------------------
 	
@@ -55,31 +54,31 @@ module Shift_NBit(
 		.en(en), 
 		.Q(Dff_Output)
 	);
-    
+	
     
 	//--- MI/Comma Mux ----------------------------------------------------
 	
     // Perform the MI/Comma mux calculation
-    assign MC_Output = Is ? Mi : comma;
+    assign MC_Output = Is ? Comma : Mi;
     
     
 	//--- SCM Mux ---------------------------------------------------------
 	
     //First input of SMC mux is the Si bit
-    assign SMC_Output[N-1] = Ls ? MC_Output[N-1] : Si;
+    assign SMC_Output[N-1] = Ls ? Si : MC_Output[N-1];
     
     //Generate the rest of the SMC mux
+	assign SMCs = ((!Is) && Ls);
+	
 	genvar i;
     for(i = N-2; i >= 0; i=i-1) begin: SMC_Mux
-        assign SMC_Output[i] = (Is && (!Ls)) ? MC_Output[i] : Dff_Output[i+1];
+        assign SMC_Output[i] = SMCs ? Dff_Output[i+1] : MC_Output[i];
     end
 	
 	
-	
 	assign Q = Dff_Output[0];
-endmodule
 	
-    //Check out EEDraw for a text schematic
+endmodule
     
     
     

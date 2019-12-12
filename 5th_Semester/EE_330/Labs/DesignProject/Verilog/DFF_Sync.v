@@ -14,17 +14,14 @@ module DFF_Sync (
 );
 
     input D, clk, rst, en;
-    output Q;
-    reg Q;
+    output reg Q;
 
     //always @ ((posedge clk) or en)
 	always @ (posedge clk)
     if(en) begin 
-        if(rst) begin
-            Q <= 0;
-        end
-        else begin
+        if(rst)
+            Q <= 1'b0;
+        else 
             Q <= D;
-        end
     end
 endmodule
