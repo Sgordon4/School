@@ -1,21 +1,6 @@
 
-Due 12/11/2019
-- ComS 311 PA2 Early
-- Engl 314 Self Eval
-
-Due 12/12/2019
-- ComS 311 PA2
+Sometime
 - EE330 Project Demo 5:00 pm
-
-Due 12/13/2019
-- EE330 Project Demo End
-- EE330 Lab 9 & 10 Demos
-
-Due 12/15/2019
-- Engl 314 Parentheses Quiz
-
-Due 12/16/2019
-- Engl 314 Feasability Report
 
 
 -- Finals --
@@ -30,18 +15,30 @@ Thursday 12/19/2019
 ComS 342 9:45 - 11:45 am
 
 
-
-
-
-
-Due Sometime
-- Engl 314 Pronoun Ref Quiz
-- Engl 314 Pronoun Ref Quiz
-- Engl 314 ElimRedun&RecogSent Quiz
-- Engl 314 Technical Def Quiz
-- Engl 314 Description of Proc Quiz
-
 -------------------------------------------------
+
+Sometime
+X Engl 314 Pronoun Ref Quiz
+X Engl 314 ElimRedun&RecogSent Quiz
+X Engl 314 Technical Def Quiz
+X Engl 314 Description of Proc Quiz
+
+Due 12/16/2019
+X Engl 314 Feasability Report
+
+Due 12/15/2019
+X Engl 314 Parentheses Quiz
+
+Due 12/13/2019
+X EE330 Project Demo End
+X EE330 Lab 9 & 10 Demos
+
+Due 12/12/2019
+X ComS 311 PA2
+
+Due 12/11/2019
+X ComS 311 PA2 Early
+X Engl 314 Self Eval
 
 Due 12/10/2019
 X CprE 308 Lab9
