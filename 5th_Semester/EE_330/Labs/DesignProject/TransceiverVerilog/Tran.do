@@ -70,8 +70,6 @@ force clk 0 0, 1 50 -repeat 100
 
 
 #### Clearing Things ####
-#Setting In to 0xCC to point out that we're loading a 'comma'
-force -deposit In 	2#00110_01100 0
 force -deposit en 	1 0
 force -deposit rst 	1 0
 run 100
@@ -82,6 +80,8 @@ force -deposit rst 	0 0
 
 
 #Load Comma
+#Setting In to 0xCC to point out that we're loading a 'comma'
+force -deposit In 	2#00110_01100 0
 force -deposit Is	1 0
 force -deposit Ls	0 0
 run 100
@@ -120,7 +120,7 @@ run 100
 #And send it over
 force -deposit Is	0 0
 force -deposit Ls	1 0
-run 1000
+run 900
 
 
 
