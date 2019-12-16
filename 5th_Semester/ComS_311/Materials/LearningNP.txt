@@ -1,0 +1,8 @@
+This is the sequence of things that I looked at to understand P vs NP and NP complete, starting from 
+only an understanding of what P was:
+
+https://www.youtube.com/watch?v=kN8ciYykim4
+https://www.youtube.com/watch?v=YX40hbAHx3s		<-- Quite liked this one
+https://www.youtube.com/watch?v=u2DLlNQiPB4		<-- Liked this one slightly more
+https://www.youtube.com/watch?v=eqnd26HGsBY		<-- Didn't really watch this one
+https://www.youtube.com/watch?v=mr1FMrwi6Ew		<-- Very nice lecture
