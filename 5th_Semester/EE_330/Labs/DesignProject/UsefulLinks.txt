@@ -1,3 +1,0 @@
-https://en.wikipedia.org/wiki/8b/10b_encoding#How_it_works_for_the_IBM_code
-https://www.intel.com/content/dam/www/programmable/us/en/pdfs/literature/ds/dsed8b10b.pdf
-
