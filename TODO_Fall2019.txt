@@ -12,8 +12,8 @@ X ComS 308 7:30 - 9:30 am: Normal location
 X ComS 311 7:00 - 9:00 pm: Lagomarcino 1155
 
 Thursday 12/19/2019
-ComS 342 9:45 - 11:45 am: Normal location
-EE 330 12:00 pm: Normal location
+X ComS 342 9:45 - 11:45 am: Normal location
+X EE 330 12:00 pm: Normal location
 
 
 -------------------------------------------------

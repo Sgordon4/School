@@ -86,7 +86,7 @@ force -deposit Ls	1 0
 run 100
 
 
-#Let shifter propogate out
+#Let shifter propagate out
 run 500
 
 force -deposit Si	0 0

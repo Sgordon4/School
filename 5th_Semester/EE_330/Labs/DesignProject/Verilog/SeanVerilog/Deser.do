@@ -70,7 +70,7 @@ force -deposit Si	1 0
 run 100
 
 
-#Allow deserializer to propogate
+#Allow deserializer to propagate
 run 900
 
 
