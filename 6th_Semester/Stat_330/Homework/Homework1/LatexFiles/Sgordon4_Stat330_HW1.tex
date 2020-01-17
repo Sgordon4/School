@@ -1,0 +1,144 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage[latin1]{inputenc}
+\usepackage{listings}
+\usepackage{scrextend}
+
+\usepackage{changepage} %Adjustwidth
+\usepackage[margin=1in]{geometry}
+
+\usepackage{algorithm}
+%\usepackage{algorithmic}
+\usepackage{algpseudocode}
+\usepackage{alltt}
+
+
+% Used for code blocks ----------------------------------------------------------------
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{listings}
+
+\usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
+% -----------------------------------------------------------------------------------------
+
+
+
+\title{Stat 330\\Homework 1}
+\author{Sean Gordon}
+%\date{09/09/2019}
+
+\begin{document}
+\maketitle
+
+
+\hrulefill \\
+
+\noindent 1)\\
+\indent (a) \{T T T\}, \{T T H\}, \{T H T\}, \{T H H\},\\ \ \ \
+\indent \indent  \{H T T\}, \{H T H\}, \{H H T\}, \{H H H\}\\
+
+(b) A = \{T T H\}, \{T H T\}, \{H T T\}\\
+\indent \indent \ B = \{\} \\
+\indent \indent \ C = \{\} \\
+
+(c) 
+$\omega$
+
+
+\begin{center}
+\end{center}
+
+
+\hrulefill \\
+
+
+\begin{multicols}{2}
+
+\noindent 2a)\\\\
+fib(0, 0).\\
+fib(1, 1).\\\\
+fib(N, Res) :-\\
+\indent N $>$ 1,\\
+\indent N1 is N-1,\\
+\indent N2 is N-2,\\\\
+\indent fib(N1, R1),\\
+\indent fib(N2, R2),\\\\
+\indent Res is R1+R2.\\
+
+\columnbreak
+
+\noindent 2b)\\\\
+rev(L, Res) :-\\
+\indent revHelper(L, [ ], Res).\\\\
+revHelper([ ], Accum, Accum).\\
+revHelper([H$|$T], Accum, Res) :-\\
+\indent number(H),\\
+\indent revHelper(T, [H$|$Accum], Res);\\\\
+\indent revHelper(H, [ ], Temp),\\
+\indent revHelper(T, [Temp$|$Accum], Res).\\
+
+\end{multicols} 
+
+
+\hrulefill \\
+\pagebreak
+
+
+\noindent 3a)\\
+sentence([ ]).\\
+sentence(S) :- s(S, [ ]).\\
+
+\noindent s(L1, L2) :- f(L1, L2).\\
+s(L1, L4) :- t(L1, L2), n(L2, L3), t(L3, L4).\\
+
+\noindent f(L1, L5) :- if(L1, L2), b(L2, L3), then(L3, L4), s(L4, L5).\\
+\noindent f(L1, L7) :- if(L1, L2), b(L2, L3), then(L3, L4), s(L4, L5), else(L5, L6), s(L6, L7).\\
+
+\noindent b(L1, L4) :- t(L1, L2), e(L2, L3), t(L3, L4).\\
+
+\noindent if([if$|$Tail], Tail).\\
+then([then$|$Tail], Tail).\\
+else([else$|$Tail], Tail).\\
+
+\noindent t([x$|$Tail], Tail).\\
+t([y$|$Tail], Tail).\\
+t([z$|$Tail], Tail).\\
+t([1$|$Tail], Tail).\\
+t([0$|$Tail], Tail).\\
+
+\noindent e([$<$$|$Tail], Tail).\\
+e([$>$$|$Tail], Tail).\\
+
+\noindent n([+$|$Tail], Tail).\\
+n([-$|$Tail], Tail).\\
+n([=$|$Tail], Tail).\\\\
+
+
+\pagebreak
+\hrulefill \\
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
