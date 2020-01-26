@@ -1,0 +1,153 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage[latin1]{inputenc}
+\usepackage{listings}
+\usepackage{scrextend}
+
+\usepackage{changepage} %Adjustwidth
+\usepackage[margin=1in]{geometry}
+
+\usepackage{algorithm}
+%\usepackage{algorithmic}
+\usepackage{algpseudocode}
+\usepackage{alltt}
+
+
+% Used for code blocks ----------------------------------------------------------------
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{listings}
+
+\usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
+%-----------------------------------------------------------------------------------------
+
+
+
+\title{Stat 330\\Homework 1}
+\author{Sean Gordon}
+%\date{09/09/2019}
+
+\begin{document}
+\maketitle
+
+
+\hrulefill \\
+
+
+\noindent 1)\\
+\indent (a) $\Omega$ = \{T T T, \ T T H, \ T H T, \ T H H,\\ \ \ \
+\indent \indent \indent \ \ \ \ H T T, \ H T H, \ H H T, \ H H H\}\\
+
+(b) A = \{T T H, \ T H T, \ H T T\}\\
+\indent \indent \ B = \{T T H, \ T H T, \ H T T, \ T T T\}\\
+\indent \indent \ C = \{T H H, \ H H H\}\\
+
+(c) $\overline{A}$ = \{T T T, \ T H H, \ H T H, \ H H T, \ H H H\}\\
+\indent \indent A $\cup$ B = \{T T H, \ T H T, \ H T T, \ T T T\}\\
+\indent \indent A $\cap$ B = \{T T H, \ T H T, \ H T T\}\\
+\indent \indent A $\cap$ C = \{ \}\\
+
+
+\hrulefill \\
+
+
+\noindent 2)\\
+\indent \indent A = \{1, 3, 5\}\\
+\indent \indent B = \{1, 5, 10\}\\
+\indent \indent $\overline{A}$ = \{2, 4, 6, 7, 8, 9, 10\}\\
+\indent \indent $\overline{B}$ = \{2, 3, 4, 6, 7, 8, 9\}\\
+
+(a) A $\cap$ B = \{1, 5\}\\
+\indent \indent $\overline{A \cap B}$ = \{2, 3, 4, 6, 7, 8, 9, 10\}\\
+\indent \indent $\overline{A} \cup \overline{B}$ = \{2, 3, 4, 6, 7, 8, 10\}\\
+
+(b) A $\cup$ B = \{1, 3, 5, 10\}\\
+\indent \indent $\overline{A \cup B}$ = \{2, 4, 6, 7, 8, 9\}\\
+\indent \indent $\overline{A} \cap \overline{B}$ = \{2, 4, 6, 7, 8, 9\}\\
+
+
+\hrulefill \\
+\pagebreak
+
+
+\noindent 3)\\
+\indent \indent Total probability sums to 1.0, $\therefore$\\
+\indent \indent 1k + 2k + 3k + 4k + 5k + 6k = 21k = 1.0\\
+\indent \indent k = 1.0 / 21 = 0.0476 $\Rightarrow$\\\\
+\indent \indent [1] = 1*0.0476 = 0.0476\\
+\indent \indent [2] = 2*0.0476 = 0.0952\\
+\indent \indent [3] = 3*0.0476 = 0.1429\\
+\indent \indent [4] = 4*0.0476 = 0.1905\\
+\indent \indent [5] = 5*0.0476 = 0.2381\\
+\indent \indent [6] = 6*0.0476 = 0.2857\\
+
+
+\hrulefill \\
+
+
+\noindent 4)\\
+\indent (a) \{(1,1),(1,2),(1,3),(1,4),(1,5),(1,6),\\
+\indent \indent \  \ (2,1),(2,2),(2,3),(2,4),(2,5),(2,6),\\
+\indent \indent \  \ (3,1),(3,2),(3,3),(3,4),(3,5),(3,6),\\
+\indent \indent \  \ (4,1),(4,2),(4,3),(4,4),(4,5),(4,6),\\
+\indent \indent \  \ (5,1),(5,2),(5,3),(5,4),(5,5),(5,6),\\
+\indent \indent \  \ (6,1),(6,2),(6,3),(6,4),(6,5),(6,6)\}\\
+
+(b) 6 possible options for `7' out of 36 possible outcomes:\\
+\indent \indent 6/36 = 1/6 chance
+
+(c) 6 possible options for `7' out of 36 possible outcomes,\\
+\indent \indent 2 possible options for `11' out of 36 possible outcomes:\\
+\indent \indent Cannot get a 7 and an 11, 8/36 = 2/9 chance
+
+(d) 18 possible options for even first die out of 36 possible outcomes,\\
+\indent \indent 2 possible options for `11' out of 36 possible outcomes, with 1 overlap $\Rightarrow$ 1 option:\\
+\indent \indent 7/36 chance
+
+
+\hrulefill \\
+\pagebreak
+
+
+\noindent 5)\\
+\indent (a) P(MB $\cup$ HD) = 35 + 30 - 20 = 45\%\\
+
+(b) 1 - P(MB $\cup$ HD) = 100 - 45 = 65\%\\
+
+
+\hrulefill \\
+
+
+\noindent 6)\\
+\indent (a) P(L $\cap$ S) = 40 + 30 - 50 = 20\%\\
+
+(b)  P(L $\cup$ S) = 100 - 50 = 50\%\\
+
+(c) P(L xor S) = 100 - 50 -  P(L $\cap$ S) = 30\%
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
