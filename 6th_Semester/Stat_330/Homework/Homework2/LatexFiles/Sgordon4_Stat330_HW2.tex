@@ -1,4 +1,6 @@
 \documentclass[12pt]{article}
+\usepackage[12pt]{moresize}
+
 \usepackage{amsmath}
 \usepackage{amssymb}
 
@@ -31,77 +33,54 @@
 
 \hrulefill \\
 
+https://courses.lumenlearning.com/sanjacinto-finitemath1/chapter/reading-counting/\\
+
 
 \noindent 1)\\
-\indent (a) $|\Omega| \ge |A|,\ \ |\Omega| \ge 0,\ \ $ therefore $ |A| / |\Omega| \ge 0$\\
-\indent (a) $\Omega$ = \{T T T, \ T T H, \ T H T, \ T H H,\\ \ \ \
-\indent \indent \indent \ \ \ \ H T T, \ H T H, \ H H T, \ H H H\}\\
+\indent (a) $|\Omega| \ge |A|,\ \ |\Omega| \ge 0,\ \ $ therefore $ |A| \div |\Omega| \ge 0$. \\
+\indent This satisfies the first axiom.\\
 
-(b) A = \{T T H, \ T H T, \ H T T\}\\
-\indent \indent \ B = \{T T H, \ T H T, \ H T T, \ T T T\}\\
-\indent \indent \ C = \{T H H, \ H H H\}\\
+(b) By definition, the sum of the probabilities of all outcomes ( P(A) ) is one, \\
+\indent satisfying the second axiom.\\
 
-(c) $\overline{A}$ = \{T T T, \ T H H, \ H T H, \ H H T, \ H H H\}\\
-\indent \indent A $\cup$ B = \{T T H, \ T H T, \ H T T, \ T T T\}\\
-\indent \indent A $\cap$ B = \{T T H, \ T H T, \ H T T\}\\
-\indent \indent A $\cap$ C = \{ \}\\
-
+(c)\\
 
 \hrulefill \\
 
 
 \noindent 2)\\
-\indent \indent A = \{1, 3, 5\}\\
-\indent \indent B = \{1, 5, 10\}\\
-\indent \indent $\overline{A}$ = \{2, 4, 6, 7, 8, 9, 10\}\\
-\indent \indent $\overline{B}$ = \{2, 3, 4, 6, 7, 8, 9\}\\
+\indent (a) 12 * 11 * 10 = 1320 possible permutations\\
 
-(a) A $\cap$ B = \{1, 5\}\\
-\indent \indent $\overline{A \cap B}$ = \{2, 3, 4, 6, 7, 8, 9, 10\}\\
-\indent \indent $\overline{A} \cup \overline{B}$ = \{2, 3, 4, 6, 7, 8, 10\}\\
+\indent (b) 1320 possible permutations, 3 * 2 * 1 = 6 orders per group\\
+\indent \indent 1320 / 6 = 220 possible combinations.\\
 
-(b) A $\cup$ B = \{1, 3, 5, 10\}\\
-\indent \indent $\overline{A \cup B}$ = \{2, 4, 6, 7, 8, 9\}\\
-\indent \indent $\overline{A} \cap \overline{B}$ = \{2, 4, 6, 7, 8, 9\}\\
+\indent (c) 3 * 2 * 1 = 6 possible permutations\\
 
 
 \hrulefill \\
 \pagebreak
+{\Large ${12 \choose 1}{11 \choose 1}{10 \choose 1}$} = \\
 
 
 \noindent 3)\\
-\indent \indent Total probability sums to 1.0, $\therefore$\\
-\indent \indent 1k + 2k + 3k + 4k + 5k + 6k = 21k = 1.0\\
-\indent \indent k = 1.0 / 21 = 0.0476 $\Rightarrow$\\\\
-\indent \indent [1] = 1*0.0476 = 0.0476\\
-\indent \indent [2] = 2*0.0476 = 0.0952\\
-\indent \indent [3] = 3*0.0476 = 0.1429\\
-\indent \indent [4] = 4*0.0476 = 0.1905\\
-\indent \indent [5] = 5*0.0476 = 0.2381\\
-\indent \indent [6] = 6*0.0476 = 0.2857\\
+\indent (a) 26 + 26 + 3 = 55 letters, 10 numbers.\\
+\indent \indent 55 + 10 = 65 possible options per character.\\
+\indent \indent 65{\large$^8$} = 3.186448129×10{\large$^{14}$} possible passwords.\\\\
+\indent \indent Remove all with no letters (10{\large$^8$}) and those with no numbers (55{\large$^8$}),\\
+\indent \indent resulting in 2.34910775×10{\large$^{14}$} possible permutations. \\
+\indent \indent This rounds to 235 trillion permutations.
 
 
 \hrulefill \\
 
 
 \noindent 4)\\
-\indent (a) \{(1,1),(1,2),(1,3),(1,4),(1,5),(1,6),\\
-\indent \indent \  \ (2,1),(2,2),(2,3),(2,4),(2,5),(2,6),\\
-\indent \indent \  \ (3,1),(3,2),(3,3),(3,4),(3,5),(3,6),\\
-\indent \indent \  \ (4,1),(4,2),(4,3),(4,4),(4,5),(4,6),\\
-\indent \indent \  \ (5,1),(5,2),(5,3),(5,4),(5,5),(5,6),\\
-\indent \indent \  \ (6,1),(6,2),(6,3),(6,4),(6,5),(6,6)\}\\
+\indent (a) 8 * 7 * 6 * 5 * 4 * 3 * 2 * 1 = 8! = 40320 possible ways.\\
 
-(b) 6 possible options for `7' out of 36 possible outcomes:\\
-\indent \indent 6/36 = 1/6 chance
+\indent (b) Removing two letter choices effectively makes this a 6 letter word, \\
+\indent thus there are 6! = 720 possible ways.\\
 
-(c) 6 possible options for `7' out of 36 possible outcomes,\\
-\indent \indent 2 possible options for `11' out of 36 possible outcomes:\\
-\indent \indent Cannot get a 7 and an 11, 8/36 = 2/9 chance
-
-(d) 18 possible options for even first die out of 36 possible outcomes,\\
-\indent \indent 2 possible options for `11' out of 36 possible outcomes, with 1 overlap $\Rightarrow$ 1 option:\\
-\indent \indent 7/36 chance
+\indent (c)
 
 
 \hrulefill \\
@@ -109,20 +88,14 @@
 
 
 \noindent 5)\\
-\indent (a) P(MB $\cup$ HD) = 35 + 30 - 20 = 45\%\\
-
-(b) 1 - P(MB $\cup$ HD) = 100 - 45 = 65\%\\
+\indent (a) 
 
 
 \hrulefill \\
 
 
 \noindent 6)\\
-\indent (a) P(L $\cap$ S) = 40 + 30 - 50 = 20\%\\
-
-(b)  P(L $\cup$ S) = 100 - 50 = 50\%\\
-
-(c) P(L xor S) = 100 - 50 -  P(L $\cap$ S) = 30\%
+\indent (a) 
 
 
 \end{document}
