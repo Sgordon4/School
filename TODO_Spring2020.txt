@@ -1,7 +1,4 @@
-Due 1/26/2020
-  CprE 491 LabSafety
-  
-Due 1/30/2020
+Due 1/29/2020
   Stat 330 HW2
 
 Due 1/30/2020
@@ -15,8 +12,14 @@ X CprE 489 LabSafety
 Due 2/2/2020
   CprE 491 Bi-weekly Status
   CprE 491 Reflection
+  
+Due 2/2/2020
+  CprE 489 Lab2
 
 -------------------------------------------------
 
+Due 1/26/2020
+X CprE 491 LabSafety
+  
 Due 1/22/2020
 X Stat 330 HW1
