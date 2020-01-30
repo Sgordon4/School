@@ -1,6 +1,6 @@
 Due 1/31/2020
   ComS 363 HW1
-  CprE 489 Lab1
+X CprE 489 Lab1
 X CprE 489 LabSafety
 
 Due 2/2/2020
