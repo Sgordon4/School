@@ -1,0 +1,19 @@
+-- Making Art
+CREATE TABLE Art(
+    Artist CHAR(40),
+    Year_Made DATE,
+    Title CHAR(20),
+    Art_Type CHAR(20),
+    Price INT,
+
+    PRIMARY KEY(Title),
+)
+
+
+-- Making art group
+CREATE TABLE Art_Group(
+    Name CHAR(20),
+    Title CHAR(20),
+    PRIMARY KEY(Name, Title),
+    FOREIGN KEY(Title) REFERENCES Art
+)
