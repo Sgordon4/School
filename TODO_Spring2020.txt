@@ -1,8 +1,3 @@
-Due 1/31/2020
-  ComS 363 HW1
-X CprE 489 Lab1
-X CprE 489 LabSafety
-
 Due 2/2/2020
   CprE 491 Bi-weekly Status
   CprE 491 Reflection
@@ -11,6 +6,11 @@ Due 2/7/2020
   CprE 489 Lab2
 
 -------------------------------------------------
+
+Due 1/31/2020
+X ComS 363 HW1
+X CprE 489 Lab1
+X CprE 489 LabSafety
 
 Due 1/30/2020
 X CprE 489 HW1
