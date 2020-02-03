@@ -1,13 +1,4 @@
-Due 2/2/2020
-  CprE 491 Bi-weekly Status
-X CprE 491 Reflection
-
-Due 2/5/2020
-  Stat 330 HW3
-
-Due 2/7/2020
-  CprE 489 Lab2
-  
+ 
 Due 2/9/2020
   CprE 491 Lightening Talk
 
@@ -18,6 +9,16 @@ Due 3/25/2020
   CprE 491 Next Class
 
 -------------------------------------------------
+
+Due 2/7/2020
+X CprE 489 Lab2
+
+Due 2/5/2020
+X Stat 330 HW3
+
+Due 2/2/2020
+X CprE 491 Bi-weekly Status
+X CprE 491 Reflection
 
 Due 1/31/2020
 X ComS 363 HW1
