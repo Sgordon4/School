@@ -1,6 +1,18 @@
- 
-Due 2/9/2020
-  CprE 491 Lightening Talk
+Due 2/13/2020
+  ComS 363 Proj1A
+  CprE 489 HW2
+
+Due 2/14/2020
+  CprE 489 Lab3
+
+Due 2/16/2020
+  CprE 491 Bi-Weekly 2
+
+Due 2/23/2020
+  CprE 491 Design Doc V1
+
+Due 3/6/2020
+  CprE 489 Lab4
 
 Due 3/13/2020
   CprE 491 Essay
@@ -9,6 +21,9 @@ Due 3/25/2020
   CprE 491 Next Class
 
 -------------------------------------------------
+ 
+Due 2/9/2020
+X CprE 491 Lightening Talk
 
 Due 2/7/2020
 X CprE 489 Lab2
