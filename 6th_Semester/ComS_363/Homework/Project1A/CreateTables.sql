@@ -3,7 +3,7 @@ CREATE TABLE students (
     ssn INTEGER,
     name VARCHAR(10),
     gender VARCHAR(1),
-    dob DATETIME,
+    dob date,
     c_addr VARCHAR(20),
     c_phone VARCHAR(10),
     p_addr VARCHAR(20),
@@ -38,6 +38,7 @@ CREATE TABLE courses (
     name VARCHAR(50),
     description VARCHAR(50),
     credithours INTEGER,
+    level VARCHAR(20),
     department_code INTEGER,
     PRIMARY KEY (number),
     UNIQUE (name),
@@ -64,10 +65,8 @@ CREATE TABLE major (
     PRIMARY KEY (snum , name , level),
     FOREIGN KEY (snum)
         REFERENCES students (snum),
-    FOREIGN KEY (name)
-        REFERENCES degrees (name),
-    FOREIGN KEY (level)
-        REFERENCES degrees (level)
+    FOREIGN KEY (name , level)
+        REFERENCES degrees (name , level)
 );
 
 
@@ -76,13 +75,10 @@ CREATE TABLE minor (
     name VARCHAR(50),
     level VARCHAR(5),
     PRIMARY KEY (snum , name , level),
-    FOREIGN KEY (snum)
-        REFERENCES students (snum),
-    FOREIGN KEY (name)
-        REFERENCES degrees (name),
-    FOREIGN KEY (level)
-        REFERENCES degrees (level)
+    FOREIGN KEY (snum) REFERENCES students (snum),
+    FOREIGN KEY (name, level) REFERENCES degrees (name, level)
 );
+
 
 
 
