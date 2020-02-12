@@ -1,0 +1,12 @@
+SELECT snum, ssn FROM students WHERE name='Becky';
+SELECT name, level FROM major WHERE snum = (SELECT snum FROM students WHERE ssn = '123097834');
+SELECT DISTINCT name FROM courses WHERE department_code = (SELECT code FROM departments WHERE name = 'Computer Science');
+SELECT DISTINCT name, level FROM degrees WHERE department_code = (SELECT code FROM departments WHERE name = 'Computer Science');
+SELECT DISTINCT name FROM students WHERE snum IN (SELECT DISTINCT snum FROM minor);
+SELECT COUNT(DISTINCT snum) FROM minor;
+SELECT name, snum FROM students WHERE snum in (SELECT DISTINCT snum FROM register WHERE course_number = (SELECT number FROM courses WHERE name = 'Algorithm'));
+SELECT name, snum FROM students WHERE dob = (SELECT MIN(dob) FROM students);
+SELECT name, snum FROM students WHERE dob = (SELECT MAX(dob) FROM students);
+SELECT name, snum, ssn FROM students WHERE name LIKE '%n%' OR name LIKE '%N%';
+SELECT name, snum, ssn FROM students WHERE name NOT LIKE '%n%' AND name NOT LIKE '%N%';
+SELECT number, name, COUNT(SELECT * FROM register WHERE course_number = number) FROM courses;
