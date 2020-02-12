@@ -1,3 +1,6 @@
+Due 2/12/2020
+  Stat 330 Exam1
+
 Due 2/13/2020
   ComS 363 Proj1A
   CprE 489 HW2
@@ -14,6 +17,9 @@ Due 2/23/2020
 Due 3/6/2020
   CprE 489 Lab4
 
+Due 3/11/2020
+  Stat 330 Exam2
+  
 Due 3/13/2020
   CprE 491 Essay
   
