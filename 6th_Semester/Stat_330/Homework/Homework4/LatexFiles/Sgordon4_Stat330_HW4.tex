@@ -1,0 +1,158 @@
+\documentclass[12pt]{article}
+\usepackage[12pt]{moresize}
+\usepackage[margin=1in]{geometry}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{graphicx}
+\usepackage{subcaption}
+
+\usepackage{multirow} %Combining rows in tables
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{alltt}
+
+\usepackage{multicol}
+
+\usepackage{amssymb} %\checkmark symbol
+
+%\usepackage{hyperref}
+%\usepackage[latin1]{inputenc}
+%\usepackage{listings}
+%\usepackage{scrextend}
+%\usepackage{changepage} %Adjustwidth
+
+
+
+\title{Stat 330\\Homework 3}
+\author{Sean Gordon}
+%\date{09/09/2019}
+
+\begin{document}
+\maketitle
+
+
+\noindent\hrulefill \\
+
+
+\noindent 1)\\
+\indent (a) $P(B|A) + P(B|\bar{A})$ = 1
+\indent \indent \indent {\Large $\frac{P(B)P(A)}{P(B)} + \frac{P(B)P(\bar{A})}{P(B)}$} = 1\\\\
+\indent \indent {\Large $\frac{P(B)P(A) + P(B)P(\bar{A})}{P(B)}$} = 1
+\indent \indent \indent  $P(A) + P(\bar{A}) = 1$ \checkmark\\
+
+\indent \indent  \hrulefill \indent \indent \indent \\
+
+\indent (b) $P(\bar{A}|\bar{B}) = 1 - P(A \cup B)
+\indent \indent \indent = 1 - P(A) - P(B) + P(A \cap B)\\\\
+\indent = 1 - P(A) - P(B) + P(A)P(B)
+\indent \indent \indent = (1 - P(A))(1 - P(B))\\\\
+\indent  P(\bar{A}|\bar{B}) = P(\bar{A})P(\bar{B})$ \checkmark\\
+
+
+\noindent \hrulefill \\
+
+
+\noindent 2)\\
+\indent (a) P(A) = .4, \ \ P(B) = .7, \ \ P(A $\cap$ B) = \textbf{.28}\\
+\indent (b) P(A$|$B) = P(A $\cap$ B) / P(B) = .28 / .7 = \textbf{.4}\\
+\indent (c) P(B$|$A) = P(A $\cap$ B) / P(A) = .28 / .4 = \textbf{.7}\\
+\indent (d) A test for independance is if P(A$|$B) = P(A) and P(B$|$A) = P(B)\\
+\indent \indent As the above tests hold, these two events are \textbf{independent}.\\
+
+
+\noindent \hrulefill \\
+\pagebreak
+
+
+\noindent 3)\\
+\indent (a) When drawing from the first urn, the chances are:\\
+\indent \indent Red: 2/6, \ White: 4/6.\\\\
+\indent \indent If a red is transferred, when drawing from urn 2 the chances are: \\
+\indent \indent Red: 4/5, \ \textbf{White: 1/5}.\\
+\indent \indent If a white is transferred, when drawing from urn 2 the chances are: \\
+\indent \indent Red: 3/5, \ \textbf{White: 2/5}.\\\\
+\indent \indent Drawing from urn 1 affects drawing from the second, and must be considered.\\
+\indent \indent Thus, the cumulative chance of selecting white from urn 2 is:\\ 
+\indent \indent {\Large$ \frac{2}{6}*\frac{1}{5} + \frac{4}{6}*\frac{2}{5}$} = \textbf{1/3}\\\\
+
+\indent (b) The two events are not independent, as drawing from the first urn affects the chances\\
+\indent \indent  of drawing from the second.\\
+\indent \indent Using the values calculated above, \\
+\indent \indent P(W2$|$R1) \ = {\Large$ \frac{2}{6}*\frac{1}{5}$} = 1/15\\\\
+\indent \indent P(W2$|$W1) = {\Large$ \frac{4}{6}*\frac{2}{5}$} = 4/15\\\\
+\indent \indent If the events were independent, the two resulting values would be equivalent.
+
+
+\noindent \hrulefill \\
+
+\begin{multicols}{2}
+\noindent 4)
+\begin{tabular}{c|cc|c}
+ & $D(.15)$ & $\overline{D}(.85)$ & $Total$ \\
+ \hline &&&\\[-1em]
+$Pos$ & .98 & .10 & ?\\
+$Neg$ & ? & ? & ?\\
+ \hline &&&\\[-1em]
+ $Total$ & ? & ? & 
+\end{tabular}\\
+
+\columnbreak 
+
+\hfill \break
+\noindent P(Pos $\cap$ D) = (.98)(.15) = .147\\
+P(Pos $\cap \ \overline{D}$) = (.10)(.85) = .085\\
+
+\end{multicols}
+
+
+
+\indent (a) P(Pos) = .147 + .085 = \textbf{.232}\\
+\indent (b) P(D$|$Pos) = .147 / .232 = \textbf{.634}\\
+\indent (c) P($\overline{D}|$Pos) = .085 / .232 = \textbf{.366}\\
+
+
+\noindent \hrulefill \\
+
+
+\noindent 5) P(Sys) = P(1st $\cap$ 2nd) \\
+\indent P(1st) = 1 - P($\overline{1st}$) = 1 - P($\overline{1} \cap \overline{2} \cap \overline{3}$) = 1 - (.3)(.3)(.3) = 0.973\\
+\indent P(2nd) = 1 - P($\overline{2nd}$) = 1 - P($\overline{4} \cap \overline{5}$) = 1 - (.3)(.3) = 0.91\\
+\indent P(1st $\cap$ 2nd) = P(1st) * P(2nd) = 0.973 * 0.91 = \textbf{0.885}\\
+
+
+\noindent \hrulefill 
+\pagebreak
+
+
+\noindent 6)\\
+\indent (a) P(Sys) = P(A) * P(B) = .95 * .9 = \textbf{.855}\\
+
+\indent (b) P(Sys) = 1 - P($\overline{Top} \cap \overline{Bottom}$) $\Rightarrow$\\
+\indent \indent P(Top) = P(A) * P(B) = .95 * .9 = .855\\
+\indent \indent P(Bottom) = P(C) * P(D) = .8 * .7 = .56\\
+\indent \indent P(Sys) = 1 - (1 - .855)(1 - .56) = \textbf{.9362}\\
+
+\indent (c) P(Sys) = 1 -  P($\overline{A} \cap \overline{B} \cap \overline{C}$) = 1 - (1 - .95)(1 - .9)(1 - .8) = \textbf{.999}
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
