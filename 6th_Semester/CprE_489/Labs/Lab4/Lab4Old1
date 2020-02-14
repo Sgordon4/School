@@ -1,0 +1,36 @@
+void primary(int sockfd, double ber) {
+
+    char msg[DATA_LENGTH * WINDOW_SIZE], srvReply[150];
+    
+	unsigned char packet[PACKET_SIZE];
+	unsigned int packetNum = 0;
+
+    int readSize;
+    
+
+    //keep communicating with server
+    while(1)
+    {
+        printf("Enter message : ");
+        
+        //Grab all the input we can this loop and store it in message
+        //Fgets will only grab 6 bytes every loop, as DATA_LENGTH = 2 and WINDOW_SIZE = 3
+        fgets(msg, (DATA_LENGTH * WINDOW_SIZE)+1, stdin);
+        printf("Size: %d\n", strlen(msg));
+        int BytesToSend = (strlen(msg) - 1) / WINDOW_SIZE + 1;
+        printf("BytesToSend: %d\n", BytesToSend);
+        /*
+        
+        int packets_left = WINDOW_SIZE;
+        while(packets_left > 0 &&  
+        for(i = WINDOW_SIZE; i > 0; i--){
+            //Grab the part of the message to be packaged
+            char buff[DATA_LENTGH];
+            
+            buildPacket(packet, DATA_PACKET, memcpy( buff, &msg[10], DATA_LENTGH ), packetNum++);
+            
+        }
+        */
+    }
+  
+}
