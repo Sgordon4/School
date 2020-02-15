@@ -1,7 +1,4 @@
 
-Due 2/14/2020
-  CprE 489 Lab3
-
 Due 2/16/2020
   CprE 491 Bi-Weekly 2
 
@@ -27,7 +24,10 @@ Due 3/25/2020
   CprE 491 Next Class
 
 -------------------------------------------------
- 
+
+Due 2/14/2020
+X CprE 489 Lab3
+
 Due 2/13/2020
 X ComS 363 Proj1A
 X CprE 489 HW2
