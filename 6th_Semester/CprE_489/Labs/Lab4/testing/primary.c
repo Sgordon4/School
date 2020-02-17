@@ -7,7 +7,11 @@
 #include "introduceerror.h"
 
 
-void primary(int sockfd, double ber) {
+
+
+
+//void primary(int sockfd, double ber) {
+void main() {
 
     char msg[5000];
     char srvReply[150];
@@ -23,7 +27,7 @@ void primary(int sockfd, double ber) {
         printf("Enter message : ");
 
         //Grab all the input and store it in msg
-        fgets(msg, (DATA_LENGTH * WINDOW_SIZE)+1, stdin);
+        fgets(msg, sizeof(msg), stdin);
 
 
         //Begin go-back-n protocol ===========================================
@@ -40,22 +44,30 @@ void primary(int sockfd, double ber) {
         currPacket goes from 0 -> 2
         */
 
+        printf("Message Size: %d\n", msgSize);
+        printf("numPackets: %d\n", numPackets);
+
         while(currPacket < numPackets){
             //# of packets to send this burst
             int count = 0;
             while(count < 3 && currPacket < numPackets){
 
                 //Grab the part of the message to send
-                char buff[2];
-                memcpy(buff, &msg[currPacket * 2], DATA_LENGTH);
-                printf("Data to be sent: %s\n", buff);
+                char buff[3];
+                memset(buff, '\0', sizeof(buff));
+                strncpy(buff, msg + (currPacket*DATA_LENGTH), DATA_LENGTH);
+                //memcpy(buff, &msg[currPacket * DATA_LENGTH], DATA_LENGTH);
+
+                printf("Packet %d : %d: %s\n", count, currPacket, buff);
 
                 count++;
                 currPacket++;
             }
 
-            printf("currPacket: %d\n", currPacket);
-            printf("numPackets: %d\n", numPackets);
+            printf("Window completed\n");
+
+            //Check last received ack or nak and set currPacket to that.
+            //Enables re-sending corrupt packages and similar events.
         }
 
 

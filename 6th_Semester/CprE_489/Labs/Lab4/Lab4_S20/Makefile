@@ -4,7 +4,7 @@ all: receiver sender
 
 
 receiver : receiver.o secondary.o utilities.o ccitt16.o
-	gcc -o receiver receiver.o secondary.o utilities.o ccitt16.o
+	gcc -fPIC -o receiver receiver.o secondary.o utilities.o ccitt16.o
 
 secondary.o : secondary.c
 	gcc -c secondary.c
