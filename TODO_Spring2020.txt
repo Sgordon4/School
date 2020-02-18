@@ -1,12 +1,26 @@
 
 Due 2/19/2020
-Stat 330 HW4
+  Stat 330 HW4
 
 Due 2/21/2020
   ComS 363 HW2
 
 Due 2/23/2020
   CprE 491 Design Doc V1
+  AFAS 442 LOC
+
+Due 2/25/2020
+  CprE 489 HW3
+
+Due 2/29/2020
+  ComS 363 Proj1B
+
+Due 3/1/2020
+  CprE 491 Bi-Weekly 3
+  CprE 491 Reflection 2
+
+Due 3/2/2020
+  ComS 363 Midterm1
 
 Due 3/6/2020
   CprE 489 Lab4
@@ -16,7 +30,7 @@ Due 3/11/2020
   
 Due 3/13/2020
   CprE 491 Essay
-  
+
 Due 3/25/2020
   CprE 491 Next Class
 
