@@ -35,28 +35,36 @@
 
 
 \noindent\hrulefill \\
+\indent \indent  \hrulefill \indent \indent \indent \\
 
 
 \noindent 1)\\
-\indent (a) $P(B|A) + P(B|\bar{A})$ = 1
-\indent \indent \indent {\Large $\frac{P(B)P(A)}{P(B)} + \frac{P(B)P(\bar{A})}{P(B)}$} = 1\\\\
-\indent \indent {\Large $\frac{P(B)P(A) + P(B)P(\bar{A})}{P(B)}$} = 1
-\indent \indent \indent  $P(A) + P(\bar{A}) = 1$ \checkmark\\
+\indent (a) Im(X) = \{0, 1, 2, 3\}\\\\
 
-\indent \indent  \hrulefill \indent \indent \indent \\
+\indent        (b) P(X = 0) =  \{GGG\} = {\Large$ \frac{3}{7}*\frac{2}{6}*\frac{1}{5} = \frac{1}{35}$}\\\\
+\indent \indent P(X = 1) =  \{RGG\} = {\Large$ \frac{4}{7}*\frac{3}{6}*\frac{2}{5} = \frac{4}{35}$}\\\\
+\indent \indent P(X = 2) =  \{RRG\} = {\Large$ \frac{4}{7}*\frac{3}{6}*\frac{3}{5} = \frac{6}{35}$}\\\\
+\indent \indent P(X = 3) =  \{RRR\} = {\Large$ \frac{4}{7}*\frac{3}{6}*\frac{2}{5} = \frac{4}{35}$}\\\\
 
-\indent (b) $P(\bar{A}|\bar{B}) = 1 - P(A \cup B)
-\indent \indent \indent = 1 - P(A) - P(B) + P(A \cap B)\\\\
-\indent = 1 - P(A) - P(B) + P(A)P(B)
-\indent \indent \indent = (1 - P(A))(1 - P(B))\\\\
-\indent  P(\bar{A}|\bar{B}) = P(\bar{A})P(\bar{B})$ \checkmark\\
+
+\indent (c)
+\begin{tabular}{c|cccc}
+ x & 0 & 1 & 2 & 3 \\
+ \hline &&&&\\[-1em]
+$P_X(x)$ & 1/35 & 4/35 & 6/35 & 4/35\\
+\end{tabular}\\
 
 
 \noindent \hrulefill \\
 
 
 \noindent 2)\\
-\indent (a) P(A) = .4, \ \ P(B) = .7, \ \ P(A $\cap$ B) = \textbf{.28}\\
+\indent (a)
+\begin{tabular}{c|ccccc}
+ x & -2 & -1 & 0 & 1 & 2 \\
+ \hline &&&&&\\[-1em]
+$P_X(x)$ & 0.1 & 0.3 & 0.3 & 0.1 & 0.2\\
+\end{tabular}\\\\
 \indent (b) P(A$|$B) = P(A $\cap$ B) / P(B) = .28 / .7 = \textbf{.4}\\
 \indent (c) P(B$|$A) = P(A $\cap$ B) / P(A) = .28 / .4 = \textbf{.7}\\
 \indent (d) A test for independance is if P(A$|$B) = P(A) and P(B$|$A) = P(B)\\
