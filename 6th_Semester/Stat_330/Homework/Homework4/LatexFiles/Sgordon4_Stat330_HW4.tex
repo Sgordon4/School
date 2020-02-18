@@ -1,4 +1,4 @@
--\documentclass[12pt]{article}
+\documentclass[12pt]{article}
 \usepackage[12pt]{moresize}
 \usepackage[margin=1in]{geometry}
 
@@ -24,7 +24,7 @@
 %\usepackage{scrextend}
 %\usepackage{changepage} %Adjustwidth
 
-
+ 
 
 \title{Stat 330\\Homework 3}
 \author{Sean Gordon}
@@ -56,15 +56,24 @@
 
 
 \noindent 2)\\
-\indent (a) \\
-\indent (b) 0.1, 0.3, 0.3, 0.1, 0.2\\
-\indent \indent 0.1, 0.4, 0.7, 0.8, 1.0\\
+\indent (a, b) 
+\begin{tabular}{c|ccccc}
+ x & -2 & -1 & 0 & 1 & 2 \\
+ \hline &&&&&\\[-1em]
+$P_X(x)$ & 0.1 & 0.3 & 0.3 & 0.1 & 0.2\\
+$F_X(x)$ & 0.1 & 0.4 & 0.7 & 0.8 & 1.0\\
+\end{tabular}\\
+
+
 \indent (c) \\
-\indent \indent i. \ \ P(X>=1) = 1 - P(X<1) = 1-0.8 = .2\\
-\indent \indent ii. \ P(X>-1) & P(X<=1) = 1 - P(X<1) = 1-0.8 = .2\\
-\indent \indent iii. P(X>=1) = 1 - P(X<1) = 1-0.8 = .2\\
-\indent (d) A test for independance is if P(A$|$B) = P(A) and P(B$|$A) = P(B)\\
-\indent \indent As the above tests hold, these two events are \textbf{independent}.\\
+\indent \indent i. \ \ $P(X\le 1) \Rightarrow P(X = 1) + P(X = 2) = 0.1+0.2 = 0.3$\\[.4em]
+\indent \indent ii. \ $P(-1 < X \le 1) \Rightarrow P(X=0)+P(X=1) = 0.3+0.1 = 0.4$\\[.4em]
+\indent \indent iii. $P(X < 0) \Rightarrow P(X=-2)+P(X=-1) = 0.1+0.3 = 0.4$\\
+
+\indent (d) \\
+\indent \indent i. \ \ $F(1) = 0.8$\\[.4em]
+\indent \indent ii. \ $F(0.5) = $\\[.4em]
+\indent \indent iii. $F(1) = $\\
 
 
 \noindent \hrulefill \\
