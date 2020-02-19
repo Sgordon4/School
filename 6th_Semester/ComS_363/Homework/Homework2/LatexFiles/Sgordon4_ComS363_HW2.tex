@@ -1,0 +1,82 @@
+\documentclass[12pt]{article}
+\usepackage[12pt]{moresize}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{graphicx}
+\usepackage{subcaption}
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{alltt}
+
+\usepackage{multicol}
+
+\usepackage[margin=1in]{geometry}
+
+%\usepackage{hyperref}
+%\usepackage[latin1]{inputenc}
+%\usepackage{listings}
+%\usepackage{scrextend}
+%\usepackage{changepage} %Adjustwidth
+
+
+\newenvironment{PTMono}{\fontfamily{PTMono-TLF}\selectfont}{\par}
+
+
+\title{ComS 363\\Homework 2}
+\author{Sean Gordon}
+%\date{09/09/2019}
+
+\begin{document}
+\maketitle
+
+
+\hrulefill \\
+
+
+
+\noindent 1)\\
+\indent \indent (a) A, C, and D should not be used as key, as each has duplicate values in their\\ 
+\indent \indent respective columns.\\
+\indent \indent B should be used as key as it is the only column without duplicate values.\\
+
+\indent (b) All unique values in C are accompanied by their own corresponding unique values in \\
+\indent \indent D, so the dependenct is satisfied.\\
+\indent \indent $[3 \rightarrow 4]$, $[8 \rightarrow 5]$\\
+
+\indent (c) All unique values in C are \textbf{not} accompanied by their own corresponding unique values\\
+\indent \indent in B, so the dependenct is \textbf{not} satisfied.\\
+\indent \indent $[8 \rightarrow 3]$, $[8 \rightarrow 7]$\\
+
+
+\hrulefill
+
+
+\noindent 2)\\
+\indent \indent (a) AG $\rightarrow$ B $\Rightarrow$ BBB $\rightarrow$ BBCD $\Rightarrow$ BBCDD $\sim>$ BDCBD $\rightarrow$ BDCE $\rightarrow$ BDF\\
+
+\indent \indent (b) \{B\}$^+$ = \{B, CD, CE, F\}\\
+
+\indent \indent (c) 
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
