@@ -51,15 +51,98 @@
 \indent \indent $[8 \rightarrow 3]$, $[8 \rightarrow 7]$\\
 
 
-\hrulefill
+\hrulefill\\
 
 
 \noindent 2)\\
 \indent \indent (a) AG $\rightarrow$ B $\Rightarrow$ BBB $\rightarrow$ BBCD $\Rightarrow$ BBCDD $\sim>$ BDCBD $\rightarrow$ BDCE $\rightarrow$ BDF\\
 
-\indent \indent (b) \{B\}$^+$ = \{B, CD, CE, F\}\\
+\indent \indent (b) B$^+$ = \{B, CD, CE, F\}\\
 
-\indent \indent (c) 
+\indent \indent (c) \textbf{AG} $\rightarrow$ \textbf{B} $\Rightarrow$ BB $\rightarrow$ \textbf{C}B\textbf{D} $\rightarrow$  C\textbf{E} $\rightarrow$ \textbf{F}\\
+\indent \indent Starting from AG, all of ABCDEFG can be accessed. Thus, AG is a key.\\
+
+
+\hrulefill\\
+\pagebreak
+
+
+\noindent 3) \\
+\indent \indent (a) \{A $\rightarrow$ B, A $\rightarrow$ C\}\\
+
+\indent \indent (b) \{ABCD $\rightarrow$ E, ABCD $\rightarrow$ F\}\\
+
+\indent \indent (c) \{A $\rightarrow$ B, A $\rightarrow$ C, C $\rightarrow$ D\}\\
+
+\indent \indent (d) \{A $\rightarrow$ B, A $\rightarrow$ C, A $\rightarrow$ D\}\\
+
+\indent \indent (e) \{A $\rightarrow$ B, ACD $\rightarrow$ E, EF $\rightarrow$ G, EF $\rightarrow$ H\}\\
+
+
+\hrulefill\\
+
+
+\noindent 4) \\
+\indent \indent (a) Disproof:
+\begin{tabular}{ccc}
+ X & Y & Z\\
+ \hline &&\\[-1em]
+X1 & Y1 & Z1\\
+X1 & Y2 & Z3\\
+\end{tabular}\\
+
+\indent \indent (b) \\
+\indent \indent 1. X $\rightarrow$ YZ (given)\\
+\indent \indent 2. X $\rightarrow$ Y (decomposition) \checkmark\\
+
+\indent \indent (c) Disproof:
+\begin{tabular}{cccc}
+ W & X & Y & Z\\
+ \hline &&\\[-1em]
+W1 & X1 & Y1 & Z1\\
+W1 & X2 & Y1 & Z2\\
+\end{tabular}\\
+
+
+\hrulefill\\
+
+
+\noindent 5)\\
+\indent \indent (a) Computing attribute closure:
+\begin{center}
+A $\rightarrow$ A \ \ \ \ \ \ \ \ 
+B $\rightarrow$ ABCD \ \ \ \ \ \ \ \  
+C $\rightarrow$ CD \ \ \ \ \ \ \ \ 
+D $\rightarrow$ D\\
+
+AB $\rightarrow$ ABCD \ \ \ \ \ \ \ \ 
+AC $\rightarrow$ ACD \ \ \ \ \ \ \ \ 
+AD $\rightarrow$ AD \\
+
+BC $\rightarrow$ ABCD\ \ \ \ \ \ \ \ 
+BD $\rightarrow$ ABCD\ \ \ \ \ \ \ \ 
+CD $\rightarrow$ CD\\
+
+ABC $\rightarrow$ ABCD\ \ \ \ \ \ \ \ 
+ABD $\rightarrow$ ABCD\ \ \ \ \ \ \ \ 
+ACD $\rightarrow$ ACD\ \ \ \ \ \ \ \ 
+BCD $\rightarrow$ ABCD\\
+\end{center}
+
+\indent \indent As all combinations that result in ABCD rely on B, we can conclude that B is the\\
+\indent \indent only non-redundant key.
+
+
+
+
+\indent \indent 1. 
+\indent \indent 2. 
+\indent \indent 3. 
+\indent \indent 4. 
+\indent \indent 5. 
+\indent \indent 6. 
+\indent \indent 7. 
+
 
 
 
