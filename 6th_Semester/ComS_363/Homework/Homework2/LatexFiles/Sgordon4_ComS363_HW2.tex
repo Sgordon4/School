@@ -43,11 +43,11 @@
 \indent \indent B should be used as key as it is the only column without duplicate values.\\
 
 \indent (b) All unique values in C are accompanied by their own corresponding unique values in \\
-\indent \indent D, so the dependenct is satisfied.\\
+\indent \indent D, so the dependency is satisfied.\\
 \indent \indent $[3 \rightarrow 4]$, $[8 \rightarrow 5]$\\
 
 \indent (c) All unique values in C are \textbf{not} accompanied by their own corresponding unique values\\
-\indent \indent in B, so the dependenct is \textbf{not} satisfied.\\
+\indent \indent in B, so the dependency is \textbf{not} satisfied.\\
 \indent \indent $[8 \rightarrow 3]$, $[8 \rightarrow 7]$\\
 
 
@@ -92,8 +92,8 @@ X1 & Y2 & Z3\\
 \end{tabular}\\
 
 \indent \indent (b) \\
-\indent \indent 1. X $\rightarrow$ YZ (given)\\
-\indent \indent 2. X $\rightarrow$ Y (decomposition) \checkmark\\
+\indent \indent \indent 1. X $\rightarrow$ YZ (given)\\
+\indent \indent \indent 2. X $\rightarrow$ Y (decomposition) \checkmark\\
 
 \indent \indent (c) Disproof:
 \begin{tabular}{cccc}
@@ -130,18 +130,60 @@ BCD $\rightarrow$ ABCD\\
 \end{center}
 
 \indent \indent As all combinations that result in ABCD rely on B, we can conclude that B is the\\
-\indent \indent only non-redundant key.
+\indent \indent only non-redundant key.\\\\
+
+\indent \indent (b) BC $\rightarrow$ ABCD\\
+
+\indent \indent (c) A $\rightarrow$ A\\
 
 
+\hrulefill\\
+\pagebreak
 
 
-\indent \indent 1. 
-\indent \indent 2. 
-\indent \indent 3. 
-\indent \indent 4. 
-\indent \indent 5. 
-\indent \indent 6. 
-\indent \indent 7. 
+\noindent 6)
+\begin{multicols}{2}
+\indent Calculating attribute closure:\\
+\indent A $\rightarrow$ A\\
+\indent B $\rightarrow$ B\\
+\indent C $\rightarrow$ ACD\\
+\indent D $\rightarrow$ AD\\
+
+AB $\rightarrow$ ABCD\\
+\indent AC $\rightarrow$ ACD\\
+\indent AD $\rightarrow$ AD\\
+
+BC $\rightarrow$ ABCD\\
+\indent BD $\rightarrow$ ABD\\
+\indent CD $\rightarrow$ ACD\\
+
+ABC $\rightarrow$ ABCD\\
+\indent ABD $\rightarrow$ ABCD\\
+\indent ACD $\rightarrow$ ACD\\
+\indent BCD $\rightarrow$ ABCD\\
+
+\columnbreak
+
+%\vspace*{\fill}
+
+\noindent(a) No, because of C $\rightarrow$ D and D $\rightarrow$ A\\
+
+\noindent(b) Start: (ABCD)\\
+1. (CAD)(BC) because of C $\rightarrow$ D\\ violation, making C a superkey.\\
+2. (DA)(CD)(BC) because of D $\rightarrow$ A\\ violation, making D superkey.\\
+
+\noindent(c) No, the decomposition does not preserve the AB $\rightarrow$ C dependency.\\
+
+\noindent(d) Start: (ABCD)\\
+1. (ABC)(CD) because of C $\rightarrow$ D\\ violation, making C a superkey.\\
+
+\noindent (e) No, the decomposition does not preserve the D $\rightarrow$ A dependency.\\
+
+
+%\vspace*{\fill}
+%\vspace*{\fill}
+
+\end{multicols}
 
 
 
