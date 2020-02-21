@@ -7,6 +7,9 @@
 #include "introduceerror.h"
 
 
+#define MAX(a,b) (((a)>(b))?(a):(b))
+
+
 void primary(int sockfd, double ber) {
 
     char msg[5000];
@@ -15,6 +18,9 @@ void primary(int sockfd, double ber) {
 	unsigned char packet[PACKET_SIZE];
 
     int readSize;
+    
+    int currPacket = 0;
+    int globalPackNum = 0;
 
 
     //keep communicating with server
@@ -23,7 +29,7 @@ void primary(int sockfd, double ber) {
         printf("Enter message : ");
 
         //Grab all the input and store it in msg
-        fgets(msg, (DATA_LENGTH * WINDOW_SIZE)+1, stdin);
+        fgets(msg, sizeof(msg), stdin);
 
 
         //Begin go-back-n protocol ===========================================
@@ -31,7 +37,11 @@ void primary(int sockfd, double ber) {
         int msgSize = strlen(msg);
         int numPackets = (msgSize + (DATA_LENGTH - 1)) / DATA_LENGTH;  //Int round up
 
-        int currPacket = 0;     //Current packet to send
+        
+        //Update the # of global packets sent
+        globalPackNum += currPacket;
+
+        currPacket = 0;     //Current packet to send
 
         /*
         If we have HELLO,
@@ -41,79 +51,122 @@ void primary(int sockfd, double ber) {
         */
 
         while(currPacket < numPackets){
+        
             //# of packets to send this burst
             int count = 0;
-            while(count < 3 && currPacket < numPackets){
+            
+            while(count < WINDOW_SIZE && currPacket < numPackets){
 
                 //Grab the part of the message to send
-                char buff[2];
-                memcpy(buff, &msg[currPacket * 2], DATA_LENGTH);
-                printf("Data to be sent: %s\n", buff);
+                char buff[DATA_LENGTH+1];
+                memset(buff, '\0', sizeof(buff));
+                strncpy(buff, msg + (currPacket*DATA_LENGTH), DATA_LENGTH);
+                //memcpy(buff, &msg[currPacket * DATA_LENGTH], DATA_LENGTH);
 
-                count++;
-                currPacket++;
-            }
-
-            printf("currPacket: %d\n", currPacket);
-            printf("numPackets: %d\n", numPackets);
-        }
-
-
-
-
-
-/*
-        char transactionComplete = 0;
-        while(!transactionComplete){
-
-            //Send the n packets -------------------------------
-
-            int count = WINDOW_SIZE;
-            while(count > 0 && location < msgSize){
-
-                //Grab the part of the message to be packaged
-                char buff[DATA_LENGTH];
-                memcpy(buff, &msg[location], DATA_LENGTH);
-                printf("Data to be sent: %s\n", buff);
-
+                printf("Packet %d:%d - %d %s\n", count, currPacket, globalPackNum, buff);
+                
                 //Build packet and send it off
-                buildPacket(packet, DATA_PACKET, buff, (location/DATA_LENGTH));
+                buildPacket(packet, DATA_PACKET, buff, globalPackNum + currPacket);
 
                 if( send(sockfd , packet, PACKET_SIZE, 0) < 0)
                     perror("Send failed");
 
-                count--;
-                location += 2;
+                count++;
+                currPacket++;
+                
+                
             }
 
+            printf("Window completed =========================\n");
+            
+            
+            
+            //Print every reply
+            /**/
+            printf("Packets sent: %d\n", count);
+            printf("Server's reply: ===============\n");
+            
+            int maxSeqNumReceived = 0;
+            
+            for(count; count > 0; count--){
+                
+                if( (readSize = recv(sockfd , srvReply , PACKET_SIZE , 0)) < 0)
+                    perror("recv failed");
+	            
+	            printPacket(srvReply);
+	            int numReceived = srvReply[1];
+	            
+	            
+	            //Find what type the packet is
+	            switch(srvReply[0])
+	            {
+	                //We dont care about the difference between these two
+		            case ACK_PACKET:
+		            case NAK_PACKET:
+			            maxSeqNumReceived = MAX(srvReply[1] - globalPackNum, maxSeqNumReceived);
+			            break;
+		            default:
+			            printf("Who knows what type this packet is. I dont.\n");
+	            }
+            
+            }
+            
+            printf("Final Max: %d ---------------------\n", maxSeqNumReceived);
+            currPacket = maxSeqNumReceived;
+            
+            
+            
+            
+            //printf("Reply length: %d\n", strlen(srvReply));
 
+            
+	        
+	        //strncpy(buff, msg + (currPacket*DATA_LENGTH), DATA_LENGTH);
+
+            
+
+            //Check last received ack or nak and set currPacket to that.
+            //Enables re-sending corrupt packages and similar events.
+            
             //Receive a reply from the server
-            if( (readSize = recv(sockfd , srvReply , 149 , 0)) < 0)
-                perror("recv failed");
-
-            printf("Server's reply:\n");
-		        printPacket(srvReply);
-
-		    transactionComplete = 1;
-
+            
+		        
         }
-
-        /*
-        printf("Size: %d\n", strlen(msg));
-        int BytesToSend = (strlen(msg) - 1) / WINDOW_SIZE + 1;
-        printf("BytesToSend: %d\n", BytesToSend);
-
-
-        int packets_left = WINDOW_SIZE;
-        while(packets_left > 0 &&
-        for(i = WINDOW_SIZE; i > 0; i--){
-            //Grab the part of the message to be packaged
-            char buff[DATA_LENTGH];
-
-            buildPacket(packet, DATA_PACKET, memcpy( buff, &msg[10], DATA_LENTGH ), packetNum++);
-
-        }
-        */
     }
-
 }
+
+int whatTypeIsThisPacket(unsigned char packet[]){
+    switch(packet[0])
+	{
+		case DATA_PACKET:
+			return 0;
+		case ACK_PACKET:
+			return 1;
+		case NAK_PACKET:
+			return 2;
+		default:
+			printf("Who knows what type this packet is\n");
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

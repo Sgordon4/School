@@ -17,7 +17,7 @@ void secondary(int client_sock) {
 		{
 			if(msg[1] == expected)
 			{
-				printPacket(msg);
+				//printPacket(msg);
 				expected++;
 				unsigned char ack[PACKET_SIZE];
 				unsigned char buf[DATA_LENGTH] = {'\0'};
