@@ -1,10 +1,7 @@
 
-Due 2/21/2020
-  ComS 363 HW2
-
 Due 2/23/2020
   CprE 491 Design Doc V1
-  AFAS 442 LOC
+X AFAS 442 LOC
 
 Due 2/25/2020
   CprE 489 HW3
@@ -32,6 +29,9 @@ Due 3/25/2020
   CprE 491 Next Class
 
 -------------------------------------------------
+
+Due 2/21/2020
+X ComS 363 HW2
 
 Due 2/19/2020
 X Stat 330 HW4
