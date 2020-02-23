@@ -5,6 +5,9 @@ X AFAS 442 LOC
 
 Due 2/25/2020
   CprE 489 HW3
+  
+Due 2/29/2020
+  CprE 489 Midterm1, 11:00-12:20 am, Gilman 1652
 
 Due 2/29/2020
   ComS 363 Proj1B
@@ -14,7 +17,7 @@ Due 3/1/2020
   CprE 491 Reflection 2
 
 Due 3/2/2020
-  ComS 363 Midterm1
+  ComS 363 Midterm1, 8:15-9:45 pm, Hoover 2055
 
 Due 3/6/2020
   CprE 489 Lab4
@@ -27,6 +30,12 @@ Due 3/13/2020
 
 Due 3/25/2020
   CprE 491 Next Class
+  
+Due 4/6/2020
+  ComS 363 Midterm2, 8:15-9:45 pm, Hoover 2055
+  
+Due 4/9/2020
+  CprE 489 Midterm2, 11:00-12:20 am, Gilman 1652
 
 -------------------------------------------------
 
