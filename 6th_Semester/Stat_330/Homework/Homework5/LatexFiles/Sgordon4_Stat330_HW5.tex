@@ -1,0 +1,149 @@
+\documentclass[12pt]{article}
+\usepackage[12pt]{moresize}
+\usepackage[margin=1in]{geometry}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{graphicx}
+\usepackage{subcaption}
+
+\usepackage{multirow} %Combining rows in tables
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{alltt}
+
+\usepackage{multicol}
+
+\usepackage{amssymb} %\checkmark symbol
+
+%\usepackage{hyperref}
+%\usepackage[latin1]{inputenc}
+%\usepackage{listings}
+%\usepackage{scrextend}
+%\usepackage{changepage} %Adjustwidth
+
+ 
+
+\title{Stat 330\\Homework 4}
+\author{Sean Gordon}
+%\date{09/09/2019}
+
+\begin{document}
+\maketitle
+
+
+\noindent\hrulefill \\
+
+
+\noindent 1)\\
+\indent (a) 
+
+
+\indent (c)
+\begin{tabular}{c|cccc}
+ x & 0 & 1 & 2 & 3 \\
+ \hline &&&&\\[-1em]
+$P_X(x)$ & 1/35 & 4/35 & 6/35 & 4/35\\
+\end{tabular}\\
+
+
+\noindent \hrulefill \\
+\pagebreak
+
+
+\noindent 2)
+
+\indent (a, b) 
+\begin{tabular}{c|ccccc}
+ x & -2 & -1 & 0 & 1 & 2 \\
+ \hline &&&&&\\[-1em]
+$P_X(x)$ & 0.1 & 0.3 & 0.3 & 0.1 & 0.2\\
+$F_X(x)$ & 0.1 & 0.4 & 0.7 & 0.8 & 1.0\\
+\end{tabular}\\
+
+
+\indent (c) \\
+\indent \indent i. \ \ $P(X\le 1) \Rightarrow P(X = 1) + P(X = 2) = 0.1+0.2 = 0.3$\\[.4em]
+\indent \indent ii. \ $P(-1 < X \le 1) \Rightarrow P(X=0)+P(X=1) = 0.3+0.1 = 0.4$\\[.4em]
+\indent \indent iii. $P(X < 0) \Rightarrow P(X=-2)+P(X=-1) = 0.1+0.3 = 0.4$\\
+
+\indent (d) \\
+\indent \indent i. \ \ $F(1) = 0.8$\\[.4em]
+\indent \indent ii. \ $F(0.5) = F(0) = 0.7$\\[.4em]
+\indent \indent iii. $P(X \ge 0) = 1-F(-1) = 0.6$\\
+
+\indent (e) E(X) = -2(0.1) + -1(0.3) + 0(0.3) + 1(0.1) + 2(0.2) = 0.2\\[.4em]
+\indent \indent E(X$^2$) = -2$^2$(0.1) + -1$^2$(0.3) + 0$^2$(0.3) + 1$^2$(0.1) + 2$^2$(0.2) = 0.6\\[.4em]
+\indent \indent Variance = E(X$^2$) - E(X)$^2$ = 0.6 - (0.2)$^2$ = 0.56\\
+
+
+
+\noindent \hrulefill \\
+
+
+\noindent 3)\\
+\indent (a) Im(Y) = \{8, 6, 4, 2, 0\}\\
+
+\indent (b) E(X) = 8(0.1) + 6(0.3) + 4(0.3) + 2(0.1) + 0(0.2) = 4\\[.4em]
+\indent \indent E(X$^2$) = 8$^2$(0.1) + 6$^2$(0.3) + 4$^2$(0.3) + 2$^2$(0.1) + 0$^2$(0.2) = 22.4\\[.4em]
+\indent \indent Variance = E(X$^2$) - E(X)$^2$ = 22.4 - (4)$^2$ = 38.4\\
+
+
+\noindent \hrulefill \\
+
+
+\noindent 4) Var(aX) = E([aX]$^2$) - [E(aX)]$^2$ = a$^2$E(X$^2$) - a$^2$E(X)$^2$ = a$^2$(E(X$^2$) - E(X)$^2$) =  a$^2$Var(X)
+
+
+\noindent \hrulefill \\
+
+
+\noindent 5) \\ 
+\indent (a) P(X=2) = {\Large$\binom{6}{2}$}(0.05)$^2$(0.95)$^{6-2}$\\[.4em]
+\indent \indent 15*(0.05)$^2$(0.95)$^{4}$ = .0305\\
+
+\indent (b) P(X$\le$2) = P(X=0) + P(X=1) + P(X=2) $\Rightarrow$\\[.4em]
+\indent \indent {\Large$\binom{6}{0}$}(0.05)$^0$(0.95)$^{6-0}$ +
+\indent  {\Large$\binom{6}{1}$}(0.05)$^1$(0.95)$^{6-1}$ +
+\indent  {\Large$\binom{6}{2}$}(0.05)$^2$(0.95)$^{6-2}$ =\\[.4em]
+\centerline{ 0.735 + 0.232 + 0.031 = 0.998 }
+
+
+\noindent \hrulefill 
+\pagebreak
+
+
+\noindent 6)\\
+\indent (a) P(X$\ge$5) = P(X=5) + P(X=6) + P(X=7) + P(X=8) + P(X=9) + P(X=10) $\Rightarrow$\\[.4em]
+\indent \indent {\Large$\binom{10}{5}$}(0.2)$^{5}$(0.8)$^{10-5}$ +
+\indent {\Large$\binom{10}{6}$}(0.2)$^{6}$(0.8)$^{10-6}$ +
+\indent {\Large$\binom{10}{7}$}(0.2)$^{7}$(0.8)$^{10-7}$ +\\[.4em]
+\indent \indent{\Large$\binom{10}{8}$}(0.2)$^{8}$(0.8)$^{10-8}$ +
+\indent {\Large$\binom{10}{9}$}(0.2)$^{9}$(0.8)$^{10-9}$ +
+\indent {\Large$\binom{10}{10}$}(0.2)$^{10}$(0.8)$^{10-10}$ =\\\\
+\indent \indent 0.02642 + 0.00551 + .00079 + .00007 + $\sim$0 + $\sim$0 = .033\\
+
+\indent (b) P(X$\ge$5) = 1 - P(X$\le$4) = (.2)(.8)$^{4-1}$ + (.2)(.8)$^{3-1}$ + (.2)(.8)$^{2-1}$ + (.2)(.8)$^{1-1}$ =\\[.4em]
+\indent \indent .1024 + .128 + .16 + .2 = .5904
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
