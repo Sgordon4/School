@@ -1,6 +1,3 @@
-
-Due 2/25/2020
-  CprE 489 HW3
   
 Due 2/27/2020
   CprE 489 Midterm1, 11:00-12:20 am, Gilman 1652
@@ -37,6 +34,9 @@ Due 4/9/2020
   CprE 489 Midterm2, 11:00-12:20 am, Gilman 1652
 
 -------------------------------------------------
+
+Due 2/25/2020
+X CprE 489 HW3
 
 Due 2/23/2020
 X CprE 491 Design Doc V1

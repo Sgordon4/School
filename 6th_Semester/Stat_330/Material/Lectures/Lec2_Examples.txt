@@ -1,0 +1,8 @@
+Combinatorics Example:
+https://colab.research.google.com/drive/1vQnnnas7KfThrFUkEhVLGuY-7wub0lVG
+
+Lottery Example:
+https://colab.research.google.com/drive/1rX1amyVeriY5V9tVfQyikT4XxTAvPFLO
+
+Combinations vs Permutations:
+https://medium.com/i-math/combinations-permutations-fa7ac680f0ac
