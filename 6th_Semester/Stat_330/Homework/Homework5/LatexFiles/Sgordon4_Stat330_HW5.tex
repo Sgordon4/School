@@ -34,7 +34,7 @@
 \maketitle
 
 
-\noindent\hrulefill \\
+\noindent\hrulefill 
 
 
 \noindent 1)\\
@@ -48,10 +48,10 @@
 
 \indent (c) X = \# of customers that arrive between 1:00 pm and 2:00 pm.\\
 \indent \indent X $\sim$ Pois(16)\\
-\indent \indent P(X=14) = ?\\
+\indent \indent P(X=14) = ?\\[-.8em]
 
 
-\noindent \hrulefill \\
+\noindent \hrulefill 
 
 \noindent 2)\\
 \indent (a) There are 6 possible doubles rolls out of 36 possible rolls. Thus, p = 6/36 = .16\~6\\
@@ -66,17 +66,20 @@
 
 \indent (e) P(Y=3) = {\Large$\binom{5}{3}$}(0.167)$^{3}$(0.835)$^{5-3}$ = .032\\
 
-\indent (f)\\
+\indent (f) Z $\sim$ Geo(.167) $\Rightarrow$ E(Z) = 1/.167 = 5.988\\
 
-\indent (g)\\
+\indent (g) P(Z$\ge$4) = 1 - P(Z$\le$3) = 1 - (1 - (1 - .167)$^2$) = (1 - .167)$^2$ = .6939\\[-.8em]
 
 
 \noindent \hrulefill \\
-\pagebreak
 
 
 \noindent 3)\\
-\indent (a) X = Bin(
+\indent (a) X $\sim$ Bin(15, .85). Then, P(X$\ge$13) = P(X=13) + P(X=14) + P(X=15)\\[.4em]
+\indent \indent {\Large$\binom{15}{13}$}(0.85)$^{13}$(1-0.15)$^{15-13}$ + {\Large$\binom{15}{14}$}(0.85)$^{14}$(1-0.15)$^{15-14}$ + {\Large$\binom{15}{15}$}(0.85)$^{15}$(1-0.15)$^{15-15}$ = \\[.5em]
+\indent \indent .2856 + .2312 + .0874 = .6042\\
+
+\indent (b) Y $\sim$ Geo(.85) $\Rightarrow$ E(Y) = 1/.85 = 1.176\\
 
 
 \noindent \hrulefill \\
@@ -85,91 +88,33 @@
 \noindent 4)\\
 \indent (a) X $\sim$ Pois(10)\\
 
-\indent (b) {\Large $\frac{e^{-10}(10)^8}{8!}$} = \\
+\indent (b) {\Large $\frac{e^{-10}(10)^8}{8!}$} = .113\\
 
 \indent (c) X $\sim$ Pois(10/(60/12)) = Pois(2)\\
 
-\indent (d) {\Large $\frac{e^{-2}(2)^3}{3!}$} = \\
+\indent (d) {\Large $\frac{e^{-2}(2)^3}{3!}$} = .18\\
 
 \indent (e) E(X) = $\lambda$ = 2\\
 
 
-\pagebreak
-\pagebreak
-
-\indent (a, b) 
-\begin{tabular}{c|ccccc}
- x & -2 & -1 & 0 & 1 & 2 \\
- \hline &&&&&\\[-1em]
-$P_X(x)$ & 0.1 & 0.3 & 0.3 & 0.1 & 0.2\\
-$F_X(x)$ & 0.1 & 0.4 & 0.7 & 0.8 & 1.0\\
-\end{tabular}\\
-
-
-\indent (c) \\
-\indent \indent i. \ \ $P(X\le 1) \Rightarrow P(X = 1) + P(X = 2) = 0.1+0.2 = 0.3$\\[.4em]
-\indent \indent ii. \ $P(-1 < X \le 1) \Rightarrow P(X=0)+P(X=1) = 0.3+0.1 = 0.4$\\[.4em]
-\indent \indent iii. $P(X < 0) \Rightarrow P(X=-2)+P(X=-1) = 0.1+0.3 = 0.4$\\
-
-\indent (d) \\
-\indent \indent i. \ \ $F(1) = 0.8$\\[.4em]
-\indent \indent ii. \ $F(0.5) = F(0) = 0.7$\\[.4em]
-\indent \indent iii. $P(X \ge 0) = 1-F(-1) = 0.6$\\
-
-\indent (e) E(X) = -2(0.1) + -1(0.3) + 0(0.3) + 1(0.1) + 2(0.2) = 0.2\\[.4em]
-\indent \indent E(X$^2$) = -2$^2$(0.1) + -1$^2$(0.3) + 0$^2$(0.3) + 1$^2$(0.1) + 2$^2$(0.2) = 0.6\\[.4em]
-\indent \indent Variance = E(X$^2$) - E(X)$^2$ = 0.6 - (0.2)$^2$ = 0.56\\
-
-
-
 \noindent \hrulefill \\
 
 
-\noindent 3)\\
-\indent (a) Im(Y) = \{8, 6, 4, 2, 0\}\\
+\noindent 5)\\
+\indent (a) 3 goals in the next 5 games $\Rightarrow$ $\lambda$ = 1.1*5 = 5.5\\
+\indent \indent P(X$>$3) = 1 - P(X$\le$3). \indent\indent\indent Using CDF table, P(X$\le$3) = 0.2017\\ 
+\indent \indent P(X$>$3) = 1 - 0.2017 = .7983\\
 
-\indent (b) E(X) = 8(0.1) + 6(0.3) + 4(0.3) + 2(0.1) + 0(0.2) = 4\\[.4em]
-\indent \indent E(X$^2$) = 8$^2$(0.1) + 6$^2$(0.3) + 4$^2$(0.3) + 2$^2$(0.1) + 0$^2$(0.2) = 22.4\\[.4em]
-\indent \indent Variance = E(X$^2$) - E(X)$^2$ = 22.4 - (4)$^2$ = 38.4\\
-
-
-\noindent \hrulefill \\
-
-
-\noindent 4) Var(aX) = E([aX]$^2$) - [E(aX)]$^2$ = a$^2$E(X$^2$) - a$^2$E(X)$^2$ = a$^2$(E(X$^2$) - E(X)$^2$) =  a$^2$Var(X)
+\indent (b) As the team averages 1.1 goals per game, the probability of P(Y=0) = .3329\\
+\indent \indent Thus, Y $\sim$ Bin(5, .3329) $\Rightarrow$ P(Y$<$2) = P(Y$<$0) + P(Y$<$1) = \\[.4em]
+\indent \indent {\Large$\binom{5}{0}$}(0.3329)$^{0}$(1-0.3329)$^{5-0}$ + {\Large$\binom{5}{1}$}(0.3329)$^{1}$(1-0.3329)$^{5-1}$ = .1321 + .3296 = .4618\\
 
 
 \noindent \hrulefill \\
-
-
-\noindent 5) \\ 
-\indent (a) P(X=2) = {\Large$\binom{6}{2}$}(0.05)$^2$(0.95)$^{6-2}$\\[.4em]
-\indent \indent 15*(0.05)$^2$(0.95)$^{4}$ = .0305\\
-
-\indent (b) P(X$\le$2) = P(X=0) + P(X=1) + P(X=2) $\Rightarrow$\\[.4em]
-\indent \indent {\Large$\binom{6}{0}$}(0.05)$^0$(0.95)$^{6-0}$ +
-\indent  {\Large$\binom{6}{1}$}(0.05)$^1$(0.95)$^{6-1}$ +
-\indent  {\Large$\binom{6}{2}$}(0.05)$^2$(0.95)$^{6-2}$ =\\[.4em]
-\centerline{ 0.735 + 0.232 + 0.031 = 0.998 }
-
-
-\noindent \hrulefill 
-\pagebreak
 
 
 \noindent 6)\\
-\indent (a) P(X$\ge$5) = P(X=5) + P(X=6) + P(X=7) + P(X=8) + P(X=9) + P(X=10) $\Rightarrow$\\[.4em]
-\indent \indent {\Large$\binom{10}{5}$}(0.2)$^{5}$(0.8)$^{10-5}$ +
-\indent {\Large$\binom{10}{6}$}(0.2)$^{6}$(0.8)$^{10-6}$ +
-\indent {\Large$\binom{10}{7}$}(0.2)$^{7}$(0.8)$^{10-7}$ +\\[.4em]
-\indent \indent{\Large$\binom{10}{8}$}(0.2)$^{8}$(0.8)$^{10-8}$ +
-\indent {\Large$\binom{10}{9}$}(0.2)$^{9}$(0.8)$^{10-9}$ +
-\indent {\Large$\binom{10}{10}$}(0.2)$^{10}$(0.8)$^{10-10}$ =\\\\
-\indent \indent 0.02642 + 0.00551 + .00079 + .00007 + $\sim$0 + $\sim$0 = .033\\
-
-\indent (b) P(X$\ge$5) = 1 - P(X$\le$4) = (.2)(.8)$^{4-1}$ + (.2)(.8)$^{3-1}$ + (.2)(.8)$^{2-1}$ + (.2)(.8)$^{1-1}$ =\\[.4em]
-\indent \indent .1024 + .128 + .16 + .2 = .5904
-
+\indent \indent (a) X $\sim$ Pois(1).  $\Rightarrow$ P(High risk $|$ 0 accidents) = P(X=0) = e$^-1$ = .3679\\
 
 
 \end{document}

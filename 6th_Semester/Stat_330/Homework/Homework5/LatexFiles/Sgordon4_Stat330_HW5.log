@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7140 64-bit) (preloaded format=pdflatex 2019.9.15)  26 FEB 2020 16:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7140 64-bit) (preloaded format=pdflatex 2019.9.15)  26 FEB 2020 21:42
 entering extended mode
 **./Sgordon4_Stat330_HW5.tex
 (Sgordon4_Stat330_HW5.tex
@@ -414,11 +414,6 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 34.
 ("D:\HDD Program Files (x420)\Programs\MiKTeX 2.9\tex/latex/amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Underfull \hbox (badness 10000) in paragraph at lines 37--38
-
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 40--44
 
  []
@@ -430,11 +425,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 45--48
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 49--52
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 54--55
 
  []
 
@@ -473,128 +463,100 @@ Underfull \hbox (badness 10000) in paragraph at lines 71--72
 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 74--75
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 77--81
+
+ []
+
 [1
 
-{C:/Users/Sean/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2]
+{C:/Users/Sean/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
 Underfull \hbox (badness 10000) in paragraph at lines 82--83
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 85--87
+Underfull \hbox (badness 10000) in paragraph at lines 85--86
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 88--89
+Underfull \hbox (badness 10000) in paragraph at lines 88--90
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 90--91
+Underfull \hbox (badness 10000) in paragraph at lines 91--92
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 92--93
+Underfull \hbox (badness 10000) in paragraph at lines 93--94
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 94--95
-
- []
-
-[3]
-Underfull \hbox (badness 10000) in paragraph at lines 100--107
+Underfull \hbox (badness 10000) in paragraph at lines 95--96
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 109--113
+Underfull \hbox (badness 10000) in paragraph at lines 97--98
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 114--118
+Underfull \hbox (badness 10000) in paragraph at lines 100--101
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 119--122
+Underfull \hbox (badness 10000) in paragraph at lines 103--107
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 125--126
-
- []
-
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 129.
-
-("D:\HDD Program Files (x420)\Programs\MiKTeX 2.9\tex/latex/base\omscmr.fd"
-File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 129.
-
-Underfull \hbox (badness 10000) in paragraph at lines 128--130
+Underfull \hbox (badness 10000) in paragraph at lines 108--111
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 131--134
+Underfull \hbox (badness 10000) in paragraph at lines 113--114
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 136--137
+Underfull \hbox (badness 10000) in paragraph at lines 116--118
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 142--143
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 145--148
-
- []
-
-[4]
-Underfull \hbox (badness 10000) in paragraph at lines 160--169
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 160--169
-
- []
-
-[5] (Sgordon4_Stat330_HW5.aux) ) 
+[2] (Sgordon4_Stat330_HW5.aux) ) 
 Here is how much of TeX's memory you used:
- 4798 strings out of 492895
- 73123 string characters out of 3124202
- 148886 words of memory out of 3000000
- 8635 multiletter control sequences out of 15000+200000
+ 4780 strings out of 492895
+ 72774 string characters out of 3124202
+ 147886 words of memory out of 3000000
+ 8620 multiletter control sequences out of 15000+200000
  12729 words of font info for 50 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,7n,40p,289b,192s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 42i,6n,40p,289b,192s stack positions out of 5000i,500n,10000p,200000b,50000s
 <D:/HDD Program Files (x420)/Programs/MiKTeX 2.
 9/fonts/type1/public/amsfonts/cm/cmex10.pfb><D:/HDD Program Files (x420)/Progra
 ms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><D:/HDD Program Files (
-x420)/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><D:/HDD Prog
-ram Files (x420)/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><
+x420)/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><D:/HDD Prog
+ram Files (x420)/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><
 D:/HDD Program Files (x420)/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
-cmr12.pfb><D:/HDD Program Files (x420)/Programs/MiKTeX 2.9/fonts/type1/public/a
-msfonts/cm/cmr17.pfb><D:/HDD Program Files (x420)/Programs/MiKTeX 2.9/fonts/typ
-e1/public/amsfonts/cm/cmr8.pfb><D:/HDD Program Files (x420)/Programs/MiKTeX 2.9
-/fonts/type1/public/amsfonts/cm/cmsy10.pfb><D:/HDD Program Files (x420)/Program
-s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on Sgordon4_Stat330_HW5.pdf (5 pages, 95559 bytes).
+cmr17.pfb><D:/HDD Program Files (x420)/Programs/MiKTeX 2.9/fonts/type1/public/a
+msfonts/cm/cmr8.pfb><D:/HDD Program Files (x420)/Programs/MiKTeX 2.9/fonts/type
+1/public/amsfonts/cm/cmsy10.pfb><D:/HDD Program Files (x420)/Programs/MiKTeX 2.
+9/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+Output written on Sgordon4_Stat330_HW5.pdf (2 pages, 84014 bytes).
 PDF statistics:
- 54 PDF objects out of 1000 (max. 8388607)
+ 41 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
