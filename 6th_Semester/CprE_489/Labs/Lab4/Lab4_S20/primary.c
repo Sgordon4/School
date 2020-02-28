@@ -10,6 +10,26 @@
 #define MAX(a,b) (((a)>(b))?(a):(b))
 
 
+long M = 2147483647;
+
+void IntroduceError(char *data, double p)
+{
+	char c, *pointer = data;
+	int i;
+	while (*pointer != '\0') {
+		c = 0x01;
+		for ( i = 0; i < 8; i++) {
+			if ((double)random()/M <= p)
+				*pointer ^= c;
+			c <<= 1;
+		}
+		pointer++;
+	}
+}
+
+
+
+
 void primary(int sockfd, double ber) {
 
     char msg[5000];
@@ -67,6 +87,10 @@ void primary(int sockfd, double ber) {
                 
                 //Build packet and send it off
                 buildPacket(packet, DATA_PACKET, buff, globalPackNum + currPacket);
+                
+                //printPacket(packet);
+                
+                IntroduceError(packet, ber);
 
                 if( send(sockfd , packet, PACKET_SIZE, 0) < 0)
                     perror("Send failed");
@@ -87,8 +111,12 @@ void primary(int sockfd, double ber) {
             printf("Server's reply: ===============\n");
             
             int maxSeqNumReceived = 0;
+            int did_we_get_a_NAK = 0;
             
-            for(count; count > 0; count--){
+            
+            
+            int temp = count;
+            for(temp; temp > 0; temp--){
                 
                 if( (readSize = recv(sockfd , srvReply , PACKET_SIZE , 0)) < 0)
                     perror("recv failed");
@@ -101,8 +129,10 @@ void primary(int sockfd, double ber) {
 	            switch(srvReply[0])
 	            {
 	                //We dont care about the difference between these two
-		            case ACK_PACKET:
+		            
 		            case NAK_PACKET:
+		                did_we_get_a_NAK = 1;
+		            case ACK_PACKET:
 			            maxSeqNumReceived = MAX(srvReply[1] - globalPackNum, maxSeqNumReceived);
 			            break;
 		            default:
@@ -111,8 +141,13 @@ void primary(int sockfd, double ber) {
             
             }
             
-            printf("Final Max: %d ---------------------\n", maxSeqNumReceived);
-            currPacket = maxSeqNumReceived;
+            
+            
+            currPacket -= count;
+            if(!did_we_get_a_NAK){
+                //printf("Final Max: %d ---------------------\n", maxSeqNumReceived);
+                currPacket = maxSeqNumReceived;
+            }
             
             
             
