@@ -1,0 +1,240 @@
+[sgordon4@co2061-11 Lab4_S20]$ ./RunThings.sh 
+Socket created
+bind done
+Waiting for incoming connections...
+Socket created
+Connected
+
+Enter message : Connection accepted
+ABCDE_GHIJK_MNOPQ_STUVW_YZ
+Packet 0:0 - 0 AB
+Packet 1:1 - 0 CD
+Packet 2:2 - 0 E_
+Window completed =========================
+Packets sent: 3
+Server's reply: ===============
+Sending ACK(1)
+Sending ACK(2)
+Sending ACK(3)
+Type: ACK
+Sequence Number: 1
+Data: 
+Checksum: da58
+
+Type: ACK
+Sequence Number: 2
+Data: 
+Checksum: 838
+
+Type: ACK
+Sequence Number: 3
+Data: 
+Checksum: b438
+
+Packet 0:3 - 0 GH
+Packet 1:4 - 0 IJ
+Packet 2:5 - 0 K_
+Window completed =========================
+Packets sent: 3
+Server's reply: ===============
+Sending ACK(4)
+Type: ACK
+Sequence Number: 4
+Received corrupted packet. Sequence number (maybe) 4
+Data: 
+Checksum: 31a8
+
+Received corrupted packet. Sequence number (maybe) 5
+Type: NAK
+Sequence Number: 4
+Data: 
+Checksum: 471c
+
+Type: NAK
+Sequence Number: 4
+Data: 
+Checksum: 471c
+
+Packet 0:3 - 0 GH
+Packet 1:4 - 0 IJ
+Packet 2:5 - 0 K_
+Window completed =========================
+Packets sent: 3
+Server's reply: ===============
+Received corrupted packet. Sequence number (maybe) 3
+Type: NAK
+Sequence Number: 4
+Sending ACK(5)
+Data: 
+Checksum: 471c
+
+Sending ACK(6)
+Type: ACK
+Sequence Number: 5
+Data: 
+Checksum: 698
+
+Type: ACK
+Sequence Number: 6
+Data: 
+Checksum: 5fc8
+
+Packet 0:3 - 0 GH
+Packet 1:4 - 0 IJ
+Packet 2:5 - 0 K_
+Window completed =========================
+Packets sent: 3
+Server's reply: ===============
+Received packet 3 out of order
+Sending ACK(6)
+Type: ACK
+Sequence Number: 6
+Received corrupted packet. Sequence number (maybe) 4
+Data: 
+Checksum: 5fc8
+
+Received packet 5 out of order
+Sending ACK(6)
+Type: NAK
+Sequence Number: 6
+Data: 
+Checksum: 297c
+
+Type: ACK
+Sequence Number: 6
+Data: 
+Checksum: 5fc8
+
+Packet 0:3 - 0 GH
+Packet 1:4 - 0 IJ
+Packet 2:5 - 0 K_
+Window completed =========================
+Packets sent: 3
+Server's reply: ===============
+Received packet 3 out of order
+Sending ACK(6)
+Type: ACK
+Sequence Number: 6
+Received packet 4 out of order
+Data: 
+Sending ACK(6)
+Checksum: 5fc8
+
+Type: ACK
+Received packet 5 out of order
+Sequence Number: 6
+Sending ACK(6)
+Data: 
+Checksum: 5fc8
+
+Type: ACK
+Sequence Number: 6
+Data: 
+Checksum: 5fc8
+
+Packet 0:6 - 0 MN
+Packet 1:7 - 0 OP
+Packet 2:8 - 0 Q_
+Window completed =========================
+Packets sent: 3
+Server's reply: ===============
+Sending ACK(7)
+Type: ACK
+Sequence Number: 7
+Sending ACK(8)
+Data: 
+Checksum: 68f8
+
+Sending ACK(9)
+Type: ACK
+Sequence Number: 8
+Data: 
+Checksum: 44c9
+
+Type: ACK
+Sequence Number: 9
+Data: 
+Checksum: 73f9
+
+Packet 0:9 - 0 ST
+Packet 1:10 - 0 UV
+Packet 2:11 - 0 W_
+Window completed =========================
+Packets sent: 3
+Server's reply: ===============
+Sending ACK(10)
+Type: ACK
+Sequence Number: 10
+Sending ACK(11)
+Data: 
+Checksum: 2aa9
+
+Sending ACK(12)
+Type: ACK
+Sequence Number: 11
+Data: 
+Checksum: 1d99
+
+Type: ACK
+Sequence Number: 12
+Data: 
+Checksum: 989
+
+Packet 0:12 - 0 YZ
+Packet 1:13 - 0 
+
+Window completed =========================
+Packets sent: 2
+Server's reply: ===============
+Received corrupted packet. Sequence number (maybe) 12
+Type: NAK
+Sequence Number: 12
+Received packet 13 out of order
+Data: 
+Checksum: eebd
+
+Sending ACK(12)
+Type: ACK
+Sequence Number: 12
+Data: 
+Checksum: 989
+
+Packet 0:12 - 0 YZ
+Packet 1:13 - 0 
+
+Window completed =========================
+Packets sent: 2
+Server's reply: ===============
+Received corrupted packet. Sequence number (maybe) 12
+Type: NAK
+Sequence Number: 12
+Received packet 13 out of order
+Data: 
+Sending ACK(12)
+Checksum: eebd
+
+Type: ACK
+Sequence Number: 12
+Data: 
+Checksum: 989
+
+Packet 0:12 - 0 YZ
+Packet 1:13 - 0 
+
+Window completed =========================
+Packets sent: 2
+Server's reply: ===============
+Sending ACK(13)
+Type: ACK
+Sending ACK(14)
+Sequence Number: 13
+Data: 
+Checksum: af39
+
+Type: ACK
+Sequence Number: 14
+Data: 
+Checksum: f669
+
+Enter message : 
+
