@@ -1,7 +1,4 @@
 
-Due 2/29/2020
-  ComS 363 Proj1B
-
 Due 3/1/2020
   CprE 491 Bi-Weekly 3
   CprE 491 Reflection 2
@@ -11,6 +8,9 @@ Due 3/2/2020
 
 Due 3/6/2020
   CprE 489 Lab4
+  
+Due 3/8/2020
+  CprE 491 Lightning Talk 2
 
 Due 3/11/2020
   Stat 330 Exam2
@@ -29,6 +29,9 @@ Due 4/9/2020
 
 -------------------------------------------------
  
+Due 2/29/2020
+X ComS 363 Proj1B
+
 Due 2/28/2020
 X Stat 330 HW5
 
@@ -62,7 +65,7 @@ Due 2/12/2020
 X Stat 330 Exam1
 
 Due 2/9/2020
-X CprE 491 Lightening Talk
+X CprE 491 Lightning Talk
 
 Due 2/7/2020
 X CprE 489 Lab2
