@@ -1,0 +1,136 @@
+\documentclass[12pt]{article}
+\usepackage[12pt]{moresize}
+\usepackage[margin=1in]{geometry}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{graphicx}
+\usepackage{subcaption}
+
+\usepackage{multirow} %Combining rows in tables
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{alltt}
+
+\usepackage{multicol}
+
+\usepackage{amssymb} %\checkmark symbol
+
+%\usepackage{hyperref}
+%\usepackage[latin1]{inputenc}
+%\usepackage{listings}
+%\usepackage{scrextend}
+%\usepackage{changepage} %Adjustwidth
+
+ 
+
+\title{Stat 330\\Homework 5}
+\author{Sean Gordon}
+%\date{09/09/2019}
+
+\begin{document}
+\maketitle
+
+
+\noindent\hrulefill 
+
+
+\noindent 1)\\
+\indent (a) X= \# of drivers until one doesn't make a full stop.\\
+\indent \indent X $\sim$ Geo(1 - .85) = Geo(.15)\\
+\indent \indent P(X$<$10) = ...\\
+
+\indent (b) X = \# of correct answers out of total answers.\\
+\indent \indent X $\sim$ Bin(20, .6)\\
+\indent \indent P(X$\ge$12) = ...\\
+
+\indent (c) X = \# of customers that arrive between 1:00 pm and 2:00 pm.\\
+\indent \indent X $\sim$ Pois(16)\\
+\indent \indent P(X=14) = ...\\[-.8em]
+
+
+\noindent \hrulefill 
+
+\noindent 2)\\
+\indent (a) There are 6 possible doubles rolls out of 36 possible rolls. Thus, p = 6/36 = .16\~6\\
+
+\indent (b) E(X) = 0(1-p) + 1(p) = 0(.83\~3) + 1(.16\~6) = .16\~6\\
+\indent \indent E(X$^2$) = 0$^2$(1-p) + 1$^2$(p) = 0$^2$(.83\~3) + 1$^2$(.16\~6) = .16\~6\\
+\indent \indent Var(X) = E(X$^2$) - (E(X))$^2$ = .16\~6 - (.16\~6)$^2$ = .16\~6 - 0.027\~7 = 0.138\~8\\
+
+\indent (c) Y $\sim$ Bin(5, .167)\\
+
+\indent (d) E(Y) = np = 5*.167 = 0.835\\
+
+\indent (e) P(Y=3) = {\Large$\binom{5}{3}$}(0.167)$^{3}$(0.835)$^{5-3}$ = .032\\
+
+\indent (f) Z $\sim$ Geo(.167) $\Rightarrow$ E(Z) = 1/.167 = 5.988\\
+
+\indent (g) P(Z$\ge$4) = 1 - P(Z$\le$3) = 1 - (1 - (1 - .167)$^2$) = (1 - .167)$^2$ = .6939\\[-.8em]
+
+
+\noindent \hrulefill \\
+
+
+\noindent 3)\\
+\indent (a) X $\sim$ Bin(15, .85). Then, P(X$\ge$13) = P(X=13) + P(X=14) + P(X=15)\\[.4em]
+\indent \indent {\Large$\binom{15}{13}$}(0.85)$^{13}$(1-0.15)$^{15-13}$ + {\Large$\binom{15}{14}$}(0.85)$^{14}$(1-0.15)$^{15-14}$ + {\Large$\binom{15}{15}$}(0.85)$^{15}$(1-0.15)$^{15-15}$ = \\[.5em]
+\indent \indent .2856 + .2312 + .0874 = .6042\\
+
+\indent (b) Y $\sim$ Geo(.85) $\Rightarrow$ E(Y) = 1/.85 = 1.176\\
+
+
+\noindent \hrulefill \\
+
+
+\noindent 4)\\
+\indent (a) X $\sim$ Pois(10)\\
+
+\indent (b) {\Large $\frac{e^{-10}(10)^8}{8!}$} = .113\\
+
+\indent (c) X $\sim$ Pois(10/(60/12)) = Pois(2)\\
+
+\indent (d) {\Large $\frac{e^{-2}(2)^3}{3!}$} = .18\\
+
+\indent (e) E(X) = $\lambda$ = 2\\
+
+
+\noindent \hrulefill \\
+
+
+\noindent 5)\\
+\indent (a) 3 goals in the next 5 games $\Rightarrow$ $\lambda$ = 1.1*5 = 5.5\\
+\indent \indent P(X$>$3) = 1 - P(X$\le$3). \indent\indent\indent Using CDF table, P(X$\le$3) = 0.2017\\ 
+\indent \indent P(X$>$3) = 1 - 0.2017 = .7983\\
+
+\indent (b) As the team averages 1.1 goals per game, the probability of P(Y=0) = .3329\\
+\indent \indent Thus, Y $\sim$ Bin(5, .3329) $\Rightarrow$ P(Y$<$2) = P(Y$<$0) + P(Y$<$1) = \\[.4em]
+\indent \indent {\Large$\binom{5}{0}$}(0.3329)$^{0}$(1-0.3329)$^{5-0}$ + {\Large$\binom{5}{1}$}(0.3329)$^{1}$(1-0.3329)$^{5-1}$ = .1321 + .3296 = .4618\\
+
+
+\noindent \hrulefill \\
+
+
+\noindent 6)\\
+\indent \indent (a) X $\sim$ Pois(1).  $\Rightarrow$ P(High risk $|$ 0 accidents) = P(X=0) = e$^-1$ = .3679\\
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
