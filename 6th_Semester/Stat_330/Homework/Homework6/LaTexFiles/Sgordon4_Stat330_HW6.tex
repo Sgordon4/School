@@ -94,26 +94,41 @@ E(XY) = (0)(0)(0.3) + (1)(0)(0.1) + (2)(0)(0.1) + \\
 
 
 \noindent 3)\\
-\indent (a) X $\sim$ Bin(15, .85). Then, P(X$\ge$13) = P(X=13) + P(X=14) + P(X=15)\\[.4em]
-\indent \indent {\Large$\binom{15}{13}$}(0.85)$^{13}$(1-0.15)$^{15-13}$ + {\Large$\binom{15}{14}$}(0.85)$^{14}$(1-0.15)$^{15-14}$ + {\Large$\binom{15}{15}$}(0.85)$^{15}$(1-0.15)$^{15-15}$ = \\[.5em]
-\indent \indent .2856 + .2312 + .0874 = .6042\\
-
-\indent (b) Y $\sim$ Geo(.85) $\Rightarrow$ E(Y) = 1/.85 = 1.176\\
-
+\indent (a) Hmmmmm\\
 
 \noindent \hrulefill \\
 
 
 \noindent 4)\\
-\indent (a) X $\sim$ Pois(10)\\
+\indent (a) 
+\begin{tabular}{c|ccc|c}
+ \hline &&&&\\[-1em]
+ \diagbox{X}{Y} & 2 & 3 & 4 & $p_x(x)$ \\
+ \hline &&&&\\[-1em]
+1 & 0.083 & 0.167 & 0 & 0.25 \\
+2 & 0.167 & 0 & 0.333 & 0.5 \\
+3 & 0.083 & 0.167 & 0 & 0.25\\
+\hline &&&&\\[-1em]
+$p_y(y)$ & 0.333 & 0.333 & 0.333 & 1
+\end{tabular}\\\\
 
-\indent (b) {\Large $\frac{e^{-10}(10)^8}{8!}$} = .113\\
+\indent (b) Two variables are independent if, for all values of X and Y:\\
+\indent \indent P(x $|$ y) = P(x)\\
+\indent \indent P(x $\cap$ y) = P(x)*P(y)\\
+\indent \indent The variables are dependent, as P(x $\cap$ y) for (2, 3) = 0, but P(X=2)*P(Y=3) = .167\\
+\indent \indent This violates the second rule of independence.\\\\
 
-\indent (c) X $\sim$ Pois(10/(60/12)) = Pois(2)\\
-
-\indent (d) {\Large $\frac{e^{-2}(2)^3}{3!}$} = .18\\
-
-\indent (e) E(X) = $\lambda$ = 2\\
+\indent (c) 
+\begin{tabular}{c|ccc|c}
+ \hline &&&&\\[-1em]
+ \diagbox{A}{B} & 2 & 3 & 4 & $p_x(x)$ \\
+ \hline &&&&\\[-1em]
+1 & 0.083 & 0.083 & 0.083 & 0.25 \\
+2 & 0.167 & 0.167 & 0.167 & 0.5 \\
+3 & 0.083 & 0.083 & 0.083 & 0.25\\
+\hline &&&&\\[-1em]
+$p_y(y)$ & 0.333 & 0.333 & 0.333 & 1
+\end{tabular}\\\\
 
 
 \noindent \hrulefill \\
