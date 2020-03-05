@@ -9,6 +9,7 @@
 \usepackage{subcaption}
 
 \usepackage{multirow} %Combining rows in tables
+\usepackage{diagbox}  %Table box split in twain
 
 \usepackage{algorithm}
 \usepackage{algpseudocode}
@@ -26,49 +27,67 @@
 
  
 
-\title{Stat 330\\Homework 5}
+\title{Stat 330\\Homework 6}
 \author{Sean Gordon}
-%\date{09/09/2019}
+\date{March 6, 2020}
 
 \begin{document}
 \maketitle
 
 
-\noindent\hrulefill 
+\noindent\hrulefill \\[-.8em]
 
 
 \noindent 1)\\
-\indent (a) X= \# of drivers until one doesn't make a full stop.\\
-\indent \indent X $\sim$ Geo(1 - .85) = Geo(.15)\\
-\indent \indent P(X$<$10) = ...\\
+\indent (a) 
+\begin{tabular}{c|ccc|c}
+ \hline &&&&\\[-1em]
+ \diagbox{X}{Y} & 0 & 1 & 2 & $p_x(x)$ \\
+ \hline &&&&\\[-1em]
+0 & 0.3 & 0.1 & 0.1 & 0.5 \\
+1 & 0.2 & 0.1 & 0 & 0.3 \\
+2 & 0.1 & 0.1 & 0 & 0.2 \\
+\hline &&&&\\[-1em]
+$p_y(y)$ & 0.6 & 0.3 & 0.1 & 1
+\end{tabular}\\\\
 
-\indent (b) X = \# of correct answers out of total answers.\\
-\indent \indent X $\sim$ Bin(20, .6)\\
-\indent \indent P(X$\ge$12) = ...\\
+\indent (b) 
+E(X) = (0)(0.5) + (1)(0.3) + (2)(0.2) = 0.7 \\
+\indent\indent E(Y) = (0)(0.6) + (1)(0.3) + (2)(0.1) = 0.5 \\
 
-\indent (c) X = \# of customers that arrive between 1:00 pm and 2:00 pm.\\
-\indent \indent X $\sim$ Pois(16)\\
-\indent \indent P(X=14) = ...\\[-.8em]
+\indent\indent E(X$^2$) = (0)$^2$(0.5) + (1)$^2$(0.3) + (2)$^2$(0.2) = 1.1 \\
+\indent\indent E(Y$^2$) = (0)$^2$(0.5) + (1)$^2$(0.3) + (2)$^2$(0.2) = 0.7 \\
+
+\indent\indent Var(X) = E(X$^2$) - $|$E(X)$|^2$ = 1.1 - 0.7$^2$ = 0.61\\
+\indent\indent Var(Y) = E(Y$^2$) - $|$E(Y)$|^2$ = 0.7 - 0.5$^2$ = 0.45\\
+
+
+\indent (c) 
+E(XY) = (0)(0)(0.3) + (1)(0)(0.1) + (2)(0)(0.1) + \\
+\indent\indent \indent \indent \indent (0)(1)(0.2) + (1)(1)(0.1) + (2)(1)(0) + \\
+\indent\indent \indent \indent \indent (0)(2)(0.1) + (1)(2)(0.1) + (2)(2)(0) = 0.3\\
+
+\indent \indent Cov(X, Y) = E(XY) - E(X)E(Y) = 0.3 - (0.7)(0.5) = -0.05\\
+
+\indent \indent Corr(X, Y) = {\Large $\frac{Cov(X, Y)}{\sqrt{Var(X)*Var(Y)}}$} = {\Large $\frac{-0.05}{\sqrt{0.61 * 0.45}}$} = -0.095\\\\
+
+\indent (d) Covariance != 0, and $p_{x, y}(1, 0)$ != $p_{x}(1)$ * $p_{y}(0)$. \\
+\indent \indent Therefore the two days are not independent.\\
 
 
 \noindent \hrulefill 
 
+
 \noindent 2)\\
-\indent (a) There are 6 possible doubles rolls out of 36 possible rolls. Thus, p = 6/36 = .16\~6\\
+\indent (a) P(X=Y) = $p_{x, y}(0, 0)$ + $p_{x, y}(1, 1)$ + $p_{x, y}(2, 2)$ = 0.3 + 0.1 + 0 = 0.4\\
 
-\indent (b) E(X) = 0(1-p) + 1(p) = 0(.83\~3) + 1(.16\~6) = .16\~6\\
-\indent \indent E(X$^2$) = 0$^2$(1-p) + 1$^2$(p) = 0$^2$(.83\~3) + 1$^2$(.16\~6) = .16\~6\\
-\indent \indent Var(X) = E(X$^2$) - (E(X))$^2$ = .16\~6 - (.16\~6)$^2$ = .16\~6 - 0.027\~7 = 0.138\~8\\
+\indent (b) P(X$<$Y) = $p_{x, y}(0, 1)$ + $p_{x, y}(0, 2)$ + $p_{x, y}(1, 2)$ = 0.1 + 0.1 + 0 = 0.2\\
 
-\indent (c) Y $\sim$ Bin(5, .167)\\
+\indent (c) P(X$>$Y) = $p_{x, y}(1, 0)$ + $p_{x, y}(2, 0)$ + $p_{x, y}(2, 1)$ = 0.2 + 0.1 + 0.1 = 0.4\\
 
-\indent (d) E(Y) = np = 5*.167 = 0.835\\
+\indent (d) $p_{x, y}(0, 0)$ = 0.3\\
 
-\indent (e) P(Y=3) = {\Large$\binom{5}{3}$}(0.167)$^{3}$(0.835)$^{5-3}$ = .032\\
-
-\indent (f) Z $\sim$ Geo(.167) $\Rightarrow$ E(Z) = 1/.167 = 5.988\\
-
-\indent (g) P(Z$\ge$4) = 1 - P(Z$\le$3) = 1 - (1 - (1 - .167)$^2$) = (1 - .167)$^2$ = .6939\\[-.8em]
+\indent (e) $p_{x, y}(1, 2)$ = 0\\
 
 
 \noindent \hrulefill \\
