@@ -4,8 +4,8 @@
     <title>Create Tables</title>
 </head>
 <body>
-    <h1>Click "Submit" to create tables.</h1>
-    <form action = "CreateTablesResult.jsp">
+    <h1>Click "Submit" to modify records.</h1>
+    <form action = "ModifyRecordsResult.jsp">
         <input type="submit" value="Submit">
     </form>
 </body>
