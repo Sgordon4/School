@@ -5,7 +5,7 @@ X Stat 330 Exam2
 Fri 3/13/2020
 X CprE 494 Portfolio
   CprE 489 Lab5
-  CprE 363 Project1C
+X CprE 363 Project1C
   
 Sun 3/15/2020
   CprE 491 Bi-Weekly 4
