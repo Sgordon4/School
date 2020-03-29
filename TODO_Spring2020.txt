@@ -1,27 +1,42 @@
 
-Wed 3/25/2020
-  CprE 491 Next Class
-  Stat 330 HW7
-
-Fri 3/27/2020
-  CprE 489 Lab6
-  
 Sun 3/29/2020
   CprE 491 Design Doc 2
+
+Mon 3/30/2020
+  ComS 363 HW3
+  
+Tue 3/31/2020
+  CprE 489 HW4
+  ComS 363 Quiz on Relational Algebra
+  
+Thu 4/2/2020
+  ComS 363 Quiz on Query Processing
+  
+Sat 4/4/2020
+  ComS 363 Discussion
   
 Sun 4/5/2020
   CprE 491 Lightning Talk 2
+  ComS 363 Bonus Quiz
 
 Mon 4/6/2020
+  ComS 363 Proj2
   ComS 363 Midterm2, 8:15-9:45 pm, Hoover 2055
   
-Due 4/9/2020
+Thu 4/9/2020
   CprE 489 Midterm2, 11:00-12:20 am, Gilman 1652
+
+Fri 4/10/2020
+  CprE 489 Lab6
   
 Wed 4/15/2020
   CprE 494 Presentation
 
 -------------------------------------------------
+
+Wed 3/25/2020
+X CprE 491 Next Class
+X Stat 330 HW7
 
 - - - - - - - - - - - -
 Sat 3/14/2020
