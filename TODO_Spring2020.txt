@@ -1,10 +1,4 @@
-
-Sun 3/29/2020
-  CprE 491 Design Doc 2
-
-Mon 3/30/2020
-  ComS 363 HW3
-  
+ 
 Tue 3/31/2020
   CprE 489 HW4
   ComS 363 Quiz on Relational Algebra
@@ -33,6 +27,12 @@ Wed 4/15/2020
   CprE 494 Presentation
 
 -------------------------------------------------
+
+Mon 3/30/2020
+X ComS 363 HW3
+ 
+Sun 3/29/2020
+X CprE 491 Design Doc 2
 
 Wed 3/25/2020
 X CprE 491 Next Class

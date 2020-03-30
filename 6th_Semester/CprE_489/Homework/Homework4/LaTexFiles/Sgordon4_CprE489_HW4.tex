@@ -13,6 +13,9 @@
 
 \usepackage{multicol}
 
+\usepackage{booktabs}
+\usepackage{multirow}
+
 \usepackage[margin=1in]{geometry}
 
 %\usepackage{hyperref}
@@ -23,7 +26,7 @@
 
 
 
-\title{CprE 489\\Homework 3}
+\title{CprE 489\\Homework 4}
 \author{Sean Gordon}
 \date{March 31, 2020}
 
@@ -34,38 +37,56 @@
 \hrulefill \\
 
 
-\noindent 1)
-\begin{figure}[h!]
-  \centering
-  \includegraphics[scale=.8]{GBN2.png}
-\end{figure}
+\noindent 1a) The vulnerable period covers {\bf t'$_0$-.7X through t'$_0$+1.4X}. The transmission must have one clear slot before t'$_0$ and two clear slots afterward in order to completely fit. Thus the vulnerable period spans 2.1X.\\
 
-\noindent 2)
-\begin{figure}[h!]
-  \centering
-  \includegraphics[scale=.8]{GBN3.png}
-\end{figure}
+\noindent 1b) Max propogation is through 2 repeaters and 2 segments $\Rightarrow$ \\[-2em]
+\begin{center}
+t$_{prop} = $2(1.5$\mu$s) + 2(100m / (2*10$^8$m/s)) = 3$\mu$s + 1$\mu$s = 4$\mu$s.
+\end{center}
+This must be multiplied by 2 to ensure the transmitting end receives any response, so frame size = 8$\mu$s.
 
+
+\hrulefill \\
+
+
+\noindent 2) \\
+\indent (a) 205.63.130.1 AND /16 = 205.63.0.0 \indent 205.63.130.1 AND /18 = 205.63.128.0 \\
+\indent \indent 205.63.130.1 AND /21 = 205.63.128.0\\\\
+\indent \indent None of these results match any of the destinations listed in the table, so the \\
+\indent \indent table will use the default and send the packet to 205.36.1.1\\\\
+
+\indent (b) 205.36.140.2 AND /16 = 205.36.0.0 \indent 205.36.140.2 AND /18 = 205.36.128.0 \\
+\indent \indent 205.36.140.2 AND /21 = 205.36.136.0\\\\
+\indent \indent Results 2 and 3 match their respective destinations in the table, so as \\
+\indent \indent destination 3 has a larger subnet, we send the packet to 205.36.136.1\\
+
+\indent (c) 205.36.150.3 AND /16 = 205.36.0.0 \indent 205.36.150.3 AND /18 = 205.36.128.0 \\
+\indent \indent 205.36.150.3 AND /21 = 205.36.144.0\\\\
+\indent \indent Only result 2 matches its respective destination, so we send the packet to 205.36.128.1
+
+
+\hrulefill \\
 \pagebreak
 
-\noindent 3)
-\begin{figure}[h!]
-  \centering
-  \includegraphics[scale=.8]{SnW.png}
-\end{figure}
 
-\noindent 4)
-\begin{figure}[h!]
-  \centering
-  \includegraphics[scale=.8]{SR_WsWr2.png}
-\end{figure}
+\noindent 3) We can divide the given 255 hosts into 3 groups: 96, 96, and 64.\\
+\indent  Both groups of 96 must be divided into 2 groups: 64 and 32\\
+\indent  This leaves us with the table below:\\
 
-\noindent 5)
-\begin{figure}[h!]
-  \centering
-  \includegraphics[scale=.8]{SR_Ws2Wr1.png}
-\end{figure}
 
+\begin{table}[h!]
+\centering
+\begin{tabular}{@{}lllll@{}}
+\toprule
+ 	   Department  & IP &&&Size\\ \midrule
+ 	   	      D1   & 200.120.80.192 & /26 && 64\\[.4em]
+\multirow{2}{*}{D2} & 200.120.80.0 & /26 && 64\\
+			  & 200.120.80.64 & /27 && 32\\[.4em]
+\multirow{2}{*}{D3} & 200.120.80.96 & /26 && 64\\
+			  & 200.120.80.160 & /27 && 32\\ \bottomrule
+
+\end{tabular}
+\end{table}
 
 
 \end{document}
