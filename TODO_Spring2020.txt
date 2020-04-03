@@ -1,10 +1,10 @@
  
 Tue 3/31/2020
-  CprE 489 HW4
-  ComS 363 Quiz on Relational Algebra
+X CprE 489 HW4
+X ComS 363 Quiz on Relational Algebra
   
 Thu 4/2/2020
-  ComS 363 Quiz on Query Processing
+X ComS 363 Quiz on Query Processing
   
 Sat 4/4/2020
   ComS 363 Discussion
