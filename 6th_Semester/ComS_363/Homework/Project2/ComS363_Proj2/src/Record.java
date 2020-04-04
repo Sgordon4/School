@@ -1,3 +1,7 @@
 public class Record {
-    String value[];
+    String[] value;
+
+    public Record(String[] value){
+        this.value = value;
+    }
 }
