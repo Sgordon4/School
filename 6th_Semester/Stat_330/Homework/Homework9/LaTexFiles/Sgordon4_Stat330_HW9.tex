@@ -1,0 +1,149 @@
+\documentclass[12pt]{article}
+\usepackage[12pt]{moresize}
+\usepackage[margin=1in]{geometry}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{graphicx}
+\usepackage{subcaption}
+
+\usepackage{multirow} %Combining rows in tables
+\usepackage{diagbox}  %Table box split in twain
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{alltt}
+
+\usepackage{multicol}
+
+\usepackage{amssymb} %\checkmark symbol
+
+%\usepackage{hyperref}
+%\usepackage[latin1]{inputenc}
+%\usepackage{listings}
+%\usepackage{scrextend}
+%\usepackage{changepage} %Adjustwidth
+
+ 
+
+\title{Stat 330\\Homework 9}
+\author{Sean Gordon}
+\date{April 8, 2020}
+
+\begin{document}
+\maketitle
+
+
+\noindent\hrulefill \\[-.8em]
+
+
+\noindent 1)\\
+\indent (a) \\
+\indent \indent PDF =
+$
+\begin{cases} 
+	1/5 & for\ 5 \leq x \leq 10 \\
+	0 & otherwise 
+\end{cases}
+$
+\indent \indent CDF = 
+$
+\begin{cases} 
+	0 & for\ t \leq 5\\
+	(t - 5)/5 & for\ 5 \leq t \leq 10 \\
+	1 & for\ t \ge 10 
+\end{cases}
+$\\\\
+
+\indent (b) 
+E(X) = 15/2 = 9:07.500\\
+
+
+\indent (c) P(X$<$7) = 1 - P(X$>$7) $\Rightarrow$ {\Large$\int_{7}^{10}\frac{1}{5}$}/5 = $x\Big|_7^{10}$/5 = 10 - 7 / 5 $\Rightarrow$ 1 - 0.6 = 0.4\\
+
+
+\noindent \hrulefill 
+
+
+\noindent 2)\\
+\indent (a) E(X) = {\Large$\frac{1}{\lambda}$} $\Rightarrow$ There is 1/20 an hour per hit, so E(X) = {\Large$\frac{1}{20}$} $\Rightarrow$ $\lambda$ = 20\\
+
+\indent (b) E(X) = {\Large$\frac{1}{20}$} = 0.05 an hour\\
+
+\indent (c) Exponential: X $\sim$ Exp(20)\\
+
+\indent (d) 20 min is .333 of an hour, so P(X$<$.333) = 1 - e$^{-20(.333)}$ = 0.9987\\
+
+\indent (e) $p_{x, y}(1, 2)$ = 0\\
+
+\indent (f) 5/20 = 0.25 of an hour\\
+
+\indent (g) X $\sim$ Pois(20) $\Rightarrow$ P(X$\leq$5) from table = 0.00000027\\
+
+
+\noindent \hrulefill \\
+\pagebreak
+
+
+\noindent 3)\\
+\indent (a) X $\sim$ Exp(5) \\
+
+\indent (b) \\
+\indent \indent PDF =
+$
+\begin{cases} 
+	5e^{-5x} & for\ x > 0 \\
+	0 & otherwise 
+\end{cases}
+$
+\indent \indent CDF = 
+$
+\begin{cases} 
+	0 & for\ t \leq 0\\
+	1 - e^{-5t} & for\ t > 0 
+\end{cases}
+$\\\\
+
+\indent (c) P(X $<$ 5) = 1 - e$^{-5(1)}$ = 0.9987\\
+
+\indent (d)  P(hit in 5 min $|$ no hit in first 2 min)  = P(X $\leq$ 1 $|$ X $>$ .4) $\Rightarrow$ {\Large$\frac{P(X \leq 1 \cap X > .4)}{P(X > .4)}$} $\Rightarrow$ \\
+\indent \indent {\Large$\frac{P(.4 \leq 1)}{P(X > .4)}$} $\Rightarrow$ {\Large$\frac{F_X(1) - F_X(.4)}{1 - F_X(.4)}$} = {\Large$\frac{5e^{-5(1)} - 5e^{-5(.4)}}{1 - 5e^{-5(.4)}}$} = 0.95\\
+
+
+\noindent \hrulefill \\
+
+
+\noindent 4)\\
+\indent (a) A computer would require special maintenance every 15 months on average. \\
+\indent \indent P(X $<$ 9) = 1 - e$^{-(1)(.6)}$ = 1 - .5488 = .4512\\
+
+\indent (b) P(X $\leq$ 1.06 $|$ X $>$ .8) $\Rightarrow$ {\Large$\frac{P(X \leq 1.06 \cap X > .8)}{P(X > .8)}$} $\Rightarrow$ \\[.4em]
+\indent \indent {\Large$\frac{P(.8 \leq 1.06)}{P(X > .8)}$} $\Rightarrow$ {\Large$\frac{F_X(1.06) - F_X(.8)}{1 - F_X(.8)}$} = {\Large$\frac{(1 - e^{-15(1.06)}) - (1 - e^{-15(.8)})}{1- (1 - 5e^{-15(.8)})}$} = 0.98\\
+
+\noindent \hrulefill \\
+
+
+\noindent 5)\\
+\indent (a) With X $\sim$ Exp(5), P(X $>$ 15) = 1 - P(X $<$ 15) = 1 - (1 - e$^{-5(3)}$) = 3.05 * 10$^{-7}$\\
+
+\indent (b) This can be imagined as waiting 10 minutes for one person $\Rightarrow$ \\
+\indent \indent P(X $>$ 10) = 1 - P(X $<$ 10) = 1 - (1 - e$^{-5(2)}$) = 4.53 * 10$^{-5}$\\
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
