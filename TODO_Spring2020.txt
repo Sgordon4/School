@@ -1,7 +1,4 @@
-
-Wed 4/8/2020
-  Stat 330 HW9
-  
+ 
 Fri 4/10/2020
   CprE 489 Lab6 1:10 pm
   Check CprE 494 for updates
@@ -25,6 +22,9 @@ Mon 4/27/2020
 
 -------------------------------------------------
 
+Wed 4/8/2020
+X Stat 330 HW9
+ 
 Wed 4/7/2020
 X CprE 489 Midterm2, online from 11:00am Tue to 11:00 am Wed
 X AFAS 442 Essay
