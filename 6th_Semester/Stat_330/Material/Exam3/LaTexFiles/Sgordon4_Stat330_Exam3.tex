@@ -1,0 +1,150 @@
+\documentclass[12pt]{article}
+\usepackage[12pt]{moresize}
+\usepackage[margin=1in]{geometry}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{graphicx}
+\usepackage{subcaption}
+
+\usepackage{multirow} %Combining rows in tables
+\usepackage{diagbox}  %Table box split in twain
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{alltt}
+
+\usepackage{multicol}
+
+\usepackage{amssymb} %\checkmark symbol
+
+%\usepackage{hyperref}
+%\usepackage[latin1]{inputenc}
+%\usepackage{listings}
+%\usepackage{scrextend}
+%\usepackage{changepage} %Adjustwidth
+
+ 
+
+\title{Stat 330\\Exam 3}
+\author{Sean Gordon}
+\date{April 15, 2020}
+
+\begin{document}
+\maketitle
+
+
+\noindent\hrulefill \\[-.8em]
+
+
+\noindent 1) \\
+\indent(a) E(X) = {\Large $\frac{0+30}{20}$} = 15 minutes\\
+
+\indent (b) F$_X$(t) = {\Large $\frac{t - a}{b - a}$} $\Rightarrow$ {\Large $\frac{t - 0}{30 - 0}$} = {\Large $\frac{10}{30}$}. P(X$>$10) = 1 - P(X$<$10) $\Rightarrow$ 1 - {\Large $\frac{10}{30}$} = 1-.333 = 0.666\\
+
+\indent (c) P(15$<$X$<$25) = P(X$<$25) - P(X$<$15) = {\Large $\frac{25}{30}$} - {\Large $\frac{15}{30}$} = .833 - .5 = 0.333\\
+
+\indent (d) .10 = F$_X$(t) $\Rightarrow$ .10 = {\Large $\frac{t}{30}$} $\Rightarrow$ t = 3 minutes\\
+
+
+\noindent \hrulefill \\
+
+
+\noindent 2)\\
+\indent(a) E(X) = 1/10 seconds/spike, so $\lambda$ = 10. Thus, X $\sim$ Exp(10)\\
+
+\indent (b) E(X) = 1/10, Var(X) = 1/10$^2$ = 1/100\\
+
+\indent (c) F$_X$(t) = 1-e$^{-10t}$ $\Rightarrow$ P(X$\le$.07) = 1-e$^{-10*.07}$ = .503\\
+
+\indent (d) X $\sim$ Gamma(50, 10)\\
+
+\indent (e) E(T) = 50/10 = 5 seconds\\
+
+\indent (f) P(T$<$3), convert gamma to poisson $\rightarrow$ X $\sim$ Pois(10 * 3) = Pois(30)\\
+\indent \indent P(T$<$3) = P(X$\ge$50) $\Rightarrow$ 1 - P(X$\le$49) = 1 - 0.99948110 (From appendix) = 5.2 * 10$^{-4}$\\
+
+
+\noindent \hrulefill \\
+\pagebreak
+
+
+\noindent 3) \\
+\indent (a) X $\sim$ N(20, 0.01). P(X$<$20.1) - P(X$<$19.9) = P(Z$<$ {\Large $\frac{20.1 - 20}{\sqrt{.01}}$}) - P(Z$<$ {\Large $\frac{19.9 - 20}{\sqrt{.01}}$}) = \\
+\indent \indent P(Z$<$1) - P(Z$<$-1) $\Rightarrow$ 0.8413 - 0.1587 (using Z table) = 0.6824\\
+
+\indent (b) P(Z$<${\Large $\frac{x - 20}{\sqrt{.01}}$}) = .1 $\Rightarrow$ P(Z$<$-1.28) $\rightarrow$ -1.28 = {\Large $\frac{x - 20}{\sqrt{.01}}$} $\Rightarrow$ x = 19.872\\
+
+\indent (c) 801/40 = each bottle averages 20.025. P(Z$>${\Large $\frac{20.025 - 20}{\sqrt{.01}/\sqrt{40}}$}) = 1 - P(X$<$1.58) = \\
+\indent \indent 1 - .9429 = 0.0571\\
+
+\indent (d) P(Z$>${\Large $\frac{19.96 - 20}{\sqrt{.01}/\sqrt{40}}$}) = P(X$<$-2.53) = 0.0057\\
+
+
+
+\noindent \hrulefill \\
+
+
+\noindent 4)\\
+\indent (a) P = 
+$\begin{pmatrix}
+0.75 & 0.25\\
+0.45 & 0.55
+\end{pmatrix}$\\\\
+
+\indent (b) P$^3$ = 
+$\begin{pmatrix}
+0.65 & 0.35\\
+0.63 & 0.37
+\end{pmatrix}$ $\Rightarrow$ P(3rd is A $|$ 1st is B) = 0.63\\\\
+
+\indent (c)  [$\pi_1 \ \pi_2$]
+$\begin{pmatrix}
+0.75 & 0.25\\
+0.45 & 0.55
+\end{pmatrix}$ $\Rightarrow$ $(.75\pi_1 + .45\pi_2 = \pi_1)\ and\ (25\pi_1 + .55\pi_2 = \pi_2)$\\\\
+\indent \indent $\pi_1 = .643, \pi_2 = .357$, thus P(Last is B) = .357\\
+
+
+\noindent \hrulefill \\
+
+
+\noindent 5)\\
+\indent (a) P = $\begin{pmatrix}
+0.3 & 0.7 & 0\\
+0 & 0 & 1\\
+1 & 0 & 0
+\end{pmatrix}$\\\\
+
+\indent (b) P$_3$ = P$_0$ * P$^3$ = 
+(0.5, 0.5, 0) * 
+$\begin{pmatrix}
+0.45 & 0 &  0.55 \\
+0 &  0  & 0   \\
+0.79 & 0 &  0.21 
+\end{pmatrix}$ = 
+$\begin{pmatrix}
+0.225 & 0 &  0.275 \\
+0 &  0  & 0   \\
+0 & 0 &  0 
+\end{pmatrix}$\\\\
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
