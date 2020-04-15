@@ -34,59 +34,104 @@
 \maketitle
 
 
-\hrulefill \\
+\noindent\hrulefill \\
 
 
-\noindent 1a) The vulnerable period covers {\bf t'$_0$-.7X through t'$_0$+1.4X}. The transmission must have one clear slot before t'$_0$ and two clear slots afterward in order to completely fit. Thus the vulnerable period spans 2.1X.\\
+\noindent 1a)
+\begin{table}[h!]
+\centering
+\begin{tabular}{c|c|c|c|c|c|c}
+\toprule
+Iteration & N & H$_{BA}$;D$_{BA}$ & H$_{BC}$;D$_{BC}$ & H$_{BD}$;D$_{BD}$ & H$_{BE}$;D$_{BE}$ & H$_{BF}$;D$_{BF}$\\\bottomrule
+Initial & \{B\} & A;5 & C;2 & D;$\infty$ & E;$\infty$ & F;1 \\
+1 & \{B, A\} & A;5 & C;2 & A;7 & E;$\infty$ & F;1 \\
+2 & \{B, A, C\} & C;4 & C;2 & C;3 & E;$\infty$ & F;1\\
+3 & \{B, A, C, D\} & C;4 & C;2 & C;3 & C;5 & F;1\\
+4 & \{B, A, C, D, E\} & C;4 & C;2 & C;3 & C;5 & F;1\\
+5 & \{B, A, C, D, E, F\} & C;4 & C;2 & C;3 & C;5 & F;1\\\bottomrule
+\end{tabular}
+\end{table}\\
 
-\noindent 1b) Max propogation is through 2 repeaters and 2 segments $\Rightarrow$ \\[-2em]
-\begin{center}
-t$_{prop} = $2(1.5$\mu$s) + 2(100m / (2*10$^8$m/s)) = 3$\mu$s + 1$\mu$s = 4$\mu$s.
-\end{center}
-This must be multiplied by 2 to ensure the transmitting end receives any response, so frame size = 8$\mu$s.
+\noindent 1b) 
+ 
+\begin{table}[h!]
+\centering
+\begin{tabular}{c|c|c|c}
+\toprule
+Dest & H$_{ij}$ & D$_{ij}$ & C$_{ij}$\\\bottomrule
+A & C & 4 & 5 \\
+B & B & 0 & 0 \\
+C & C & 2 & 2 \\
+D & C & 3 & $\infty$ \\
+E & C & 5 & $\infty$ \\
+F & F & 1 & 1 \\\bottomrule
+\end{tabular}
+\end{table}
 
 
-\hrulefill \\
-
-
-\noindent 2) \\
-\indent (a) 205.63.130.1 AND /16 = 205.63.0.0 \indent 205.63.130.1 AND /18 = 205.63.128.0 \\
-\indent \indent 205.63.130.1 AND /21 = 205.63.128.0\\\\
-\indent \indent None of these results match any of the destinations listed in the table, so the \\
-\indent \indent table will use the default and send the packet to 205.36.1.1\\\\
-
-\indent (b) 205.36.140.2 AND /16 = 205.36.0.0 \indent 205.36.140.2 AND /18 = 205.36.128.0 \\
-\indent \indent 205.36.140.2 AND /21 = 205.36.136.0\\\\
-\indent \indent Results 2 and 3 match their respective destinations in the table, so as \\
-\indent \indent destination 3 has a larger subnet, we send the packet to 205.36.136.1\\
-
-\indent (c) 205.36.150.3 AND /16 = 205.36.0.0 \indent 205.36.150.3 AND /18 = 205.36.128.0 \\
-\indent \indent 205.36.150.3 AND /21 = 205.36.144.0\\\\
-\indent \indent Only result 2 matches its respective destination, so we send the packet to 205.36.128.1
-
-
-\hrulefill \\
+\noindent\hrulefill \\
 \pagebreak
 
 
-\noindent 3) We can divide the given 255 hosts into 3 groups: 96, 96, and 64.\\
-\indent  Both groups of 96 must be divided into 2 groups: 64 and 32\\
-\indent  This leaves us with the table below:\\
+\noindent 2a)
+\begin{table}[h!]
+\centering
+\begin{tabular}{c|c|c|c|c|c|c}
+\toprule
+\multirow{11}{*}{Destination node D} & Iteration & A & B & C & E & F\\\bottomrule
+& Initial & (-, $\infty$) & (-, $\infty$) & (-, $\infty$) & (-, $\infty$) & (-, $\infty$)\\[.4em]
+& 1 & (D, 2) & (-, $\infty$) & (D, 1) & (D, 2) & (-, $\infty$)\\[.4em]
+& 2 (Through A) & (D, 2) & (A,7) & (D, 1) & (D, 2) & (-, $\infty$)\\[.4em]
+& 3 (Through B) & (D, 2) & (C,3) & (D, 1) & (D, 2) & (B, 4)\\[.4em]
+& 4 (Through C) & (D, 2) & (C,3) & (D, 1) & (D, 2) & (B, 4)\\[.4em]
+& 5 (Through E) & (D, 2) & (C,3) & (D, 1) & (D, 2) & (B, 4)\\[.4em]
+& 6 (Through F) & (D, 2) & (C,3) & (D, 1) & (D, 2) & (B, 4)\\[.4em]
+\end{tabular}
+\end{table} \\
 
+
+\noindent 2b)
+\begin{table}[h!]
+\centering
+\indent (i)
+\begin{tabular}{c|c}
+\toprule
+Dest & D$_{ij}$\\\bottomrule
+C & 2 \\
+D & 2 \\
+E & 4 \\\bottomrule
+\end{tabular}
+\end{table}\\
+\indent \indent A $\rightarrow$ B is not included as that is the destination of the report, and A $\rightarrow$ F is not\\
+\indent \indent included as the shortest path is through B.\\
 
 \begin{table}[h!]
 \centering
-\begin{tabular}{@{}lllll@{}}
+\indent (ii)
+\begin{tabular}{c|c}
 \toprule
- 	   Department  & IP &&&Size\\ \midrule
- 	   	      D1   & 200.120.80.192 & /26 && 64\\[.4em]
-\multirow{2}{*}{D2} & 200.120.80.0 & /26 && 64\\
-			  & 200.120.80.64 & /27 && 32\\[.4em]
-\multirow{2}{*}{D3} & 200.120.80.96 & /26 && 64\\
-			  & 200.120.80.160 & /27 && 32\\ \bottomrule
-
+Dest & D$_{ij}$\\\bottomrule
+A & 2 \\
+B & 2 \\
+F & 3 \\\bottomrule
 \end{tabular}
 \end{table}
+\indent \indent C $\rightarrow$ D is not included as that is the destination of the report, and C $\rightarrow$ E is not\\
+\indent \indent included as the shortest path is through D.\\
+
+\begin{table}[h!]
+\centering
+\indent (iii)
+\begin{tabular}{c|c}
+\toprule
+Dest & D$_{ij}$\\\bottomrule
+A & 5 \\
+B & 1 \\
+C & 3 \\
+D & 4 \\\bottomrule
+\end{tabular}
+\end{table}
+\indent \indent F $\rightarrow$ E is not included as that is the destination of the report.
 
 
 \end{document}
