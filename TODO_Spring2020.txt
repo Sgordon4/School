@@ -1,8 +1,4 @@
 
-Wed 4/15/2020
-  CprE 494 Presentation
-  Stat 330 Exam3
-
 Tue 4/21/2020
   CprE 489 Lab 7 11:00 am (Not due Friday)
   ComS 363 Quiz on Concurrency Control 1
@@ -15,6 +11,10 @@ Mon 4/27/2020
 
 -------------------------------------------------
   
+Wed 4/15/2020
+- CprE 494 Presentation
+X Stat 330 Exam3
+
 Tue 4/14/2020
 X ComS 363 Discussion of Transaction Management
 X ComS 363 Quiz on Transaction Management
