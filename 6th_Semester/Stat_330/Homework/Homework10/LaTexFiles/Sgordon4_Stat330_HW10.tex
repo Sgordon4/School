@@ -1,0 +1,151 @@
+\documentclass[12pt]{article}
+\usepackage[12pt]{moresize}
+\usepackage[margin=1in]{geometry}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{graphicx}
+\usepackage{subcaption}
+
+\usepackage{multirow} %Combining rows in tables
+\usepackage{diagbox}  %Table box split in twain
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{alltt}
+
+\usepackage{multicol}
+
+\usepackage{amssymb} %\checkmark symbol
+
+%\usepackage{hyperref}
+%\usepackage[latin1]{inputenc}
+%\usepackage{listings}
+%\usepackage{scrextend}
+%\usepackage{changepage} %Adjustwidth
+
+ 
+
+\title{Stat 330\\Homework 10}
+\author{Sean Gordon}
+\date{April 24, 2020}
+
+\begin{document}
+\maketitle
+
+
+\noindent\hrulefill \\[-.8em]
+
+
+\noindent 1)\\
+\indent (a) P = 
+$\begin{pmatrix}
+0.6 & 0.4\\
+0.75 & 0.25
+\end{pmatrix}$\\\\
+
+\indent (b) 
+P$^{(3)}$ = 
+$\begin{pmatrix}
+0.65 & 0.35\\
+0.65 & 0.35
+\end{pmatrix}$ $\Rightarrow$ P(3rd Red $|$ 1st Red) = .35\\\\
+
+
+\indent (c) [$\pi_1 \ \pi_2$]
+$\begin{bmatrix}
+0.65 & 0.35\\
+0.65 & 0.35
+\end{bmatrix}$ $\Rightarrow$ $(.6\pi_1 + .75\pi_2 = \pi_1)\ and\ (.4\pi_1 + .25\pi_2 = \pi_2)$\\\\
+\indent \indent $\pi_1 = .625, \pi_2 = .348$, thus P(Last is Red) = .348\\
+
+
+\noindent \hrulefill 
+
+
+\noindent 2)\\
+\indent (a) P = 
+$\begin{pmatrix}
+0.58 & 0.42\\
+0.46 & 0.54
+\end{pmatrix}$\\\\
+
+\indent (b) P$^{(4)}$ = 
+$\begin{pmatrix}
+0.52 & 0.48\\
+0.52 & 0.48
+\end{pmatrix}$ $\Rightarrow$ P(4th is Higher $|$ 1st is Higher) = .52\\
+
+
+\noindent \hrulefill 
+
+
+\noindent 3)\\
+\indent (a) P = 
+$\begin{pmatrix}
+0 & 0.5 & 0.5\\
+0.5 & 0 & 0.5\\
+1 & 0 & 0
+\end{pmatrix}$\\\\
+
+\indent (b) 
+(Initial) * P$^{(3)}$ = (.333, .333, .333) * 
+$\begin{pmatrix}
+0.25 & 0.38 & 0.38\\
+0.38 & 0.25 & 0.38 \\
+0.75 & 0 & 0.25 
+\end{pmatrix}$ $\Rightarrow$ (0.46, 0.21, .34) \\\\
+
+\indent (c) If this chain is regular, there is a power of P that has only positive, non-zero entries:\\
+\indent \indent P$^{(4)}$ = 
+$\begin{pmatrix}
+0.56 & 0.13 & 0.31\\
+0.5 & 0.19 & 0.31 \\
+0.25 & 0.38 & 0.38 
+\end{pmatrix}$ \checkmark\\\\
+
+\indent (d)
+$(\pi_1 * \pi_2 * \pi_3)$ * $\begin{pmatrix}
+0 & 0.5 & 0.5\\
+0.5 & 0 & 0.5\\
+1 & 0 & 0
+\end{pmatrix}$ $\Rightarrow$ $\pi_1 = 0.444, \pi_2 = 0.222, \pi_3 = 0.333$ \\
+
+
+\noindent \hrulefill 
+
+
+\noindent 4)\\
+\indent (a) 0.8\\\\
+\indent (b) 0.1\\\\
+\indent (c) Team B, because if a puck is loose the team with the largest probability to pick \\
+\indent \indent  it up is team B with 0.3\\\\
+\indent (d) P(Loose $|$ Loose) = 0.1 $\Rightarrow$ P(Loose for 2 seconds) = 0.1 * 0.1 = 0.01\\\\
+\indent (e) P$^{(3)}$ = 
+$\begin{pmatrix}
+0.64 & 0.23 & 0.14 \\
+0.39 & 0.41 & 0.2  \\
+0.52 & 0.32 & 0.17 
+\end{pmatrix}$ $\Rightarrow$ 0.17\\\\\\[-.8em]
+\indent (f) $\pi_1 = 0.545, \pi_2 = 0.295, \pi_3 = 0.159$ \\\\
+\indent (g) 3600 seconds * $\pi_1$ = 3600 * .545 = 1962 $\Rightarrow$ 32.7 min\\
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
