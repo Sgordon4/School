@@ -1,10 +1,20 @@
 
 Tue 4/21/2020
   CprE 489 Lab 7 11:00 am (Not due Friday)
+  CprE 489 Online Exam 2 from 11:00am Tue to 11:00 am Wed
   ComS 363 Quiz on Concurrency Control 1
-  
+
+Thu 4/23/2020
+  ComS 363 Quiz on Concurrency Control 2
+
 Fri 4/24/2020
   ComS 363 HW4
+  Stat 330 HW10
+  
+Sat 4/26/2020
+  CprE 491 Design Doc 3
+  CprE 491 Peer Team Eval
+  CprE 491 Final Project Review Materials
   
 Mon 4/27/2020
   ComS 363 Proj3
