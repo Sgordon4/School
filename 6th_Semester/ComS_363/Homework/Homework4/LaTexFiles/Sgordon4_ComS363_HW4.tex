@@ -11,7 +11,10 @@
 \usepackage{algpseudocode}
 \usepackage{alltt}
 
+\usepackage{booktabs}
 \usepackage{multicol}
+\usepackage{multirow}
+\usepackage[table]{xcolor}
 
 \usepackage[margin=1in]{geometry}
 
@@ -24,6 +27,17 @@
 
 \newenvironment{PTMono}{\fontfamily{PTMono-TLF}\selectfont}{\par}
 
+% LaTeX counter interface for \rownum
+% ---
+\makeatletter
+\@ifundefined{c@rownum}{%
+  \let\c@rownum\rownum
+}{}
+\@ifundefined{therownum}{%
+  \def\therownum{\@arabic\rownum}%
+}{}
+\makeatother
+
 
 \title{ComS 363\\Homework 4}
 \author{Sean Gordon}
@@ -33,71 +47,92 @@
 \maketitle
 
 
-\hrulefill \\
+\noindent \hrulefill \\[-.4em]
 
 
 
 \noindent 1)\\
-\indent \indent With 4000 B per page and 400 B per tuple, each page can contain 10 tuples.\\
-\indent \indent This leaves R to take 1000 pages, and S to take 200 pages.\\\\
-\indent (a) Testing R as outer:\\
-\indent \indent Need 1000 I/Os to read outer, and 4000 to join\\
-\indent \indent Total = 1000 + 4000 = 5000 I/Os\\\\
-\indent \indent Testing S as outer:\\
-\indent \indent Need 200 I/Os to read outer, and 4000 to join\\
-\indent \indent Total = 200 + 4000 = 4200 I/Os\\\\
-\indent \indent 4200 $<$ 5000 $\Rightarrow$ Using S as outer, cost is 4200 I/Os\\\\
-\indent \indent Buffer should contain the entirety of the smaller relation (S), plus the output and \\
-\indent \indent the inner relation size.\\
-\indent \indent Thus buffer must be of size 200 + 1 + 1 = 202 pages\\
+\indent (S1) This schedule \textbf{is} serializable, as the result of this schedule is the same as that of \\
+\indent \indent running the origional two schedules in series.\\
+
+\indent (S2) This schedule \textbf{is not} serializable, as the result of this schedule is not the same as \\
+\indent \indent running the origional two schedules in series: A=0, B=2 rather than A=1, B=2.\\
+
+\indent (S3) This schedule \textbf{is} serializable, as the result of this schedule is the same as that of \\
+\indent \indent running the origional two schedules in series.\\[-.4em]
 
 
-\indent (b) Partition:\\
-\indent \indent 2 * R + 2 * S $\Rightarrow$ 2(1000) + 2(200) = 2400 I/Os\\\\
-\indent \indent Probing:\\
-\indent \indent Buffer (52) must be $\ge$ (fudge)(N)/(Mem - 1) $\Rightarrow$ (1.1)(1000)/(52 - 1) = 21.5 \checkmark \\
-\indent \indent I/O for this section is then 1000 + 200 = 1200\\\\
-\indent \indent Total I/O cost = 2400 + 1200 = 3600 I/Os\\
+\noindent \hrulefill \\[-.4em]
 
-\pagebreak
 
-\indent (c) Sorting:\\
-\indent \indent Cost for R = 2(2 * 1000) = 4000 \indent \indent Cost for S = 2(2 * 200) = 800\\\\
-\indent \indent Merging:\\
-\indent \indent Cost = 1000 + 200 = 1200 I/Os\\\\
-\indent \indent Total = 4000 + 800 + 1200 = 6000 I/Os\\
+\noindent 2)\\
+\indent (S1) This schedule is neither serial nor strict. It is not serial as both transactions are \\
+\indent \indent interleaved, and it is not strict as after T1 reads A, it does not commit or abort before\\
+\indent \indent T2 writes A.\\
+
+\indent (S2) This schedule is neither serial nor strict. It is not serial as both transactions are \\
+\indent \indent interleaved, and it is not strict as after T1 reads A, it does not commit or abort before\\
+\indent \indent T2 writes A.\\
+
+\indent (S3) This schedule is serial and strict. It is serial because the transactions are not \\
+\indent \indent interleaved, and is strict because after one transaction reads or writes, a\\
+\indent \indent read orwrite on the same value does not occur on a separate transaction\\
+\indent \indent until after a commit or abort.\\
+
+\indent (S4) This schedule is neither serial nor strict. It is not serial as both transactions are \\
+\indent \indent interleaved, and it is not strict as after T2 writes A, it does not commit or abort \\
+\indent \indent before T1 reads A.\\[-.4em]
 
 
 \hrulefill\\
 
 
-\noindent 2)\\
-\indent \indent (a) {\large $\Pi_{sname}((\sigma_{bname=''Odyssey''}(Reserve \bowtie Boats)) \bowtie Sailors )$} 
-\begin{figure}[h!]
-  \centering
-  \includegraphics[scale=.6]{Q2a.PNG}
-\end{figure}\\
+\noindent 3)\\
+\indent(S1)\\[-1.5em]
+\rowcolors{2}{gray!25}{white}
+\begin{table}[h!]
+\centering
+\begin{tabular}{c|c|c|c|c|c}
+\bottomrule
+\rowcolor{gray!50}
+Line & Data & Lock & Owner & Waiting & Explanation\\\toprule
+1 & A & S & T1 &   & T1 has sucessfully requested an S lock\\
+2 & A & S & T1 &   & No change\\
+3 & A & X & T1 &   & T1 has sucessfully upgraded to an X lock\\
+4 & A & X & T1 &   & No change\\
+5 & A &  &  &   & T1 has completed and dissolved its locks\\
+6 & A & S & T2 &   & T2 has sucessfully requested an S lock\\
+7 & A & S & T2 &   & No change\\
+8 & A &  &  &   & T2 has completed and dissolved its locks\\\bottomrule
+\end{tabular}
+\end{table}\\
 
+\indent(S2)\\[-1.5em]
+\begin{table}[h!]
+\centering
+\begin{tabular}{c|c|c|c|c|c}
+\bottomrule
+\rowcolor{gray!50}
+Line & Data & Lock & Owner & Waiting & Explanation\\\toprule
+1 & A & S & T1 &   & T1 has sucessfully requested an S lock\\
+2 & A & S & T1 &   & No change\\
+3 & A & S & T1, T2 &   & T2 has sucessfully requested an S lock\\
+4 & A & S & T1, T2 &   & No change\\
 
-\indent \indent (b) {\large $\Pi_{sname}(\sigma_{day=''05/15/2020''}(Sailors \bowtie Reserve))$} 
-\begin{figure}[h!]
-  \centering
-  \includegraphics[scale=.6]{Q2b.PNG}
-\end{figure}
+&&&&& T1 has unsuccesfully requested an X lock,\setcounter{rownum}{1}\\
+\multirow{-2}{*}{5} & \multirow{-2}{*}{A} &\multirow{-2}{*}{S}&\multirow{-2}{*}{T1, T2}&\multirow{-2}{*}{T1}& and is placed on the waiting list\\
 
-\pagebreak
+&&&&& T2 has completed and dissolves its locks,\setcounter{rownum}{2}\\
+\multirow{-2}{*}{6} & \multirow{-2}{*}{A} &\multirow{-2}{*}{X}&\multirow{-2}{*}{T1}&& allowing T1 to proceed\\
 
-
-\indent \indent (c) {\large $\Pi_{sname}(Sailors - (Sailors \bowtie Reserve)))$} 
-\begin{figure}[h!]
-  \centering
-  \includegraphics[scale=.5]{Q2c.PNG}
-\end{figure}
+7 & A & X & T1 &   & No change\\
+8 & A &  &  &   & T1 has completed and dissolves its locks\\\bottomrule
+\end{tabular}
+\end{table}\\
 
 
 
 \end{document}
-
 
 
 
