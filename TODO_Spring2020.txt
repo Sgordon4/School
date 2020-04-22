@@ -2,8 +2,8 @@
 Fri 4/24/2020
 X ComS 363 HW4
   Stat 330 HW10
-  ComS 363 Discussion on Data Mining
-  ComS 363 Quiz on Data Preprocessing
+X ComS 363 Discussion on Data Mining
+X ComS 363 Quiz on Data Preprocessing
   
 Sat 4/26/2020
   CprE 491 Design Doc 3
