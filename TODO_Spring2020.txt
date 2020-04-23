@@ -7,7 +7,7 @@ X ComS 363 Quiz on Data Preprocessing
   
 Sat 4/26/2020
   CprE 491 Design Doc 3
-  CprE 491 Peer Team Eval
+X CprE 491 Peer Team Eval
   CprE 491 Final Project Review Materials
   
 Mon 4/27/2020
