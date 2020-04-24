@@ -1,12 +1,6 @@
 
-Fri 4/24/2020
-X ComS 363 HW4
-  Stat 330 HW10
-X ComS 363 Discussion on Data Mining
-X ComS 363 Quiz on Data Preprocessing
-  
 Sat 4/26/2020
-  CprE 491 Design Doc 3
+/ CprE 491 Design Doc 3
 X CprE 491 Peer Team Eval
   CprE 491 Final Project Review Materials
   
@@ -21,6 +15,12 @@ Tue 5/5/2020
 
 -------------------------------------------------
  
+Fri 4/24/2020
+X ComS 363 HW4
+X Stat 330 HW10
+X ComS 363 Discussion on Data Mining
+X ComS 363 Quiz on Data Preprocessing
+  
 Thu 4/23/2020
 X ComS 363 Quiz on Concurrency Control 2
 

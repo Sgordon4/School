@@ -72,10 +72,9 @@
 \pagebreak
 
 
-\noindent 3)\\
-\indent (a) ${\Large \frac{1}{n-1}}(n\mathbb{E}(X^2) - n\mathbb{E}(\bar{X}^2))$ = ${\Large \frac{1}{n-1}}n(\mathbb{E}(X^2) - \mathbb{E}(\bar{X}^2))$ = \\[.4em]
-\indent \indent ${\Large \frac{1}{n-1}}n(Var(x) + \mathbb{E}(X)^2 - Var(x) - \mathbb{E}(\bar{X})^2)$ = ${\Large \frac{1}{n-1}}n(\mathbb{E}(X)^2 - \mathbb{E}(\bar{X})^2)$ = \\[.4em]
-\indent \indent ${\Large \frac{1}{n-1}}n(\mathbb{E}(X)^2 - \mathbb{E}(\bar{X})^2)$ = \\
+\noindent 3)  ${\Large \frac{1}{n-1}}(n\mathbb{E}(X^2) - n\mathbb{E}(\bar{X}^2))$ = ${\Large \frac{1}{n-1}}n(\mathbb{E}(X^2) - \mathbb{E}(\bar{X}^2))$ = \\[.4em]
+\indent  ${\Large \frac{1}{n-1}}n(Var(x) + \mathbb{E}(X)^2 - Var(x) - \mathbb{E}(\bar{X})^2)$ = ${\Large \frac{1}{n-1}}n(\mathbb{E}(X)^2 - \mathbb{E}(\bar{X})^2)$ = \\[.4em]
+\indent  ${\Large \frac{1}{n-1}}n(\mathbb{E}(X)^2 - \mathbb{E}(\bar{X})^2)$ = ? = $\sigma^2$\\
 
 
 \noindent \hrulefill \\
@@ -85,7 +84,7 @@
 \indent (a) E({\Large{$\frac{X_1+X_2+X_3+X_4}{4}$}) = $\frac{E(X_1)+E(X_2)+E(X_3)+E(X_4)}{4}$} = {\Large $\frac{4\mu}{4}$} = $\mu$\\[.4em]
 \indent \indent E({\Large{$\frac{X_1+2X_2+X_3}{4}$}) = $\frac{E(X_1)+E(X_2)+E(X_2)+E(X_3)}{4}$} = {\Large $\frac{4\mu}{4}$} = $\mu$\\[.4em]
 
-\indent (b) 
+\indent (b) ?
 
 
 \noindent \hrulefill \\
@@ -95,10 +94,29 @@
 \indent (a) E(Y) for Pois($\lambda$) = $\lambda$. \\
 \indent \indent $\mu_1 = E(Y) = \bar{Y} = m_1 \ \ \Rightarrow \ \ \lambda = \bar{y} \ \ \Rightarrow\ \  \lambda_{MoM} = \bar{y}$\\
 
-\indent (b)\\
+\indent (b){\Large$\prod_{i=1}^{n}  \frac{e^{-\lambda}\lambda^{y_i}}{y_i!}$} = {\Large$ \frac{e^{-n\lambda}\lambda^{ny_i}}{\prod_{i=1}^{n}y_i!}$} $\Rightarrow$\\[.4em]
+\indent \indent $l(\lambda) = (-n\lambda + ny\ log(\lambda) ) - \sum_{i=1}^{n}log(y_i!)$\\[.4em]
+\indent \indent $dx * l(\lambda) = -n + \frac{ny}{\lambda} = 0 \Rightarrow \lambda_{MLE} = y $\\
 
 \indent (c) $\bar{x} = {\Large\frac{7 + 6 + 7 + 2 + 4}{5}}$ = 5.2 = MoM\\
-\indent \indent 
+
+
+\noindent \hrulefill \\
+
+
+\noindent 6)
+\indent (a) $\mu = E(X) = \int xf(x)dx \Rightarrow \int_0^1x\theta x^{\theta-1}dx =$ {\Large $\frac{\theta}{\theta+1}$} = $\bar{x}$\\[.4em]
+\indent \indent {\Large $\frac{\theta}{\theta+1}$} = $\bar{x} \Rightarrow \theta = ${\Large $\frac{\bar{x}}{1-\bar{x}}$} $\Rightarrow \theta = ${\Large $\frac{.666}{1-.666}$} = 2\\
+
+\indent (b) No idea
+
+
+\noindent \hrulefill \\
+
+
+\noindent 7) I have no idea what's going on 
+
+
 
 
 \end{document}
