@@ -1,0 +1,88 @@
+\documentclass[12pt]{article}
+\usepackage[12pt]{moresize}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{graphicx}
+\usepackage{subcaption}
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{alltt}
+
+\usepackage{multicol}
+
+\usepackage{booktabs}
+\usepackage{multirow}
+
+\usepackage[margin=1in]{geometry}
+
+%\usepackage{hyperref}
+%\usepackage[latin1]{inputenc}
+%\usepackage{listings}
+%\usepackage{scrextend}
+%\usepackage{changepage} %Adjustwidth
+
+
+
+\title{CprE 489\\Homework 6}
+\author{Sean Gordon}
+\date{April 28, 2020}
+
+\begin{document}
+\maketitle
+
+
+\noindent\hrulefill \\
+
+
+\noindent 1)\\
+\indent (a) 1-6 and 23-26\\
+\indent (b) 6-22\\
+\indent (c) 32\\
+\indent (d) 41\\
+\indent (e) 26/2 = 13\\
+\indent (f) 3$^{rd}$ duplicate, as cwnd is only /2, not set to 1\\
+\indent (g) Round 5\\
+\indent (h) Round 9\\
+\indent (i) Round 11\\
+\indent (j) cwnd = 1, ssthresh = 4\\
+
+
+\noindent\hrulefill \\
+
+
+\begin{table}[h!]
+\centering
+\indent (iii)
+\begin{tabular}{c|c|c|c|c|c|c|c|c|c}
+\bottomrule
+\multirow{2}{*}{Time} & \multirow{2}{*}{Packet Received} & \multirow{2}{*}{Action Taken} & List of  & Total \# & Estimated \#  & ssthresh & cwnd & cwnd & \# new packets \\
+&&& unACKs packets & dup ACKs & outstanding packets & value & size & range & to send \\\toprule
+A & 5 \\
+B & 1 \\
+C & 3 \\
+D & 4 \\\bottomrule
+\end{tabular}
+\end{table}
+\indent \indent F $\rightarrow$ E is not included as that is the destination of the report.
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
