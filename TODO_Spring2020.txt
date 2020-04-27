@@ -1,20 +1,27 @@
 
-Sat 4/26/2020
-/ CprE 491 Design Doc 3
-X CprE 491 Peer Team Eval
-  CprE 491 Final Project Review Materials
+Thu 4/30/2020
+  ComS 363 Quiz on Data Warehousing
   
-Mon 4/27/2020
-  ComS 363 Proj3
-  
-Tue 4/28/2020
-  CprE 489 HW6 11:00 am
+Fri 5/1/2020
+  Stat 330 Homework 11
   
 Tue 5/5/2020
   CprE 489 Lab8 11:00 am
+  ComS 363 Quiz on Data Mining
 
 -------------------------------------------------
  
+Tue 4/28/2020
+X CprE 489 HW6 11:00 am
+
+Mon 4/27/2020
+X ComS 363 Proj3
+  
+Sat 4/26/2020
+X CprE 491 Design Doc 3
+X CprE 491 Peer Team Eval
+X CprE 491 Final Project Review Materials
+  
 Fri 4/24/2020
 X ComS 363 HW4
 X Stat 330 HW10
