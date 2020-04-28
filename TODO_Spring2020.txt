@@ -3,10 +3,10 @@ Thu 4/30/2020
   ComS 363 Quiz on Data Warehousing
   
 Fri 5/1/2020
-  Stat 330 Homework 11
+X Stat 330 Homework 11
   
 Tue 5/5/2020
-  CprE 489 Lab8 11:00 am
+X CprE 489 Lab8 11:00 am
   ComS 363 Quiz on Data Mining
 
 -------------------------------------------------
