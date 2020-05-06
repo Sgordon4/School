@@ -1,3 +1,4 @@
+USE `coms363_proj1b`;
 
 insert into students (snum, ssn, name, gender, dob, c_addr, c_phone, p_addr, p_phone) values (1001, 654651234, 'Randy', 'M', '2000-12-01', '301 E Hall', 5152700988, '121 Main', 7083066321);
 

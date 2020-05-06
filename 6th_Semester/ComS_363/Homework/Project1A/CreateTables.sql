@@ -1,3 +1,5 @@
+USE `coms363_proj1b`;
+
 CREATE TABLE students (
     snum INTEGER,
     ssn INTEGER,
