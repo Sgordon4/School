@@ -1,0 +1,77 @@
+-- Have --------------------------------------------------------
+
+Arch 321: History of the American City (3 cr)
+T R		12:40 - 2:00
+
+ComS 472: Principles of Artificial Intelligence (3 cr)
+M W F 	1:10 - 2:00P
+R		11:00 - 11:50
+
+COM S 474: Introduction to Machine Learning (3 cr)
+M W F	2:10 - 3:00P
+
+CPR E 492: Senior Design Project II (2 cr)
+R		2:10 - 3:00P
+
+CPR E 431: Basics of Information System Security (3 cr)
+M W F	12:10 - 1:00P
+
+-- Schedule Completed ------------------------------------------
+
+
+
+-- Want --------------------------------------------------------
+
+COM S 476: Motion Strategy Algorithms and Applications
+Recent techniques for developing algorithms that automatically generate continuous motions while 
+satisfying geometric constraints. Applications in areas such as robotics and graphical animation. 
+Basic path planning. Kinematics, configuration space, and topological issues. Collision detection. 
+Randomized planning. Nonholonomic systems. Optimal decisions and motion strategies. Coordination of 
+Multiple Bodies. Representing and overcoming uncertainties. Visibility-based motion strategies. 
+Implementation of software that computes motion strategies. Written reports.
+(Doesn't exist)
+
+COM S 453: Privacy Preserving Algorithms and Data Security
+Fundamentals of privacy preserving algorithms, data security, anonymization, and techniques and 
+mechanisms to minimize disclosure of sensitive information while maintaining availability. Theory 
+and fundamentals underpinning measures to evaluate the privacy and availability of data; 
+implementation and deployment of privacy-preserving data operations including pre- and post-randomization 
+techniques, homomorphisms, and secure function evaluation protocols. Theory and practice of the algorithmic 
+limits on data privacy, including the cost in terms of time and space complexity.
+(Doesn't exist)
+
+
+CPR E 480: Graphics Processing and Architecture
+(Doesn't exist)
+
+CPR E 421: Software Analysis and Verification for Safety and Security (3 cr)
+Significance of software safety and security; various facets of security in cyber-physical and computer 
+systems; threat modeling for software safety and security; and categorization of software vulnerabilities. 
+Software analysis and verification: mathematical foundations, data structures and algorithms, program 
+comprehension, analysis, and verification tools; automated vs. human-on-the-loop approach to analysis 
+and verification; and practical considerations of efficiency, accuracy, robustness, and scalability of 
+analysis and verification. Cases studies with application and systems software; evolving landscape of 
+software security threats and mitigation techniques. Understanding large software, implementing software 
+analysis and verification algorithms.
+M W F	12:10 - 1:00P
+- Reddit gives its approval, but a different thread makes it seem kinda gey
+https://www.reddit.com/r/iastate/comments/emryeg/any_body_take_cpre_421_before_ideas/
+https://www.reddit.com/r/iastate/comments/f2y3vq/well_this_might_be_one_of_the_dumbest_things_ive/
+
+CPR E 431: Basics of Information System Security (3 cr)
+Introduction to and application of basic mechanisms for protecting information systems from accidental and 
+intentional threats. Basic cryptography use and practice. Computer security issues including authentication, 
+access control, and malicious code. Network security mechanisms such as intrusion detection, firewalls, 
+IPSEC, and related protocols. Ethics and legal issues in information security. Wireless security. Programming 
+and system configuration assignments.
+M W F	12:10 - 1:00P
+https://www.reddit.com/r/iastate/comments/57xudk/se_cpr_e_431_is_it_difficult_should_i_take_it_my/
+https://www.reddit.com/r/iastate/comments/7jkmxk/cpre_431_vs_531/
+
+CPR E 454: Distributed Systems (3 cr)
+Theoretical and practical issues of design and implementation of distributed systems. The client server 
+paradigm, inter-process communications, synchronization and concurrency control, naming, consistency and 
+replication, fault tolerance, and distributed file systems. Graduate credit requires additional in-depth 
+study of concepts. Programming projects and written reports.
+M W F	3:10 - 4:00P
+- Eh, rather not
