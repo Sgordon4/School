@@ -1,7 +1,11 @@
 
+Fri 8/21/2020
+X CprE 492: Intro Quiz
+  CprE 474: Pretest at 2:10 in class
+
 Sun 8/23/2020
-  CprE 431: Student Introductions Discussion Post
-  CprE 431: Mod 1 Homework
+X CprE 431: Student Introductions Discussion Post
+X CprE 431: Mod 1 Homework
   CprE 431: Mod 1 Quiz
 
 Thu 8/27/2020
@@ -86,7 +90,7 @@ Thu 11/12/2020
   Arch 321: Mod 3 - Attend Scheduled Synchronous Discussions With Group 4
   Arch 321: Mod 3 - Write 4 Lec/Film Responses
 
-Sun 11/16/2020
+Wed 11/16/2020
   CprE 492: PIRM Review (Second Half of Semester)
 
 Sun 11/22/2020

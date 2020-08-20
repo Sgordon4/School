@@ -1,0 +1,110 @@
+\documentclass[12pt]{article}
+\usepackage[12pt]{moresize}
+\usepackage[margin=1in]{geometry}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{graphicx}
+\usepackage{subcaption}
+
+\usepackage{multirow} %Combining rows in tables
+\usepackage{diagbox}  %Table box split in twain
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{alltt}
+
+\usepackage{multicol}
+
+\usepackage{amssymb} %\checkmark symbol
+
+%\usepackage{hyperref}
+%\usepackage[latin1]{inputenc}
+%\usepackage{listings}
+%\usepackage{scrextend}
+%\usepackage{changepage} %Adjustwidth
+
+ 
+
+\title{ComS 431\\Homework 1}
+\author{Sean Gordon}
+\date{Aug 23, 2020}
+
+\begin{document}
+\maketitle
+
+
+\noindent\hrulefill \\
+
+
+\noindent 1)\\
+\indent A \textit{threat} is what we are trying to protect against.\\
+\indent A \textit{vulnerability} is a weakness or gap in our defenses.\\
+\indent A \textit{risk} is the potential for loss or damages as a result of a \textit{threat} exploting a \textit{vulnerability}.\\
+
+
+\noindent \hrulefill \\
+
+
+\noindent 2)\\
+\indent (a)\\
+\indent \textbf{Confideniality:} The system must ensure the user's PIN is kept confidential from\\
+\indent\indent any passerbys or moderators of the ATM. This example is of high importance.\\
+\indent \textbf{Integrity:} The transactions done via the ATM system must preserve the bank\\
+\indent\indent account integrity. This example is of medium importance\\
+\indent \textbf{Availability:} The ATM machine itself must be physically available and operable to \\
+\indent\indent those that wish to use it. This example is of low importance\\
+
+\indent (b)\\
+\indent \ \ i. Confidentiality is affected here. To resolve this, the data could be encrypted before\\
+\indent \indent\ transfer.\\
+\indent \ ii. Non-repudiation is broken here. To resolve this, the ATM would remove the\\
+\indent \indent\ functionality to increase/decrease account monetary value.\\
+\indent iii. Integrity is affected here. To resolve this, the ATM would not allow transactions\\
+\indent \indent\ without stable internet connection.\\
+
+\noindent \hrulefill \\
+\pagebreak
+
+\noindent 3)\\
+\indent (a) If the call to IsAccessAllowed fails but the error is not of the same type as ERROR,\\
+\indent the user will be allowed to continue.\\
+
+
+\floatname{algorithm}{}
+\renewcommand{\thealgorithm}{}
+\begin{algorithm}[H]
+\caption{(b) Rewritten Pseudocode to Avoid Security Flaw}
+\begin{algorithmic} []
+\State 
+\State 
+\State DWORD dwRet = IsAccessAllowed(...);
+\State 
+\If {isNotError(dwRet)}
+\State // Security check OK.
+\Else
+\State // Security check failed.
+\State //Inform user that access is denied.
+\EndIf
+\State 
+\end{algorithmic}
+\end{algorithm}
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
