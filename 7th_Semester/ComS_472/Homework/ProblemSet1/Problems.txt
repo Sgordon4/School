@@ -1,0 +1,106 @@
+Exercise 3.2
+
+Give a complete problem formulation for each of the following problems. 
+Choose a formulation that is precise enough to be implemented.
+
+There are six glass boxes in a row, each with a lock. Each of the first 
+five boxes holds a key unlocking the next box in line; the last box holds 
+a banana. You have the key to the first box, and you want the banana.
+
+You start with the sequence ABABAECCEC, or in general any sequence made 
+from A, B, C, and E. You can transform this sequence using the following 
+equalities: AC = E, AB = BC, BB = E, and Ex = x for any x. For example, 
+ABBC can be transformed into AEC, and then AC, and then E. Your goal is 
+to produce the sequence E.
+
+There is an n×n grid of squares, each square initially being either 
+unpainted floor or a bottomless pit. You start standing on an unpainted 
+floor square, and can either paint the square under you or move onto an 
+adjacent unpainted floor square. You want the whole floor painted.
+
+A container ship is in port, loaded high with containers. There 13 rows 
+of containers, each 13 containers wide and 5 containers tall. You control 
+a crane that can move to any location above the ship, pick up the container 
+under it, and move it onto the dock. You want the ship unloaded.
+
+
+----------------------------------------------------------------------------
+
+Exercise 3.4
+
+You have a 9×9 grid of squares, each of which can be colored red or blue. 
+The grid is initially colored all blue, but you can change the color of 
+any square any number of times. Imagining the grid divided into nine 3×3 
+sub-squares, you want each sub-square to be all one color but neighboring 
+sub-squares to be different colors.
+
+Formulate this problem in the straightforward way. Compute the size of 
+the state space.
+
+You need color a square only once. Reformulate, and compute the size of 
+the state space. Would breadth-first graph search perform faster on this 
+problem than on the one in (a)? How about iterative deepening tree search?
+
+Given the goal, we need consider only colorings where each sub-square is uniformly 
+colored. Reformulate the problem and compute the size of the state space.
+
+How many solutions does this problem have?
+
+Parts (b) and (c) successively abstracted the original problem (a). Can you 
+give a translation from solutions in problem (c) into solutions in problem (b), 
+and from solutions in problem (b) into solutions for problem (a)?
+
+----------------------------------------------------------------------------
+
+Exercise 3.7 [nqueens-size-exercise]
+
+Consider the n-queens problem using the “efficient” incremental formulation 
+given on page nqueens-page. Explain why the state space has at least n!−−√3 
+states and estimate the largest n for which exhaustive exploration is feasible. 
+(Hint: Derive a lower bound on the branching factor by considering the maximum 
+number of squares that a queen can attack in any column.)
+
+----------------------------------------------------------------------------
+
+Exercise 3.17
+
+Which of the following are true and which are false? Explain your answers.
+
+Depth-first search always expands at least as many nodes as A search with 
+an admissible heuristic.
+
+h(n)=0 is an admissible heuristic for the 8-puzzle.
+
+A is of no use in robotics because percepts, states, and actions are continuous.
+
+Breadth-first search is complete even if zero step costs are allowed.
+
+Assume that a rook can move on a chessboard any number of squares in a 
+straight line, vertically or horizontally, but cannot jump over other pieces. 
+Manhattan distance is an admissible heuristic for the problem of moving the 
+rook from square A to square B in the smallest number of moves.
+
+----------------------------------------------------------------------------
+
+Exercise 3.22
+
+Describe a state space in which iterative deepening search performs much 
+worse than depth-first search (for example, O(n2) vs. O(n)).
+
+----------------------------------------------------------------------------
+
+Exercise 3.27
+
+Trace the operation of A search applied to the problem of getting to 
+Bucharest from Lugoj using the straight-line distance heuristic. That is, 
+show the sequence of nodes that the algorithm will consider and the f, g, 
+and h score for each node.
+
+----------------------------------------------------------------------------
+
+Exercise 3.31
+
+The heuristic path algorithm @Pohl:1977 is a best-first search in which 
+the evaluation function is f(n)=(2−w)g(n)+wh(n). For what values of w is 
+this complete? For what values is it optimal, assuming that h is admissible? 
+What kind of search does this perform for w=0, w=1, and w=2?

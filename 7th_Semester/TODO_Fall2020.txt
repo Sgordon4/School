@@ -1,4 +1,7 @@
 
+Mon 9/7/2020
+  ComS 474: HW1
+
 Tue 9/8/2020
   Arch 321: Mod 1 - Watch 4 lectures
   Arch 321: Mod 1 - Watch "New York (Ric Burns)" Ep 1 on Canvas
@@ -7,6 +10,9 @@ Tue 9/8/2020
 Thu 9/10/2020
   Arch 321: Attend Group 4 Discussion 2 at 1:30 pm,  
 				https://canvas.iastate.edu/groups/131883/discussion_topics/706579
+
+Fri 9/11/2020
+  ComS 472: Problem Set 1 @ 5:00pm
 
 Mon 9/14/2020
   CprE 492: Biweekly Status Report 2
