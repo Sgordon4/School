@@ -1,0 +1,85 @@
+\documentclass[12pt]{article}
+\usepackage[12pt]{moresize}
+\usepackage[margin=1in]{geometry}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{graphicx}
+\usepackage{subcaption}
+
+\usepackage{multirow} %Combining rows in tables
+\usepackage{diagbox}  %Table box split in twain
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{alltt}
+
+\usepackage{multicol}
+
+\usepackage{amssymb} %\checkmark symbol
+
+%\usepackage{hyperref}
+%\usepackage[latin1]{inputenc}
+%\usepackage{listings}
+%\usepackage{scrextend}
+%\usepackage{changepage} %Adjustwidth
+
+ 
+
+\title{ComS 431\\Homework 2}
+\author{Sean Gordon}
+\date{Sep 6, 2020}
+
+\begin{document}
+\maketitle
+
+
+ \begin{enumerate}
+   \item The algorithm itself is sound, and you would be able to verify that your friend has the same key. However, if anybody happened to intercept both yours and your friend's transmission, they would simply need to XOR the two strings to obtain the secret key.\\
+   
+   \item 
+\begin{tabular}{|c|c|c|}
+ \hline &&\\[-1em]
+ Key Length (bits) & Number of Keys & Attack Time (Years) (Worst case scenario) \\
+ \hline &&\\[-1em]
+56 & $2^{56}$ & Avg = 761, \ \ Corp = .0076 \\
+ \hline &&\\[-1em]
+128 & $2^{128}$ & Avg = 3.6e24, Corp = 3.6e19 \\
+ \hline &&\\[-1em]
+ 256 & $2^{256}$ & Avg = 1.2e63, Corp = 1.2e58 \\
+ \hline &&\\[-1em]
+ 512 & $2^{512}$ & Avg = 1.4e140, Corp = 1.4e135 \\
+ \hline
+\end{tabular}\\
+
+    \begin{enumerate}
+    \item See table.
+        
+     \item \
+         \begin{enumerate}
+         \item NewTime = OldTime / 1000
+         \item NewTime = OldTime / (keySize / 2)
+         \end{enumerate}
+         Comparing these two outcomes, the second option would eclipse the first once the keysize/2 reached 1000, or when the keysize became $2^{11}$. This is the case with just the first key length, and thus we should choose the second option.
+    \end{enumerate}
+\end{enumerate}
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

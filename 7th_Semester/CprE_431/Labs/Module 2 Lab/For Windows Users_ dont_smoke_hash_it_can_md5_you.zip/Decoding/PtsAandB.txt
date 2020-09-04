@@ -1,0 +1,6 @@
+Key for dont_smoke_hash_it_can_md5_you.zip: 
+D6192FC25D86EEECB9B4E8A54DA0FDD2
+
+Command for pt b:
+openssl aes256 -d -salt -in funny_jokes.txt -out funny_jokes_decrypted.txt
+

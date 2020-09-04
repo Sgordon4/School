@@ -1,0 +1,1 @@
+Bank account: 112233445500. Use "https://www.mobilefish.com/services/steganography/steganography.php" to extract the design scheme from the attached image. Hint: use the bank account number as the password.

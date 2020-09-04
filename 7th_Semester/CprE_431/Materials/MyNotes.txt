@@ -1,0 +1,15 @@
+Mod 2 ----------------------------------------------------
+
+Confidentiality: Encrypt with public (Pu) key, only user with private (Pr) can decrypt
+Authentication: Encrypt with Pr key. If can decrypt with Pu key, you know it is from user with Pr
+
+Best way to store Pu keys for public access is to register them with trusted authority, so
+  that nobody can  impersonate a user and trick people into using their own public key.
+
+--------
+
+Symmetric key encryption is faster than Pu/Pr encryption, BUT each user needs a key for EVERY OTHER
+  user, so thats a lot of keys. Pu/Pr only needs 2 per user.
+If you need to encrypt a TON of data (~1 TB), you need to use symmetric keys, but how to send key?
+SOLUTION is to create a symmetric key, and use Pu/Pr to send the symmetric key safely.
+This key would be used temporarily for this one encryption instance, so you dont need to save it.

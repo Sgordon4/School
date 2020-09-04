@@ -1,26 +1,4 @@
 
-Fri 8/21/2020
-X CprE 492: Intro Quiz
-  CprE 474: Pretest at 2:10 in class
-
-Sun 8/23/2020
-X CprE 431: Student Introductions Discussion Post
-X CprE 431: Mod 1 Homework
-  CprE 431: Mod 1 Quiz
-
-Thu 8/27/2020
-  Arch 321: Attend Group 4 Discussion 1 at 1:30 pm, 
-				https://canvas.iastate.edu/groups/131883/discussion_topics/706579
-
-Mon 8/31/2020
-  CprE 431: ELO Navigation Survey (Optional and Anonymous)(A point is awarded if 75% of students submit)
-
-Sun 9/6/2020
-  CprE 431: Mod 2 Discussion
-  CprE 431: Mod 2 Quiz
-  CprE 431: Mod 2 Homework
-  CprE 431: Mod 2 Lab HW
-
 Tue 9/8/2020
   Arch 321: Mod 1 - Watch 4 lectures
   Arch 321: Mod 1 - Watch "New York (Ric Burns)" Ep 1 on Canvas
@@ -30,38 +8,56 @@ Thu 9/10/2020
   Arch 321: Attend Group 4 Discussion 2 at 1:30 pm,  
 				https://canvas.iastate.edu/groups/131883/discussion_topics/706579
 
-Sun 9/13/2020
-  CprE 492: Biweekly Status Report 1
+Mon 9/14/2020
+  CprE 492: Biweekly Status Report 2
+
+Thu 9/17/2020
+  CprE 431: Mod 3 Discussion Post
 
 Sun 9/20/2020
   CprE 431: Mod 3 Homework
-  CprE 431: Mod 3 Lab HW
+  CprE 431: Mod 3 Quiz
+  CprE 431: Mod 3 Lab
+  CprE 431: Mod 3 Discussion Reply
 
 Thu 9/24/2020
   Arch 321: Attend Group 4 Discussion 3 at 1:30 pm, 
 				https://canvas.iastate.edu/groups/131883/discussion_topics/706579
 
-Sun 9/27/2020
-  CprE 492: Biweekly Status Report 2
+Mon 9/28/2020
+  CprE 492: Biweekly Status Report 3
 
 Thu 10/1/2020
   Arch 321: Mod 2 - Watch 5 lectures
   Arch 321: Mod 2 - Watch "Becoming American: The Chinese Experience (Lennon/Yang)" Ep 1 on Canvas
   Arch 321: Mod 2 - Write 4 Lec/Film Responses
+  CprE 431: Mod 4 Discussion Post
 
 Sun 10/4/2020
   CprE 431: Mod 4 Homework
-  CprE 431: Mod 4 Lab HW
+  CprE 431: Mod 4 Quiz
+  CprE 431: Mod 4 Lab
+  CprE 431: Mod 4 Discussion Reply
 
-Sun 10/4/2020 ?
+Wed 10/7/2020
   CprE 492: PIRM Review (First Half of Semester)
 
 Thu 10/8/2020
   Arch 321: Attend Group 4 Discussion 4 at 1:30 pm,  
 				https://canvas.iastate.edu/groups/131883/discussion_topics/706579
+  CprE 431: Mod 5 Discussion Post
+
+--------------------------------------------------
+Sat 10/10/2020 @11:59am to Mon 10/12/2020 @11:59pm
+			   CprE 431 Midterm Exam
+--------------------------------------------------
 
 Sun 10/11/2020
-  CprE 492: Biweekly Status Report 3
+  CprE 431: Mod 5 Homework
+  CprE 431: Mod 5 Discussion Reply
+
+Mon 10/12/2020
+  CprE 492: Biweekly Status Report 4
 
 Mon 10/19/2020
   CprE 431: ELO Course Design Survey
@@ -72,29 +68,55 @@ Thu 10/22/2020
   Arch 321: Mod 3 - Watch 4 lectures
   Arch 321: Mod 3 - Watch "The Great Migration" Intro AND "The African Americans" Ep 4 on Canvas
   Arch 321: Mod 3 - Write 4 Lec/Film Responses
+  CprE 431: Mod 6 Discussion Post
+
+Fri 10/23/2020
+  CprE 431 Class Presentations Due
 
 Sun 10/25/2020
-  CprE 431: Mod 6 Lab HW
-  CprE 492: Biweekly Status Report 4
+  CprE 431: Mod 6 Homework
+  CprE 431: Mod 6 Quiz
+  CprE 431: Mod 6 Discussion Reply
+
+Mon 10/26/2020
+  CprE 492: Biweekly Status Report 5
 
 Thu 11/5/2020
   Arch 321: Attend Group 4 Discussion 6 at 1:30 pm,  
 				https://canvas.iastate.edu/groups/131883/discussion_topics/706579
+  CprE 431: Mod 7 Discussion Post
 
 Sun 11/8/2020
-  CprE 492: Biweekly Status Report 5
+  CprE 431: Mod 7 Homework
+  CprE 431: Mod 7 Quiz
+  CprE 431: Mod 7 Discussion Reply
+
+Mon 11/9/2020
+  CprE 492: Biweekly Status Report 6
 
 Thu 11/12/2020
   Arch 321: Mod 3 - Watch 4 lectures
   Arch 321: Mod 3 - Watch "Eyes on the Prize" AND "TBA" on Canvas
   Arch 321: Mod 3 - Attend Scheduled Synchronous Discussions With Group 4
   Arch 321: Mod 3 - Write 4 Lec/Film Responses
+  CprE 431: Mod 8 Discussion Post
+
+Sun 11/15/2020
+  CprE 431: Mod 8 Homework
+  CprE 431: Mod 8 Quiz
+  CprE 431: Mod 8 Discussion Reply
 
 Wed 11/16/2020
   CprE 492: PIRM Review (Second Half of Semester)
+  
+------------------------------------------------
+Sat 11/21/2020 @4:00pm to Mon 10/12/2020 @4:00pm
+			   CprE 431 Final Exam
+------------------------------------------------
 
-Sun 11/22/2020
-  CprE 492: Biweekly Status Report 6
+Mon 11/22/2020
+  CprE 431 Final Project
+  CprE 431 Peer Evaluation
 
 Wed 11/25/2020
   Arch 321: Mod 3 - Watch 2 lectures
@@ -112,6 +134,34 @@ Thu 12/10/2020 ?
 
 
 -------------------------------------------------
+
+Sun 9/6/2020
+X CprE 431: Mod 2 Discussion Reply
+X CprE 431: Mod 2 Quiz
+X CprE 431: Mod 2 Homework
+X CprE 431: Mod 2 Lab HW
+
+Thu 9/3/2020
+X CprE 431: Mod 2 Discussion Post
+
+Mon 8/31/2020
+X CprE 492: Biweekly Status Report 1
+X CprE 431: ELO Navigation Survey (Optional and Anonymous)(A point is awarded if 75% of students submit)
+
+Thu 8/27/2020
+X Arch 321: Attend Group 4 Discussion 1 at 1:30 pm, 
+				https://canvas.iastate.edu/groups/131883/discussion_topics/706579
+				
+Sun 8/23/2020
+X CprE 431: Student Introductions Discussion Post
+X CprE 431: Mod 1 Homework
+X CprE 431: Mod 1 Quiz
+X CprE 431: Mod 1 Discussion, Respond to Teamates
+
+Fri 8/21/2020
+X CprE 492: Intro Quiz
+X CprE 474: Pretest at 2:10 in class
+X CprE 431: Mod 1 Discussion
 
 Tue 8/18/2020
 - Arch 321: First Live Session at 12:40 pm 
