@@ -1,0 +1,236 @@
+\documentclass[12pt]{article}
+\usepackage[12pt]{moresize}
+\usepackage[margin=1in]{geometry}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{graphicx}
+\usepackage{subcaption}
+
+\usepackage{multirow} %Combining rows in tables
+\usepackage{diagbox}  %Table box split in twain
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{alltt}
+
+\usepackage{multicol}
+
+\usepackage{amssymb} %\checkmark symbol
+
+%\usepackage{hyperref}
+%\usepackage[latin1]{inputenc}
+%\usepackage{listings}
+%\usepackage{scrextend}
+%\usepackage{changepage} %Adjustwidth
+
+ 
+
+\title{ComS 472\\Homework 1}
+\author{Sean Gordon}
+\date{Sep 11, 2020}
+
+\begin{document}
+\maketitle
+
+- 3.2 - \\
+
+(a) \textbf{States:} 			Glass box holds key or banana\\
+\indent\indent \textbf{Initial State:}		Hold key to box 1, outside box 1\\
+\indent\indent \textbf{Goal Test:	}		Holding banana\\
+\indent\indent \textbf{Actions:}			Open next box using key, move into next box, get contents of current box\\
+\indent\indent \textbf{Transition Model:}	A box is opened, a box's contents are obtained\\
+\indent\indent \textbf{Cost Function:}		Each action costs 1 unit\\
+
+(b) \textbf{States:}				A sequence of characters\\
+\indent\indent \textbf{Initial State:}		Sequence = ABABAECCEC\\
+\indent\indent \textbf{Goal Test:	}		Sequence = E\\
+\indent\indent \textbf{Actions:}			AC = E, AB = BC, BB = E, and Ex = x for any x\\
+\indent\indent \textbf{Transition Model:}	Transform two adjacent characters using an action\\
+\indent\indent \textbf{Cost Function:}		Each transformation costs 1 unit\\
+
+(c) \textbf{States:}				Square is painted, unpainted, or is a bottomless pit\\
+\indent\indent \textbf{Initial State:}		All squares unpainted or bottomless, Standing on arbitrary square\\
+\indent\indent \textbf{Goal Test:	}		All non-bottomless squares painted\\
+\indent\indent \textbf{Actions:}			Paint current square, move to adjacent non-bottomless unpainted square\\
+\indent\indent \textbf{Transition Model:}	A square is painted, a square is moved to\\
+\indent\indent \textbf{Cost Function:}		Each action costs 1 unit\\
+
+(d) \textbf{States:}				3D grid position contains a shipping container or is empty.\\
+\indent\indent \textbf{Initial State:}		Each grid space contains a shipping container, crane at (0, 0)\\
+\indent\indent \textbf{Goal Test:}			Each grid space is empty\\
+\indent\indent \textbf{Actions:}			Move crane to (x,y) coordinate, pick up container under crane coordinate,\\ 
+\indent\indent drop container on dock\\
+\indent\indent \textbf{Transition Model:}	Crane is moved to (x,y), crane picks up container, \\ 
+\indent\indent crane drops container on dock\\
+\indent\indent \textbf{Cost Function:}		Each action costs 1 unit
+
+
+
+\noindent \hrulefill \\
+
+
+
+- 3.4 - \\
+
+(a) \textbf{States:}				Square is red or blue\\
+\indent\indent \textbf{Initial State:}		All squares blue\\
+\indent\indent \textbf{Goal Test:	}		Each 3x3 sub square is of a differing color than it's neighbors\\
+\indent\indent \textbf{Actions:}			Color square, move to next square\\
+\indent\indent \textbf{Transition Model:}	Square is colored, moved to next square\\
+\indent\indent \textbf{Cost Function:}		Each action costs 1 unit\\
+	
+\indent\indent State space = $(\#states)^{\#squares}$ = $(2)^{81}$ = 2,417,851,639,229,258,349,412,352\\
+\indent\indent (Or is it infinite? The wording has me confused)\\
+
+(b) \textbf{States:} 				Square is red or blue\\
+\indent\indent \textbf{Initial State:}		All squares blue\\
+\indent\indent \textbf{Goal Test:}		Each 3x3 sub square is of a differing color than it's neighbors\\
+\indent\indent \textbf{Actions:}			Color square and move to next square, move to next square\\
+\indent\indent \textbf{Transition Model:}	Square is colored and moved to next square, \\
+\indent\indent moved to next square\\
+\indent\indent \textbf{Cost Function:}		Each action costs 1 unit\\
+	
+\indent\indent State space = $(\#states)^{\#squares}$ = $(2)^{81}$ = 2,417,851,639,229,258,349,412,352\\
+	
+\indent\indent BFS would indeed perform faster as the new constraint would remove cycles.\\
+\indent\indent Iterative deepening would also perform faster for the same reason.\\
+	
+(c) \textbf{States:}				Subsquare is red or blue\\
+\indent\indent \textbf{Initial State:}		All subsquares blue\\
+\indent\indent \textbf{Goal Test:	}		Each subsquare is of a differing 7color than it's neighbors\\
+\indent\indent \textbf{Actions:}			Color entire subsquare and move to next subsquare, \\
+\indent\indent move to next subsquare\\
+\indent\indent \textbf{Transition Model:}	Subsquare is colored and moved to next subsquare, \\
+\indent\indent moved to next subsquare\\
+\indent\indent \textbf{Cost Function:}		Each action costs 1 unit\\
+	
+\indent\indent State space = $(\#states)^{\#squares}$ = $(2)^{9}$ = 512\\
+
+(d) 2 solutions\\
+
+(e) i.  C $->$ B: Break each subsquare into 9 squares in a 3x3\\
+\indent\indent ii. B $->$ A: Problems A and B have the same solutions\\
+
+
+
+
+
+\noindent \hrulefill \pagebreak
+
+
+
+
+- 3.7 -\\
+
+A given queen can attack at most 3 spaces in a given column.\\
+\indent Therefore, when placing the next queen, there are at least n-3q valid spaces,\\
+\indent\ \  where q is the total number of queens already placed.\\
+\indent Counting the total number of states: n(n-3)(n-6)(n-9)...(n-3c)\\
+\indent With some algebra, this can be simplified into $(n!)^{1/3}$\\
+
+Exhaustive search becomes infeasible when n $>$ 33\\
+
+
+
+
+
+\noindent \hrulefill \\
+
+
+
+
+- 3.17 - \\
+
+(a) False. The search goal may be at the far bottom left of the search tree, \\
+\indent\indent of which DFS will head towards immediately. A* must first go through \\
+\indent\indent the surrounding nodes of the starting point.\\
+
+(b) True. The search heuristic is required to never overestimate the cost. \\
+\indent\indent This heuristic is almost  guaranteed to underestimate. It will be ineffective, \\
+\indent\indent but it will work.\\
+
+(c) False. A* is used commonly in image recognition.\\
+
+(d) True. BFS will find a goal if it exists, and is only concerned with the goal with the \\
+\indent\indent shortest depth. As this is unaffected by step cost, BFS remains complete.\\
+
+(e) False. As Manhattan distance requires only one square moved at a time, \\
+\indent\indent and a rook can move multiple squares at a time if given space, \\
+\indent\indent Manhattan distance may overestimate the cost.
+
+
+
+
+\noindent \hrulefill \\
+
+
+
+
+- 3.22 - \\
+
+If the tree to be searched is a straight line of nodes (A-B-C-D-E-...), \\
+\indent BFS and Iterative Deepening will use around the same amount of memory, \\
+\indent but BFS will not stop on its path to the goal like Iterative Deepening will.\\
+  
+  
+  
+\noindent \hrulefill \\\pagebreak
+
+
+- 3.27 -\\
+
+
+\begin{tabular}{|c|c|c|c|c|c|}\hline &&\\[-1em]
+
+Current & Adding & g(n) & h(n) & f(n) & Open Nodes  \\ \hline &&\\[-1em]\hline\\[-1em]
+
+Start		& Lugoj 	& 0 	& 244 	& 244 	& (Lugo, 244) 				\\ \hline &&&&&\\[-1em]
+Lugoj		& Timisoara 	& 111 & 329 	& 440 	& (Timi, 440) 				\\ \hline &&&&&\\[-1em]
+Lugoj		& Mehadia 	& 70	& 241 	& 301 	& (Timi, 440), (Meha, 301) 		\\ \hline &&&&&\\[-1em]
+Mehadia	& Dobreta 	& 145	& 242 	& 387 	& (Timi, 440), (Dobr, 387) 			\\ \hline &&&&&\\[-1em]
+Dobreta	& Craiova 	& 265	& 160 	& 425 	& (Timi, 440), (Crai, 425) 			\\ \hline &&&&&\\[-1em]
+Craiova	& Rimnicu 	& 411	& 193 	& 604 	& (Timi, 440), (Rimn, 604) 			\\ \hline &&&&&\\[-1em]
+Craiova	& Pitesti 	& 403	& 100 	& 503 	& (Timi, 440), (Rimn, 604), (Pite, 503)	\\ \hline &&&&&\\[-1em]
+Timisoara	& Arad 	& 229	& 366 	& 595 	& (Rimn, 604), (Pite, 503), (Arad, 595)	\\ \hline &&&&&\\[-1em]
+Pitesti		& Bucharest 	& 504	& 0 	& 504 	& (Rimn, 604), (Arad, 595), (Buch, 504)\\ \hline &&&&&\\[-1em]
+Bucharest	&   		& 	&  	&  	& (Rimn, 604), (Arad, 595)		\\ \hline
+\end{tabular}\\\\
+
+
+
+
+
+\noindent \hrulefill \\
+
+
+
+- 3.31 -\\
+
+\noindent \textbf{Complete:} $0 < w < 2$\\
+\noindent \textbf{Optimal:} $0 < w < 1$\\
+\noindent \textbf{w==0:} Uninformed best-first search. \textbf{w==1:} A* search. \textbf{w==2:} Greedy best-first search\\
+
+
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

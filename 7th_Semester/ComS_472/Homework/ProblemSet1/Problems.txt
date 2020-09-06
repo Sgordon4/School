@@ -55,7 +55,7 @@ and from solutions in problem (b) into solutions for problem (a)?
 Exercise 3.7 [nqueens-size-exercise]
 
 Consider the n-queens problem using the “efficient” incremental formulation 
-given on page nqueens-page. Explain why the state space has at least n!−−√3 
+given on page nqueens-page. Explain why the state space has at least {3}√n! 
 states and estimate the largest n for which exhaustive exploration is feasible. 
 (Hint: Derive a lower bound on the branching factor by considering the maximum 
 number of squares that a queen can attack in any column.)
@@ -104,3 +104,4 @@ The heuristic path algorithm @Pohl:1977 is a best-first search in which
 the evaluation function is f(n)=(2−w)g(n)+wh(n). For what values of w is 
 this complete? For what values is it optimal, assuming that h is admissible? 
 What kind of search does this perform for w=0, w=1, and w=2?
+
