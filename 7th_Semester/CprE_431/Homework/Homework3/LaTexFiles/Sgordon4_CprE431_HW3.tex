@@ -1,0 +1,99 @@
+\documentclass[12pt]{article}
+\usepackage[12pt]{moresize}
+\usepackage[margin=1in]{geometry}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{graphicx}
+\usepackage{subcaption}
+
+\usepackage{multirow} %Combining rows in tables
+\usepackage{diagbox}  %Table box split in twain
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{alltt}
+
+\usepackage{multicol}
+
+\usepackage{amssymb} %\checkmark symbol
+
+%\usepackage{hyperref}
+%\usepackage[latin1]{inputenc}
+%\usepackage{listings}
+%\usepackage{scrextend}
+%\usepackage{changepage} %Adjustwidth
+
+ 
+
+\title{CprE 431\\Homework 3}
+\author{Sean Gordon}
+\date{Sep 20, 2020}
+
+\begin{document}
+\maketitle
+
+
+ \begin{enumerate}
+    \item DAC 
+		\begin{itemize}
+		\item Access is determined using the user's identity and ACE entries.
+		\item A user is given access to a file by being added to its ACL.
+		\item A user can extend permissions it has to other users.
+		\end{itemize}
+	 MAC
+		\begin{itemize}
+		\item Access is determined using a user's role.
+		\item Access is given ONLY by administrators.\\\\
+		\end{itemize}
+   
+    \item Salt is used simply to change the hash. This stops an attacker from breaking hashes by just generating a single list of hashes for common passwords. An attacker will now need to generate that list for each  salt value as well.\\\\
+   
+    \item\begin{enumerate}
+   	\item High security, but have to change permissions for each file to share with a broader audience.\\
+   	Best for a system where files are considered important unless stated otherwise, like a government org.
+   	\item Security based on groups, less secure but easier to work with.\\
+   	Best for a set of groups which kep their work private from each other, but top security is not necessary, like a large business.
+   	\item Low security, but very easy to work with.\\
+   	Best where every user is trusted and works closely together, like a small business.\\
+   	\end{enumerate}
+   	\pagebreak
+   
+    \item\begin{enumerate}
+	\item Each running service takes computer resources, and could be available for use to an attacker.
+	\item Information is stored in the /etc directory or the installation tree for specific applications.
+	\item It is used to restrict a users view by mapping root to another location, essentially trapping them in that directory and its children. It is fairly easy to escape however, with many 		documented mechanisms.\\\\
+   	\end{enumerate}
+   	
+    \item\begin{enumerate}
+	\item Allows system administators to more quickly identify any issues.
+	\item Can only tell you what has already happened, and only at certain ranges of data.
+	\item Remote logging doesn't require logs to be kept on the system they are created. However, it takes bandwith.
+	\item If log files are not rotated, they stay forever and quickly build up space.\\\\
+   	\end{enumerate}
+
+    \item \begin{enumerate}
+	\item User tries multiple times to log in with different passwords.
+	\item User tries accessing unusual websites that have been flagged as malicious.
+   	\end{enumerate}
+\end{enumerate}
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
