@@ -1,0 +1,8 @@
+Sean Gordon, critique of Team 28 - Micromouse (tfuchs@iastate.edu)
+
+1) It was difficult to understand what the project was until later in the powerpoint when the maze was 
+	revealed. At first I assumed it was some sort of computer mouse, but was confused on its operation.
+
+2) I liked the diagram of the mouse's path through the maze with the obsolete section in the center, as it 
+	gave a good visual for the operation of the maze pathfinding algorithm, and showed it has implemented 
+	path pruning.
