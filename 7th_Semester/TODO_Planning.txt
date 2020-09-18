@@ -1,0 +1,74 @@
+[X] Take out garbage
+[X] Make list of hard skills
+[X] Make list of soft skills
+[-] Make list of dream programming jobs
+[X] Resume draft 1
+[X] Update LinkedIn
+[X] Check Accessplus for new homework and projects
+[ ] Do homework
+[ ] Take LinkedIn Skill Quiz
+[ ] Write resume cover letter
+[ ] Apply for 1 job
+
+[ ] Build part of Gallery App
+[ ] Apply for more jobs 
+[ ] Do homework
+[ ] Build part of Gallery App
+[ ] Apply for more jobs 
+[ ] Do homework
+[ ] Build part of Gallery App
+[ ] Apply for more jobs 
+[ ] Do homework
+
+
+
+--------------------------------
+			Homework
+--------------------------------
+
+Updated future plan
+
+Thu 9/17:
+	ComS 472: HW requires more research, why am I even taking this class if I'm just straight up teaching myself
+
+Fri 9/18: 
+	CprE 431: Office hours for mod3 lab2
+	CprE 431: Complete mod3 lab2
+	
+	... Sometime in the future ...
+	
+	ComS 474: Teach myself, understand what's going on
+	ComS 474: Complete HW
+	
+	Arch 321: Watch all lectures, do reflections
+
+	CprE 431: Complete mod4
+	
+	ComS 472: Teach myself, understand what's going on
+	ComS 472: Complete HW
+	ComS 472: Complete Project
+	ComS 472: Understand everything before exam on 10/5
+	
+
+Thu 9/24
+	Arch 321: Attend discussion @1:30pm
+
+Fri 9/25
+	CprE 431: Mod 5 opens up, begin and finish
+	At this point, not including exams, I will be an entire month ahead, and can finally resume construction of the app
+
+
+
+Tue 9/15: Begin CprE 431 Mod3
+Wed 9/16: Complete CprE 431 Mod3
+Thu 9/17: Complete ComS 472 Prob set 2
+Fri 9/18: Read ComS 474 lec 8-14, do HW2
+Sat 9/19: Complete Arch 321 Mod2
+Sun 9/20: Begin ComS 472 Proj1
+Mon 9/21: Complete ComS 472 Proj1
+Tue 9/22: Begin CprE 431 Mod4
+Wed 9/23: Complete CprE 431 Mod4
+Finally program the goddamn app
+
+
+

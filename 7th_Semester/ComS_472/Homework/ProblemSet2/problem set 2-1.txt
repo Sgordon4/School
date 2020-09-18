@@ -1,0 +1,25 @@
+
+Com S 472/572 Fall 2020
+Problem Set 2 (110 pts)
+
+Due on Friday, Sep 25
+
+All exercises are from https://aimacode.github.io/aima-exercises/
+
+
+4.1 (2+2+2+2+2 = 10 pts) 
+4.7 (15 pts) 
+     -- refers to Section 4.4.1 and Figure 4.14
+        see attached "Exercise 4.7 vaccum2-sets-figure".
+4.8 a, b (5+5 = 10 pts) 
+4.10 (5 pts) 
+5.8 (6+3+5+6 = 20 pts)
+5.9 (3+4+3+4+4 = 18 pts) 
+     -- see attached "Exercise 5.8 line-game4-figure"
+5.14 (4+4+4+5 = 17 pts) 
+     -- see "Exercise 5.14 alpha-beta-proof-figures"
+     -- Typo in part 1: the second argument of min is n_{21} 
+        (i.e., subscripts 21} not "n_2 1" (i.e., 1 as a product 
+         factor). 
+Extra problem (15 pts) 
+     -- not for bonus points
