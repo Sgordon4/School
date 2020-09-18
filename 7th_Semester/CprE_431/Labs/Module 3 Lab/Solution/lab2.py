@@ -1,7 +1,6 @@
 import os
 import io
 import subprocess
-import crypt
 
 
 salt = "$6$xgLS35S6"

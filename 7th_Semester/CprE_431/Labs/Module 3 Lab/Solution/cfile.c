@@ -7,6 +7,15 @@
 char *cmd = "openssl passwd -6 -salt xgLS35S6 ";
 
 int main(){
+	
+	
+	
+	
+	
+	
+	
+	
+	exit(EXIT_SUCCESS);
 
 	FILE *fp;
 	char *line = NULL;
