@@ -1,6 +1,6 @@
 #!/bin/bash
-filename="100k-most-used-passwords-NIST.txt"
-realHash="$6$xgLS35S6$2UjEq.dUhICPw9zgDVJXcQYQp/9ilLPQt/8Zgu0uwngI5mVvB1eKQG9SnVLjmOOfkB4Jjb5VSAXGXjY4Cf5k90"
+filename="passwords.txt"
+realHash="\$6\$xgLS35S6\$2UjEq.dUhICPw9zgDVJXcQYQp/9ilLPQt/8Zgu0uwngI5mVvB1eKQG9SnVLjmOOfkB4Jjb5VSAXGXjY4Cf5k90"
 salt="xgLS35S6"
 
 

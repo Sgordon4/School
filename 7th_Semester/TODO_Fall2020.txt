@@ -1,7 +1,4 @@
 
-Fri 9/18/2020
-X Go to Omar Abbas office hours @3:00pm  for help on the lab
-
 Sun 9/20/2020
 X CprE 431: Mod 3 Homework
 X CprE 431: Mod 3 Quiz
@@ -137,6 +134,9 @@ Thu 12/10/2020 ?
 
 
 =============================================================================================================
+
+Fri 9/18/2020
+X Go to Omar Abbas office hours @3:00pm  for help on the lab
 
 Thu 9/17/2020
 X CprE 431: Mod 3 Discussion Post
