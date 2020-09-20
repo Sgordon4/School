@@ -27,15 +27,6 @@
 --------------------------------
 
 Updated future plan
-
-Thu 9/17:
-	ComS 472: HW requires more research, why am I even taking this class if I'm just straight up teaching myself
-
-Fri 9/18: 
-	CprE 431: Office hours for mod3 lab2
-	CprE 431: Complete mod3 lab2
-	
-	... Sometime in the future ...
 	
 	ComS 474: Teach myself, understand what's going on
 	ComS 474: Complete HW
