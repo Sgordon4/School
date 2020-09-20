@@ -1,0 +1,57 @@
+admin1@CPRE-431:/home$ sudo chmod 711 *
+
+In home directory:
+
+sudo chmod 711 *
+
+sudo chgrp prog user1/code
+sudo chmod 770 user1/code
+sudo chgrp prog user1/code/source_code.txt
+sudo chmod 760 user1/code/source_code.txt
+sudo chgrp prog user1/code/myapp.exe
+sudo chmod 710 user1/code/myapp.exe
+
+sudo chgrp staff user1/documentation
+sudo chmod 750 user1/documentation
+
+sudo chmod 744 user1/schedule.txt
+
+
+
+sudo chgrp prog user2/code
+sudo chmod 770 user2/code
+sudo chgrp prog user2/code/source_code.txt
+sudo chmod 760 user2/code/source_code.txt
+sudo chgrp prog user2/code/myapp.exe
+sudo chmod 710 user2/code/myapp.exe
+
+sudo chgrp staff user2/documentation
+sudo chmod 750 user2/documentation
+
+sudo chmod 744 user2/schedule.txt
+
+
+
+sudo chgrp prog user3/code
+sudo chmod 770 user3/code
+sudo chgrp prog user3/code/source_code.txt
+sudo chmod 760 user3/code/source_code.txt
+sudo chgrp prog user3/code/myapp.exe
+sudo chmod 710 user3/code/myapp.exe
+
+sudo chgrp staff user3/documentation
+sudo chmod 750 user3/documentation
+
+sudo chmod 744 user3/schedule.txt
+
+sudo chgrp mgmt user3/finance
+sudo chmod 700 user3/finance
+sudo chgrp mgmt user3/finance/business.txt
+sudo chmod 700 user3/finance/business.txt
+
+
+
+sudo chgrp mgmt user4/finance
+sudo chmod 700 user4/finance
+sudo chgrp mgmt user4/finance/business.txt
+sudo chmod 700 user4/finance/business.txt

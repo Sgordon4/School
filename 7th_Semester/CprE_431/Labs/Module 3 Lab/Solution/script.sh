@@ -1,19 +1,20 @@
 #!/bin/bash
-filename="passwords.txt"
-realHash="\$6\$xgLS35S6\$2UjEq.dUhICPw9zgDVJXcQYQp/9ilLPQt/8Zgu0uwngI5mVvB1eKQG9SnVLjmOOfkB4Jjb5VSAXGXjY4Cf5k90"
-salt="xgLS35S6"
 
+filename="100k-most-used-passwords-NIST.txt"
+dos2unix $filename		#Remove carriage returns, original hashed without them
 
+realHash="\$6\$QpU0v3n/\$Z5BKWAKu6SsZMI4KStZmlR/IZuhE9Ts.cezqBca3iApKmbT/GSBC1GUHf0I0mmytOdmqzclHkT47idGnpmHoe0"
+salt="QpU0v3n/"
+
+count=1
 while read -r line; do
-	val="$(openssl passwd -6 -salt $salt \'$line\')"
+	val="$(openssl passwd -6 -salt $salt $line)"
+	echo "$count : $val" | cat -v
+	
 	if (test $val = $realHash); then
-		echo "YUUUHHHHHHHH: $line"
+		echo "Correct Password: $line"
 		break; fi
-
-	#echo $val
-
+	
+	count=$((count+1))
 
 done < $filename
-
-
-#num=5; if ( test $realHash = $realHash); then echo "yes"; else echo "no"; fi
