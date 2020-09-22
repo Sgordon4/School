@@ -1,9 +1,0 @@
-- 4.1 - 
-1) Hill climb search
-2) Breadth first search, adding one layer of nodes at a time
-3) First Choice Hill climb search, as T=0 effectively removes temperature from the algorithm
-4) Random walk, as temperature would cause every successor to have equal probability
-5) Random walk, as the only chance for movement would be mutation
-
-
-- 4.7 -
