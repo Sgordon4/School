@@ -12,7 +12,7 @@ Unless otherwise stated,
 
 1. Given a sample with feature vector $x=[1.1, 2.2, 3.3]^T$,  what is its augmented feature vector? 
 
-2. If the weight vector of a linear classifier is $w=[1, 0, 1, 0]^T$, and we define that a sample belongs to class $+1$ if $w^Tx>0$ and $-1$ if $w^Tx<0$ where $x$ is the augmented feature vector of the sample, what is the class of the sample? 
+2. If the weight vector of a linear classifier is $w=[1, 0, 1, 0]^T$, and we define that a sample belongs to class $+1$ if $w^Tx > 0$ and $-1$ if $w^Tx < 0$ where $x$ is the augmented feature vector of the sample, what is the class of the sample? 
 
 3. In our discussion at the class, we used augmented but not normalized augmented (normalized and augmented) feature vectors to derive the solution for a linear classifier that minimizes the sum of squared error. What is the equation for computing the same loss function if using **normalized augmented** feature vectors? Let $x''_i$ be the normalized augmented feature vector of the $i$-th sample, and $w$ be the weight vector of the classifier. A correct prediction shall satisfy $w^Tx''_i>0$ regardless of the class of the sample because $x''_i$ has been normalized. You may use a computational algebra system to help -- but it is not required. It might be easier by hand on scratch paper.
 
