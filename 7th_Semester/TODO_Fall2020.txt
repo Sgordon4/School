@@ -1,19 +1,12 @@
 
-Thu 9/24/2020
-  Arch 321: Attend Group 4 Discussion 3 at 1:30 pm,
-				https://canvas.iastate.edu/groups/131883/discussion_topics/706579
-
-Fri 9/25/2020
-X ComS 472: ProblemSet 2
-
 Mon 9/28/2020
+X ComS 474: Homework 2
   CprE 492: Biweekly Status Report 3
-  ComS 474: Homework 2
 
 Thu 10/1/2020
-  Arch 321: Mod 2 - Watch 5 lectures
-  Arch 321: Mod 2 - Watch "Becoming American: The Chinese Experience (Lennon/Yang)" Ep 1 on Canvas
-  Arch 321: Mod 2 - Write 4 Lec/Film Responses
+X Arch 321: Mod 2 - Watch 5 lectures
+X Arch 321: Mod 2 - Watch "Becoming American: The Chinese Experience (Lennon/Yang)" Ep 1 on Canvas
+X Arch 321: Mod 2 - Write 4 Lec/Film Responses
   CprE 431: Mod 4 Discussion Post
 
 Sun 10/4/2020
@@ -130,6 +123,10 @@ Thu 12/10/2020 ?
 
 
 =============================================================================================================
+
+Thu 9/24/2020
+X Arch 321: Attend Group 4 Discussion 3 at 1:30 pm,
+				https://canvas.iastate.edu/groups/131883/discussion_topics/706579
 
 Sun 9/20/2020
 X CprE 431: Mod 3 Homework
