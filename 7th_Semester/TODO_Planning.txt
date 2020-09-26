@@ -28,11 +28,6 @@
 
 Updated future plan
 	
-	ComS 474: Teach myself, understand what's going on
-	ComS 474: Complete HW
-	
-	
-	Arch 321: Watch all lectures, do reflections
 	CprE 431: Complete mod4
 	
 	
@@ -40,13 +35,14 @@ Updated future plan
 	ComS 472: Understand everything before exam on 10/5
 	
 	
+	CprE 431: Complete mod5
+	
 
-Thu 9/24
-	Arch 321: Attend discussion @1:30pm
 
 Fri 9/25
 	CprE 431: Mod 5 opens up, begin and finish
 	At this point, not including exams, I will be an entire month ahead, and can finally resume construction of the app
+	They lied it didn't
 
 
 

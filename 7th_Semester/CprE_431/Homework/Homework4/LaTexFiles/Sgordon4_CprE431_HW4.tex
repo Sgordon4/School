@@ -27,56 +27,40 @@
 
  
 
-\title{CprE 431\\Homework 3}
+\title{CprE 431\\Homework 4}
 \author{Sean Gordon}
-\date{Sep 20, 2020}
+\date{Oct 4, 2020}
 
 \begin{document}
 \maketitle
 
 
  \begin{enumerate}
-    \item DAC 
-		\begin{itemize}
-		\item Access is determined using the user's identity and ACE entries.
-		\item A user is given access to a file by being added to its ACL.
-		\item A user can extend permissions it has to other users.
-		\end{itemize}
-	 MAC
-		\begin{itemize}
-		\item Access is determined using a user's role.
-		\item Access is given ONLY by administrators.\\\\
-		\end{itemize}
+    \item Machine-executable viruses attach themselves to a program that can be executed, while a macro virus embeds itself in popular applications. Because of the way they embed themselves, macro viruses tend to be platform independent.\\
    
-    \item Salt is used simply to change the hash. This stops an attacker from breaking hashes by just generating a single list of hashes for common passwords. An attacker will now need to generate that list for each  salt value as well.\\\\
-   
-    \item\begin{enumerate}
-   	\item High security, but have to change permissions for each file to share with a broader audience.\\
-   	Best for a system where files are considered important unless stated otherwise, like a government org.
-   	\item Security based on groups, less secure but easier to work with.\\
-   	Best for a set of groups which kep their work private from each other, but top security is not necessary, like a large business.
-   	\item Low security, but very easy to work with.\\
-   	Best where every user is trusted and works closely together, like a small business.\\
-   	\end{enumerate}
-   	\pagebreak
-   
-    \item\begin{enumerate}
-	\item Each running service takes computer resources, and could be available for use to an attacker.
-	\item Information is stored in the /etc directory or the installation tree for specific applications.
-	\item It is used to restrict a users view by mapping root to another location, essentially trapping them in that directory and its children. It is fairly easy to escape however, with many 		documented mechanisms.\\\\
-   	\end{enumerate}
-   	
-    \item\begin{enumerate}
-	\item Allows system administators to more quickly identify any issues.
-	\item Can only tell you what has already happened, and only at certain ranges of data.
-	\item Remote logging doesn't require logs to be kept on the system they are created. However, it takes bandwith.
-	\item If log files are not rotated, they stay forever and quickly build up space.\\\\
-   	\end{enumerate}
-
     \item \begin{enumerate}
-	\item User tries multiple times to log in with different passwords.
-	\item User tries accessing unusual websites that have been flagged as malicious.
+	\item Infection of existing files on a computer that is then spread to other computers.
+	\item Software vulnerabilities that allow the malware to spread.
+	\item Social engineering to obtain access for the malware to spread.\\
    	\end{enumerate}
+   
+    \item This is an example of a logic bomb.\\
+   	
+    \item The memory stick could contain malware that would execute upon plugging the stick into a computer. This could infect all the computers on your work network and do serious damage to the company. To mitigate the threat, you could plug the threat into a test computer to check for malware, or just not plug it in at all.\\
+    
+    \item This custom codec might actually help view the videos, but it is likely to be some other software package with malicious intent. This would be installed willingly on your computer if approved.\\
+
+    \item There is little reason for a smartphone game to need access to messages or your adress book, so the app is very suspicious. This app is likely setting itself up to send messages containing itself or some other malware to all contacts. This is an example of trojan horse malware.\\
+    
+    \item A spoofed source address stops the attack from being traced back to its correct origin, and stops response packets from being received and potentially DOSsing the attacking computer.\\
+    
+    \item The main defense lies in the routers that the attacks will run through. As an ISP knows all the IPs of its customers, it can ensure the source IP is valid, stopping the attacks from the spoofed source.\\
+    
+    \item 9.5mb $\rightarrow$ {\Large $\frac{9.5}{.0005}$} = 19000 packets/sec\\[.4em]
+    2mb $\rightarrow$ {\Large $\frac{2}{.0005}$} = 4000 packets/sec\\[.4em]
+    10mb $\rightarrow$ {\Large $\frac{10}{.0005}$} = 20000 packets/sec\\[.4em]
+    
+    
 \end{enumerate}
 
 
