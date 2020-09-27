@@ -1,7 +1,8 @@
 package edu.iastate.cs472.proj1;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * An object of this class holds data about a game of checkers.
@@ -75,7 +76,16 @@ public class CheckersData {
      * and all such squares in the last three rows contain red squares.
      */
     void setUpGame() {
-        // Todo: setup the board with pieces BLACK, RED, and EMPTY
+        this.board = new int[][]{
+            {BLACK, EMPTY, BLACK, EMPTY, BLACK, EMPTY, BLACK, EMPTY},
+            {EMPTY, BLACK, EMPTY, BLACK, EMPTY, BLACK, EMPTY, BLACK},
+            {BLACK, EMPTY, BLACK, EMPTY, BLACK, EMPTY, BLACK, EMPTY},
+            {EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY},
+            {EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY},
+            {EMPTY, RED  , EMPTY, RED  , EMPTY, RED  , EMPTY, RED  },
+            {RED  , EMPTY, RED  , EMPTY, RED  , EMPTY, RED  , EMPTY},
+            {EMPTY, RED  , EMPTY, RED  , EMPTY, RED  , EMPTY, RED  }
+        };
     }
 
 
@@ -111,11 +121,34 @@ public class CheckersData {
      * @return        true if the piece becomes a king, otherwise false
      */
     boolean makeMove(int fromRow, int fromCol, int toRow, int toCol) {
-        // Todo: update the board for the given move.
         // You need to take care of the following situations:
         // 1. move the piece from (fromRow,fromCol) to (toRow,toCol)
         // 2. if this move is a jump, remove the captured piece
         // 3. if the piece moves into the kings row on the opponent's side of the board, crowned it as a king
+
+        board[toRow][toCol] = board[fromRow][fromCol];
+        board[fromRow][fromCol] = EMPTY;
+
+        int rowDiff = toRow - fromRow;
+        int colDiff = toCol - fromCol;
+
+        //If this move was a jump...
+        if(rowDiff % 2 == 0) {
+            int RMid = fromRow + (rowDiff / 2);
+            int CMid = fromCol + (colDiff / 2);
+
+            board[RMid][CMid] = EMPTY;
+        }
+
+        //If the piece moved to the top or bottom row...
+        if (toRow == 0 || toRow == 7){
+
+            //If the piece isn't already a king...
+            if(board[toRow][toCol] % 2 != 0) {
+                board[toRow][toCol]++;
+                return true;
+            }
+        }
         return false;
     }
 
@@ -131,9 +164,69 @@ public class CheckersData {
      * @param player color of the player, RED or BLACK
      */
     CheckersMove[] getLegalMoves(int player) {
-        // Todo: Implement your getLegalMoves here.
+        if(player != RED && player != BLACK)
+            return null;
+
+        List<CheckersMove> moveList = new ArrayList<CheckersMove>();
+        List<CheckersMove> jumpList = new ArrayList<CheckersMove>();
+
+
+        //For every square on the board...
+        for(int row = 0; row < 8; row++){
+            for(int col = 0; col < 8; col++){
+
+                int curPiece = board[row][col];
+
+                //If this piece is empty or not of player's color...
+                if(curPiece == EMPTY || (curPiece != player && curPiece != player+1))
+                    continue;
+
+
+                //Add any possible jumps
+                CheckersMove[] jumpArray = getLegalJumpsFrom(player, row, col);
+                if(jumpArray != null)
+                    Collections.addAll(jumpList, jumpArray);
+
+
+
+                //Because jumps are mandatory, if there are any possible jumps just skip checking for more moves
+                if(jumpList.size() == 0){
+                    if(curPiece == RED || curPiece == RED_KING || curPiece == BLACK_KING){
+                        //Move top left
+                        if(isValidMove(row-1, col-1))
+                            moveList.add(new CheckersMove(row, col, row-1, col-1));
+                        //Move top right
+                        if(isValidMove(row-1, col+1))
+                            moveList.add(new CheckersMove(row, col, row-1, col+1));
+                    }
+                    if(curPiece == BLACK || curPiece == RED_KING || curPiece == BLACK_KING){
+                        //Move bottom left
+                        if(isValidMove(row+1, col-1))
+                            moveList.add(new CheckersMove(row, col, row+1, col-1));
+                        //Move bottom right
+                        if(isValidMove(row+1, col+1))
+                            moveList.add(new CheckersMove(row, col, row+1, col+1));
+                    }
+                }
+            }
+        }
+
+        //If there are valid moves... copy them to a static size array
+        if(jumpList.size() != 0){
+            CheckersMove[] jumpArray = new CheckersMove[jumpList.size()];
+            jumpList.toArray(jumpArray);
+
+            return jumpArray;
+        }
+        else if(moveList.size() != 0){
+            CheckersMove[] moveArray = new CheckersMove[moveList.size()];
+            moveList.toArray(moveArray);
+
+            return moveArray;
+        }
         return null;
     }
+
 
 
     /**
@@ -147,8 +240,90 @@ public class CheckersData {
      * @param col    col index of the start square.
      */
     CheckersMove[] getLegalJumpsFrom(int player, int row, int col) {
-        // Todo: Implement your getLegalJumpsFrom here.
+        if(player != RED && player != BLACK)
+            return null;
+
+
+        int curPiece = board[row][col];
+
+        //If this piece is not of player's color...
+        if(curPiece != player && curPiece != player+1)
+            return null;
+
+
+        List<CheckersMove> jumpList = new ArrayList<CheckersMove>();
+
+        if(curPiece == RED || curPiece == RED_KING || curPiece == BLACK_KING){
+            //Jump top left
+            if(isValidJump(player, row-1, col-1, row-2, col-2))
+                jumpList.add(new CheckersMove(row, col, row-2, col-2));
+            //Jump top right
+            if(isValidJump(player, row-1, col+1, row-2, col+2))
+                jumpList.add(new CheckersMove(row, col, row-2, col+2));
+        }
+        if(curPiece == BLACK || curPiece == RED_KING || curPiece == BLACK_KING){
+            //Jump bottom left
+            if(isValidJump(player, row+1, col-1, row+2, col-2))
+                jumpList.add(new CheckersMove(row, col, row+2, col-2));
+            //Jump bottom right
+            if(isValidJump(player, row+1, col+1, row+2, col+2))
+                jumpList.add(new CheckersMove(row, col, row+2, col+2));
+        }
+
+        //If there are valid jumps... copy moveList to a static size array
+        if(jumpList.size() != 0){
+            CheckersMove[] jumpArray = new CheckersMove[jumpList.size()];
+            jumpList.toArray(jumpArray);
+
+            return jumpArray;
+        }
         return null;
     }
 
+
+
+    boolean isValidMove(int REnd, int CEnd){
+        //If move is out of bounds...
+        if(REnd < 0 || CEnd < 0 || REnd > 7 || CEnd > 7)
+            return false;
+
+        //If end coord isn't empty...
+        if(board[REnd][CEnd] != EMPTY)
+            return false;
+
+        return true;
+    }
+
+    boolean isValidJump(int player, int RMid, int CMid, int REnd, int CEnd){
+
+        if(!isValidMove(REnd, CEnd))
+            return false;
+
+        int otherColor = (player == RED || player == RED_KING) ? BLACK : RED;
+
+        //If the middle square is empty or not of the opposite color...
+        if(board[RMid][CMid] == EMPTY || (board[RMid][CMid] != otherColor && board[RMid][CMid] != otherColor+1))
+            return false;
+
+        return true;
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

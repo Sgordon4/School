@@ -6,8 +6,8 @@
 [X] Update LinkedIn
 [X] Check Accessplus for new homework and projects
 [ ] Do homework
-[ ] Take LinkedIn Skill Quiz
 [ ] Write resume cover letter
+[ ] Take LinkedIn Skill Quiz
 [ ] Apply for 1 job
 
 [ ] Build part of Gallery App
@@ -28,14 +28,14 @@
 
 Updated future plan
 	
-	CprE 431: Complete mod4
-	
-	
 	ComS 472: Complete Project
 	ComS 472: Understand everything before exam on 10/5
 	
 	
 	CprE 431: Complete mod5
+	
+	
+	CprE 431: ELO Course Design Survey (easy I think)
 	
 
 
