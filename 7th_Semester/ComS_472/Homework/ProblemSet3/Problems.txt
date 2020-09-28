@@ -1,0 +1,103 @@
+
+- 6.1 - 
+How many solutions are there for the map-coloring problem in Figure australia-figure? How many solutions if four colors are allowed? Two colors?
+
+
+
+- 6.6 - 
+Show how a single ternary constraint such as “A+B=C” can be turned into three binary constraints by using an auxiliary variable. You may assume finite domains. (Hint: Consider a new variable that takes on values that are pairs of other values, and consider constraints such as “X is the first element of the pair Y.”) Next, show how constraints with more than three variables can be treated similarly. Finally, show how unary constraints can be eliminated by altering the domains of variables. This completes the demonstration that any CSP can be transformed into a CSP with only binary constraints.
+
+
+
+- 6.8 -
+Consider the graph with 8 nodes A1, A2, A3, A4, H, T, F1, F2. Ai is connected to A_{i+1} for all i, each Ai is connected to H, H is connected to T, and T is connected to each Fi. Find a 3-coloring of this graph by hand using the following strategy: backtracking with conflict-directed backjumping, the variable order A1, H, A4, F1, A2, F2, A3, T, and the value order R, G, B.
+
+
+
+- 6.11 - 
+Use the AC-3 algorithm to show that arc consistency can detect the inconsistency of the partial assignment green,Vred for the problem shown in Figure australia-figure.
+
+
+
+- 6.20 - 
+Consider the problem of tiling a surface (completely and exactly covering it) with n dominoes (2×1 rectangles). The surface is an arbitrary edge-connected (i.e., adjacent along an edge, not just a corner) collection of 2n 1×1 squares (e.g., a checkerboard, a checkerboard with some squares missing, a 10×1 row of squares, etc.).
+
+Formulate this problem precisely as a CSP where the dominoes are the variables.
+
+Formulate this problem precisely as a CSP where the squares are the variables, keeping the state space as small as possible. (Hint: does it matter which particular domino goes on a given pair of squares?)
+
+Construct a surface consisting of 6 squares such that your CSP formulation from part (b) has a tree-structured constraint graph.
+
+Describe exactly the set of solvable instances that have a tree-structured constraint graph.
+
+^1. @Ginsberg+al:1990 discuss several methods for constructing crossword puzzles. @Littman+al:1999 tackle the harder problem of solving them.
+
+
+
+- 7.4 - 
+Which of the following are correct?
+
+False|= True.
+
+True|= False.
+
+(A∧B)⊨(A⇔B).
+
+A⇔B⊨A∨B.
+
+A⇔B⊨¬A∨B.
+
+(A∧B):⇒:C⊨(A:⇒:C)∨(B:⇒:C).
+
+(C∨(¬A∧¬B))≡((A:⇒:C)∧(B:⇒:C)).
+
+(A∨B)∧(¬C∨¬D∨E)⊨(A∨B).
+
+(A∨B)∧(¬C∨¬D∨E)⊨(A∨B)∧(¬D∨E).
+
+(A∨B)∧¬(A:⇒:B) is satisfiable.
+
+(A⇔B)∧(¬A∨B) is satisfiable.
+
+(A⇔B)⇔C has the same number of models as (A⇔B) for any fixed set of proposition symbols that includes A, B, C.
+
+
+
+- 7.6 - 
+Prove each of the following assertions:
+
+α is valid if and only if True|= α.
+
+For any α, False|= α.
+
+α⊨β if and only if the sentence (α:⇒:β) is valid.
+
+α≡β if and only if the sentence (α⇔β) is valid.
+
+α⊨β if and only if the sentence (α∧¬β) is unsatisfiable.
+
+
+
+- 7.7 - 
+Prove, or find a counterexample to, each of the following assertions:
+
+If α⊨γ or β⊨γ (or both) then (α∧β)⊨γ
+If (α∧β)⊨γ then α⊨γ or β⊨γ (or both).
+
+If α⊨(β∨γ) then α⊨β or α⊨γ (or both).
+
+
+
+- 7.15 - 
+Use resolution to prove the sentence ¬A∧¬B from the clauses in Exercise convert-clausal-exercise.
+
+
+
+- 7.16 - 
+This exercise looks into the relationship between clauses and implication sentences.
+
+Show that the clause (¬P1∨⋯∨¬Pm∨Q) is logically equivalent to the implication sentence (P1∧⋯∧Pm)⇒Q.
+
+Show that every clause (regardless of the number of positive literals) can be written in the form (P1∧⋯∧Pm)⇒(Q1∨⋯∨Qn), where the Ps and Qs are proposition symbols. A knowledge base consisting of such sentences is in implicative normal form or Kowalski form @Kowalski:1979.
+
+Write down the full resolution rule for sentences in implicative normal form.
