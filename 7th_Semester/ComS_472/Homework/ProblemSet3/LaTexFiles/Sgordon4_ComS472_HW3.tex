@@ -187,25 +187,41 @@ A tree-structured constraint graph can be accomplished with a straight line of 6
 
 A tree-structured graph requires there to be no loops. If the layout of the squares has no cycles, the resulting constraint graph will be tree-structured.
 
+
+
 \noindent \hrulefill \\
 
 
 
 \centerline{- 7.4 - }
 \ \\
-\noindent 1) Correct: Because false will never be true, it doesn't matter what the second half of the equation is.\\
-\noindent 2) Incorrect: True is always true, but False will never be true, so by definition it is incorrect.\\
-\noindent 3) \\
+\noindent 1) True: Because false will never be true, it doesn't matter what the second half of the equation is.\\[.4em]
+\noindent 2) False: True is always true, but False will never be true, so by definition it is incorrect.\\[.4em]
+\noindent 3) True: $A\wedge B$ is only true if A and B are logically equivalent, meaning the right side must be true.\\[.4em]
+\noindent 4) False: $A\Leftrightarrow B$ can be true when A=B=False, but $A\vee B$ is false.\\[.4em]
+\noindent 5) True:  $A\Leftrightarrow B$ is only true when A==B, but on the right A!=B so $A\vee B$ must be true.\\[.4em]
+\noindent 6) True: The right side is only false when A and B are true but C is false, which couldn't happen because the left side would also be false.\\[.4em]
+\noindent 7) True: By truth table, the left is equivalent to the right.\\[.4em]
+\noindent 8) True: $A\vee B$ must be true to reach the right side, which is also $A\vee B$.\\[.4em]
+\noindent 9) False: If (A or B = true) and (C=false) but (D=true) and (E=false), this fails.\\[.4em]
+\noindent 10) True: A=true, B=false\\[.4em]
+\noindent 11) True: A=B=true\\[.4em]
+\noindent 12) True: $(...)\Leftrightarrow C$ relies on what is within the parentheses, and can never have more or less models than it because it does not add anything.
 
 
 
-\noindent \hrulefill \\
+\noindent \hrulefill \\\pagebreak
 
 
 
 \centerline{- 7.6 - }
 \ \\
-\noindent \\
+\noindent 1) By definition of entailment, True $\models \alpha$ when $\alpha$ is true, but not when $\alpha$ is false. Therefore, for True $\models \alpha$ to be true, $\alpha$ must be true already.\\[.4em]
+\noindent 2) It doesn't matter what $\alpha$ is, because False is never True.\\[.4em]
+\noindent 3) Via truth table, whenever $A\models B$ is true, $A\Rightarrow B$ is also true. $A\models B$ does not depend on $A\Rightarrow B$, but the assertion holds.\\[.4em]
+\noindent 4) Via truth table, whenever $A\Leftrightarrow B$ is true, $A\equiv B$ is also true. $A\equiv B$ does not depend on $A\Leftrightarrow B$, but the assertion holds.\\[.4em]
+\noindent 5) LHS is valid only if A and B are true, which then invalidates the RHS.
+
 
 
 \noindent \hrulefill \\
@@ -214,7 +230,10 @@ A tree-structured graph requires there to be no loops. If the layout of the squa
 
 \centerline{- 7.7 - }
 \ \\
-\noindent \\
+\noindent 1) For $A \wedge B$ to be true, A and B must be true. Then, if just one of A or B $\models$ Y, $A \wedge B$ must also $\models$ Y. \\[.4em]
+\noindent 2) For (A $\wedge$ B) to be true, A and B must be true. Then, if (A $\wedge$ B) $\models$ Y, one or both of A or B must also model Y.\\[.4em]
+\noindent 3) For (B $\vee$ Y) to be true, B or Y or both must be true. Then, if A is true, and one or both of B or Y is true, A $\models$ either B or Y or both.
+
 
 
 \noindent \hrulefill \\
@@ -223,7 +242,28 @@ A tree-structured graph requires there to be no loops. If the layout of the squa
 
 \centerline{- 7.15 - }
 \ \\
-\noindent \\
+\textbf{Clauses:}
+\begin{multicols}{2}
+\indent $S1: A\Leftrightarrow (B\vee E)$\\
+\indent $S2: E\Rightarrow D$ \indent \indent \indent $\neg E \vee D$\\
+\indent $S3: C\wedge F\Rightarrow \neg B$ \indent  $(\neg C \vee \neg F \vee \neg B)$
+\columnbreak\\
+\indent $S4: E\Rightarrow B$ \indent \indent $\neg E \vee B$\\
+\indent $S5: B\Rightarrow F$ \indent \indent $\neg B \vee F$\\
+\indent $S6: B\Rightarrow C$ \indent \indent $\neg B \vee C$
+\end{multicols}
+
+\noindent With material implication and de Morgan's law, S3 $(C\wedge F\Rightarrow \neg B)$ becomes $(\neg C \vee \neg F \vee \neg B)$.\\
+\noindent $\neg C$ can be removed using S6 $(B \Rightarrow C)$, becoming $(\neg F \vee \neg B)$.\\
+\noindent $\neg F$ can be removed using S5 $(B \Rightarrow F)$, becoming $(\neg B)$.\\
+
+\noindent We can break clause S1 $(A\Leftrightarrow (B\vee E))$ into two parts: $(A \Rightarrow (B \vee E))$ and $((B \vee E) \Rightarrow A)$.\\
+\noindent Through material implication, $(A \Rightarrow (B \vee E))$ is then transformed into $(\neg A \vee B \vee E)$.\\
+\noindent Using clause S4 $(E \Rightarrow B)$ we can remove E from $(\neg A \vee B \vee E)$, becoming $(\neg A \vee B)$.\\
+\noindent Because we have proven $\neg B$, we can remove B from the sentence, becoming $(\neg A)$.\\
+
+\noindent Thus, $\neg A$ and $\neg B$ are proven separately, so $(\neg A \wedge \neg B)$ must also be valid.\\
+
 
 
 \noindent \hrulefill \\
@@ -232,7 +272,18 @@ A tree-structured graph requires there to be no loops. If the layout of the squa
 
 \centerline{- 7.16 - }
 \ \\
-\noindent \\
+\noindent 1) Through implication elimination $(\neg X \vee Y) = (X \Rightarrow Y)$, so $(\neg P_1 \vee ... \vee \neg P_m \vee Q)$ is \\
+\indent equivalent to $( P_1 \vee ... \vee  P_m) \Rightarrow Q$.\\
+\indent Then, through de Morgan's law $\neg ( P_1 \vee ... \vee  P_m)$ becomes $( P_1 \wedge ... \wedge  P_m)$.\\
+\indent Thus, $(\neg P_1 \vee ... \vee \neg P_m \vee Q) \equiv ( P_1 \wedge ... \wedge  P_m) \Rightarrow Q$\\
+
+\noindent 2) Any clause can be arranged as $(\neg P_1 \vee ... \vee \neg P_m \vee Q_1 \vee ... \vee Q_n)$. \\
+\indent We can consolidate $Q_1\ to\ Q_n$ as Q, turning the arrangement into $(\neg P_1 \vee ... \vee \neg P_m \vee Q)$. \\
+\indent Implication elimination and de Morgan's law can then be applied as above, \\
+\indent resulting in $( P_1 \wedge ... \wedge  P_m) \Rightarrow Q$. \\
+\indent Q can then be expanded, with a final result of $( P_1 \wedge ... \wedge  P_m)\Rightarrow( Q_1 \wedge ... \wedge  Q_n)$.\\
+
+\noindent 3) Wat
 
 
 \noindent \hrulefill \\

@@ -1,14 +1,4 @@
 
-Mon 9/28/2020
-X ComS 474: Homework 2
-  CprE 492: Biweekly Status Report 3
-
-Thu 10/1/2020
-X Arch 321: Mod 2 - Watch 5 lectures
-X Arch 321: Mod 2 - Watch "Becoming American: The Chinese Experience (Lennon/Yang)" Ep 1 on Canvas
-X Arch 321: Mod 2 - Write 4 Lec/Film Responses
-X CprE 431: Mod 4 Discussion Post
-
 Sun 10/4/2020
 X CprE 431: Mod 4 Homework
 X CprE 431: Mod 4 Quiz
@@ -31,12 +21,12 @@ Sat 10/10/2020 @11:59am to Mon 10/12/2020 @11:59pm
 --------------------------------------------------
 
 Sun 10/11/2020
-  CprE 431: Mod 5 Homework
+  CprE 431: Mod 5 Homework (Mod 5 opens on 10/2)
   CprE 431: Mod 5 Discussion Reply
 
 Mon 10/12/2020
   CprE 492: Biweekly Status Report 4
-  ComS 472: Homework 3 @ 5:00 pm
+X ComS 472: Homework 3 @ 5:00 pm
 
 --------------------------------------------------
 Wed 10/14/2020 @8am to Thu 10/15/2020 @8pm
@@ -44,10 +34,10 @@ Wed 10/14/2020 @8am to Thu 10/15/2020 @8pm
 --------------------------------------------------
 
 Fri 10/16/2020
-  ComS 472: Proj 1
+X ComS 472: Proj 1
 
 Mon 10/19/2020
-  CprE 431: ELO Course Design Survey
+  CprE 431: ELO Course Design Survey (Opens on 10/2)
 
 Thu 10/22/2020
   Arch 321: Attend Group 4 Discussion 5 at 1:30 pm,
@@ -121,6 +111,16 @@ Thu 12/10/2020 ?
 
 
 =============================================================================================================
+
+Thu 10/1/2020
+X Arch 321: Mod 2 - Watch 5 lectures
+X Arch 321: Mod 2 - Watch "Becoming American: The Chinese Experience (Lennon/Yang)" Ep 1 on Canvas
+X Arch 321: Mod 2 - Write 4 Lec/Film Responses
+X CprE 431: Mod 4 Discussion Post
+
+Mon 9/28/2020
+X ComS 474: Homework 2
+X CprE 492: Biweekly Status Report 3
 
 Thu 9/24/2020
 X Arch 321: Attend Group 4 Discussion 3 at 1:30 pm,

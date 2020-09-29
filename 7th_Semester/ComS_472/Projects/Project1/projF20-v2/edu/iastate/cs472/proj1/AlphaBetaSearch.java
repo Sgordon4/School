@@ -36,17 +36,13 @@ public class AlphaBetaSearch {
         // Here, we simply return the first legal move for demonstration.
         //return legalMoves[0];
 
-        //If legalMoves is empty (end of the game)
-        if(legalMoves.length == 0)
-            return legalMoves[0];
-
 
         //Deep copy the board
         CheckersData newBoard = new CheckersData();
         //newBoard.board = board.board.clone();
         newBoard.board = java.util.Arrays.stream(board.board).map(int[]::clone).toArray($ -> board.board.clone());
 
-        return alphaBetaStarter(newBoard, legalMoves, 10);
+        return alphaBetaStarter(newBoard, legalMoves, 8);
 
     }
 
@@ -147,8 +143,37 @@ public class AlphaBetaSearch {
 
     }
 
+
     //Score = # black pieces - # red pieces
     int evalFunc(int[][] board){
+        int black = 0;
+        int red = 0;
+
+        //Weight kings higher than men
+        //Weight men higher as they get closer to king row
+
+        for(int i = 0; i < board.length; i++){
+            for(int j = 0; j < board[0].length; j++){
+                //Weight piece higher if closer to being kinged
+                if(board[i][j] == CheckersData.RED)
+                    red+= i;
+                if(board[i][j] == CheckersData.BLACK)
+                    black+= i;
+
+                //Weight kings higher
+                if(board[i][j] == CheckersData.RED_KING)
+                    red += 10;
+                if(board[i][j] == CheckersData.RED_KING)
+                    black += 10;
+
+            }
+        }
+        return (black - red);
+    }
+
+
+    //Score = # black pieces - # red pieces
+    int evalFuncOld(int[][] board){
         int black = 0;
         int red = 0;
 

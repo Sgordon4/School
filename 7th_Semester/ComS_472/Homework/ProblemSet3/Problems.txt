@@ -37,29 +37,29 @@ Describe exactly the set of solvable instances that have a tree-structured const
 - 7.4 - 
 Which of the following are correct?
 
-False|= True.
+1) False|= True.
 
-True|= False.
+2) True|= False.
 
-(A∧B)⊨(A⇔B).
+3) (A∧B)⊨(A⇔B).
 
-A⇔B⊨A∨B.
+4) A⇔B⊨A∨B.
 
-A⇔B⊨¬A∨B.
+5) A⇔B⊨¬A∨B.
 
-(A∧B):⇒:C⊨(A:⇒:C)∨(B:⇒:C).
+6) (A∧B):⇒:C⊨(A:⇒:C)∨(B:⇒:C).
 
-(C∨(¬A∧¬B))≡((A:⇒:C)∧(B:⇒:C)).
+7) (C∨(¬A∧¬B))≡((A:⇒:C)∧(B:⇒:C)).
 
-(A∨B)∧(¬C∨¬D∨E)⊨(A∨B).
+8) (A∨B)∧(¬C∨¬D∨E)⊨(A∨B).
 
-(A∨B)∧(¬C∨¬D∨E)⊨(A∨B)∧(¬D∨E).
+9) (A∨B)∧(¬C∨¬D∨E)⊨(A∨B)∧(¬D∨E).
 
-(A∨B)∧¬(A:⇒:B) is satisfiable.
+10) (A∨B)∧¬(A:⇒:B) is satisfiable.
 
-(A⇔B)∧(¬A∨B) is satisfiable.
+11) (A⇔B)∧(¬A∨B) is satisfiable.
 
-(A⇔B)⇔C has the same number of models as (A⇔B) for any fixed set of proposition symbols that includes A, B, C.
+12) (A⇔B)⇔C has the same number of models as (A⇔B) for any fixed set of proposition symbols that includes A, B, C.
 
 
 
@@ -90,6 +90,22 @@ If α⊨(β∨γ) then α⊨β or α⊨γ (or both).
 
 - 7.15 - 
 Use resolution to prove the sentence ¬A∧¬B from the clauses in Exercise convert-clausal-exercise.
+
+
+Clauses: 
+
+S1: A⇔(B∨E)
+
+S2: E⇒D
+
+S3: C∧F⇒¬B
+
+S4: E⇒B
+
+S5: B⇒F
+
+S6: B⇒C
+
 
 
 
