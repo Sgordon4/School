@@ -39,7 +39,7 @@
 \ \\
 \noindent 1) 3 colors for (SA), 2 for (WA), 1 for (NT, Q, NSW, V), 3 for (T) $\Rightarrow$ \\\indent $3*2*1*1*1*1*3=18$ solutions\\[.4em]
 2) 4:(SA), 3:(WA), 2:(NT, Q, NSW, V), 4:(T) $\Rightarrow$ $4*3*2*2*2*2*4=768$ solutions\\[.4em]
-3) 2:(SA), 1:(WA), 0:(NT, Q, NSW, V), 2:(T) $\Rightarrow$ $2*1*0*0*0*0*2=0$ solutions\\[.4em]
+3) 2:(SA), 1:(WA), 0:(NT, Q, NSW, V), 2:(T) $\Rightarrow$ $2*1*0*0*0*0*2=0$ solutions
 
 
 
@@ -47,9 +47,11 @@
 
 
 
-\centerline{- 4.7 - }
+\centerline{- 6.6 - }
 \ \\
-\noindent \\
+\noindent 1) Introduce variable $D$ as a set of pair values $(D_1, D_2)$. $A = D_1, B = D_2, and\ C = D_1+D_2$\\\\
+\noindent 2) Constraints with more than 3 variables can be reduced in tiers, with n-1 variables reduced to n, n to n-1, ..., continuing until the set of constraints contains only binary constraints.\\\\
+\noindent 3) Unary constraints can be completely eliminated by moving the effects of the constraint into the domain of the variable it is affecting.
 
 
 
@@ -58,8 +60,7 @@
 
 
 \centerline{- 6.8 - }
-\ \\
-1) A1 $\rightarrow$ R \ \checkmark\\
+\noindent 1) A1 $\rightarrow$ R \ \checkmark\\
 2) H \ $\rightarrow$ R \ \textbf{X}, conflicts with A1 $\rightarrow$ backtrack \\
 3) H \ $\rightarrow$ G \ \checkmark\\
 4) A4 $\rightarrow$ R \ \checkmark\\
@@ -73,10 +74,118 @@
 
 
 
+
+
+
+
 \centerline{- 6.11 - }
 \ \\
-\noindent \\
+\noindent Arcs: \\
+$(SA\neq WA), (WA\neq SA),(SA\neq NT),(NT\neq SA),(SA\neq Q),(Q\neq SA), \\
+(SA\neq NSW),(NSW\neq SA),(SA\neq V),(V\neq SA),(WA\neq NT),(NT\neq WA),\\
+(NT\neq Q),(Q\neq NT),(Q\neq NSW),(NSW\neq Q),(NSW\neq V),(V\neq NSW)$\\
 
+\noindent Initial Constraints: \\
+SA=\{RGB\}, WA=\{RGB\}, NT=\{RGB\}, Q=\{RGB\}, NSW=\{RGB\}, V=\{RGB\}, T=\{RGB\}\\
+
+Set WA=green, V=red...\\
+
+\noindent 1)\hrulefill\\
+\textbf{C:} SA=\{RGB\}, WA=\{\_G\_\}, NT=\{RGB\}, Q=\{RGB\}, NSW=\{RGB\}, V=\{R\_\_\}, T=\{RGB\}\\
+\textbf{A:} All arcs, $(SA\neq WA), (NT\neq WA), (SA\neq V), (NSW\neq V)$ at the end for conciseness.\\
+\textbf{Action:} Check and dequeue all consistent arcs.\\
+
+\noindent 2)\hrulefill\\
+\textbf{C:} SA=\{RGB\}, WA=\{\_G\_\}, NT=\{RGB\}, Q=\{RGB\}, NSW=\{RGB\}, V=\{R\_\_\}, T=\{RGB\}\\
+\textbf{A:} $(SA\neq WA), (NT\neq WA), (SA\neq V), (NSW\neq V)$\\
+\textbf{Action:} $(SA\neq WA)$ is inconsistent. Remove G from SA, queue arcs with SA on right.\\
+
+\noindent 3)\hrulefill\\
+\textbf{C:} SA=\{R\_B\}, WA=\{\_G\_\}, NT=\{RGB\}, Q=\{RGB\}, NSW=\{RGB\}, V=\{R\_\_\}, T=\{RGB\}\\
+\textbf{A:} $(NT\neq WA), (SA\neq V), (NSW\neq V), (WA\neq SA), (NT\neq SA), (Q\neq SA),$ \\
+\indent $(NSW\neq SA), (V\neq SA)$\\
+\textbf{Action:} $(NT\neq WA)$ is inconsistent. Remove G from NT, queue arcs with NT on right.\\
+
+\noindent 4)\hrulefill\\
+\textbf{C:} SA=\{R\_B\}, WA=\{\_G\_\}, NT=\{R\_B\}, Q=\{RGB\}, NSW=\{RGB\}, V=\{R\_\_\}, T=\{RGB\}\\
+\textbf{A:} $(SA\neq V), (NSW\neq V), (WA\neq SA), (NT\neq SA), (Q\neq SA), (NSW\neq SA),$ \\
+\indent $(V\neq SA), (WA\neq NT), (Q\neq NT) $\\
+\textbf{Action:} $(SA\neq V)$ is inconsistent. Remove R from SA, queue arcs with SA on right.\\
+
+\noindent 5)\hrulefill\\
+\textbf{C:} SA=\{\_\_B\}, WA=\{\_G\_\}, NT=\{R\_B\}, Q=\{RGB\}, NSW=\{RGB\}, V=\{R\_\_\}, T=\{RGB\}\\
+\textbf{A:} $(NSW\neq V), (WA\neq SA), (NT\neq SA), (Q\neq SA), (NSW\neq SA), (V\neq SA), $ \\
+\indent $(WA\neq NT), (Q\neq NT) $\\
+\textbf{Action:} $(NSW\neq V)$ is inconsistent. Remove R from NSW, queue arcs with NSW on right.\\
+
+\noindent 6)\hrulefill\\
+\textbf{C:} SA=\{\_\_B\}, WA=\{\_G\_\}, NT=\{R\_B\}, Q=\{RGB\}, NSW=\{\_GB\}, V=\{R\_\_\}, T=\{RGB\}\\
+\textbf{A:} $(WA\neq SA), (NT\neq SA), (Q\neq SA), (NSW\neq SA), (V\neq SA), (WA\neq NT), $ \\
+\indent $(Q\neq NT), (SA\neq NSW), (Q\neq NSW), (V\neq NSW)$\\
+\textbf{Action:} $(WA\neq SA)$ is consistent. Dequeue.\\
+
+\noindent 7)\hrulefill\\
+\textbf{C:} SA=\{\_\_B\}, WA=\{\_G\_\}, NT=\{R\_B\}, Q=\{RGB\}, NSW=\{\_GB\}, V=\{R\_\_\}, T=\{RGB\}\\
+\textbf{A:} $(NT\neq SA), (Q\neq SA), (NSW\neq SA), (V\neq SA), (WA\neq NT), (Q\neq NT), $ \\
+\indent $(SA\neq NSW), (Q\neq NSW), (V\neq NSW)$\\
+\textbf{Action:} $(NT\neq SA)$ is inconsistent. Remove B from NT, queue arcs with NT on right.\\
+
+\noindent 8)\hrulefill\\
+\textbf{C:} SA=\{\_\_B\}, WA=\{\_G\_\}, NT=\{R\_\_\}, Q=\{RGB\}, NSW=\{\_GB\}, V=\{R\_\_\}, T=\{RGB\}\\
+\textbf{A:} $(Q\neq SA), (NSW\neq SA), (V\neq SA), (WA\neq NT), (Q\neq NT), (SA\neq NSW), $ \\
+\indent $(Q\neq NSW), (V\neq NSW), (SA\neq NT)$\\
+\textbf{Action:} $(Q\neq SA)$ is inconsistent. Remove B from Q, queue arcs with Q on right.\\
+
+\noindent 9)\hrulefill\\
+\textbf{C:} SA=\{\_\_B\}, WA=\{\_G\_\}, NT=\{R\_\_\}, Q=\{RG\_\}, NSW=\{\_GB\}, V=\{R\_\_\}, T=\{RGB\}\\
+\textbf{A:} $(NSW\neq SA), (V\neq SA), (WA\neq NT), (Q\neq NT), (SA\neq NSW), (Q\neq NSW), $ \\
+\indent $(V\neq NSW), (SA\neq NT), (SA\neq Q), (NT\neq Q), (NSW\neq Q)$\\
+\textbf{Action:} $(NSW\neq SA)$ is inconsistent. Remove B from NSW, queue arcs with NSW on right.\\
+
+\noindent 10)\hrulefill\\
+\textbf{C:} SA=\{\_\_B\}, WA=\{\_G\_\}, NT=\{R\_\_\}, Q=\{RG\_\}, NSW=\{\_GB\}, V=\{R\_\_\}, T=\{RGB\}\\
+\textbf{A:} $(V\neq SA), (WA\neq NT), (Q\neq NT), (SA\neq NSW), (Q\neq NSW), (V\neq NSW), $ \\
+\indent $(SA\neq NT), (SA\neq Q), (NT\neq Q), (NSW\neq Q)$\\
+\textbf{Action:} $(V\neq SA)$ is consistent. Dequeue.\\
+
+\noindent 11)\hrulefill\\
+\textbf{C:} SA=\{\_\_B\}, WA=\{\_G\_\}, NT=\{R\_\_\}, Q=\{RG\_\}, NSW=\{\_GB\}, V=\{R\_\_\}, T=\{RGB\}\\
+\textbf{A:} $(WA\neq NT), (Q\neq NT), (SA\neq NSW), (Q\neq NSW), (V\neq NSW), (SA\neq NT), $ \\
+\indent $(SA\neq Q), (NT\neq Q), (NSW\neq Q)$\\
+\textbf{Action:} $(WA\neq NT)$ is consistent. Dequeue.\\
+
+\noindent 12)\hrulefill\\
+\textbf{C:} SA=\{\_\_B\}, WA=\{\_G\_\}, NT=\{R\_\_\}, Q=\{RG\_\}, NSW=\{\_GB\}, V=\{R\_\_\}, T=\{RGB\}\\
+\textbf{A:} $(Q\neq NT), (SA\neq NSW), (Q\neq NSW), (V\neq NSW), (SA\neq NT), (SA\neq Q),$ \\
+\indent $(NT\neq Q), (NSW\neq Q)$\\
+\textbf{Action:} $(Q\neq NT)$ is inconsistent. Remove R from Q, queue arcs with Q on right.\\
+
+\noindent 13)\hrulefill\\
+\textbf{C:} SA=\{\_\_B\}, WA=\{\_G\_\}, NT=\{R\_\_\}, Q=\{\_G\_\}, NSW=\{\_GB\}, V=\{R\_\_\}, T=\{RGB\}\\
+\textbf{A:} $(SA\neq NSW), (Q\neq NSW), (V\neq NSW), (SA\neq NT), (SA\neq Q), (NT\neq Q), $ \\
+\indent $(NSW\neq Q)$\\
+\textbf{Action:} $(SA\neq NSW)$ is inconsistent. Remove B from SA, queue arcs with SA on right.\\
+
+\noindent This leaves SA with no possible values, revealing an inconsistency in the partial assignment.
+
+
+
+
+
+
+\centerline{- 6.20 - }
+\ \\
+\noindent \textbf{Variables:} $S_1, S_2, ..., S_n$\\
+\textbf{Domain:} Set of adjacent square pairs a domino can cover $(s_1, s_2)$.\\
+\textbf{Constraints:} No two dominos can cover the same square.\\
+
+\noindent \textbf{Variables:} $D_1, D_2, ..., D_n$\\
+\textbf{Domain:} Set of pairs (s, s'), with s = current square and s' = one of 4 adjacent squares.\\
+\textbf{Constraints:} A square must only link to one other square. Square A can link to square B if square B can link to A. \\
+
+A tree-structured constraint graph can be accomplished with a straight line of 6 squares.\\
+
+A tree-structured graph requires there to be no loops. If the layout of the squares has no cycles, the resulting constraint graph will be tree-structured.
 
 \noindent \hrulefill \\
 
@@ -86,8 +195,44 @@
 \ \\
 \noindent 1) Correct: Because false will never be true, it doesn't matter what the second half of the equation is.\\
 \noindent 2) Incorrect: True is always true, but False will never be true, so by definition it is incorrect.\\
-\noindent 3) 
+\noindent 3) \\
 
+
+
+\noindent \hrulefill \\
+
+
+
+\centerline{- 7.6 - }
+\ \\
+\noindent \\
+
+
+\noindent \hrulefill \\
+
+
+
+\centerline{- 7.7 - }
+\ \\
+\noindent \\
+
+
+\noindent \hrulefill \\
+
+
+
+\centerline{- 7.15 - }
+\ \\
+\noindent \\
+
+
+\noindent \hrulefill \\
+
+
+
+\centerline{- 7.16 - }
+\ \\
+\noindent \\
 
 
 \noindent \hrulefill \\

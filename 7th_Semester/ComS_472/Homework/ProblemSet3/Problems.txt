@@ -15,7 +15,7 @@ Consider the graph with 8 nodes A1, A2, A3, A4, H, T, F1, F2. Ai is connected to
 
 
 - 6.11 - 
-Use the AC-3 algorithm to show that arc consistency can detect the inconsistency of the partial assignment green,Vred for the problem shown in Figure australia-figure.
+Use the AC-3 algorithm to show that arc consistency can detect the inconsistency of the partial assignment WA=green,V=red for the problem shown in Figure australia-figure.
 
 
 
