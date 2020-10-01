@@ -1,0 +1,86 @@
+\documentclass[12pt]{article}
+\usepackage[12pt]{moresize}
+\usepackage[margin=1in]{geometry}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{graphicx}
+\usepackage{subcaption}
+
+\usepackage{multirow} %Combining rows in tables
+\usepackage{diagbox}  %Table box split in twain
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{alltt}
+
+\usepackage{multicol}
+
+\usepackage{amssymb} %\checkmark symbol
+
+%\usepackage{hyperref}
+%\usepackage[latin1]{inputenc}
+%\usepackage{listings}
+%\usepackage{scrextend}
+%\usepackage{changepage} %Adjustwidth
+
+ 
+
+\title{ComS 474\\Homework 3}
+\author{Sean Gordon}
+\date{Oct 6, 2020}
+
+\begin{document}
+\maketitle
+
+
+
+\noindent Gini node impurity estimate = 1-(prob of 1)$^2$-(prob of -1)$^2$\\[.4em]
+\noindent 1 \& 2) \\
+\begin{tabular}{|c|c|c|c|c|}\hline &&&&\\[-1em]
+\textbf{Left Node (+1)} & \textbf{Right Node (-1)} & \textbf{Estimation of +1} & \textbf{Estimation of -1} & \textbf{Final Score} \\\hline &&&&\\[-1em]
+$[1, 1]$ & $[3, 3]$ & 0.5 & 0.778 & 0.708 \\\hline &&&&\\[-1em]
+$[2, 0]$ & $[2, 4]$ & 0 & 0.444 & 0.333 \\\hline
+\end{tabular}\\\\\\
+
+
+\noindent 3) This threshold is just the opposite of Q2, so the impurity estimates would just be swapped:\\
+\begin{tabular}{|c|c|c|c|c|}\hline &&&&\\[-1em]
+\textbf{Left Node (+1)} & \textbf{Right Node (-1)} & \textbf{Estimation of +1} & \textbf{Estimation of -1} & \textbf{Final Score} \\\hline &&&&\\[-1em]
+$[2, 4]$ & $[2, 0]$ & 0.444 & 0 & 0.333 \\\hline
+\end{tabular}\\\\\\
+
+
+\noindent 4)\centerline{
+\begin{tabular}{|c|c|}\hline &\\[-1em]
+\textbf{Sample Number} & \textbf{Predicted Class}\\\hline &\\[-1em]
+1 & -1\\\hline &\\[-1em]
+2 & 1\\\hline &\\[-1em]
+3 & 1\\\hline &\\[-1em]
+4 & -1\\\hline &\\[-1em]
+5 & -1\\\hline &\\[-1em]
+6 & -1\\\hline &\\[-1em]
+7 & -1\\\hline &\\[-1em]
+8 & -1\\\hline
+\end{tabular}\indent\ }\\\\
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

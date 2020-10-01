@@ -5,7 +5,7 @@
 [X] Resume draft 1
 [X] Update LinkedIn
 [X] Check Accessplus for new homework and projects
-[ ] Do homework
+[X] Do homework
 [ ] Write resume cover letter
 [ ] Take LinkedIn Skill Quiz
 [ ] Apply for 1 job
@@ -28,22 +28,13 @@
 
 Updated future plan
 	
-	ComS 472: Homework 3
-	
-	
+	Opens on 10/2
 	CprE 431: Complete mod5
 	CprE 431: ELO Course Design Survey (easy I think)
 	
 	
 	ComS 472: Understand everything before exam on 10/5
 	
-
-
-Fri 9/25
-	CprE 431: Mod 5 opens up, begin and finish
-	At this point, not including exams, I will be an entire month ahead, and can finally resume construction of the app
-	They lied it didn't
-
 
 
 Tue 9/15: Begin CprE 431 Mod3
