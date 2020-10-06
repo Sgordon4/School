@@ -1,22 +1,8 @@
 
-Sun 10/4/2020
-X CprE 431: Mod 4 Homework
-X CprE 431: Mod 4 Quiz
-X CprE 431: Mod 4 Lab
-  CprE 431: Mod 4 Discussion Reply
-
---------------------------------------------------
-Mon 10/5/2020 @UNKNOWN
-			   ComS 472 Midterm Exam
---------------------------------------------------
-
-Tue 10/6/2020
-  ComS 474: Homework 3
-
 Thu 10/8/2020
   Arch 321: Attend Group 4 Discussion 4 at 1:30 pm,
 				https://canvas.iastate.edu/groups/131883/discussion_topics/706579
-  CprE 431: Mod 5 Discussion Post
+X CprE 431: Mod 5 Discussion Post
 
 --------------------------------------------------
 Sat 10/10/2020 @11:59am to Mon 10/12/2020 @11:59pm
@@ -24,8 +10,8 @@ Sat 10/10/2020 @11:59am to Mon 10/12/2020 @11:59pm
 --------------------------------------------------
 
 Sun 10/11/2020
-  CprE 431: Mod 5 Homework (Mod 5 opens on 10/2)
-  CprE 431: Mod 5 Discussion Reply
+X CprE 431: Mod 5 Homework (Mod 5 opens on 10/2)
+X CprE 431: Mod 5 Discussion Reply
   ComS 474: Homework 4
 
 Mon 10/12/2020
@@ -115,6 +101,20 @@ Thu 12/10/2020 ?
 
 
 =============================================================================================================
+
+Tue 10/6/2020
+X ComS 474: Homework 3
+
+--------------------------------------------------
+Mon 10/5/2020 @10:30 am to 12:30 pm
+X   		   ComS 472 Midterm Exam
+--------------------------------------------------
+
+Sun 10/4/2020
+X CprE 431: Mod 4 Homework
+X CprE 431: Mod 4 Quiz
+X CprE 431: Mod 4 Lab
+X CprE 431: Mod 4 Discussion Reply
 
 Thu 10/1/2020
 X Arch 321: Mod 2 - Watch 5 lectures

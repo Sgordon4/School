@@ -6,7 +6,7 @@
 [X] Update LinkedIn
 [X] Check Accessplus for new homework and projects
 [X] Do homework
-[ ] Write resume cover letter
+[X] Write resume cover letter
 [ ] Take LinkedIn Skill Quiz
 [ ] Apply for 1 job
 
