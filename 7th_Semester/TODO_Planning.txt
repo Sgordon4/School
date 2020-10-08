@@ -7,8 +7,8 @@
 [X] Check Accessplus for new homework and projects
 [X] Do homework
 [X] Write resume cover letter
-[ ] Take LinkedIn Skill Quiz
-[ ] Apply for 1 job
+[-] Take LinkedIn Skill Quiz
+[X] Apply for 1 job (Applied for 7)
 
 [ ] Build part of Gallery App
 [ ] Apply for more jobs 
