@@ -73,7 +73,7 @@ Prediction = $(1, 1, 0)*
 
 
 
-\noindent 2) As the gutters span from $wx+w_b-1$ to $wx+w_b+1$, the size of the margin is {\Large$\frac{2}{||w||}$}, and the size of each gutter is 1/2 that $\Rightarrow$ {\Large$\frac{1}{||w||}$} = {\Large$\frac{1}{\sqrt{w_1^2+w_2^2}}$} = {\Large$\frac{1}{\sqrt{1.8^2+.075^2}}$} = {\Large$\frac{1}{1.802}$} = 0.555.
+\noindent 2) As the gutters span from $wx+w_b-1$ to $wx+w_b+1$, the size of the margin is {\Large$\frac{2}{||w||}$}, and the size of each gutter is 1/2 that $\Rightarrow$ {\Large$\frac{1}{||w||}$} = {\Large$\frac{1}{\sqrt{w_1^2+w_2^2}}$} = {\Large$\frac{1}{\sqrt{1.8^2+.075^2}}$} = {\Large$\frac{1}{1.802}$} = 0.555.\\
 
 
 
@@ -81,13 +81,47 @@ Prediction = $(1, 1, 0)*
 
 
 
-\noindent 3)\\
-\indent (1) $(0.5, 0.25, 0.125)*
+\noindent 3) A point is inside the margin when $|wx+w_b| < 2d$ = $|wx+1| < 1.11$\\[.4em]
+\indent (1) $|(0.5, 0.25, 0.125)*
 \begin{pmatrix}
 1.8\\ 0\\ .075
 \end{pmatrix}
-= 0.9$, $0 < 0.9 < 1$, so this sample is inside the g
+ + 1|= 1.909 > 1.11$, so this sample is inside the margin.\\[.4em]
 
+\indent (2) $|(0.4, 0.15, 0.225)*
+\begin{pmatrix}
+1.8\\ 0\\ .075
+\end{pmatrix}
+ + 1|= 1.737 > 1.11$, so this sample is inside the margin.\\[.4em]
+
+\indent (3) $|(0.3, 0.75, 0.325)*
+\begin{pmatrix}
+1.8\\ 0\\ .075
+\end{pmatrix}
+ + 1|= 1.564 > 1.11$, so this sample is inside the margin.\\[.4em]
+
+\indent (4) $|(0.2, 0.65, 0.425)*
+\begin{pmatrix}
+1.8\\ 0\\ .075
+\end{pmatrix}
+ + 1|= 1.392 > 1.11$, so this sample is inside the margin.\\
+
+
+
+\noindent \hrulefill \\
+
+
+
+\noindent 4) \\
+\indent (1) If $y_i = 1$ and $w^Tx_i+w_b \le -1$, $y_i(w^Tx_i+w_b) \le -1$, disproving the condition.\\\\
+\indent (2) This condition holds for $y_i = 1$ and $w^Tx_i+w_b \le -1$ and for $y_i = -1$ and $w^Tx_i+w_b \le 1$. \\
+\indent \indent Both of these sets of values when input into $y_i(w^Tx_i+w_b) \le -1$\\\\
+\indent (3) If $y_i = 1$ and $w^Tx_i+w_b \le -1$, $y_i(w^Tx_i+w_b) \le -1$, disproving the condition.\\\\
+\indent (4) This condition holds for $y_i = 1$ and $w^Tx_i+w_b \le -1$ and for $y_i = -1$ and $w^Tx_i+w_b \le 1$. \\
+\indent \indent Both of these sets of values when input into $y_i(w^Tx_i+w_b) \le 1$\\\\
+\indent (5) If $y_i = 1$ and $w^Tx_i+w_b \le -1$, $y_i(w^Tx_i+w_b) \le -1$, disproving the condition.\\\\
+\indent (6) This condition holds for $y_i = 1$ and $w^Tx_i+w_b \le -1$ and for $y_i = -1$ and $w^Tx_i+w_b \le 1$. \\
+\indent \indent Both of these sets of values when input into $y_i(w^Tx_i+w_b) \le 0$\\\\
 
 
 %\begin{figure}[htbp]
