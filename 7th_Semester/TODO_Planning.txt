@@ -10,8 +10,8 @@
 [-] Take LinkedIn Skill Quiz
 [X] Apply for 1 job (Applied for 7)
 
-[ ] Build part of Gallery App
-[ ] Apply for more jobs 
+[X] Build part of Gallery App
+[X] Apply for more jobs 
 [ ] Do homework
 [ ] Build part of Gallery App
 [ ] Apply for more jobs 

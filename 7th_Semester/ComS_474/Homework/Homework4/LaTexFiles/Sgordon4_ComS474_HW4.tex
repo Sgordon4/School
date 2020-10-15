@@ -65,7 +65,7 @@ Prediction = $(1, 1, 0)*
 \begin{pmatrix}
 1.8\\ 0\\ .075
 \end{pmatrix}
-= 1.8 > 0$, thus the predicted class is 1.\\
++ 1 = 2.8 > 0$, thus the predicted class is 1.\\
 
 
 
@@ -73,11 +73,22 @@ Prediction = $(1, 1, 0)*
 
 
 
-\noindent 2) As the gutters span from $wx+w_b-1$ to $wx+w_b+1$, the size of the margin is {\Large$\frac{2}{||w||}$}, and the size of each gutter is 1/2 that $\Rightarrow$ {\Large$\frac{1}{||w||}$} = {\Large$\frac{1}{\sqrt{w_1^2+w_2^2}}$} = {\Large$\frac{1}{\sqrt{1.8^2+.075^2}}$} = {\Large$\frac{1}{1.802}$} = 0.555.\\
+\noindent 2) As the gutters span from $wx+w_b-1$ to $wx+w_b+1$, the size of the margin is {\Large$\frac{2}{||w||}$}, and the size of each gutter is 1/2 that $\Rightarrow$ {\Large$\frac{1}{||w||}$} = {\Large$\frac{1}{\sqrt{w_1^2+w_2^2}}$} = {\Large$\frac{1}{\sqrt{1.8^2+.075^2}}$} = {\Large$\frac{1}{1.802}$} = 0.555.\\\\
+However, the professor has specified that $d_1$ and $d_2$ are both 1, so the equations for both gutters are: $wx+w_b\pm1=0$ $\Rightarrow$\\\\[.4em]$
+\begin{pmatrix}
+1.8\\ 0\\ .075
+\end{pmatrix}
+*x + 1 = -1$\\[.4em]
+\indent \indent \indent and\\[.4em]$
+\begin{pmatrix}
+1.8\\ 0\\ .075
+\end{pmatrix}
+*x + 1 = 1 $\\
 
 
 
-\noindent \hrulefill \\
+
+\noindent \hrulefill \\\pagebreak
 
 
 
@@ -86,25 +97,25 @@ Prediction = $(1, 1, 0)*
 \begin{pmatrix}
 1.8\\ 0\\ .075
 \end{pmatrix}
- + 1|= 1.909 > 1.11$, so this sample is inside the margin.\\[.4em]
+ + 1|= 1.909 > 1.11$, so this sample is outside the margin.\\[.4em]
 
 \indent (2) $|(0.4, 0.15, 0.225)*
 \begin{pmatrix}
 1.8\\ 0\\ .075
 \end{pmatrix}
- + 1|= 1.737 > 1.11$, so this sample is inside the margin.\\[.4em]
+ + 1|= 1.737 > 1.11$, so this sample is outside the margin.\\[.4em]
 
 \indent (3) $|(0.3, 0.75, 0.325)*
 \begin{pmatrix}
 1.8\\ 0\\ .075
 \end{pmatrix}
- + 1|= 1.564 > 1.11$, so this sample is inside the margin.\\[.4em]
+ + 1|= 1.564 > 1.11$, so this sample is outside the margin.\\[.4em]
 
 \indent (4) $|(0.2, 0.65, 0.425)*
 \begin{pmatrix}
 1.8\\ 0\\ .075
 \end{pmatrix}
- + 1|= 1.392 > 1.11$, so this sample is inside the margin.\\
+ + 1|= 1.392 > 1.11$, so this sample is outside the margin.\\
 
 
 
