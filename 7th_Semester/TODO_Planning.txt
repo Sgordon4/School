@@ -12,7 +12,7 @@
 
 [X] Build part of Gallery App
 [X] Apply for more jobs 
-[ ] Do homework
+[X] Do homework
 [ ] Build part of Gallery App
 [ ] Apply for more jobs 
 [ ] Do homework
@@ -31,10 +31,6 @@ Updated future plan
 	Opens on 10/2
 	CprE 431: Complete mod5
 	CprE 431: ELO Course Design Survey (easy I think)
-	
-	
-	ComS 472: Understand everything before exam on 10/5
-	
 
 
 Tue 9/15: Begin CprE 431 Mod3
