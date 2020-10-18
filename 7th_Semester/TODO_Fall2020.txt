@@ -1,13 +1,4 @@
 
---------------------------------------------------
-Fri 10/16/2020 @9am to Sun 10/18/2020 @11:59pm
-\			   ComS 474 Midterm Exam
-			   This class is garbage
---------------------------------------------------
-
-Mon 10/19/2020
-  CprE 431: ELO Course Design Survey (Opens on 10/2)
-
 Thu 10/22/2020
   Arch 321: Attend Group 4 Discussion 5 at 1:30 pm,
 				https://canvas.iastate.edu/groups/131883/discussion_topics/706579
@@ -26,6 +17,7 @@ Sun 10/25/2020
 
 Mon 10/26/2020
   CprE 492: Biweekly Status Report 5
+  ComS 472: Problem Set 4
 
 Thu 11/5/2020
   Arch 321: Attend Group 4 Discussion 6 at 1:30 pm,
@@ -54,6 +46,7 @@ Sun 11/15/2020
 
 Wed 11/16/2020
   CprE 492: PIRM Review (Second Half of Semester)
+  ComS 472: Project 2 - A Theorem Prover for Propositional Logic
   
 ------------------------------------------------
 Sat 11/21/2020 @4:00pm to Mon 10/12/2020 @4:00pm
@@ -80,6 +73,15 @@ Thu 12/10/2020 ?
 
 
 =============================================================================================================
+
+Mon 10/19/2020
+X CprE 431: ELO Course Design Survey (Opens on 10/2)
+
+--------------------------------------------------
+Fri 10/16/2020 @9am to Sun 10/18/2020 @11:59pm
+X			   ComS 474 Midterm Exam
+			   This class is garbage
+--------------------------------------------------
 
 Fri 10/16/2020
 X ComS 472: Proj 1
