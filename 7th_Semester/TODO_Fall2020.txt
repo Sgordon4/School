@@ -8,7 +8,7 @@ X Arch 321: Mod 3 - Write 4 Lec/Film Responses
   CprE 431: Mod 6 Discussion Post
 
 Fri 10/23/2020
-  CprE 431 Class Presentations Due
+X CprE 431 Class Presentations Due
 
 Sun 10/25/2020
   CprE 431: Mod 6 Homework
