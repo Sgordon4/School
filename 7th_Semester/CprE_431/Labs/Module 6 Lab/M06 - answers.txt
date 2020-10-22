@@ -1,0 +1,33 @@
+Task1
+Rule1: iptables -A ...
+node1-to-node4: allowed
+node4-to-node1: blocked 
+node1-to-node3: ...
+node3-to-node1:
+node1-to-node2:
+Rule2: iptables -A ...
+node1-to-node4:
+node4-to-node1:
+node1-to-node3:
+node3-to-node1:
+node1-to-node2:
+Rule3:
+node1-to-node4:
+node4-to-node1:
+node1-to-node3:
+node3-to-node1:
+node1-to-node2:
+Explain-difference-between-chains:
+write your answer here
+
+Task2
+Rule4: 
+Explain-TCP-retransmissions-and-interval:
+
+Task3
+Rule5: 
+http-messages:
+
+Task5
+Rule6:
+Rule7:
