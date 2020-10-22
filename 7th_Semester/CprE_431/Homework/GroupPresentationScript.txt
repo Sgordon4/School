@@ -1,0 +1,20 @@
+Hi, my name is Sean Gordon, and I’ll be talking about the damages caused by the Twitter hack. Through various press reports and statements from Twitter itself, it can be gleaned that the hackers tried for access to 130 different user accounts, obtaining various amounts of information from each. The hackers successfully gained entry to 40 of those accounts, some of them being high profile users like Barack Obama, Jeff Bezos, and Bill Gates. Using the hacked accounts, the attacker’s phishing emails garnered $160,000 through bitcoin transfers. 
+
+Besides the money lost through the scam itself, Twitter is facing down multiple charges for the breach and could be fined between $150 to $250 million dollars. Twitter has also recorded market share drops of 1.6%, and expects lasting damage to business partnerships.
+ 
+Twitter has said that the hack "may also result in damage to our reputation, loss of accounts, loss of content or platform partners, loss of advertisers or advertising revenue or legal and financial exposure, including legal claims, regulatory inquiries or other proceedings. Any of these effects could have a material and adverse impact on our business, reputation and operating results."
+
+
+------------------------------------------------------------------------------------------------------------
+
+
+While the monetary damage to the corporation was significant, the potential damages for a hack of this magnitude are monolithic. The attackers pushed for the relatively tame goal of fishing for money, but if the power these hackers obtained had fallen into the hands of a terrorist organization instead, it could be used to disrupt political campaigns in multiple countries, or to damage inter-country relations and trigger unnecessary responses with fake military threats.
+
+The attack also only lasted around 4 1/2 hours, after which it was shut down by Twitter's recovery attempts. The attack could have lasted much longer however if the attackers decided to distribute malware alongside the plea for bitcoin. Many bitcoin services blocked transactions to the hacker's address, with services like Coinbase blocking approximately 5,670 transfers, with a total value of $1,294,000. 
+
+If malware was distributed in some of the tweets as well, it is very likely that there would have been many hits, leading to the spread of the malware and vastly increasing the difficulty of controlling and containing the incident.
+
+With access to some of Twitter's admin controls, the attackers could have done significant damage to Twitter itself as well, deleting accounts and information causing irreparable damage, or digging for private, protected information on users in order to sell later. 
+
+This hack obviously represents a threat to Twitter's users privacy and data security, and because of this the company is undergoing several audits, which will likely force major, expensive changes throughout not only the company, but across worldwide corporation cybersecurity. 
+
