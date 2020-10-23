@@ -1,0 +1,22 @@
+
+Com S 472/572 Fall 2020
+Problem Set 4 (125 pts)
+
+Due on Monday, Oct 26
+
+All exercises are from https://aimacode.github.io/aima-exercises/
+
+
+7.22 (3 X 4 = 12 pts) 
+7.23 (3 X 5 = 15 pts) 
+7.26 (10 pts)  
+      -- ignore all the colons.
+8.11 (7 X 2 = 14 pts)
+8.23 (5 X 2 = 10 pts)
+8.29 (3 X 3 = 9 pts)
+9.4  (4 X 3 = 12 pts)
+9.7  (6 X 2 = 12 pts)
+9.9  (5 X 2 = 10 pts) 
+9.16a, b, c (6 + 3 + 2 = 11 pts) 
+9.18 (8 + 2 = 10 pts) 
+

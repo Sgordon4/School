@@ -1,20 +1,4 @@
 
-Thu 10/22/2020
-X Arch 321: Attend Group 4 Discussion 5 at 1:30 pm,
-				https://canvas.iastate.edu/groups/131883/discussion_topics/706579
-X Arch 321: Mod 3 - Watch 4 lectures
-X Arch 321: Mod 3 - Watch "The Great Migration" Intro AND "The African Americans" Ep 4 on Canvas
-X Arch 321: Mod 3 - Write 4 Lec/Film Responses
-  CprE 431: Mod 6 Discussion Post
-
-Fri 10/23/2020
-X CprE 431 Class Presentations Due
-
-Sun 10/25/2020
-  CprE 431: Mod 6 Homework
-  CprE 431: Mod 6 Quiz
-  CprE 431: Mod 6 Discussion Reply
-
 Mon 10/26/2020
   CprE 492: Biweekly Status Report 5
   ComS 472: Problem Set 4
@@ -43,10 +27,15 @@ Sun 11/15/2020
   CprE 431: Mod 8 Homework
   CprE 431: Mod 8 Quiz
   CprE 431: Mod 8 Discussion Reply
+  CprE 492: Final Poster
+  CprE 492: Final Report
 
-Wed 11/16/2020
+Mon 11/16/2020
   CprE 492: PIRM Review (Second Half of Semester)
   ComS 472: Project 2 - A Theorem Prover for Propositional Logic
+
+Thu 11/19/2020
+  CprE 492: Final Poster
   
 ------------------------------------------------
 Sat 11/21/2020 @4:00pm to Mon 10/12/2020 @4:00pm
@@ -73,6 +62,22 @@ Thu 12/10/2020 ?
 
 
 =============================================================================================================
+
+Sun 10/25/2020
+X CprE 431: Mod 6 Homework
+X CprE 431: Mod 6 Quiz
+X CprE 431: Mod 6 Discussion Reply
+
+Fri 10/23/2020
+X CprE 431 Class Presentations Due
+
+Thu 10/22/2020
+X Arch 321: Attend Group 4 Discussion 5 at 1:30 pm,
+				https://canvas.iastate.edu/groups/131883/discussion_topics/706579
+X Arch 321: Mod 3 - Watch 4 lectures
+X Arch 321: Mod 3 - Watch "The Great Migration" Intro AND "The African Americans" Ep 4 on Canvas
+X Arch 321: Mod 3 - Write 4 Lec/Film Responses
+X CprE 431: Mod 6 Discussion Post
 
 Mon 10/19/2020
 X CprE 431: ELO Course Design Survey (Opens on 10/2)
