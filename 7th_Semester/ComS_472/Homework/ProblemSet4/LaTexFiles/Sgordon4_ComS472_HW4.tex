@@ -49,15 +49,75 @@
 
 
 
-\noindent \hrulefill \\
+\noindent \hrulefill \pagebreak
 
 
 
 \centerline{- 7.23 - }
 \ \\
-\noindent 1) \\[.4em]
-\noindent 2) \\[.4em]
-\noindent 3) \\[.4em]
+\noindent 1) 
+\begin{tabular}{|c|c|c||c|c|c||c|c||c|}
+	\hline &&&&&&&&\\[-1em]
+F & P & D &  F $\Rightarrow$ P  &  D $\Rightarrow$ P  & (F $\Rightarrow$ P)$\vee$  &  F $\wedge$ D  &  (F $\wedge$ D) & (F $\Rightarrow$ P)$\vee$(D $\Rightarrow$ P)\\
+ & & & & & (D $\Rightarrow$ P) & &  $\Rightarrow$ P & $\Rightarrow$ (F $\wedge$ D)$\Rightarrow$ P\\
+	\hline &&&&&&&&\\[-1em]
+	\hline &&&&&&&&\\[-1em]
+T&T&T&T&T&T&T&T&T \\
+	\hline &&&&&&&&\\[-1em]
+T&T&F&T&T&T&F&T&T \\
+	\hline &&&&&&&&\\[-1em]
+T&F&T&F&F&F&T&F&T \\
+	\hline &&&&&&&&\\[-1em]
+T&F&F&F&T&T&F&T&T \\
+	\hline &&&&&&&&\\[-1em]
+F&T&T&T&T&T&F&T&T \\
+	\hline &&&&&&&&\\[-1em]
+F&T&F&T&T&T&F&T&T \\
+	\hline &&&&&&&&\\[-1em]
+F&F&T&T&F&T&F&T&T \\
+	\hline &&&&&&&&\\[-1em]
+F&F&F&T&T&T&F&T&T \\
+	\hline
+\end{tabular}\\
+\begin{center}\textbf{The sentence is valid as it is true for all combinations of variables.}\\[.4em]\end{center}
+
+\noindent 2) Original\indent \indent\indent\ (F $\Rightarrow$ P)$\vee$(D $\Rightarrow$ P) $\Rightarrow$ (F $\wedge$ D)$\Rightarrow$ P\\[.4em]
+\indent Implication Elim: ($\neg$F $\vee$ P)$\vee$ (D $\Rightarrow$ P) $\Rightarrow$ (F $\wedge$ D) $\Rightarrow$ P\\
+\indent Implication Elim: ($\neg$F $\vee$ P)$\vee$ ($\neg$D $\vee$ P) $\Rightarrow$ (F $\wedge$ D) $\Rightarrow$ P\\
+\indent Implication Elim: ($\neg$F $\vee$ P)$\vee$ ($\neg$D $\vee$ P) $\Rightarrow$ $\neg$(F $\wedge$ D) $\vee$ P\\
+\indent De Morgan: \indent\ \ \ ($\neg$F $\vee$ P) $\vee$ ($\neg$D $\vee$ P) $\Rightarrow$ ($\neg$F $\vee$ $\neg$D) $\vee$ P\\
+\indent Implication Elim: $\neg$(($\neg$F $\vee$ P )$\vee$ ($\neg$D $\vee$ P)) $\vee$ ($\neg$F $\vee$ $\neg$D)$\vee$ P\\
+\indent De Morgan: \indent\ \ \ $\neg$($\neg$F $\vee$ P)$\wedge$ $\neg$($\neg$D $\vee$ P) $\vee$ ($\neg$F $\vee$ $\neg$D)$\vee$ P\\
+\indent De Morgan: \indent\ \ \ (F $\wedge$ $\neg$P) $\wedge$ (D $\wedge$ $\neg$P) $\vee$ ($\neg$F $\vee$ $\neg$D)$\vee$ P\\
+\indent Associativity: \indent\ (F $\wedge$ $\neg$P $\wedge$ D $\wedge$ $\neg$P) $\vee$ ($\neg$F $\vee$ $\neg$D $\vee$ P)\\
+\indent Duplicates:\indent\indent\ (F $\wedge$ $\neg$P $\wedge$ D) $\vee$ ($\neg$F $\vee$ $\neg$D $\vee$ P)\\
+
+\indent Final Form (CNF): \textbf{(F $\wedge$ $\neg$P $\wedge$ D) $\vee$ ($\neg$F $\vee$ $\neg$D $\vee$ P)}\\
+
+\noindent 3) 
+\begin{tabular}{|c|c|c||c|c|c||c||c||c|}
+	\hline &&&&&&&&\\[-1em]
+F & P & D &  $\neg$F  &  $\neg$P  &  $\neg$D  &  F $\wedge$ $\neg$P $\wedge$ D  &  $\neg$F $\vee$ P $\vee$ $\neg$D & F $\wedge$ $\neg$P $\wedge$ D  $\vee$  $\neg$F $\vee$ P $\vee$ $\neg$D\\
+	\hline &&&&&&&&\\[-1em]
+	\hline &&&&&&&&\\[-1em]
+T&T&T&F&F&F&F&T&T\\
+	\hline &&&&&&&&\\[-1em]
+T&T&F&F&F&T&F&T&T\\
+	\hline &&&&&&&&\\[-1em]
+T&F&T&F&T&F&T&F&T\\
+	\hline &&&&&&&&\\[-1em]
+T&F&F&F&T&T&F&T&T\\
+	\hline &&&&&&&&\\[-1em]
+F&T&T&T&F&F&F&T&T\\
+	\hline &&&&&&&&\\[-1em]
+F&T&F&T&F&T&F&T&T\\
+	\hline &&&&&&&&\\[-1em]
+F&F&T&T&T&F&F&T&T\\
+	\hline &&&&&&&&\\[-1em]
+F&F&F&T&T&T&F&T&T\\
+	\hline
+\end{tabular}\\
+\begin{center}\textbf{The resolved sentence is logically equivalent to the original.}\\[.4em]\end{center}
 
 
 
@@ -67,12 +127,27 @@
 
 \centerline{- 7.26 - }
 \ \\
-\noindent S1) \\[.4em]
-\noindent S2) \\[.4em]
-\noindent S3) \\[.4em]
-\noindent S4) \\[.4em]
-\noindent S5) \\[.4em]
-\noindent S6) \\[.4em]
+\noindent S1) A $\Leftrightarrow$ (C $\vee$ E) to...\\
+\indent (A $\Rightarrow$ (C $\vee$ E)) $\wedge$ ((C $\vee$ E) $\Rightarrow$ A)\\
+\indent ($\neg$A $\vee$ (C $\vee$ E)) $\wedge$ ($\neg$(C $\vee$ E) $\vee$ A)\\
+\indent ($\neg$A $\vee$ C $\vee$ E) $\wedge$ (($\neg$C $\wedge$ $\neg$E) $\vee$ A)\\
+\indent ($\neg$A $\vee$ C $\vee$ E) $\wedge$ ($\neg$C $\vee$ A) $\wedge$ ($\neg$E $\vee$ A)\\[.4em]
+
+\noindent S2) E $\Rightarrow$ D to...\\
+\indent $\neg$E $\vee$ D\\[.4em]
+
+\noindent S3) B $\wedge$ F $\Rightarrow$ $\neg$C to...\\
+\indent $\neg$(B $\wedge$ F) $\vee$ $\neg$C\\
+\indent $\neg$B $\vee$ $\neg$F $\vee$ $\neg$C\\[.4em]
+
+\noindent S4) E $\Rightarrow$ C to...\\
+\indent $\neg$E $\vee$ C\\[.4em]
+
+\noindent S5) C $\Rightarrow$ F to...\\
+\indent $\neg$C $\vee$ F\\[.4em]
+
+\noindent S6) C $\Rightarrow$ B to...\\
+\indent $\neg$C $\vee$ B\\[.4em]
 
 
 
@@ -82,27 +157,27 @@
 
 \centerline{- 8.11 - }
 \ \\
-\noindent 1) \\[.4em]
-\noindent 2) \\[.4em]
-\noindent 3) \\[.4em]
-\noindent 4) \\[.4em]
-\noindent 5) \\[.4em]
-\noindent 6) \\[.4em]
-\noindent 7) \\[.4em]
+\noindent 1) Occupation(Emily, Surgeon) $\vee$ Occupation(Emily, Lawyer)\\[.4em]
+\noindent 2) Occupation(Joe, Actor) $\wedge$ $\exists$ j (Occupation(Joe, j) $\wedge$ $\neg$(j=Actor))\\[.4em]
+\noindent 3) $\forall$ s (Occupation(s, Surgeon) $\Rightarrow$ Occupation(s, Doctor))\\[.4em]
+\noindent 4) $\forall$ l (Occupation(l, Lawyer) $\Rightarrow$ $\neg$Customer(Joe, l))\\[.4em]
+\noindent 5) $\exists$ b (Boss(b, Emily) $\wedge$ Occupation(b, Lawyer))\\[.4em]
+\noindent 6) $\exists$ l $\forall$ c (Occupation(l, Lawyer) $\wedge$ (Customer(c, l) $\Rightarrow$ Occupation(c, Doctor)))\\[.4em]
+\noindent 7) $\forall$ s $\exists$ l (Occupation(s, Surgeon) $\Rightarrow$ (Customer(s, l) $\wedge$ Occupation(l, Lawyer)))\\[.4em]
 
 
 
-\noindent \hrulefill \\
+\noindent \hrulefill \pagebreak
 
 
 
 \centerline{- 8.23 - }
 \ \\
-\noindent 1) \\[.4em]
-\noindent 2) \\[.4em]
-\noindent 3) \\[.4em]
-\noindent 4) \\[.4em]
-\noindent 5) \\[.4em]
+\noindent 1) $\exists$ d Parent(Joan, d) $\wedge$ Female(d)\\[.4em]
+\noindent 2) $\exists$! d Parent(Joan, d) $\wedge$ Female(d)\\[.4em]
+\noindent 3) ($\exists$! d Parent(Joan, d)) $\wedge$ ($\forall$ d Parent(Joan, d) $\Rightarrow$ Female(d))\\[.4em]
+\noindent 4) $\exists$! c Parent(Joan, c) $\wedge$ Parent(Kevin, c)\\[.4em]
+\noindent 5) ($\exists$ c Parent(Joan, c) $\wedge$ Parent(Kevin, c)) $\wedge$ $\neg$($\exists$ c Parent(Joan, c) $\wedge$ $\neg$Parent(Kevin, c))\\[.4em]
 
 
 
