@@ -35,11 +35,17 @@
 \maketitle
 
 
-\centerline{- 6.1 - }
+\centerline{- 7.22 - }
 \ \\
-\noindent 1) 3 colors for (SA), 2 for (WA), 1 for (NT, Q, NSW, V), 3 for (T) $\Rightarrow$ \\\indent $3*2*1*1*1*1*3=18$ solutions\\[.4em]
-2) 4:(SA), 3:(WA), 2:(NT, Q, NSW, V), 4:(T) $\Rightarrow$ $4*3*2*2*2*2*4=768$ solutions\\[.4em]
-3) 2:(SA), 1:(WA), 0:(NT, Q, NSW, V), 2:(T) $\Rightarrow$ $2*1*0*0*0*0*2=0$ solutions
+\noindent 1) If the pair of clauses has no complimentary literals, there are no resolvents. \checkmark\\[.4em]
+\indent If the pair has one or more sets of complimentary literals, the resulting resolvents \\
+\indent acquired from applying the same set of literals in any order will eventually reduce\\
+\indent down to a single resolvent. \checkmark\\
+
+\noindent 2) See s02\\[.4em]
+
+\noindent 3) For a clause to resolve with a copy of itself, it must contain only complimentary \\[.4em]
+\indent literals. This would make the initial clause equivalent to True\\[.4em]
 
 
 
@@ -47,11 +53,11 @@
 
 
 
-\centerline{- 6.6 - }
+\centerline{- 7.23 - }
 \ \\
-\noindent 1) Introduce variable $D$ as a set of pair values $(D_1, D_2)$. $A = D_1, B = D_2, and\ C = D_1+D_2$\\\\
-\noindent 2) Constraints with more than 3 variables can be reduced in tiers, with n-1 variables reduced to n, n to n-1, ..., continuing until the set of constraints contains only binary constraints.\\\\
-\noindent 3) Unary constraints can be completely eliminated by moving the effects of the constraint into the domain of the variable it is affecting.
+\noindent 1) \\[.4em]
+\noindent 2) \\[.4em]
+\noindent 3) \\[.4em]
 
 
 
@@ -59,133 +65,14 @@
 
 
 
-\centerline{- 6.8 - }
-\noindent 1) A1 $\rightarrow$ R \ \checkmark\\
-2) H \ $\rightarrow$ R \ \textbf{X}, conflicts with A1 $\rightarrow$ backtrack \\
-3) H \ $\rightarrow$ G \ \checkmark\\
-4) A4 $\rightarrow$ R \ \checkmark\\
-5) F1 $\rightarrow$ R \ \checkmark\\
-6) A2 $\rightarrow$ R \ \checkmark\\
-7) F2 $\rightarrow$ R \ \checkmark\\
-8) A3 $\rightarrow$ R \ \checkmark\\
-9) T \ $\rightarrow$ R \ \textbf{X}, conflicts with F1 $\rightarrow$ backtrack \\
-9) T \ $\rightarrow$ G \ \textbf{X}, conflicts with H \ $\rightarrow$ backtrack \\
-9) T \ $\rightarrow$ B \ \checkmark\\
-
-
-
-
-
-
-
-\centerline{- 6.11 - }
+\centerline{- 7.26 - }
 \ \\
-\noindent Arcs: \\
-$(SA\neq WA), (WA\neq SA),(SA\neq NT),(NT\neq SA),(SA\neq Q),(Q\neq SA), \\
-(SA\neq NSW),(NSW\neq SA),(SA\neq V),(V\neq SA),(WA\neq NT),(NT\neq WA),\\
-(NT\neq Q),(Q\neq NT),(Q\neq NSW),(NSW\neq Q),(NSW\neq V),(V\neq NSW)$\\
-
-\noindent Initial Constraints: \\
-SA=\{RGB\}, WA=\{RGB\}, NT=\{RGB\}, Q=\{RGB\}, NSW=\{RGB\}, V=\{RGB\}, T=\{RGB\}\\
-
-Set WA=green, V=red...\\
-
-\noindent 1)\hrulefill\\
-\textbf{C:} SA=\{RGB\}, WA=\{\_G\_\}, NT=\{RGB\}, Q=\{RGB\}, NSW=\{RGB\}, V=\{R\_\_\}, T=\{RGB\}\\
-\textbf{A:} All arcs, $(SA\neq WA), (NT\neq WA), (SA\neq V), (NSW\neq V)$ at the end for conciseness.\\
-\textbf{Action:} Check and dequeue all consistent arcs.\\
-
-\noindent 2)\hrulefill\\
-\textbf{C:} SA=\{RGB\}, WA=\{\_G\_\}, NT=\{RGB\}, Q=\{RGB\}, NSW=\{RGB\}, V=\{R\_\_\}, T=\{RGB\}\\
-\textbf{A:} $(SA\neq WA), (NT\neq WA), (SA\neq V), (NSW\neq V)$\\
-\textbf{Action:} $(SA\neq WA)$ is inconsistent. Remove G from SA, queue arcs with SA on right.\\
-
-\noindent 3)\hrulefill\\
-\textbf{C:} SA=\{R\_B\}, WA=\{\_G\_\}, NT=\{RGB\}, Q=\{RGB\}, NSW=\{RGB\}, V=\{R\_\_\}, T=\{RGB\}\\
-\textbf{A:} $(NT\neq WA), (SA\neq V), (NSW\neq V), (WA\neq SA), (NT\neq SA), (Q\neq SA),$ \\
-\indent $(NSW\neq SA), (V\neq SA)$\\
-\textbf{Action:} $(NT\neq WA)$ is inconsistent. Remove G from NT, queue arcs with NT on right.\\
-
-\noindent 4)\hrulefill\\
-\textbf{C:} SA=\{R\_B\}, WA=\{\_G\_\}, NT=\{R\_B\}, Q=\{RGB\}, NSW=\{RGB\}, V=\{R\_\_\}, T=\{RGB\}\\
-\textbf{A:} $(SA\neq V), (NSW\neq V), (WA\neq SA), (NT\neq SA), (Q\neq SA), (NSW\neq SA),$ \\
-\indent $(V\neq SA), (WA\neq NT), (Q\neq NT) $\\
-\textbf{Action:} $(SA\neq V)$ is inconsistent. Remove R from SA, queue arcs with SA on right.\\
-
-\noindent 5)\hrulefill\\
-\textbf{C:} SA=\{\_\_B\}, WA=\{\_G\_\}, NT=\{R\_B\}, Q=\{RGB\}, NSW=\{RGB\}, V=\{R\_\_\}, T=\{RGB\}\\
-\textbf{A:} $(NSW\neq V), (WA\neq SA), (NT\neq SA), (Q\neq SA), (NSW\neq SA), (V\neq SA), $ \\
-\indent $(WA\neq NT), (Q\neq NT) $\\
-\textbf{Action:} $(NSW\neq V)$ is inconsistent. Remove R from NSW, queue arcs with NSW on right.\\
-
-\noindent 6)\hrulefill\\
-\textbf{C:} SA=\{\_\_B\}, WA=\{\_G\_\}, NT=\{R\_B\}, Q=\{RGB\}, NSW=\{\_GB\}, V=\{R\_\_\}, T=\{RGB\}\\
-\textbf{A:} $(WA\neq SA), (NT\neq SA), (Q\neq SA), (NSW\neq SA), (V\neq SA), (WA\neq NT), $ \\
-\indent $(Q\neq NT), (SA\neq NSW), (Q\neq NSW), (V\neq NSW)$\\
-\textbf{Action:} $(WA\neq SA)$ is consistent. Dequeue.\\
-
-\noindent 7)\hrulefill\\
-\textbf{C:} SA=\{\_\_B\}, WA=\{\_G\_\}, NT=\{R\_B\}, Q=\{RGB\}, NSW=\{\_GB\}, V=\{R\_\_\}, T=\{RGB\}\\
-\textbf{A:} $(NT\neq SA), (Q\neq SA), (NSW\neq SA), (V\neq SA), (WA\neq NT), (Q\neq NT), $ \\
-\indent $(SA\neq NSW), (Q\neq NSW), (V\neq NSW)$\\
-\textbf{Action:} $(NT\neq SA)$ is inconsistent. Remove B from NT, queue arcs with NT on right.\\
-
-\noindent 8)\hrulefill\\
-\textbf{C:} SA=\{\_\_B\}, WA=\{\_G\_\}, NT=\{R\_\_\}, Q=\{RGB\}, NSW=\{\_GB\}, V=\{R\_\_\}, T=\{RGB\}\\
-\textbf{A:} $(Q\neq SA), (NSW\neq SA), (V\neq SA), (WA\neq NT), (Q\neq NT), (SA\neq NSW), $ \\
-\indent $(Q\neq NSW), (V\neq NSW), (SA\neq NT)$\\
-\textbf{Action:} $(Q\neq SA)$ is inconsistent. Remove B from Q, queue arcs with Q on right.\\
-
-\noindent 9)\hrulefill\\
-\textbf{C:} SA=\{\_\_B\}, WA=\{\_G\_\}, NT=\{R\_\_\}, Q=\{RG\_\}, NSW=\{\_GB\}, V=\{R\_\_\}, T=\{RGB\}\\
-\textbf{A:} $(NSW\neq SA), (V\neq SA), (WA\neq NT), (Q\neq NT), (SA\neq NSW), (Q\neq NSW), $ \\
-\indent $(V\neq NSW), (SA\neq NT), (SA\neq Q), (NT\neq Q), (NSW\neq Q)$\\
-\textbf{Action:} $(NSW\neq SA)$ is inconsistent. Remove B from NSW, queue arcs with NSW on right.\\
-
-\noindent 10)\hrulefill\\
-\textbf{C:} SA=\{\_\_B\}, WA=\{\_G\_\}, NT=\{R\_\_\}, Q=\{RG\_\}, NSW=\{\_GB\}, V=\{R\_\_\}, T=\{RGB\}\\
-\textbf{A:} $(V\neq SA), (WA\neq NT), (Q\neq NT), (SA\neq NSW), (Q\neq NSW), (V\neq NSW), $ \\
-\indent $(SA\neq NT), (SA\neq Q), (NT\neq Q), (NSW\neq Q)$\\
-\textbf{Action:} $(V\neq SA)$ is consistent. Dequeue.\\
-
-\noindent 11)\hrulefill\\
-\textbf{C:} SA=\{\_\_B\}, WA=\{\_G\_\}, NT=\{R\_\_\}, Q=\{RG\_\}, NSW=\{\_GB\}, V=\{R\_\_\}, T=\{RGB\}\\
-\textbf{A:} $(WA\neq NT), (Q\neq NT), (SA\neq NSW), (Q\neq NSW), (V\neq NSW), (SA\neq NT), $ \\
-\indent $(SA\neq Q), (NT\neq Q), (NSW\neq Q)$\\
-\textbf{Action:} $(WA\neq NT)$ is consistent. Dequeue.\\
-
-\noindent 12)\hrulefill\\
-\textbf{C:} SA=\{\_\_B\}, WA=\{\_G\_\}, NT=\{R\_\_\}, Q=\{RG\_\}, NSW=\{\_GB\}, V=\{R\_\_\}, T=\{RGB\}\\
-\textbf{A:} $(Q\neq NT), (SA\neq NSW), (Q\neq NSW), (V\neq NSW), (SA\neq NT), (SA\neq Q),$ \\
-\indent $(NT\neq Q), (NSW\neq Q)$\\
-\textbf{Action:} $(Q\neq NT)$ is inconsistent. Remove R from Q, queue arcs with Q on right.\\
-
-\noindent 13)\hrulefill\\
-\textbf{C:} SA=\{\_\_B\}, WA=\{\_G\_\}, NT=\{R\_\_\}, Q=\{\_G\_\}, NSW=\{\_GB\}, V=\{R\_\_\}, T=\{RGB\}\\
-\textbf{A:} $(SA\neq NSW), (Q\neq NSW), (V\neq NSW), (SA\neq NT), (SA\neq Q), (NT\neq Q), $ \\
-\indent $(NSW\neq Q)$\\
-\textbf{Action:} $(SA\neq NSW)$ is inconsistent. Remove B from SA, queue arcs with SA on right.\\
-
-\noindent This leaves SA with no possible values, revealing an inconsistency in the partial assignment.
-
-
-
-
-
-
-\centerline{- 6.20 - }
-\ \\
-\noindent \textbf{Variables:} $S_1, S_2, ..., S_n$\\
-\textbf{Domain:} Set of adjacent square pairs a domino can cover $(s_1, s_2)$.\\
-\textbf{Constraints:} No two dominos can cover the same square.\\
-
-\noindent \textbf{Variables:} $D_1, D_2, ..., D_n$\\
-\textbf{Domain:} Set of pairs (s, s'), with s = current square and s' = one of 4 adjacent squares.\\
-\textbf{Constraints:} A square must only link to one other square. Square A can link to square B if square B can link to A. \\
-
-A tree-structured constraint graph can be accomplished with a straight line of 6 squares.\\
-
-A tree-structured graph requires there to be no loops. If the layout of the squares has no cycles, the resulting constraint graph will be tree-structured.
+\noindent S1) \\[.4em]
+\noindent S2) \\[.4em]
+\noindent S3) \\[.4em]
+\noindent S4) \\[.4em]
+\noindent S5) \\[.4em]
+\noindent S6) \\[.4em]
 
 
 
@@ -193,34 +80,15 @@ A tree-structured graph requires there to be no loops. If the layout of the squa
 
 
 
-\centerline{- 7.4 - }
+\centerline{- 8.11 - }
 \ \\
-\noindent 1) True: Because false will never be true, it doesn't matter what the second half of the equation is.\\[.4em]
-\noindent 2) False: True is always true, but False will never be true, so by definition it is incorrect.\\[.4em]
-\noindent 3) True: $A\wedge B$ is only true if A and B are logically equivalent, meaning the right side must be true.\\[.4em]
-\noindent 4) False: $A\Leftrightarrow B$ can be true when A=B=False, but $A\vee B$ is false.\\[.4em]
-\noindent 5) True:  $A\Leftrightarrow B$ is only true when A==B, but on the right A!=B so $A\vee B$ must be true.\\[.4em]
-\noindent 6) True: The right side is only false when A and B are true but C is false, which couldn't happen because the left side would also be false.\\[.4em]
-\noindent 7) True: By truth table, the left is equivalent to the right.\\[.4em]
-\noindent 8) True: $A\vee B$ must be true to reach the right side, which is also $A\vee B$.\\[.4em]
-\noindent 9) False: If (A or B = true) and (C=false) but (D=true) and (E=false), this fails.\\[.4em]
-\noindent 10) True: A=true, B=false\\[.4em]
-\noindent 11) True: A=B=true\\[.4em]
-\noindent 12) True: $(...)\Leftrightarrow C$ relies on what is within the parentheses, and can never have more or less models than it because it does not add anything.
-
-
-
-\noindent \hrulefill \\\pagebreak
-
-
-
-\centerline{- 7.6 - }
-\ \\
-\noindent 1) By definition of entailment, True $\models \alpha$ when $\alpha$ is true, but not when $\alpha$ is false. Therefore, for True $\models \alpha$ to be true, $\alpha$ must be true already.\\[.4em]
-\noindent 2) It doesn't matter what $\alpha$ is, because False is never True.\\[.4em]
-\noindent 3) Via truth table, whenever $A\models B$ is true, $A\Rightarrow B$ is also true. $A\models B$ does not depend on $A\Rightarrow B$, but the assertion holds.\\[.4em]
-\noindent 4) Via truth table, whenever $A\Leftrightarrow B$ is true, $A\equiv B$ is also true. $A\equiv B$ does not depend on $A\Leftrightarrow B$, but the assertion holds.\\[.4em]
-\noindent 5) LHS is valid only if A and B are true, which then invalidates the RHS.
+\noindent 1) \\[.4em]
+\noindent 2) \\[.4em]
+\noindent 3) \\[.4em]
+\noindent 4) \\[.4em]
+\noindent 5) \\[.4em]
+\noindent 6) \\[.4em]
+\noindent 7) \\[.4em]
 
 
 
@@ -228,11 +96,13 @@ A tree-structured graph requires there to be no loops. If the layout of the squa
 
 
 
-\centerline{- 7.7 - }
+\centerline{- 8.23 - }
 \ \\
-\noindent 1) For $A \wedge B$ to be true, A and B must be true. Then, if just one of A or B $\models$ Y, $A \wedge B$ must also $\models$ Y. \\[.4em]
-\noindent 2) For (A $\wedge$ B) to be true, A and B must be true. Then, if (A $\wedge$ B) $\models$ Y, one or both of A or B must also model Y.\\[.4em]
-\noindent 3) For (B $\vee$ Y) to be true, B or Y or both must be true. Then, if A is true, and one or both of B or Y is true, A $\models$ either B or Y or both.
+\noindent 1) \\[.4em]
+\noindent 2) \\[.4em]
+\noindent 3) \\[.4em]
+\noindent 4) \\[.4em]
+\noindent 5) \\[.4em]
 
 
 
@@ -240,29 +110,11 @@ A tree-structured graph requires there to be no loops. If the layout of the squa
 
 
 
-\centerline{- 7.15 - }
+\centerline{- 8.29 - }
 \ \\
-\textbf{Clauses:}
-\begin{multicols}{2}
-\indent $S1: A\Leftrightarrow (B\vee E)$\\
-\indent $S2: E\Rightarrow D$ \indent \indent \indent $\neg E \vee D$\\
-\indent $S3: C\wedge F\Rightarrow \neg B$ \indent  $(\neg C \vee \neg F \vee \neg B)$
-\columnbreak\\
-\indent $S4: E\Rightarrow B$ \indent \indent $\neg E \vee B$\\
-\indent $S5: B\Rightarrow F$ \indent \indent $\neg B \vee F$\\
-\indent $S6: B\Rightarrow C$ \indent \indent $\neg B \vee C$
-\end{multicols}
-
-\noindent With material implication and de Morgan's law, S3 $(C\wedge F\Rightarrow \neg B)$ becomes $(\neg C \vee \neg F \vee \neg B)$.\\
-\noindent $\neg C$ can be removed using S6 $(B \Rightarrow C)$, becoming $(\neg F \vee \neg B)$.\\
-\noindent $\neg F$ can be removed using S5 $(B \Rightarrow F)$, becoming $(\neg B)$.\\
-
-\noindent We can break clause S1 $(A\Leftrightarrow (B\vee E))$ into two parts: $(A \Rightarrow (B \vee E))$ and $((B \vee E) \Rightarrow A)$.\\
-\noindent Through material implication, $(A \Rightarrow (B \vee E))$ is then transformed into $(\neg A \vee B \vee E)$.\\
-\noindent Using clause S4 $(E \Rightarrow B)$ we can remove E from $(\neg A \vee B \vee E)$, becoming $(\neg A \vee B)$.\\
-\noindent Because we have proven $\neg B$, we can remove B from the sentence, becoming $(\neg A)$.\\
-
-\noindent Thus, $\neg A$ and $\neg B$ are proven separately, so $(\neg A \wedge \neg B)$ must also be valid.\\
+\noindent 1) \\[.4em]
+\noindent 2) \\[.4em]
+\noindent 3) \\[.4em]
 
 
 
@@ -270,20 +122,73 @@ A tree-structured graph requires there to be no loops. If the layout of the squa
 
 
 
-\centerline{- 7.16 - }
+\centerline{- 9.4 - }
 \ \\
-\noindent 1) Through implication elimination $(\neg X \vee Y) = (X \Rightarrow Y)$, so $(\neg P_1 \vee ... \vee \neg P_m \vee Q)$ is \\
-\indent equivalent to $( P_1 \vee ... \vee  P_m) \Rightarrow Q$.\\
-\indent Then, through de Morgan's law $\neg ( P_1 \vee ... \vee  P_m)$ becomes $( P_1 \wedge ... \wedge  P_m)$.\\
-\indent Thus, $(\neg P_1 \vee ... \vee \neg P_m \vee Q) \equiv ( P_1 \wedge ... \wedge  P_m) \Rightarrow Q$\\
+\noindent 1) \\[.4em]
+\noindent 2) \\[.4em]
+\noindent 3) \\[.4em]
+\noindent 4) \\[.4em]
 
-\noindent 2) Any clause can be arranged as $(\neg P_1 \vee ... \vee \neg P_m \vee Q_1 \vee ... \vee Q_n)$. \\
-\indent We can consolidate $Q_1\ to\ Q_n$ as Q, turning the arrangement into $(\neg P_1 \vee ... \vee \neg P_m \vee Q)$. \\
-\indent Implication elimination and de Morgan's law can then be applied as above, \\
-\indent resulting in $( P_1 \wedge ... \wedge  P_m) \Rightarrow Q$. \\
-\indent Q can then be expanded, with a final result of $( P_1 \wedge ... \wedge  P_m)\Rightarrow( Q_1 \wedge ... \wedge  Q_n)$.\\
 
-\noindent 3) Wat
+
+\noindent \hrulefill \\
+
+
+
+\centerline{- 9.7 - }
+\ \\
+\noindent 1) \\[.4em]
+\noindent 2) \\[.4em]
+\noindent 3) \\[.4em]
+\noindent 4) \\[.4em]
+\noindent 5) \\[.4em]
+\noindent 6) \\[.4em]
+
+
+
+\noindent \hrulefill \\
+
+
+
+\centerline{- 9.9 - }
+\ \\
+\noindent 1) \\[.4em]
+\noindent 2) \\[.4em]
+\noindent 3) \\[.4em]
+\noindent 4) \\[.4em]
+\noindent 5) \\[.4em]
+
+
+
+\noindent \hrulefill \\
+
+
+
+\centerline{- 9.16 - }
+\ \\
+\noindent 1) \\[.4em]
+\noindent 2) \\[.4em]
+\noindent 3) \\[.4em]
+
+
+
+\noindent \hrulefill \\
+
+
+
+\centerline{- 9.18 - }
+\ \\
+\noindent 1) \\[.4em]
+\noindent 2) \\[.4em]
+
+
+
+\noindent \hrulefill \\
+
+
+
+$\neg$$\vee$$\wedge$
+
 
 
 \noindent \hrulefill \\
