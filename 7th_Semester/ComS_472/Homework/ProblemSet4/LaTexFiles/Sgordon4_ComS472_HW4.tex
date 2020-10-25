@@ -34,7 +34,7 @@
 \begin{document}
 \maketitle
 
-
+\ \\
 \centerline{- 7.22 - }
 \ \\
 \noindent 1) If the pair of clauses has no complimentary literals, there are no resolvents. \checkmark\\[.4em]
@@ -42,7 +42,8 @@
 \indent acquired from applying the same set of literals in any order will eventually reduce\\
 \indent down to a single resolvent. \checkmark\\
 
-\noindent 2) See s02\\[.4em]
+\noindent 2) A clause resolved with itself would contain complimentary literals left in the equation.\\
+\indent As this clause does not contain any, it is impossible.\\[.4em]
 
 \noindent 3) For a clause to resolve with a copy of itself, it must contain only complimentary \\[.4em]
 \indent literals. This would make the initial clause equivalent to True\\[.4em]
@@ -187,9 +188,10 @@ F&F&F&T&T&T&F&T&T\\
 
 \centerline{- 8.29 - }
 \ \\
-\noindent 1) \\[.4em]
-\noindent 2) \\[.4em]
-\noindent 3) \\[.4em]
+\noindent 1) This is a good translation\\[.4em]
+\noindent 2) This is not a good translation, as it doesn't specify only 1 apartment\\
+\indent $\exists$! a Apt(a) $\wedge$ In(a, Paris) $\wedge$ (Rent(a) $<$ Dollars(1000))\\[.4em]
+\noindent 3) This is a good translation\\[.4em]
 
 
 
@@ -199,10 +201,10 @@ F&F&F&T&T&T&F&T&T\\
 
 \centerline{- 9.4 - }
 \ \\
-\noindent 1) \\[.4em]
-\noindent 2) \\[.4em]
-\noindent 3) \\[.4em]
-\noindent 4) \\[.4em]
+\noindent 1) P(A, B, B), P(A, B, z) : \{x/A, y/B, z/B\}\\[.4em]
+\noindent 2) Does not exist.\\[.4em]
+\noindent 3) Older(Father(y), y), Older(Father(x), John) : \{x/John, y/John\}\\[.4em]
+\noindent 4) Does not exist.\\[.4em]
 
 
 
@@ -212,12 +214,12 @@ F&F&F&T&T&T&F&T&T\\
 
 \centerline{- 9.7 - }
 \ \\
-\noindent 1) \\[.4em]
-\noindent 2) \\[.4em]
-\noindent 3) \\[.4em]
-\noindent 4) \\[.4em]
-\noindent 5) \\[.4em]
-\noindent 6) \\[.4em]
+\noindent 1) $\forall$ m (Horse(m) $\vee$ Cow(m) $\vee$ Pig(m)) $\Rightarrow$ Mammal(m)\\[.4em]
+\noindent 2) $\forall$ h Horse(h) $\wedge$ ($\forall$ o Offspring(o, h) $\Rightarrow$ Horse(o))\\[.4em]
+\noindent 3) Horse(Bluebeard)\\[.4em]
+\noindent 4) Parent(Bluebeard, Charlie)\\[.4em]
+\noindent 5) $\forall$ p $\forall$ o Offspring(o, p) $\Leftrightarrow$ Parent(p, o)\\[.4em]
+\noindent 6) $\forall$ m $\exists$ p Parent(p, m)\\[.4em]
 
 
 
@@ -227,11 +229,11 @@ F&F&F&T&T&T&F&T&T\\
 
 \centerline{- 9.9 - }
 \ \\
-\noindent 1) \\[.4em]
-\noindent 2) \\[.4em]
-\noindent 3) \\[.4em]
-\noindent 4) \\[.4em]
-\noindent 5) \\[.4em]
+\noindent 1) False\\[.4em]
+\noindent 2) True\\[.4em]
+\noindent 3) True\\[.4em]
+\noindent 4) False\\[.4em]
+\noindent 5) False\\[.4em]
 
 
 
@@ -241,28 +243,47 @@ F&F&F&T&T&T&F&T&T\\
 
 \centerline{- 9.16 - }
 \ \\
-\noindent 1) \\[.4em]
-\noindent 2) \\[.4em]
-\noindent 3) \\[.4em]
+\noindent 1) 
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=.6]{Pics/HW4_Q9-16.png}
+\end{figure}\\[.4em]
+\noindent 2) The domain extends forever, and because of that there are two infinite loops.\\[.4em]
+\noindent 3) 2 solutions, Charlie and Bluebeard.\\[.4em]
 
 
 
-\noindent \hrulefill \\
+\noindent \hrulefill \pagebreak
 
 
 
 \centerline{- 9.18 - }
 \ \\
-\noindent 1) \\[.4em]
-\noindent 2) \\[.4em]
+\noindent 1) \begin{multicols}{2}
+\hspace*{0pt}\hfill P(A, [1, 2, 3])\\
+\hspace*{0pt}\hfill P(1, [1|2, 3])\\
+\hspace*{0pt}\hfill P(1, [1|2, 3])\\
+\hspace*{0pt}\hfill P(2, [2, 3])\\
+\hspace*{0pt}\hfill P(2, [2, 3])\\
+\hspace*{0pt}\hfill P(3, [3])\\
+\hspace*{0pt}\hfill P(3, [3])\\
+Goal\\
+Solution with A=1\\\\
+Solution with A=2\\\\
+Solution with A=3\\
+\end{multicols}
 
-
-
-\noindent \hrulefill \\
-
-
-
-$\neg$$\vee$$\wedge$
+\noindent 2) \begin{multicols}{2}
+\hspace*{0pt}\hfill P(2, [1, A, 3])\\
+\hspace*{0pt}\hfill P(2, [1|2, 3])\\
+\hspace*{0pt}\hfill P(2, [1|2, 3])\\
+\hspace*{0pt}\hfill P(2, [2, 3])\\
+\hspace*{0pt}\hfill P(2, [2, 3])\\
+\hspace*{0pt}\hfill P(3, [3])\\
+\hspace*{0pt}\hfill P(3, [3])\columnbreak\\
+Goal\\\\\\
+Solution with A=2\\
+\end{multicols}
 
 
 
