@@ -6,12 +6,13 @@ X ComS 472: Problem Set 4
 Thu 11/5/2020
   Arch 321: Attend Group 4 Discussion 6 at 1:30 pm,
 				https://canvas.iastate.edu/groups/131883/discussion_topics/706579
-  CprE 431: Mod 7 Discussion Post
+X CprE 431: Mod 7 Discussion Post
 
 Sun 11/8/2020
-  CprE 431: Mod 7 Homework
-  CprE 431: Mod 7 Quiz
+X CprE 431: Mod 7 Homework
+X CprE 431: Mod 7 Quiz
   CprE 431: Mod 7 Discussion Reply
+  CprE 431: Mod 7 Lab (Optional)
 
 Mon 11/9/2020
   CprE 492: Biweekly Status Report 6
