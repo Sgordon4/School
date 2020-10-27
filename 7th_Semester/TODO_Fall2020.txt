@@ -1,8 +1,4 @@
 
-Mon 10/26/2020
-  CprE 492: Biweekly Status Report 5
-X ComS 472: Problem Set 4
-
 Thu 11/5/2020
   Arch 321: Attend Group 4 Discussion 6 at 1:30 pm,
 				https://canvas.iastate.edu/groups/131883/discussion_topics/706579
@@ -12,7 +8,7 @@ Sun 11/8/2020
 X CprE 431: Mod 7 Homework
 X CprE 431: Mod 7 Quiz
   CprE 431: Mod 7 Discussion Reply
-  CprE 431: Mod 7 Lab (Optional)
+- CprE 431: Mod 7 Lab (Optional)
 
 Mon 11/9/2020
   CprE 492: Biweekly Status Report 6
@@ -39,8 +35,13 @@ Thu 11/19/2020
   CprE 492: Final Poster
   
 ------------------------------------------------
-Sat 11/21/2020 @4:00pm to Mon 10/12/2020 @4:00pm
+Sat 11/21/2020 @4:00pm to Mon 11/23/2020 @4:00pm
 			   CprE 431 Final Exam
+------------------------------------------------
+
+------------------------------------------------
+Sat 11/21/2020 @9:00am to Thu 11/26/2020 @11:59pm
+			   ComS 472 Final Exam
 ------------------------------------------------
 
 Mon 11/22/2020
@@ -63,6 +64,10 @@ Thu 12/10/2020 ?
 
 
 =============================================================================================================
+
+Mon 10/26/2020
+X CprE 492: Biweekly Status Report 5
+X ComS 472: Problem Set 4
 
 Sun 10/25/2020
 X CprE 431: Mod 6 Homework
