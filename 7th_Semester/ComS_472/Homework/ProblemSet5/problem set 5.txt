@@ -1,0 +1,26 @@
+
+Com S 472/572 Fall 2020
+Problem Set 5 (90 pts)
+
+Due on Friday, Nov 6
+
+All exercises are from https://aimacode.github.io/aima-exercises/
+
+
+9.24 (2 + 3 + 5 = 10 pts)
+9.29 (2 + 2 + 2 + 2 + 2 + 5 + 3 = 18 pts)
+10.3 (6 pts) 
+     -- see the attached figure "Exercise 10.3 airport-pddl-algorithm".
+10.4a, b (4 + 10 = 14 pts)
+13.3 (3 + 3 + 3 = 9 pts)
+     -- Use the corrected descriptions of the three parts below: 
+    
+    a. If P(a | b, c) = P(b | a, c), then P(a | c) = P (b | c).
+    b. If P(a | b, c) = P(a), then P(b | c) = P(b).
+    c. If P(a | b) = P(a), then P(a | b, c) = P(a | c).
+
+13.8 (2 + 3 + 2 + 4 = 11 pts)
+     -- see the attached figure "Exercise 13.8 dentist-joint-table".
+13.16 (10 pts) 
+13.18 (12 pts)
+ 
