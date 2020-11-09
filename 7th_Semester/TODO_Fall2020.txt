@@ -1,18 +1,4 @@
 
-Thu 11/5/2020
-  Arch 321: Attend Group 4 Discussion 6 at 1:30 pm,
-				https://canvas.iastate.edu/groups/131883/discussion_topics/706579
-X CprE 431: Mod 7 Discussion Post
-
-Fri 11/6/2020
-X ComS 472: Problem Set 5 @5:00pm
-
-Sun 11/8/2020
-X CprE 431: Mod 7 Homework
-X CprE 431: Mod 7 Quiz
-  CprE 431: Mod 7 Discussion Reply
-- CprE 431: Mod 7 Lab (Optional)
-
 Mon 11/9/2020
   CprE 492: Biweekly Status Report 6
 
@@ -22,6 +8,10 @@ Thu 11/12/2020
   Arch 321: Mod 3 - Attend Scheduled Synchronous Discussions With Group 4
   Arch 321: Mod 3 - Write 4 Lec/Film Responses
   CprE 431: Mod 8 Discussion Post
+  ComS 474: HW5 (Fuck these people lmao)
+
+Fri 11/13/2020
+  ComS 472: Problem Set 6  (Fuck these people too)
 
 Sun 11/15/2020
   CprE 431: Mod 8 Homework
@@ -36,6 +26,7 @@ Mon 11/16/2020
 
 Thu 11/19/2020
   CprE 492: Final Poster
+  ComS 474: HW6 (I hate this fucking class)
   
 ------------------------------------------------
 Sat 11/21/2020 @4:00pm to Mon 11/23/2020 @4:00pm
@@ -67,6 +58,20 @@ Thu 12/10/2020 ?
 
 
 =============================================================================================================
+
+Sun 11/8/2020
+X CprE 431: Mod 7 Homework
+X CprE 431: Mod 7 Quiz
+X CprE 431: Mod 7 Discussion Reply
+- CprE 431: Mod 7 Lab (Optional)
+
+Fri 11/6/2020
+X ComS 472: Problem Set 5 @5:00pm
+
+Thu 11/5/2020
+X Arch 321: Attend Group 4 Discussion 6 at 1:30 pm,
+				https://canvas.iastate.edu/groups/131883/discussion_topics/706579
+X CprE 431: Mod 7 Discussion Post
 
 Mon 10/26/2020
 X CprE 492: Biweekly Status Report 5

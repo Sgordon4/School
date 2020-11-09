@@ -1,0 +1,209 @@
+\documentclass[12pt]{article}
+\usepackage[12pt]{moresize}
+\usepackage[margin=1in]{geometry}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{graphicx}
+\usepackage{subcaption}
+
+\usepackage{multirow} %Combining rows in tables
+\usepackage{diagbox}  %Table box split in twain
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{alltt}
+
+\usepackage{multicol}
+
+\usepackage{amssymb} %\checkmark symbol
+
+%\usepackage{hyperref}
+%\usepackage[latin1]{inputenc}
+%\usepackage{listings}
+%\usepackage{scrextend}
+%\usepackage{changepage} %Adjustwidth
+
+  
+
+\title{ComS 472\\Homework 6}
+\author{Sean Gordon}
+\date{Nov 13, 2020}
+
+\begin{document}
+\maketitle
+
+\ \\
+\centerline{- 9.24 - }
+\ \\
+\noindent 1) $L = \exists p \forall q \ S(p, q) \Leftrightarrow \neg S(q, q)$\\
+
+\noindent 2)\ \  $\exists p \forall q \ S(p, q) \Leftrightarrow \neg S(q, q) $\\[.4em]
+\indent $\exists p \forall q \ (S(p, q) \Rightarrow \neg S(q, q)) \wedge (\neg S(q, q) \Rightarrow S(p, q))$\\[.4em]
+\indent $\exists p \forall q \ (\neg  S(p, q) \vee \neg S(q, q)) \wedge (S(q, q) \vee S(p, q))$\\[.4em]
+\indent $\forall q \ (\neg  S(P, q) \vee \neg S(q, q)) \wedge (S(q, q) \vee S(P, q))$\\[.4em]
+\indent $(\neg  S(P, q) \vee \neg S(q, q)) \wedge (S(q, q) \vee S(P, q))$\\
+
+\noindent 3) S(p,q) and $(\neg S(p, q) \vee \neg S(q, q)) \wedge (S(q, q) \vee S(p, q))$ becomes $(\neg S(q, q))$\\[.4em]
+\indent $\neg$ S(p,q) and $(\neg S(p, q) \vee \neg S(q, q)) \wedge (S(q, q) \vee S(p, q))$ becomes $(S(q, q))$\\
+
+
+
+\noindent \hrulefill \pagebreak
+
+
+
+\centerline{- 9.29 - }
+\ \\
+\noindent 1) For every natural number x, there is a natural number y that is less than or equal to x.\\[.4em]
+\indent There is a natural number y that is less than or equal to every natural number x.\\\\
+\noindent 2) Yes\\[.4em]
+\noindent 3) Yes\\[.4em]
+\noindent 4) No\\[.4em]
+\noindent 5) Yes\\
+
+\noindent 6) $\forall x \exists y (x \ge y) \Rightarrow \exists y \forall x (x \ge y)$\\[.4em]
+\indent $\neg(\forall x \exists y (x \ge y)) \vee (\exists y \forall x (x \ge y))$\\[.4em]
+\indent $\forall y \exists x \neg(x \ge y) \vee (\exists y \forall x (x \ge y))$\\[.4em]
+\indent $\forall y \neg(A \ge y) \vee (\forall x (x \ge B))$\\[.4em]
+\indent These map to \{x/A, y/B\}\\
+
+\noindent 7) $\exists y \forall x (x \ge y) \Rightarrow \forall x \exists y (x \ge y)$\\[.4em]
+\indent $\neg(\exists y \forall x (x \ge y)) \vee (\forall x \exists y (x \ge y))$\\[.4em]
+\indent $(\forall y \exists x \neg(x \ge y)) \vee (\forall x \exists y (x \ge y))$\\[.4em]
+\indent $(\forall y \neg(A(y) \ge y)) \vee (\forall x \exists y (x \ge B(x)))$\\[.4em]
+\indent There is no possible mapping, so this is disproven.\\
+
+
+
+\noindent \hrulefill \\\\
+
+
+
+\centerline{- 10.3 - }
+\ \\
+\noindent 1) Fly(P1, JFK, SFO) and Fly(P2, SFO, JFK)\\
+
+
+
+\noindent \hrulefill \\\pagebreak
+
+
+
+\centerline{- 10.4a - }
+\ \\
+\noindent 1) $Init( At(Monkey, A) \wedge At(Bananas, B) \wedge At(Box, C) \wedge$\\
+\indent $Height(Monkey, Low) \wedge Height(Bananas, High) \wedge Height(Box, Low) \wedge$\\
+\indent $Monkey(Monkey) \wedge Bananas(Bananas) \wedge Box(Box) \wedge$\\
+\indent $Location(A) \wedge Location(B) \wedge Location(C))$\\
+
+\noindent 2) $Action(Go(m, from, to),$\\
+\indent Precond: $At(m, from) \wedge Monkey(m) \wedge Location(from) \wedge Location(to)$\\
+\indent Effect: $\neg At(m, from) \wedge At(m, to) )$\\
+
+$Action( Push(m, obj, from, to),$\\
+\indent Precond: $At(m, from) \wedge At(obj, from) \wedge Monkey(m) \wedge Box(obj) \wedge $\\
+\indent \indent $Location(from) \wedge Location(to)$\\
+\indent Effect: $\neg At(m, from) \wedge \neg At(obj, from) \wedge At(m, to) \wedge At(obj, to) )$\\
+
+$Action( ClimbUp(m, b, loc),$\\
+\indent Precond: $At(m, loc) \wedge At(b, loc) \wedge Monkey(m) \wedge Box(b) \wedge Location(loc) \wedge Height(m, Low)$\\
+\indent Effect: $Height(m, High))$\\
+
+$Action( ClimbDown(m, b, loc),$\\
+\indent Precond: $At(m, loc) \wedge At(b, loc) \wedge Monkey(m) \wedge Box(b) \wedge Location(loc) \wedge Height(m, High)$\\
+\indent Effect: $Height(m, Low))$\\
+
+$Action( Grasp(m, b, loc),$\\
+\indent Precond: $At(m, loc) \wedge At(b, loc) \wedge Monkey(m) \wedge Bananas(b) \wedge Location(loc) \wedge$\\
+\indent \indent $ Height(m, height) \wedge Height(b, height)$\\
+\indent Effect: $\neg At(b, loc) \wedge Grasped(m, b))$\\
+
+$Action( Ungrasp(m, b, loc, height),$\\
+\indent Precond: $At(m, loc) \wedge At(b, loc) \wedge Monkey(m) \wedge Bananas(b) \wedge Location(loc) \wedge Height(m, height)$\\
+\indent Effect: $At(b, loc) \wedge Height(b, height) \wedge \neg Grasped(m, b))$\\
+
+\noindent 3) $Goal( Grasped(Monkey, Bananas) \wedge At(Box, InitLocation))$\\
+\indent This can't be solved using a classical planning system, as they do not keep track of state.\\
+\indent Without knowledge of the initial location state of the box, we cannot return it.\\
+
+\noindent 4)$Action( Push(m, obj, from, to),$\\
+\indent Precond: $At(m, from) \wedge At(obj, from) \wedge Monkey(m) \wedge Box(obj) \wedge  $\\
+\indent \indent $Location(from) \wedge Location(to) \wedge \neg Weight(obj, Heavy)$\\
+\indent Effect: $\neg At(m, from) \wedge \neg At(obj, from) \wedge At(m, to) \wedge At(obj, to) )$\\
+
+\noindent \hrulefill\pagebreak
+
+
+\centerline{- 13.3 - }
+\ \\
+\noindent 1) $P(a|b,c) = P(b|a,c)$ becomes {\Large $\frac{P(a,b,c)}{P(b,c)}$} = {\Large $\frac{P(b,a,c)}{P(a,c)}$} becomes {\Large $\frac{P(a,b,c)P(a,c)}{P(a,b,c)P(b,c)}$} = {\Large $\frac{P(b,a,c)P(b,c)}{P(a,b,c)P(a,c)}$}\\[.4em]
+\indent becomes $P(a,c)$ = $P(b,c)$ becomes {\Large $\frac{P(a,c)}{P(c)}$} = {\Large $\frac{P(b,c)}{P(c)}$} becomes $P(a|c)$ = $P(b|c)$ {\large \checkmark}\\
+
+\noindent 2) $P(a|b,c)$ = $P(a)$ states that a is independent of b and c, but says nothing on the \\
+\indent relationship between b and c. A counterexample would be:\\
+\indent a=P(H) when flipping coin 1, b=P(H) when flipping coin 2, and b=c\\
+
+\noindent 3) $P(a|b)$ = $P(a)$ states that a is independent of b, but says nothing on the relationship \\
+\indent between a and c. A counterexample would be:\\
+\indent a=P(H) when flipping coin 1, b=P(H) when flipping coin 2, and a=c\\
+
+
+
+\noindent \hrulefill
+
+
+\centerline{- 13.8 - }
+\ \\
+\noindent 1) P(Toothache) = 0.108 + 0.012 + 0.016 + 0.064 = 0.2\\[.4em]
+\noindent 2) P(Cavity) = 0.108 + 0.012 + 0.072+ 0.008 = 0.2\\[.4em]
+\noindent 3) P(Toothache $|$ Cavity) = P(Toothache $\wedge$ cavity)/P(Cavity) = \\
+\indent (0.108 + 0.012) / (0.108 + 0.012 + 0.072 + 0.008) = 0.6\\[.4em]
+\noindent 4) P(Cavity $|$ Toothache $\vee$ Catch) = {\Large $\frac{P(Cavity \wedge P(Toothache \vee Catch)}{P(Toothache \vee Catch)}$} = \\[.4em]
+\indent {\Large $\frac{0.108 + 0.012 + 0.072}{0.108 + 0.012 + 0.072 + 0.016+ 0.064 + 0.144}$} = {\Large $\frac{0.192}{0.416}$} = 0.462\\
+
+
+
+\noindent \hrulefill
+
+
+\centerline{- 13.16 - }
+\ \\
+\noindent A: $P(V|A)$ = {\Large $\frac{P(A|V)P(V)}{P(A|V)P(V)+P(A|\neg V)P(\neg V)}$} = {\Large $\frac{(.95)(.01)}{(.95)(.01) + (.05)(.99)}$} = 0.088\\[.4em]
+\noindent B: $P(V|B)$ = {\Large $\frac{P(B|V)P(V)}{P(B|V)P(V)+P(B|\neg V)P(\neg V)}$} = {\Large $\frac{(.9)(.01)}{(.9)(.01) + (.05)(.99)}$} = 0.15\\[.4em]
+\noindent Based on these results, test B is more effective at recognizing the virus.\\
+
+
+
+\noindent \hrulefill
+
+
+
+\centerline{- 13.18 - }
+\ \\
+\noindent 1) The fact that the disease is rare is good news because as the number of people who actually have the disease is much lower than the , the higher the false positive on the test.\\\\
+\noindent 2) {\Large $\frac{P(T|D)P(D)}{P(T|D)P(D)+P(T|\neg D)P(\neg D)}$} = {\Large $\frac{(.99)(.0001)}{(.99)(.0001) + (.01)(.9999)}$} = 0.0098\\
+
+
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,16 @@
+
+Com S 472/572 Fall 2020
+Problem Set 6 (60 pts)
+
+Due on Friday, Nov 13
+
+All exercises are from https://aimacode.github.io/aima-exercises/
+
+
+13.26 (10 pts)
+14.5 (3 + 9 = 12 pts)
+     -- see the attached figure "Exercise 14.5 burglary-figure".
+14.13 (6 + 2 + 4 + 4 + 8 = 24 pts)
+14.18 a, b, c (6 + 2 + 6 = 14 pts)
+     -- see the attached figure "Exercise 14.8 elimination-ask-algorithm".
+ 
