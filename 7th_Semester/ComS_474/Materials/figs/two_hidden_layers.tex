@@ -1,0 +1,14 @@
+\documentclass{standalone}
+
+\usepackage{neuralnetwork}
+
+
+\begin{document}
+    \begin{neuralnetwork}[height=5, layerspacing=15mm]
+        \newcommand{\x}[2]{$x^{(#1)}_#2$}
+        \inputlayer[count=3, bias=true, title=\scriptsize{Input\\layer $\mathbf{x}^{(0)}\oplus$ b}, text=\x]
+        \hiddenlayer[count=4, bias=true, title=\scriptsize{Hidden\\layer 1\\$\mathbf{x}^{(1)}\oplus$ b}, text=\x] \linklayers
+        \hiddenlayer[count=3, bias=true, title=\scriptsize{Hidden\\layer 2\\$\mathbf{x}^{(2)}\oplus$ b}, text=\x] \linklayers
+        \outputlayer[count=2, title=\scriptsize{Output\\layer\\$\mathbf{x}^{(3)}$}, text=\x] \linklayers
+    \end{neuralnetwork}
+\end{document}
