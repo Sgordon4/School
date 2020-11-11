@@ -10,6 +10,8 @@
 
 \usepackage{multirow} %Combining rows in tables
 \usepackage{diagbox}  %Table box split in twain
+\usepackage{hhline}
+\usepackage{makecell} 
 
 \usepackage{algorithm}
 \usepackage{algpseudocode}
@@ -35,18 +37,21 @@
 \maketitle
 
 \ \\
-\centerline{- 9.24 - }
+\centerline{- 13.26 - }
 \ \\
-\noindent 1) $L = \exists p \forall q \ S(p, q) \Leftrightarrow \neg S(q, q)$\\
+\noindent 1) As we don't know the ratio of taxi colors in Athens, we can't determine how likely the taxi is to be a certain color.\\
 
-\noindent 2)\ \  $\exists p \forall q \ S(p, q) \Leftrightarrow \neg S(q, q) $\\[.4em]
-\indent $\exists p \forall q \ (S(p, q) \Rightarrow \neg S(q, q)) \wedge (\neg S(q, q) \Rightarrow S(p, q))$\\[.4em]
-\indent $\exists p \forall q \ (\neg  S(p, q) \vee \neg S(q, q)) \wedge (S(q, q) \vee S(p, q))$\\[.4em]
-\indent $\forall q \ (\neg  S(P, q) \vee \neg S(q, q)) \wedge (S(q, q) \vee S(P, q))$\\[.4em]
-\indent $(\neg  S(P, q) \vee \neg S(q, q)) \wedge (S(q, q) \vee S(P, q))$\\
-
-\noindent 3) S(p,q) and $(\neg S(p, q) \vee \neg S(q, q)) \wedge (S(q, q) \vee S(p, q))$ becomes $(\neg S(q, q))$\\[.4em]
-\indent $\neg$ S(p,q) and $(\neg S(p, q) \vee \neg S(q, q)) \wedge (S(q, q) \vee S(p, q))$ becomes $(S(q, q))$\\
+\noindent 2) Because the color discrimination reliability is given to us...\\
+\indent P(lookBlue $|$ isBlue) = 0.75\\
+\indent P(lookBlue $|$ isGreen) = 0.25\\
+\indent P(lookGreen $|$ isBlue) = 0.25\\
+\indent P(lookGreen $|$ isGreen) = 0.75\\[0.4em]
+\indent Given that 9/10 taxis are Green, P(isBlue) = 0.1 and P(isGreen) = 0.9. Thus\\[.4em]
+\indent P(isBlue $|$ looksBlue) = 0.75 * 0.1 = 0.075\\
+\indent P(isGreen $|$ looksBlue) = 0.25 * 0.9 = 0.225\\\\
+\indent P(isBlue$|$lookBlue)={\Large $\frac{P(isBlue | looksBlue)}{P(isBlue | looksBlue) +  P(isGreen | looksBlue)}$}={\Large $\frac{0.075}{0.075 + 0.225}$} = 0.25\\\\
+\indent P(isGreen$|$lookBlue)={\Large $\frac{P(isGreen | looksBlue)}{P(isBlue | looksBlue) +  P(isGreen | looksBlue)}$}={\Large $\frac{0.225}{0.075 + 0.225}$} = 0.75\\\\
+\indent As P(isGreen$|$lookBlue) $>$ P(isBlue$|$lookBlue), it is most likely to be Green.\\
 
 
 
@@ -54,36 +59,70 @@
 
 
 
-\centerline{- 9.29 - }
+\centerline{- 14.5 - }
 \ \\
-\noindent 1) For every natural number x, there is a natural number y that is less than or equal to x.\\[.4em]
-\indent There is a natural number y that is less than or equal to every natural number x.\\\\
-\noindent 2) Yes\\[.4em]
-\noindent 3) Yes\\[.4em]
-\noindent 4) No\\[.4em]
-\noindent 5) Yes\\
+\noindent 1) Numerically, because P(B, E) = P(B)P(E), they are independant.\\[.4em]
+\indent Topologically, because the chance of B and the chance of E are unaffected by anything \\
+\indent (no arrows pointing toward them), they are independend from the entire structure, \\
+\indent and thus from each other.\\
 
-\noindent 6) $\forall x \exists y (x \ge y) \Rightarrow \exists y \forall x (x \ge y)$\\[.4em]
-\indent $\neg(\forall x \exists y (x \ge y)) \vee (\exists y \forall x (x \ge y))$\\[.4em]
-\indent $\forall y \exists x \neg(x \ge y) \vee (\exists y \forall x (x \ge y))$\\[.4em]
-\indent $\forall y \neg(A \ge y) \vee (\forall x (x \ge B))$\\[.4em]
-\indent These map to \{x/A, y/B\}\\
-
-\noindent 7) $\exists y \forall x (x \ge y) \Rightarrow \forall x \exists y (x \ge y)$\\[.4em]
-\indent $\neg(\exists y \forall x (x \ge y)) \vee (\forall x \exists y (x \ge y))$\\[.4em]
-\indent $(\forall y \exists x \neg(x \ge y)) \vee (\forall x \exists y (x \ge y))$\\[.4em]
-\indent $(\forall y \neg(A(y) \ge y)) \vee (\forall x \exists y (x \ge B(x)))$\\[.4em]
-\indent There is no possible mapping, so this is disproven.\\
-
-
-
-\noindent \hrulefill \\\\
+\noindent 2) Independent if P(B, E $|$ A) = P(B $|$ A) * P(E $|$ A)\\[.4em]
+\indent P(A) = $
+\begin{cases}
+0.95 * 0.001 * 0.002 = 0.0000019 & B=t\ and\ E=t \\
+0.94 * 0.001 * 0.998 = 0.0009381 & B=t\ and\ E=f \\
+0.29 * 0.999 * 0.002 = 0.0005794 & B=f\ and\ E=t \\
+0.001 * 0.999 * 0.998 = 0.0009970 & B=f\ and\ E=f \\
+\end{cases}$ $\Rightarrow$\\[.4em]
+\indent P(A) = 0.0000019 + 0.0009381 + 0.0005794 + 0.0009970 = 0.002516\\\\
+\indent P(B$|$A) = {\Large $\frac{P(A|B)P(B)}{P(A)}$} = {\Large $\frac{0.0000019 + 0.0009381}{0.002516}$} = 0.3736\\\\
+\indent P(E$|$A) = {\Large $\frac{P(A|E)P(E)}{P(A)}$} = {\Large $\frac{0.0000019 + 0.0005794}{0.002516}$} = 0.2310\\\\
+\indent P(B$|$A) * P(E$|$A) = 0.3736 * 0.2310 = 0.0863\\\\
+\indent P(B,E$|$A) = {\Large $\frac{P(A|B,E)P(B,E)}{P(A)}$} = {\Large $\frac{0.95 * 0.001 * 0.002}{0.0.002516}$} = 0.0007550\\\\
+\indent As P(B,E$|$A) $\neq$ P(B$|$A) * P(E$|$A), B and E are not independent.\\
 
 
 
-\centerline{- 10.3 - }
-\ \\
-\noindent 1) Fly(P1, JFK, SFO) and Fly(P2, SFO, JFK)\\
+\noindent \hrulefill \pagebreak
+
+
+
+\centerline{- 14.13 - }
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=.5]{pics/Q14-13.png}
+\end{figure}
+
+\noindent 2) The network is not a polytree because there is a set of 3 nodes with connections between them, disallowing the label `tree'.\\
+
+\noindent 3)
+\begin{tabular}{|c||c|c|c|c|}
+\hhline{-||----}
+& \multicolumn{2}{c}{\textbf{F$_G$ True}} & \multicolumn{2}{|c|}{\textbf{F$_G$ False}}\\[-.2em]
+\hhline{~::----}
+ & \textbf{T High} & \textbf{T Normal} & \textbf{T High} & \textbf{T Normal}\\
+\hhline{=::====}
+G Normal & (1-y) & y & (1-x) & x \\
+\hhline{-||----}
+G High & y & (1-y) & x & (1-x) \\
+\hhline{-||----}
+\end{tabular}\\\\
+
+\noindent 4)
+\begin{tabular}{|c||c|c|c|c|}
+\hhline{-||----}
+& \multicolumn{2}{c}{\textbf{G Normal}} & \multicolumn{2}{|c|}{\textbf{G High}}\\[-.2em]
+\hhline{~::----}
+ & \textbf{F$_A$ True} & \textbf{F$_A$ False} & \textbf{F$_A$ True} & \textbf{F$_A$ False}\\
+\hhline{=::====}
+A On & 0 & 0 & 0 & 1 \\
+\hhline{-||----}
+A Off & 1 & 1 & 1 & 0 \\
+\hhline{-||----}
+\end{tabular}\\\\
+
+\noindent 5) As alarm is only influenced by G, I will consider only G.\\\\
+\indent $P(T_{High}|G,\neg F_G)$ = {\Large $\frac{P(G|T_{High},\neg F_G)P(\neg F_G|T)P(T)}{P(G,\neg F_G)}$}\\
 
 
 
@@ -91,100 +130,32 @@
 
 
 
-\centerline{- 10.4a - }
+\centerline{- 14.18 - }
 \ \\
-\noindent 1) $Init( At(Monkey, A) \wedge At(Bananas, B) \wedge At(Box, C) \wedge$\\
-\indent $Height(Monkey, Low) \wedge Height(Bananas, High) \wedge Height(Box, Low) \wedge$\\
-\indent $Monkey(Monkey) \wedge Bananas(Bananas) \wedge Box(Box) \wedge$\\
-\indent $Location(A) \wedge Location(B) \wedge Location(C))$\\
-
-\noindent 2) $Action(Go(m, from, to),$\\
-\indent Precond: $At(m, from) \wedge Monkey(m) \wedge Location(from) \wedge Location(to)$\\
-\indent Effect: $\neg At(m, from) \wedge At(m, to) )$\\
-
-$Action( Push(m, obj, from, to),$\\
-\indent Precond: $At(m, from) \wedge At(obj, from) \wedge Monkey(m) \wedge Box(obj) \wedge $\\
-\indent \indent $Location(from) \wedge Location(to)$\\
-\indent Effect: $\neg At(m, from) \wedge \neg At(obj, from) \wedge At(m, to) \wedge At(obj, to) )$\\
-
-$Action( ClimbUp(m, b, loc),$\\
-\indent Precond: $At(m, loc) \wedge At(b, loc) \wedge Monkey(m) \wedge Box(b) \wedge Location(loc) \wedge Height(m, Low)$\\
-\indent Effect: $Height(m, High))$\\
-
-$Action( ClimbDown(m, b, loc),$\\
-\indent Precond: $At(m, loc) \wedge At(b, loc) \wedge Monkey(m) \wedge Box(b) \wedge Location(loc) \wedge Height(m, High)$\\
-\indent Effect: $Height(m, Low))$\\
-
-$Action( Grasp(m, b, loc),$\\
-\indent Precond: $At(m, loc) \wedge At(b, loc) \wedge Monkey(m) \wedge Bananas(b) \wedge Location(loc) \wedge$\\
-\indent \indent $ Height(m, height) \wedge Height(b, height)$\\
-\indent Effect: $\neg At(b, loc) \wedge Grasped(m, b))$\\
-
-$Action( Ungrasp(m, b, loc, height),$\\
-\indent Precond: $At(m, loc) \wedge At(b, loc) \wedge Monkey(m) \wedge Bananas(b) \wedge Location(loc) \wedge Height(m, height)$\\
-\indent Effect: $At(b, loc) \wedge Height(b, height) \wedge \neg Grasped(m, b))$\\
-
-\noindent 3) $Goal( Grasped(Monkey, Bananas) \wedge At(Box, InitLocation))$\\
-\indent This can't be solved using a classical planning system, as they do not keep track of state.\\
-\indent Without knowledge of the initial location state of the box, we cannot return it.\\
-
-\noindent 4)$Action( Push(m, obj, from, to),$\\
-\indent Precond: $At(m, from) \wedge At(obj, from) \wedge Monkey(m) \wedge Box(obj) \wedge  $\\
-\indent \indent $Location(from) \wedge Location(to) \wedge \neg Weight(obj, Heavy)$\\
-\indent Effect: $\neg At(m, from) \wedge \neg At(obj, from) \wedge At(m, to) \wedge At(obj, to) )$\\
-
-\noindent \hrulefill\pagebreak
+\noindent 1) $P(B|j,m) = \alpha * P(B) *\sum_e P(e) *\sum_a P(a|b,e) P(j|a) P(m|a)$\\\\
+\indent $\alpha * P(B) *\sum_e P(e) * \Big(0.9*0.7*\begin{pmatrix}0.95 & 0.94\\ 0.29 & 0.001\end{pmatrix} + 0.05*0.01*\begin{pmatrix}0.05 & 0.06\\ 0.71 & 0.999\end{pmatrix}\Big)$\\\\
+\indent $\alpha * P(B) *\sum_e P(e) * \Big(0.63*\begin{pmatrix}0.95 & 0.94\\ 0.29 & 0.001\end{pmatrix} + 0.00005*\begin{pmatrix}0.05 & 0.06\\ 0.71 & 0.999\end{pmatrix}\Big)$\\\\
+\indent $\alpha * P(B) *\sum_e P(e) * \Big(\begin{pmatrix}0.5985 & 0.5922\\ 0.1827 & 0.00063\end{pmatrix} + \begin{pmatrix}0.000025 & 0.00003\\ 0.000355 & 0.0005\end{pmatrix}\Big)$\\\\
+\indent $\alpha * P(B) *\sum_e P(e) * \Big(\begin{pmatrix}0.598525 & 0.59223\\ 0.183055 & 0.00113\end{pmatrix}\Big)$\\\\
+\indent $\alpha * P(B) *\Big(0.002 * \begin{pmatrix}0.598525 \\ 0.183055 \end{pmatrix}+0.998*\begin{pmatrix}0.59223 \\ 0.00113\end{pmatrix}\Big)$\\\\
+\indent $\alpha * P(B) *\Big(\begin{pmatrix}0.001197 \\ 0.000366 \end{pmatrix}+\begin{pmatrix}0.591046 \\ 0.001128\end{pmatrix}\Big)$\\\\
+\indent $\alpha * P(B) *\Big(\begin{pmatrix}0.592243 \\ 0.001493 \end{pmatrix}\Big)$\\\\
+\indent $\alpha * (0.001 * 0.592243)(0.999 * 0.001493)$\\[0.4em]
+\indent $\alpha * (0.000592)(0.001492)$\\[0.4em]
+\indent $\langle0.28428, 0.71616\rangle$\\[0.4em]
 
 
-\centerline{- 13.3 - }
-\ \\
-\noindent 1) $P(a|b,c) = P(b|a,c)$ becomes {\Large $\frac{P(a,b,c)}{P(b,c)}$} = {\Large $\frac{P(b,a,c)}{P(a,c)}$} becomes {\Large $\frac{P(a,b,c)P(a,c)}{P(a,b,c)P(b,c)}$} = {\Large $\frac{P(b,a,c)P(b,c)}{P(a,b,c)P(a,c)}$}\\[.4em]
-\indent becomes $P(a,c)$ = $P(b,c)$ becomes {\Large $\frac{P(a,c)}{P(c)}$} = {\Large $\frac{P(b,c)}{P(c)}$} becomes $P(a|c)$ = $P(b|c)$ {\large \checkmark}\\
-
-\noindent 2) $P(a|b,c)$ = $P(a)$ states that a is independent of b and c, but says nothing on the \\
-\indent relationship between b and c. A counterexample would be:\\
-\indent a=P(H) when flipping coin 1, b=P(H) when flipping coin 2, and b=c\\
-
-\noindent 3) $P(a|b)$ = $P(a)$ states that a is independent of b, but says nothing on the relationship \\
-\indent between a and c. A counterexample would be:\\
-\indent a=P(H) when flipping coin 1, b=P(H) when flipping coin 2, and a=c\\
+\noindent 2) \# Additions = 6\\
+\indent \# Multiplications = 16\\
+\indent \# Divisions = 2\\
+\indent Total = 24\\[.4em]
+\indent The algorithm will perform 27 operations.\\\\
 
 
-
-\noindent \hrulefill
-
-
-\centerline{- 13.8 - }
-\ \\
-\noindent 1) P(Toothache) = 0.108 + 0.012 + 0.016 + 0.064 = 0.2\\[.4em]
-\noindent 2) P(Cavity) = 0.108 + 0.012 + 0.072+ 0.008 = 0.2\\[.4em]
-\noindent 3) P(Toothache $|$ Cavity) = P(Toothache $\wedge$ cavity)/P(Cavity) = \\
-\indent (0.108 + 0.012) / (0.108 + 0.012 + 0.072 + 0.008) = 0.6\\[.4em]
-\noindent 4) P(Cavity $|$ Toothache $\vee$ Catch) = {\Large $\frac{P(Cavity \wedge P(Toothache \vee Catch)}{P(Toothache \vee Catch)}$} = \\[.4em]
-\indent {\Large $\frac{0.108 + 0.012 + 0.072}{0.108 + 0.012 + 0.072 + 0.016+ 0.064 + 0.144}$} = {\Large $\frac{0.192}{0.416}$} = 0.462\\
-
-
-
-\noindent \hrulefill
-
-
-\centerline{- 13.16 - }
-\ \\
-\noindent A: $P(V|A)$ = {\Large $\frac{P(A|V)P(V)}{P(A|V)P(V)+P(A|\neg V)P(\neg V)}$} = {\Large $\frac{(.95)(.01)}{(.95)(.01) + (.05)(.99)}$} = 0.088\\[.4em]
-\noindent B: $P(V|B)$ = {\Large $\frac{P(B|V)P(V)}{P(B|V)P(V)+P(B|\neg V)P(\neg V)}$} = {\Large $\frac{(.9)(.01)}{(.9)(.01) + (.05)(.99)}$} = 0.15\\[.4em]
-\noindent Based on these results, test B is more effective at recognizing the virus.\\
-
-
-
-\noindent \hrulefill
-
-
-
-\centerline{- 13.18 - }
-\ \\
-\noindent 1) The fact that the disease is rare is good news because as the number of people who actually have the disease is much lower than the , the higher the false positive on the test.\\\\
-\noindent 2) {\Large $\frac{P(T|D)P(D)}{P(T|D)P(D)+P(T|\neg D)P(\neg D)}$} = {\Large $\frac{(.99)(.0001)}{(.99)(.0001) + (.01)(.9999)}$} = 0.0098\\
-
+\noindent 3) Enumeration requires parsing through 2 complete binary trees for each variable, \\
+\indent each one with a depth of n-2. This leaves computation at O(2$^n$).\\
+\indent Elimination only considers 2 variables at a time, working through each variable one\\
+\indent at a time. Thus, the algorithm runs for all n variables at O(n).\\
 
 
 
