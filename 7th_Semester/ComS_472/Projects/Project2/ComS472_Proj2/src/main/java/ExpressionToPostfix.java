@@ -4,7 +4,7 @@ import static java.lang.System.exit;
 
 public class ExpressionToPostfix {
 
-    static Set<String> operators = new HashSet<String>(Arrays.asList("~", "&&", "||", "=>", "("));
+    static Set<String> operators = new HashSet<String>(Arrays.asList("~", "&&", "||", "<=>", "=>", "("));
 
     // function to convert infix to postfix
     static List<String> infixToPostfix(List<String> input) {

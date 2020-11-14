@@ -1,15 +1,4 @@
 
-Thu 11/12/2020
-X Arch 321: Mod 3 - Watch 4 lectures
-X Arch 321: Mod 3 - Watch "Eyes on the Prize" AND "TBA" on Canvas
-- Arch 321: Mod 3 - Attend Scheduled Synchronous Discussions With Group 4
-X Arch 321: Mod 3 - Write 4 Lec/Film Responses
-  CprE 431: Mod 8 Discussion Post
-X ComS 474: HW5 (Fuck these people lmao)
-
-Fri 11/13/2020
-X ComS 472: Problem Set 6  (Fuck these people too)
-
 Sun 11/15/2020
   CprE 431: Mod 8 Homework
   CprE 431: Mod 8 Quiz
@@ -18,7 +7,7 @@ Sun 11/15/2020
   CprE 492: Final Report
 
 Mon 11/16/2020
-  CprE 492: PIRM Review (Second Half of Semester)
+- CprE 492: PIRM Review (Second Half of Semester)
   ComS 472: Project 2 - A Theorem Prover for Propositional Logic
 
 Thu 11/19/2020
@@ -55,6 +44,17 @@ Thu 12/10/2020 ?
 
 
 =============================================================================================================
+
+Fri 11/13/2020
+X ComS 472: Problem Set 6  (Fuck these people too)
+
+Thu 11/12/2020
+X Arch 321: Mod 3 - Watch 4 lectures
+X Arch 321: Mod 3 - Watch "Eyes on the Prize" AND "TBA" on Canvas
+- Arch 321: Mod 3 - Attend Scheduled Synchronous Discussions With Group 4
+X Arch 321: Mod 3 - Write 4 Lec/Film Responses
+X CprE 431: Mod 8 Discussion Post
+X ComS 474: HW5 (Fuck these people lmao)
 
 Mon 11/9/2020
 X CprE 492: Biweekly Status Report 6

@@ -2,7 +2,7 @@ import datatypes.ExpNode;
 import java.util.*;
 
 public class PostfixToTree {
-    static Set<String> operators = new HashSet<String>(Arrays.asList("~", "&&", "||", "=>", "("));
+    static Set<String> operators = new HashSet<String>(Arrays.asList("~", "&&", "||", "<=>", "=>", "("));
 
     //https://stackoverflow.com/questions/423898/postfix-notation-to-expression-tree
     public static ExpNode buildExpTree(List<String> expressions){

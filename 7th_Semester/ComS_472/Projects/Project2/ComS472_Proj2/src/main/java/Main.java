@@ -1,7 +1,9 @@
+import datatypes.Clause;
+import datatypes.ConjunctiveNormalForm;
 import datatypes.ExpNode;
+import datatypes.Literal;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -11,10 +13,13 @@ public class Main {
         String sample2 = "(Rain && Outside) => Wet";
         String sample3 = "A && (~B || C || (~D => ~E)) <=> ((F && G))";
         String sample4 = "~(P&&~Q)||R=>S&&~T";
+        String sample5 = "~(P && ~Q)";
+
+        String sample6 = "(P && ~Q) || (R && (S||T))";
 
 
         String pattern = "(\\()|(\\))|(<=>)|(=>)|(\\|\\|)|(&&)|(~)|(\\w+)";
-        Matcher m2 = Pattern.compile(pattern).matcher(sample4); //Match all individual parts
+        Matcher m2 = Pattern.compile(pattern).matcher(sample3); //Match all individual parts
 
         List<String> allMatches = new ArrayList<String>();
         while (m2.find()) {
@@ -25,6 +30,15 @@ public class Main {
         //Build an expression tree from the parsed operators and operands
         List<String> postfix = ExpressionToPostfix.infixToPostfix(allMatches);
         ExpNode expressionTree = PostfixToTree.buildExpTree(postfix);
+
+        expressionTree.printPretty();
+
+
+        ConjunctiveNormalForm cnf = TreeToCNF.recursiveCNFConvert(expressionTree);
+        System.out.println(cnf);
+        System.out.println(cnf.printStructure());
+
+        
 
 
     }
