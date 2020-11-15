@@ -24,7 +24,7 @@ public class Main {
         StringBuilder output = new StringBuilder();
 
         output.append("\nknowledge base in clauses:\n");
-        output.append(KB.printStructure()).append("\n");;
+        output.append(KB.printStructure()).append("\n");
 
 
 
@@ -48,7 +48,7 @@ public class Main {
             output.append(negGoalClause).append("\n\n");
 
             output.append("Proof by refutation:\n\n");
-            if(Resolver.resolveKBWithClause(clonedKB, negGoalClause, output))
+            if(Resolver.proveClauseWithKB(clonedKB, negGoalClause, output))
                 output.append("The KB entails ").append(goalClause).append("\n\n\n");
             else{
                 output.append("No new clauses are added.\n");
@@ -57,7 +57,8 @@ public class Main {
 
         }
 
-        System.out.println(output);
+        //Print the entire output string
+        //System.out.println(output);
     }
 
 
@@ -68,7 +69,7 @@ public class Main {
      * @param filepath  Location of the file to read
      * @param KB        List that will hold the clauses that make up the knowledge base
      * @param toProve   List that will contain the clauses to prove using the KB
-     * @return true if success, false if error
+     * @return boolean True if success, False if error
      */
     public static boolean readFileIntoKB(String filepath, ConjunctiveNormalForm KB, ConjunctiveNormalForm toProve){
         File file = new File(filepath);

@@ -1,5 +1,5 @@
 import datatypes.Clause;
-import datatypes.ExpNode;
+import datatypes.Node;
 import datatypes.ConjunctiveNormalForm;
 import datatypes.Literal;
 
@@ -7,20 +7,18 @@ import java.util.List;
 
 public class TreeToCNF {
 
-
-    public static ConjunctiveNormalForm recursiveCNFConvert(ExpNode node){
+    /**
+     * Given a PL expression tree, recursively applies various transformations based on the parent node's operator
+     *
+     * @param node Expression tree of a propositional logic sentence
+     * @return ConjunctiveNormalForm CNF representation of the given propositional logic sentence
+     */
+    public static ConjunctiveNormalForm recursiveCNFConvert(Node node){
         if(node == null) return null;
 
         ConjunctiveNormalForm left = recursiveCNFConvert(node.left);
         ConjunctiveNormalForm right = recursiveCNFConvert(node.right);
-        /*
-        if (left!=null) {
-            System.out.println(node.value);
-            System.out.println(left);
-            if (right != null) System.out.println(right);
-            System.out.println("=------------------------=");
-        }
-         */
+
 
         //If both children are null, this is an atom
         if(left == null && right == null){
@@ -45,6 +43,13 @@ public class TreeToCNF {
     }
 
 
+    /**
+     * Given a sentence in CNF, negate it
+     * A  becomes  ~A
+     *
+     * @param toNegate Sentence in CNF to negate
+     * @return ConjunctiveNormalForm Negated version of the input sentence, still in CNF
+     */
     public static ConjunctiveNormalForm Neg(ConjunctiveNormalForm toNegate){
 
         List<Clause> toNegateList = toNegate.list;
@@ -80,6 +85,14 @@ public class TreeToCNF {
     }
 
 
+    /**
+     * Given two sentences in CNF, OR them together and distribute as necessary to remain in CNF
+     * (A)  and  (B)  become  (A || B)
+     *
+     * @param cnf1 Sentence 1 in CNF to combine
+     * @param cnf2 Sentence 2 in CNF to combine
+     * @return ConjunctiveNormalForm ORed version of the input sentences, still in CNF
+     */
     public static ConjunctiveNormalForm Or(ConjunctiveNormalForm cnf1, ConjunctiveNormalForm cnf2){
 
         ConjunctiveNormalForm ored = new ConjunctiveNormalForm();
@@ -98,6 +111,14 @@ public class TreeToCNF {
         return ored;
     }
 
+    /**
+     * Given two sentences in CNF, AND them together
+     * (A)  and  (B)  become  (A && B)
+     *
+     * @param cnf1 Sentence 1 in CNF to combine
+     * @param cnf2 Sentence 2 in CNF to combine
+     * @return ConjunctiveNormalForm ANDed version of the input sentences, still in CNF
+     */
     public static ConjunctiveNormalForm And(ConjunctiveNormalForm cnf1, ConjunctiveNormalForm cnf2){
 
         ConjunctiveNormalForm anded = cnf1.clone();
@@ -108,6 +129,14 @@ public class TreeToCNF {
         return anded;
     }
 
+    /**
+     * Given two sentences in CNF, one of which implies the other, break the implication into CNF
+     * A => B  becomes  ~A || B
+     *
+     * @param cnf1 Sentence 1 in CNF that implies cnf2
+     * @param cnf2 Sentence 2 in CNF that is implied by cnf1
+     * @return ConjunctiveNormalForm CNF version of the input sentences
+     */
     public static ConjunctiveNormalForm Implies(ConjunctiveNormalForm cnf1, ConjunctiveNormalForm cnf2){
 
         ConjunctiveNormalForm left = Neg(cnf1);
@@ -118,6 +147,14 @@ public class TreeToCNF {
         return left;
     }
 
+    /**
+     * Given two sentences in CNF, both of which implies the other, break the IFF into two implications
+     * A <=> B  becomes  A => B  and  B => A
+     *
+     * @param cnf1 Sentence 1 in CNF that implies cnf2
+     * @param cnf2 Sentence 2 in CNF that implies cnf1
+     * @return ConjunctiveNormalForm CNF version of the input sentences
+     */
     public static ConjunctiveNormalForm IFF(ConjunctiveNormalForm cnf1, ConjunctiveNormalForm cnf2){
 
         ConjunctiveNormalForm left = Implies(cnf1, cnf2);

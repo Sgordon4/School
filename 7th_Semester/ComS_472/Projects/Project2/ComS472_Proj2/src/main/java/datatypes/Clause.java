@@ -6,8 +6,12 @@ import java.util.List;
 public class Clause {
     public List<Literal> list = new LinkedList<>();
 
-
-
+    /**
+     * Does this clause contain the negation of the passed literal
+     *
+     * @param literal Literal object like A or ~A
+     * @return boolean True if contains, False if not
+     */
     public boolean containsNeg(Literal literal) {
         for(Literal lit : this.list){
             if(lit.literal.equals(literal.literal) && lit.negated != literal.negated)
@@ -16,21 +20,6 @@ public class Clause {
         return false;
     }
 
-    public void removeConflictingLiteral(Literal literal){
-        Literal lit = literal.clone();
-        this.list.remove(lit);
-        lit.negated = !lit.negated;
-        this.list.remove(lit);
-    }
-
-
-    @Override
-    public boolean equals(Object obj) {
-        if(obj.getClass() != this.getClass())
-            return super.equals(obj);
-
-        return list.containsAll(((Clause) obj).list);
-    }
 
     @Override
     public Clause clone(){
@@ -41,6 +30,14 @@ public class Clause {
         }
 
         return clause;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj.getClass() != this.getClass())
+            return super.equals(obj);
+
+        return list.containsAll(((Clause) obj).list);
     }
 
     @Override

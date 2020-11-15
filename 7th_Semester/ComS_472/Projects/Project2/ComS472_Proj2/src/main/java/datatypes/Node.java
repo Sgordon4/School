@@ -1,15 +1,15 @@
 package datatypes;
 
-public class ExpNode {
+public class Node {
     public String value;
-    public ExpNode left;
-    public ExpNode right;
+    public Node left;
+    public Node right;
 
-    public ExpNode(String value) {
+    public Node(String value) {
         this(value, null, null);
     }
 
-    public ExpNode(String value, ExpNode left, ExpNode right){
+    public Node(String value, Node left, Node right){
         this.value = value;
         this.left = left;
         this.right = right;

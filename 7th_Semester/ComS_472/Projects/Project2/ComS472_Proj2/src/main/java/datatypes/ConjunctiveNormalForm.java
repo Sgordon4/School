@@ -36,7 +36,6 @@ public class ConjunctiveNormalForm {
     public String printStructure(){
         StringBuilder ret = new StringBuilder();
         for(Clause clause : this.list){
-            //ret.append("[] ");
             for(Literal lit : clause.list){
                 ret.append(lit.toString());
                 ret.append(" || ");

@@ -6,7 +6,12 @@ public class ExpressionToPostfix {
 
     static Set<String> operators = new HashSet<String>(Arrays.asList("~", "&&", "||", "<=>", "=>", "("));
 
-    // function to convert infix to postfix
+    /**
+     * Given a list of tokens making up an infix propositional logic sentence, transforms the list into postfix.
+     *
+     * @param input List of tokens making up a propositional logic sentence
+     * @return List<String> Postfix order of input string
+     */
     static List<String> infixToPostfix(List<String> input) {
         Stack<String> s = new Stack<String>();
         List<String> postfix = new ArrayList<String>();
