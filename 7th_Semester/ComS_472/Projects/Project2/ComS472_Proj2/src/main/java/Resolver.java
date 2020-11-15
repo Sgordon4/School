@@ -30,7 +30,7 @@ public class Resolver {
         return cnf;
     }
 
-    public static boolean resolveKBWithClause(ConjunctiveNormalForm KB, Clause current){
+    public static boolean resolveKBWithClause(ConjunctiveNormalForm KB, Clause current, StringBuilder returnString){
 
         //For all untouched clauses in the knowledge base
         for(int i=0; i < KB.list.size(); i++){
@@ -44,15 +44,14 @@ public class Resolver {
                     i = -1; //Restart from the top of the list
 
 
-                    System.out.println(current);
-                    System.out.println(toCompare);
-                    System.out.println("--------------------");
+                    returnString.append(current).append("\n");
+                    returnString.append(toCompare).append("\n");
+                    returnString.append("--------------------").append("\n");
 
                     current.list.addAll(toCompare.clone().list);
                     current.removeConflictingLiteral(literal);
 
-                    System.out.println(current);
-                    System.out.println();
+                    returnString.append(current).append("\n\n");
 
                     if(current.list.size() == 0)
                         return true;
