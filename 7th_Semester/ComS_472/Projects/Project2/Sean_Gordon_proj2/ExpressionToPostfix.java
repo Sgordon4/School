@@ -1,7 +1,12 @@
+package edu.iastate.cs472.proj2;
+
 import java.util.*;
 
 import static java.lang.System.exit;
 
+/**
+ * @author Sean Gordon
+ */
 public class ExpressionToPostfix {
 
     static Set<String> operators = new HashSet<String>(Arrays.asList("~", "&&", "||", "<=>", "=>", "("));

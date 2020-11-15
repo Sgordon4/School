@@ -1,10 +1,15 @@
-import datatypes.Clause;
-import datatypes.Node;
-import datatypes.ConjunctiveNormalForm;
-import datatypes.Literal;
+package edu.iastate.cs472.proj2;
+
+import edu.iastate.cs472.proj2.datatypes.Clause;
+import edu.iastate.cs472.proj2.datatypes.Node;
+import edu.iastate.cs472.proj2.datatypes.ConjunctiveNormalForm;
+import edu.iastate.cs472.proj2.datatypes.Literal;
 
 import java.util.List;
 
+/**
+ * @author Sean Gordon
+ */
 public class TreeToCNF {
 
     /**

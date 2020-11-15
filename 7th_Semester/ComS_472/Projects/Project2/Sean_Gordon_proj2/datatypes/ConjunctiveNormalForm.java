@@ -1,8 +1,11 @@
-package datatypes;
+package edu.iastate.cs472.proj2.datatypes;
 
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * @author Sean Gordon
+ */
 public class ConjunctiveNormalForm {
     public List<Clause> list = new LinkedList<>();
 

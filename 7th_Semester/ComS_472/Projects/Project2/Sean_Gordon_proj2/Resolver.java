@@ -1,45 +1,13 @@
-import datatypes.Clause;
-import datatypes.ConjunctiveNormalForm;
-import datatypes.Node;
-import datatypes.Literal;
+package edu.iastate.cs472.proj2;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import edu.iastate.cs472.proj2.datatypes.Clause;
+import edu.iastate.cs472.proj2.datatypes.ConjunctiveNormalForm;
+import edu.iastate.cs472.proj2.datatypes.Literal;
 
+/**
+ * @author Sean Gordon
+ */
 public class Resolver {
-    /**
-     * Given a sentence string (e.g. "( Rain && Outside ) => Wet"), parses it into tokens and, using
-     * ExpressionToPostfix.infixToPostfix and PostfixToTree.buildExpTree, builds an expression tree.
-     * The expression tree is then sent to TreeToCNF.recursiveCNFConvert to convert to CNF.
-     *
-     * @param str Sentence string to parse and convert to CNF
-     * @return CNF version of str
-     */
-    public static ConjunctiveNormalForm stringToCNF(String str){
-        String pattern = "(\\()|(\\))|(<=>)|(=>)|(\\|\\|)|(&&)|(~)|(\\w+)";
-        Matcher m2 = Pattern.compile(pattern).matcher(str); //Match all individual parts
-
-        List<String> allMatches = new ArrayList<String>();
-        while (m2.find()) {
-            allMatches.add(m2.group());
-        }
-
-        //Build an expression tree from the parsed operators and operands
-        List<String> postfix = ExpressionToPostfix.infixToPostfix(allMatches);
-        Node expressionTree = PostfixToTree.buildExpTree(postfix);
-
-        ConjunctiveNormalForm cnf = TreeToCNF.recursiveCNFConvert(expressionTree);
-
-
-        //Printing these variables for testing can be done as so:
-        //expressionTree.printPretty();
-        //System.out.println(cnf);
-        //System.out.println(cnf.printStructure());
-
-        return cnf;
-    }
 
     /**
      * Given a knowledge base and a clause to prove, resolve the clause with the knowledge base until a conclusion

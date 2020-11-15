@@ -1,5 +1,8 @@
-package datatypes;
+package edu.iastate.cs472.proj2.datatypes;
 
+/**
+ * @author Sean Gordon
+ */
 public class Literal {
     public String literal;
     public boolean negated = false;

@@ -1,14 +1,14 @@
 
 Sun 11/15/2020
-  CprE 431: Mod 8 Homework
-  CprE 431: Mod 8 Quiz
-  CprE 431: Mod 8 Discussion Reply
+X CprE 431: Mod 8 Homework
+X CprE 431: Mod 8 Quiz
+X CprE 431: Mod 8 Discussion Reply
   CprE 492: Final Poster
   CprE 492: Final Report
 
 Mon 11/16/2020
 - CprE 492: PIRM Review (Second Half of Semester)
-  ComS 472: Project 2 - A Theorem Prover for Propositional Logic
+X ComS 472: Project 2 - A Theorem Prover for Propositional Logic
 
 Thu 11/19/2020
   CprE 492: Final Poster
@@ -26,6 +26,7 @@ Sat 11/21/2020 @9:00am to Thu 11/26/2020 @11:59pm
 
 Mon 11/22/2020
   CprE 431 Final Project
+  CprE 431 Final Project Video Submission
   CprE 431 Peer Evaluation
 
 Wed 11/25/2020

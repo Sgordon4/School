@@ -1,11 +1,21 @@
-import datatypes.Clause;
-import datatypes.ConjunctiveNormalForm;
+package edu.iastate.cs472.proj2;
+
+import edu.iastate.cs472.proj2.datatypes.Clause;
+import edu.iastate.cs472.proj2.datatypes.ConjunctiveNormalForm;
+import edu.iastate.cs472.proj2.datatypes.Node;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
+/**
+ * @author Sean Gordon
+ */
 public class Main {
     public static void main(String[] args) {
 
@@ -58,13 +68,46 @@ public class Main {
         }
 
         //Print the entire output string
-        //System.out.println(output);
+        System.out.println(output);
+    }
+
+    /**
+     * Given a sentence string (e.g. "( Rain && Outside ) => Wet"), parses it into tokens and, using
+     * edu.iastate.cs472.proj2.ExpressionToPostfix.infixToPostfix and edu.iastate.cs472.proj2.PostfixToTree.buildExpTree, builds an expression tree.
+     * The expression tree is then sent to edu.iastate.cs472.proj2.TreeToCNF.recursiveCNFConvert to convert to CNF.
+     *
+     * @param str Sentence string to parse and convert to CNF
+     * @return CNF version of str
+     */
+    public static ConjunctiveNormalForm stringToCNF(String str){
+        String pattern = "(\\()|(\\))|(<=>)|(=>)|(\\|\\|)|(&&)|(~)|(\\w+)";
+        Matcher m2 = Pattern.compile(pattern).matcher(str); //Match all individual parts
+
+        List<String> allMatches = new ArrayList<String>();
+        while (m2.find()) {
+            allMatches.add(m2.group());
+        }
+
+        //Build an expression tree from the parsed operators and operands
+        List<String> postfix = ExpressionToPostfix.infixToPostfix(allMatches);
+        Node expressionTree = PostfixToTree.buildExpTree(postfix);
+
+        //Convert the expression tree into CNF
+        ConjunctiveNormalForm cnf = TreeToCNF.recursiveCNFConvert(expressionTree);
+
+
+        //Printing these variables for testing can be done as so:
+        //expressionTree.printPretty();
+        //System.out.println(cnf);
+        //System.out.println(cnf.printStructure());
+
+        return cnf;
     }
 
 
     /**
      * Intakes a file conforming to the specifications in section 1 of the proj2F20-1.pdf packaged with this project.
-     * The contents of the file are split up line by line and sentences are sent to Resolver.stringToCNF for parsing.
+     * The contents of the file are split up line by line and sentences are sent to edu.iastate.cs472.proj2.Resolver.stringToCNF for parsing.
      *
      * @param filepath  Location of the file to read
      * @param KB        List that will hold the clauses that make up the knowledge base
@@ -99,7 +142,7 @@ public class Main {
                 //If we have hit an empty line...
                 else{
                     //Parse the current string into a sentence in CNF and add it to the knowledge base
-                    ConjunctiveNormalForm cnf = Resolver.stringToCNF(sentence.toString());
+                    ConjunctiveNormalForm cnf = stringToCNF(sentence.toString());
                     KB.list.addAll(cnf.list);
 
                     //Set the current sentence to nothing
@@ -121,7 +164,7 @@ public class Main {
                 //If we have hit an empty line...
                 else{
                     //Parse the current string into a sentence in CNF and add it to the toProve base
-                    ConjunctiveNormalForm cnf = Resolver.stringToCNF(sentence.toString());
+                    ConjunctiveNormalForm cnf = stringToCNF(sentence.toString());
                     toProve.list.addAll(cnf.list);
 
                     //Set the current sentence to nothing
@@ -133,7 +176,7 @@ public class Main {
             // the logic to get around that, so I'm just slapping a duplicate parsing section here:
 
             //Parse the final string into a sentence in CNF and add it to the toProve base
-            ConjunctiveNormalForm cnf = Resolver.stringToCNF(sentence.toString());
+            ConjunctiveNormalForm cnf = stringToCNF(sentence.toString());
             toProve.list.addAll(cnf.list);
 
 

@@ -1,6 +1,11 @@
-import datatypes.Node;
+package edu.iastate.cs472.proj2;
+
+import edu.iastate.cs472.proj2.datatypes.Node;
 import java.util.*;
 
+/**
+ * @author Sean Gordon
+ */
 public class PostfixToTree {
     static Set<String> operators = new HashSet<String>(Arrays.asList("~", "&&", "||", "<=>", "=>", "("));
 
