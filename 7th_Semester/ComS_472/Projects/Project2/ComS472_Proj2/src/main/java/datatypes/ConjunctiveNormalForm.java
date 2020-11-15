@@ -34,17 +34,16 @@ public class ConjunctiveNormalForm {
     }
 
     public String printStructure(){
-        StringBuilder ret = new StringBuilder("\n\n-------------\n");
+        StringBuilder ret = new StringBuilder();
         for(Clause clause : this.list){
             //ret.append("[] ");
             for(Literal lit : clause.list){
                 ret.append(lit.toString());
-                ret.append("  ");
+                ret.append(" || ");
             }
-            ret = new StringBuilder(ret.substring(0, ret.length() - 2)); //Remove last two spaces
+            ret = new StringBuilder(ret.substring(0, ret.length() - 4)); //Remove last ||
             ret.append("\n");
         }
-        ret.append("-------------\n\n");
         return ret.toString();
     }
 }

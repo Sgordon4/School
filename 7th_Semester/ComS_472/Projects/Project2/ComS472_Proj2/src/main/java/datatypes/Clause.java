@@ -6,13 +6,7 @@ import java.util.List;
 public class Clause {
     public List<Literal> list = new LinkedList<>();
 
-    @Override
-    public boolean equals(Object obj) {
-        if(obj.getClass() != this.getClass())
-            return super.equals(obj);
 
-        return list.containsAll(((Clause) obj).list);
-    }
 
     public boolean containsNeg(Literal literal) {
         for(Literal lit : this.list){
@@ -20,6 +14,22 @@ public class Clause {
                 return true;
         }
         return false;
+    }
+
+    public void removeConflictingLiteral(Literal literal){
+        Literal lit = literal.clone();
+        this.list.remove(lit);
+        lit.negated = !lit.negated;
+        this.list.remove(lit);
+    }
+
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj.getClass() != this.getClass())
+            return super.equals(obj);
+
+        return list.containsAll(((Clause) obj).list);
     }
 
     @Override
@@ -35,6 +45,9 @@ public class Clause {
 
     @Override
     public String toString() {
+        if(this.list.size() == 0)
+            return "{}";
+
         StringBuilder ret = new StringBuilder();
         for(Literal lit : this.list){
             ret.append(lit.toString());

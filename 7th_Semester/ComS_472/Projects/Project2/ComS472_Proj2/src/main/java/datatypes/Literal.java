@@ -19,4 +19,16 @@ public class Literal {
     public String toString() {
         return this.negated ? "~"+this.literal : this.literal;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj.getClass() != this.getClass())
+            return super.equals(obj);
+
+        Literal toCompare = (Literal) obj;
+        return (this.literal.equals(toCompare.literal) && this.negated == toCompare.negated);
+    }
+    public boolean equalsNegated(Literal lit){
+        return (this.literal.equals(lit.literal) && this.negated != lit.negated);
+    }
 }
