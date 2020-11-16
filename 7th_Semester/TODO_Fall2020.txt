@@ -11,7 +11,7 @@ Mon 11/16/2020
 X ComS 472: Project 2 - A Theorem Prover for Propositional Logic
 
 Tue 11/17/2020
-- ComS 492: IRP Presentation @11:30am to 12:00pm (CANCELLED)
+  ComS 492: IRP Presentation @11:30am to 12:00pm
 
 Thu 11/19/2020
   ComS 474: HW6 (I hate this fucking class) (oooo now its a bonus HW :) )
