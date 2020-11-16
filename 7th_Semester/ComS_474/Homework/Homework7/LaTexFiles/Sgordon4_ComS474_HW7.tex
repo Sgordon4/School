@@ -10,8 +10,10 @@
 
 \usepackage{multirow} %Combining rows in tables
 \usepackage{diagbox}  %Table box split in twain
+\usepackage{hhline}
+\usepackage{makecell} 
 
-\usepackage{algorithm}
+\usepackage[ruled,linesnumbered]{algorithm2e}
 \usepackage{algpseudocode}
 \usepackage{alltt}
 
@@ -27,63 +29,123 @@
 
  
 
-\title{ComS 474\\Homework 4}
+\title{ComS 474\\Homework 7}
 \author{Sean Gordon}
-\date{Oct 11, 2020}
+\date{Nov 20, 2020}
 
 \begin{document}
 \maketitle
 
 
+\section{K-means}
 
-\noindent 1) $
-\begin{pmatrix}
-w1\\ w2\\ w3
-\end{pmatrix}
-= \lambda_1 *
-\begin{pmatrix}
-a_1\\ b_1\\ c_1
-\end{pmatrix}
-- \lambda_3 *
-\begin{pmatrix}
-a_3\\ b_3\\ c_3
-\end{pmatrix}
-= 4.5 * (1) *
-\begin{pmatrix}
-.5\\ .25\\ .125
-\end{pmatrix}
-+ 1.5 * (-1) *
-\begin{pmatrix}
-.3\\ .75\\ .325
-\end{pmatrix}
-=
-\begin{pmatrix}
-1.8\\ 0\\ .075
-\end{pmatrix}$\\\\
 
-Prediction = $(1, 1, 0)*
-\begin{pmatrix}
-1.8\\ 0\\ .075
-\end{pmatrix}
-+ 1 = 2.8 > 0$, thus the predicted class is 1.\\
+\noindent 1) $X_i \in cluster1$\ \ if\ \ $dist(X_i, C_1) < dist(X_i, C_2)$, meaning $||X_i - C_1||^2 < ||X_i - C_2||^2$,\\
+\indent else $X_i \in cluster2$\\\\\\
+
+
+\noindent 2) Step 1: For a point $x$, calculate the euclidean distance $d_i$ to each centroid $C_i$.\\
+\indent Step 2: Select the smallest $d_i$ and record the index $i$.\\
+\indent Step 3: Assign x to the cluster of the respective centroid $C_i$.\\
+\indent Step 4: Repeat steps 1-3 for all points in X.\\
+
+\indent Using the steps above, it can be found that each cluster contains the points below:\\
+\indent Cluster 1: [0, 4, 5], Cluster 2: [1, 2, 3]\\
+
+\indent These values were calculated using the \textproc{closest(x, C)} function in kmeans.py.\\\\\\
+
+
+\noindent 3) Step 1: For a centroid $C$, calculate the arithmetic mean $M$ for all points in its cluster.\\
+\indent Step 2: Assign $C$ the calculated value $M$.\\
+\indent Step 3: Repeat this for all centroids C.\\
+
+\indent $C_1$ = {\Large $\frac{(-0.57, 0.87, -0.89)+(-0.28, 0.25, -1.54)+(-1.18, 1.26, -0.33)}{3}$} $\Rightarrow$ \\
+\indent $C_1$ = (-0.6767, 0.7933, -0.92)\\
+
+\indent $C_1$ = {\Large $\frac{(0.04, -0.76, 0.41)+(0.55, -0.38, 0.56)+(-0.65, -1.66, 0.35)}{3}$} $\Rightarrow$ \\
+\indent $C_1$ = (-0.02, -0.9333, 0.44)\\
 
 
 
-\noindent \hrulefill \\
+\noindent \hrulefill \\\pagebreak
+
+
+\section{Single-linkage clustering}\ \\
+
+
+\noindent 4) 
+\begin{tabular}{ccccccc}
+\hhline{-------}\\[-1em]
+ & (1) & (2) & (3) & (4) & (5) & (6)\\[.2em]
+\hhline{-------}\\[-1em]
+(1) & 0 & 2.17232594 & 2.21797205 & 2.8186699  & 0.94392796 & 0.91531415 \\
+(2) & 2.17232594 & 0 & 0.65345237 & 1.13564959 & 2.2192341  & 2.47313566 \\
+(3) & 2.21797205 & 0.65345237 & 0 & 1.7670597 & 2.34431227 & 2.54452353 \\
+(4) & 2.8186699 & 1.13564959 & 1.7670597 & 0 & 2.71239746 & 3.0446182 \\
+(5) & 0.94392796 & 2.2192341 & 2.34431227 & 2.71239746 & 0 & 1.81499311\\
+(6) & 0.91531415 & 2.47313566 & 2.54452353 & 3.0446182 & 1.81499311 & 0\\
+\hhline{-------}
+\end{tabular}\\\\
 
 
 
-\noindent 2) As the gutters span from $wx+w_b-1$ to $wx+w_b+1$, the size of the margin is {\Large$\frac{2}{||w||}$}, and the size of each gutter is 1/2 that $\Rightarrow$ {\Large$\frac{1}{||w||}$} = {\Large$\frac{1}{\sqrt{w_1^2+w_2^2}}$} = {\Large$\frac{1}{\sqrt{1.8^2+.075^2}}$} = {\Large$\frac{1}{1.802}$} = 0.555.\\\\
-However, the professor has specified that $d_1$ and $d_2$ are both 1, so the equations for both gutters are: $wx+w_b\pm1=0$ $\Rightarrow$\\\\[.4em]$
-\begin{pmatrix}
-1.8\\ 0\\ .075
-\end{pmatrix}
-*x + 1 = -1$\\[.4em]
-\indent \indent \indent and\\[.4em]$
-\begin{pmatrix}
-1.8\\ 0\\ .075
-\end{pmatrix}
-*x + 1 = 1 $\\
+\noindent 5) As clusters 2 and 3 have the shortest distance between them (0.6534), they should be\\
+\indent merged.\\
+
+
+
+\noindent 6) 
+\begin{tabular}{ccccccc}
+\hhline{-------}\\[-1em]
+ & (1) & (2) & (3) & (4) & (5) & (6)\\[.2em]
+\hhline{-------}\\[-1em]
+(1) & 0 & 2.17232594 & 2.21797205 & 2.8186699  & 0.94392796 & 0.91531415 \\
+(2) & 2.17232594 & 0 & \textbf{0.65345237} & 1.13564959 & 2.2192341  & 2.47313566 \\
+(3) & 2.21797205 & \textbf{0.65345237} & 0 & 1.7670597 & 2.34431227 & 2.54452353 \\
+(4) & 2.8186699 & 1.13564959 & 1.7670597 & 0 & 2.71239746 & 3.0446182 \\
+(5) & 0.94392796 & 2.2192341 & 2.34431227 & 2.71239746 & 0 & 1.81499311\\
+(6) & 0.91531415 & 2.47313566 & 2.54452353 & 3.0446182 & 1.81499311 & 0\\
+\hhline{-------}
+\end{tabular}\\\\
+
+\begin{tabular}{cccccc}
+\hhline{------}\\[-1em]
+ & (1) & (2, 3) & (4) & (5) & (6)\\[.2em]
+\hhline{------}\\[-1em]
+(1) & 0 & 2.17232594 & 2.8186699  & 0.94392796 & \textbf{0.91531415} \\
+(2, 3) & 2.17232594 & 0 & 1.13564959 & 2.2192341  & 2.47313566 \\
+(4) & 2.8186699 & 1.13564959 & 0 & 2.71239746 & 3.0446182 \\
+(5) & 0.94392796 & 2.2192341 & 2.71239746 & 0 & 1.81499311\\
+(6) & \textbf{0.91531415} & 2.47313566 & 3.0446182 & 1.81499311 & 0\\
+\hhline{------}
+\end{tabular}\\\\
+
+\begin{tabular}{ccccc}
+\hhline{-----}\\[-1em]
+ & (1, 6) & (2, 3) & (4) & (5)\\[.2em]
+\hhline{-----}\\[-1em]
+(1, 6) & 0 & 2.17232594 & 2.8186699  & \textbf{0.94392796}\\
+(2, 3) & 2.17232594 & 0 & 1.13564959 & 2.2192341\\
+(4) & 2.8186699 & 1.13564959 & 0 & 2.71239746\\
+(5) & \textbf{0.94392796} & 2.2192341 & 2.71239746 & 0\\
+\hhline{-----}
+\end{tabular}\\\\
+
+\begin{tabular}{cccc}
+\hhline{----}\\[-1em]
+ & (1, 5, 6) & (2, 3) & (4)\\[.2em]
+\hhline{----}\\[-1em]
+(1, 6) & 0 & 2.17232594 & 2.71239746  \\
+(2, 3) & 2.17232594 & 0 & 1.13564959 \\
+(4) & 2.71239746 & 1.13564959 & 0 \\
+\hhline{----}
+\end{tabular}\\\\\pagebreak
+
+\begin{center}Dendrogram:\end{center}
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=.5]{Pics/Q6.png}
+\end{figure}
 
 
 
@@ -92,47 +154,67 @@ However, the professor has specified that $d_1$ and $d_2$ are both 1, so the equ
 
 
 
-\noindent 3) A point is inside the margin when $|wx+w_b| < 2d$ = $|wx+1| < 1.11$\\[.4em]
-\indent (1) $|(0.5, 0.25, 0.125)*
-\begin{pmatrix}
-1.8\\ 0\\ .075
-\end{pmatrix}
- + 1|= 1.909 > 1.11$, so this sample is outside the margin.\\[.4em]
-
-\indent (2) $|(0.4, 0.15, 0.225)*
-\begin{pmatrix}
-1.8\\ 0\\ .075
-\end{pmatrix}
- + 1|= 1.737 > 1.11$, so this sample is outside the margin.\\[.4em]
-
-\indent (3) $|(0.3, 0.75, 0.325)*
-\begin{pmatrix}
-1.8\\ 0\\ .075
-\end{pmatrix}
- + 1|= 1.564 > 1.11$, so this sample is outside the margin.\\[.4em]
-
-\indent (4) $|(0.2, 0.65, 0.425)*
-\begin{pmatrix}
-1.8\\ 0\\ .075
-\end{pmatrix}
- + 1|= 1.392 > 1.11$, so this sample is outside the margin.\\
+\section{DBSCAN}\ \\
 
 
-
-\noindent \hrulefill \\
-
+\noindent 7) Neighbors = \{B, C, D, G\}.\\\\
 
 
-\noindent 4) \\
-\indent (1) If $y_i = 1$ and $w^Tx_i+w_b \le -1$, $y_i(w^Tx_i+w_b) \le -1$, disproving the condition.\\\\
-\indent (2) This condition holds for $y_i = 1$ and $w^Tx_i+w_b \le -1$ and for $y_i = -1$ and $w^Tx_i+w_b \le 1$. \\
-\indent \indent Both of these sets of values when input into $y_i(w^Tx_i+w_b) \le -1$\\\\
-\indent (3) If $y_i = 1$ and $w^Tx_i+w_b \le -1$, $y_i(w^Tx_i+w_b) \le -1$, disproving the condition.\\\\
-\indent (4) This condition holds for $y_i = 1$ and $w^Tx_i+w_b \le -1$ and for $y_i = -1$ and $w^Tx_i+w_b \le 1$. \\
-\indent \indent Both of these sets of values when input into $y_i(w^Tx_i+w_b) \le 1$\\\\
-\indent (5) If $y_i = 1$ and $w^Tx_i+w_b \le -1$, $y_i(w^Tx_i+w_b) \le -1$, disproving the condition.\\\\
-\indent (6) This condition holds for $y_i = 1$ and $w^Tx_i+w_b \le -1$ and for $y_i = -1$ and $w^Tx_i+w_b \le 1$. \\
-\indent \indent Both of these sets of values when input into $y_i(w^Tx_i+w_b) \le 0$\\\\
+\noindent 8) A sample is a core point if its number of neighbors $>$ T.\\[.4em]
+\indent B has 1 neighbor A. \ \ C has 3 neighbors A, E, F. \\
+\indent D has 1 neighbor A. \ \ G has 4 neighbors A, H, I, J.\\[.4em]
+\indent As the only neighbor of A that has $>$ 3 neigbors is G, G is the only neigbor of A \\
+\indent that is a core point.\\
+
+
+\begin{multicols}{2}
+
+\noindent 9) \ C=\{A\}\\
+\indent C=\{A,B,C,D,G\}\\
+\indent C=\{A,B,C,D,G,H,I,J\}\\
+\indent C=\{A,B,C,D,G,H,I,J,K\}\\
+\indent C=\{A,B,C,D,G,H,I,J,K,L,N\}\\
+
+\columnbreak
+
+\ \\
+Added from A\\
+Added from G\\
+Added from I\\
+Added from K\\
+
+\end{multicols}
+
+
+\noindent 10)\begin{algorithm}
+\caption{Shortened DBSCAN Pseudocode.}
+\BlankLine
+\KwData{$X$: samples, $T$:, a threshold}
+\BlankLine
+\BlankLine
+Initialize cluster index i $\leftarrow$ 1\;
+\ForEach{sample $x$ $\in$ $X$}{
+	\If{$x$ are NOT assigned to a cluster}{
+		\BlankLine
+		Seed set of cluster $i$: $S$ $\leftarrow$ $x$\;
+		\BlankLine
+		\While{$S$ $\neq$ $\emptyset$}{
+			$y$ $\leftarrow$ one element of $S$\;
+			\If{$|$N(y)$|$ $>$ T}{
+				Assign $y$ to cluster $i$\;
+				$S$ $\leftarrow$ $S$ $\cup$ $N(y)$\;
+			}
+			\BlankLine
+			Remove $y$ from $S$\;
+		}
+	\BlankLine
+	i++\;
+	}
+}
+\end{algorithm}
+
+
+
 
 
 %\begin{figure}[htbp]
