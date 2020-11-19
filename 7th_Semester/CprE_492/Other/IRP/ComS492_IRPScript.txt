@@ -1,0 +1,51 @@
+
+=== Front End (con) - Examples ===
+
+Next, we will quickly show some samples from our website.
+
+When a user navigates to our project webpage, they will be greeted with the site homepage. This site includes an embedded link to our twitch stream of the team table, where the current drawing can be seen in-progress. Lower down is information on the project and the team members who worked on it. The navigation bar above allows quick navigation between different site functions.
+
+On the community tracks page, the user can see and filter through a list of community uploaded tracks. They have the option to download the track file and, if they are logged in, are able to add the track to their favorites or queue the track to their own table. This page also allows a user to upload a new track to the site for anyone to see.
+
+
+Script time: 0:35
+
+
+
+
+=== Front End (con) - Examples (2) ===
+
+After registering with our service and setting up their personal table, the user can log in and view or manipulate their table's currently playing track on the My Table page. This page also allows the user to view and modify their current queue, enabling full control of what is playing on the user's table.
+
+
+Script time: 0:15
+
+
+
+
+=== Image to Track ===
+
+Next, I will be talking about our project's system for converting an image into a table track.
+
+Before this project, users with a table that wanted a custom track would need to understand complex mathematics in order to build a track themselves. Each coordinate would need to be written in manually, or the specific function to be drawn had to be created. Part of our group's mission was to give users a larger amount of creative freedom with the table by enabling them to transform arbitrary images into table tracks.
+
+
+The script we created to solve that problem works in 4 stages: 
+
+Stage 1: Record object boundaries as edge segments.
+This section uses a technique called Canny edge detection to extract the edges of the shapes within an image. This algorithm, developed by John F. Canny, applies various filters and thresholds to a greyscale version of the image in question to extract a map of its edges. These edges do not form one long line, however, and cannot be traced with a marble. This leads us to...
+
+Stage 2: Marking disjoint edge segments as individual components.
+This stage walks through the map of edges, tagging each set of connected pixels as a connected component. These components are then passed over a second time, consolidating them into the smallest possible set of components. We then move to...
+
+Stage 3: Drawing connections between individual components.
+Once all individual line segments are marked as components, we need to connect them all efficiently. For this, a minimum spanning tree is employed, with each component as a node in the graph. Once created, the edges are drawn to connect each edge segment, and the result is sent to...
+
+Stage 4: Converting the connected components to a cartesian track.
+Starting from the closest edge pixel to the outside edge of the image, we then employ Breadth First Search to simulate tracing without lifting your pencil. This creates an ordered list of pixel coordinates, which are then converted to a sorted tree. This tree is then printed to a file, retracing steps to keep connections.
+
+
+As the script itself is rather complicated, only a gist of it is discussed here. More information can be found in the documentation of the Image to Track script itself. 
+
+
+Script time: 1:55

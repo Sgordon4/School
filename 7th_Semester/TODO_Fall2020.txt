@@ -1,25 +1,16 @@
 
-Mon 11/16/2020
-- CprE 492: PIRM Review (Second Half of Semester)
-X ComS 472: Project 2 - A Theorem Prover for Propositional Logic
-  Take 2 indeed assesments for PFC dev job
-
-Tue 11/17/2020
-  ComS 492: IRP Presentation @11:30am to 12:00pm
-
-Thu 11/19/2020
-/ ComS 474: HW6 (I hate this fucking class) (oooo now its a bonus HW :) )
-
-Fri 11/20/2020
-X ComS 474: HW7 (Now a bonus) (This class is still hot fucking garbage lmao) (Who assigns homework like this)
-  
 ------------------------------------------------
 Sat 11/21/2020 @4:00pm to Mon 11/23/2020 @4:00pm
 			   CprE 431 Final Exam
 ------------------------------------------------
 
 ------------------------------------------------
-Sat 11/21/2020 @9:00am to Thu 11/26/2020 @11:59pm
+Sat 11/21/2020 @9:00am to Mon 11/26/2020 @11:59pm
+			   ComS 474 Final Exam
+------------------------------------------------
+
+------------------------------------------------
+Wed 11/25/2020 @8:15am to @1:30pm
 			   ComS 472 Final Exam
 ------------------------------------------------
 
@@ -38,6 +29,19 @@ Thu 12/1/2020
 
 
 =============================================================================================================
+
+Fri 11/20/2020
+X ComS 474: HW7 (Now a bonus) (This class is still hot fucking garbage lmao) (Who assigns homework like this)
+
+Thu 11/19/2020
+X ComS 474: HW6 (I hate this fucking class) (oooo now its a bonus HW :) )
+
+Tue 11/17/2020
+X ComS 492: IRP Presentation @11:30am to 12:00pm
+
+Mon 11/16/2020
+- CprE 492: PIRM Review (Second Half of Semester)
+X ComS 472: Project 2 - A Theorem Prover for Propositional Logic
 
 Fri 11/13/2020
 X ComS 472: Problem Set 6  (Fuck these people too)
