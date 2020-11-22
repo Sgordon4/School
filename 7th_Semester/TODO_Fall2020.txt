@@ -1,12 +1,12 @@
 
 ------------------------------------------------
 Sat 11/21/2020 @4:00pm to Mon 11/23/2020 @4:00pm
-			   CprE 431 Final Exam
+X			   CprE 431 Final Exam
 ------------------------------------------------
 
 ------------------------------------------------
 Sat 11/21/2020 @9:00am to Mon 11/26/2020 @11:59pm
-			   ComS 474 Final Exam
+/			   ComS 474 Final Exam
 ------------------------------------------------
 
 ------------------------------------------------
@@ -16,7 +16,7 @@ Wed 11/25/2020 @8:15am to @1:30pm
 
 Mon 11/22/2020
 X CprE 431 Final Project
-  CprE 431 Final Project Video Submission
+X CprE 431 Final Project Video Submission
   CprE 431 Peer Evaluation
 
 Mon 11/30/2020
